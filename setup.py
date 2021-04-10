@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="ytdlmusic",
-    version="0.0.3",
+    version="0.1.0",
     description="ytdlmusic",
     long_description=long_description,
     long_description_content_type="text/markdown",

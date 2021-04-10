@@ -32,9 +32,9 @@ def ytdlmusic() :
             i=i+1
             print(i)
             print(children["title"])
-            print(children["duration"])    
-            print(str(children["publishedTime"]) +" - "+ children["viewCount"]["text"])
-            print("************************************")
+            print(children["duration"])
+            print(children["link"])    
+            print(children["viewCount"]["text"])
 
         print("")
         while True:
@@ -42,7 +42,8 @@ def ytdlmusic() :
             if (answer.isnumeric() and int(answer) >= 0 and int(answer) <= 5):
                 break
         if (int(answer) == 0):
-            exit(0)       
+            exit(0)
+    print("")               
     download_song(videosSearch.result()["result"][int(answer)-1]["link"], artiste + ' '  + titre)
 
         
