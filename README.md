@@ -77,8 +77,8 @@ you can use script for loop in a csv file for axample
 #!/bin/bash
 
 file_csv="./test.csv"
-colonne_artiste=1
-colonne_titre=2
+column_artist=1
+column_title=2
 sep=';'
 
 i=0
@@ -86,11 +86,11 @@ while true
 do
         i=$((i+1))
         line=$(sed $i'!d' $file_csv)
-        artiste=$(echo $line | cut -d $sep -f $colonne_artiste)     # get the first name
-        titre=$(echo $line | cut -d $sep -f $colonne_titre)
+        artiste=$(echo $line | cut -d $sep -f $column_artist) 
+        title=$(echo $line | cut -d $sep -f $column_title)
         echo $line
-        [ -z "$line" ] && echo "ligne vide : fin du script" && exit 0
-        ytdlmusic "$artiste" "$titre"
+        [ -z "$line" ] && echo "empty line : end of script" && exit 0
+        ytdlmusic "$artist" "$title"
 done 
 
 ```
