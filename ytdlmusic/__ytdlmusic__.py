@@ -32,9 +32,9 @@ def ytdlmusic() :
             i=i+1
             print(i)
             print(children["title"])
-            print(children["duration"])
-            print(children["link"])    
-            print(children["viewCount"]["text"])
+            print(children["link"])             
+            print(children["duration"] + " - " + children["viewCount"]["text"])   
+            print()
 
         print("")
         while True:
