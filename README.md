@@ -58,6 +58,10 @@ Deleting original file the beatles let it be.m4a (pass -k to keep)
 [ffmpeg] Adding metadata to 'the beatles let it be.mp3'
 ````
 
+## use auto
+
+``ytdlmusic "the beatles" "let it be" auto`` will dowmnload the first item 
+
 ## local install to develop
 
 ```
@@ -70,7 +74,7 @@ pip3 install .
 
 ## batch
 
-you can use script for loop in a csv file for axample 
+you can use script for loop in a csv file for example 
 
 ```
 
@@ -90,7 +94,7 @@ do
         title=$(echo $line | cut -d $sep -f $column_title)
         echo $line
         [ -z "$line" ] && echo "empty line : end of script" && exit 0
-        ytdlmusic "$artist" "$title"
+        ytdlmusic "$artist" "$title" # add "auto" parameter if you do not want interactive process
 done 
 
 ```

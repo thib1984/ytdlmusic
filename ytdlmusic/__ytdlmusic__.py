@@ -25,18 +25,24 @@ def ytdlmusic() :
     titre = sys.argv[2]
     videosSearch = VideosSearch(artiste + ' '  + titre + ' mp3', limit = 5)
     i=0
+    answer =1
+    if (not len(sys.argv) >3 or not sys.argv[3] == "auto"):
+        for children in videosSearch.result()["result"]:
+            print("")
+            i=i+1
+            print(i)
+            print(children["title"])
+            print(children["duration"])    
+            print(str(children["publishedTime"]) +" - "+ children["viewCount"]["text"])
+            print("************************************")
 
-    for children in videosSearch.result()["result"]:
         print("")
-        i=i+1
-        print(i)
-        print(children["title"])
-        print(children["duration"])    
-        print(str(children["publishedTime"]) +" - "+ children["viewCount"]["text"])
-        print("************************************")
-
-    print("")
-    answer = input("which? ")
+        while True:
+            answer = input("which (1-5, 0 to exit properly) ? ")
+            if (answer.isnumeric() and int(answer) >= 0 and int(answer) <= 5):
+                break
+        if (int(answer) == 0):
+            exit(0)       
     download_song(videosSearch.result()["result"][int(answer)-1]["link"], artiste + ' '  + titre)
 
         
