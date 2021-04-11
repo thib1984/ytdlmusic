@@ -1,10 +1,12 @@
 from youtubesearchpython import VideosSearch
 import sys
+import re
 import youtube_dl
 
 def download_song(song_url, song_title):
 
     outtmpl = song_title + '.%(ext)s'
+    #TODO test if exist
     ydl_opts = {
         'format': 'bestaudio/best',
         'outtmpl': outtmpl,
@@ -44,6 +46,6 @@ def ytdlmusic() :
         if (int(answer) == 0):
             exit(0)
     print("")               
-    download_song(videosSearch.result()["result"][int(answer)-1]["link"], artiste + ' '  + titre)
+    download_song(videosSearch.result()["result"][int(answer)-1]["link"], re.sub('(\W+)','-', artiste + '_'  + titre))
 
         
