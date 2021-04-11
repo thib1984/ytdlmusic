@@ -2,6 +2,10 @@
 
 [Github link](https://github.com/thib1984/ytdlmusic/)
 
+## pipy
+
+[Pipy link](https://pypi.org/project/ytdlmusic/)
+
 ## prerequisites
 
 install ffmpeg for your system
