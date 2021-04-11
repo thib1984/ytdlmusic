@@ -1,3 +1,7 @@
+## description
+
+With ytdlmusic, you can download from youtube a mp3 music without use browser. 5 choices are available with small summary to facilitate the choice. You can also use auto mode to download the first item.  
+
 ## github
 
 [Github link](https://github.com/thib1984/ytdlmusic/)
