@@ -89,20 +89,24 @@ you can use script for loop in a csv file for example
 #!/bin/bash
 
 file_csv="./test.csv"
-column_artist=1
-column_title=2
-sep=';'
+colonne_artiste=2
+colonne_titre=1
+sep=','
 
-i=0
+i=1
 while true
 do
-        i=$((i+1))
-        line=$(sed $i'!d' $file_csv)
-        artiste=$(echo $line | cut -d $sep -f $column_artist) 
-        title=$(echo $line | cut -d $sep -f $column_title)
-        echo $line
-        [ -z "$line" ] && echo "empty line : end of script" && exit 0
-        ytdlmusic "$artist" "$title" # add "auto" parameter if you do not want interactive process
+	i=$((i+1))
+	line=$(sed $i'!d' $file_csv)
+	artiste=$(echo $line | cut -d $sep -f $colonne_artiste)     # get the first name
+        titre=$(echo $line | cut -d $sep -f $colonne_titre)
+	echo ""
+	echo ""
+	echo "********************"
+	echo $line
+	[ -z "$line" ] && echo "ligne vide : fin du script" && exit 0
+	ytdlmusic "$artiste" "$titre" auto
+	echo "********************"
 done 
 
 ```
