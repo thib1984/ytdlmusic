@@ -12,7 +12,8 @@ With ytdlmusic, you can download from youtube a mp3 music without use browser. 5
 
 ## prerequisites
 
-install ffmpeg for your system
+- install pip or pip3 for your system
+- install ffmpeg for your system
 
 ## installation
 
@@ -24,51 +25,73 @@ install ffmpeg for your system
 will download, after choice, the mp3 in the current directory
 
 ```
-~$ ytdlmusic "the beatles" "let it be"
+~$ ytdlmusic "the beattles" "let it be"
+artist : the beatles
+song : let it be
+search the beatles let it be mp3 with youtubesearchpython
 
 1
 Let It Be (Remastered 2009)
-4:04
-None - 75,848,559 views
-************************************
+https://www.youtube.com/watch?v=QDYfEBY9NM4
+4:04 - 75,940,717 views
+
 
 2
 Let It Be (Remastered 2015)
-3:51
-None - 13,390,170 views
-************************************
+https://www.youtube.com/watch?v=HzvDofigTKQ
+3:51 - 13,390,170 views
+
 
 3
 The Beatles - Let it be
-4:15
-8 years ago - 29,173,724 views
-************************************
+https://www.youtube.com/watch?v=7P6X3IWLECY
+4:15 - 29,202,773 views
+
 
 4
 Beatles   Let It Be 1970
-3:55
-2 years ago - 326,613 views
-************************************
+https://www.youtube.com/watch?v=nt9uBlRuBPw
+3:55 - 326,823 views
+
 
 5
-The Beatles - Let It be lyrics
-2:17
-3 years ago - 7,239,282 views
-************************************
+Let It Be (Remastered 2009)
+https://www.youtube.com/watch?v=hR-3ajVftG4
+3:53 - 1,684,647 views
 
-which? 5
-[youtube] 6d5ST3tbPIU: Downloading webpage
-[download] Destination: the beatles let it be.m4a
-[download] 100% of 2.11MiB in 00:00
-[ffmpeg] Correcting container in "the beatles let it be.m4a"
-[ffmpeg] Destination: the beatles let it be.mp3
-Deleting original file the beatles let it be.m4a (pass -k to keep)
-[ffmpeg] Adding metadata to 'the beatles let it be.mp3'
+
+which (1-5, 0 to exit properly) ? 2
+future filename is : the_beatles_let_it_be.mp3
+download https://www.youtube.com/watch?v=HzvDofigTKQ with youtubedl
+[youtube] HzvDofigTKQ: Downloading webpage
+[download] Destination: the_beatles_let_it_be.webm
+[download] 100% of 3.73MiB in 00:00
+[ffmpeg] Destination: the_beatles_let_it_be.mp3
+Deleting original file the_beatles_let_it_be.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'the_beatles_let_it_be.mp3'
+the_beatles_let_it_be.mp3 is ready
 ````
 
 ## use auto
 
-``ytdlmusic "the beatles" "let it be" auto`` will dowmnload the first item 
+```
+ytdlmusic "the beatles" "let it be" auto`` will dowmnload the first item 
+
+```
+~$ ytdlmusic "the beattles" "let it be" auto
+artist : the beatles
+song : let it be
+search the beatles let it be mp3 with youtubesearchpython
+future filename is : the_beatles_let_it_be.mp3
+download https://www.youtube.com/watch?v=QDYfEBY9NM4 with youtubedl
+[youtube] QDYfEBY9NM4: Downloading webpage
+[download] Destination: the_beatles_let_it_be.webm
+[download] 100% of 3.75MiB in 00:00
+[ffmpeg] Destination: the_beatles_let_it_be.mp3
+Deleting original file the_beatles_let_it_be.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'the_beatles_let_it_be.mp3'
+the_beatles_let_it_be.mp3 is ready
+```
 
 ## local install to develop
 
@@ -76,8 +99,9 @@ Deleting original file the beatles let it be.m4a (pass -k to keep)
 git clone https://github.com/thib1984/ytdlmusic.git
 cd ytdlmusic 
 #work!
-pip3 install .
-#launch ytdlmusic
+python3 ytdlmusic/__ytdlmusic__.py "the beatles" "let it be" #to test
+pip3 install . #to build
+ytdlmusic "the beatles" "let it be"  #to retest
 ``` 
 
 ## batch

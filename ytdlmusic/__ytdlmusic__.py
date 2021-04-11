@@ -5,6 +5,7 @@ import youtube_dl
 import os.path
 
 
+
 def download_song(song_url, song_title):
 
     outtmpl = song_title + '.%(ext)s'
@@ -46,15 +47,18 @@ def ytdlmusic() :
         exit(0)        
 
 
-    artiste = sys.argv[1]
-    titre = sys.argv[2]
+    artist = sys.argv[1]
+    song = sys.argv[2]
 
-    print("artiste : " + artiste)
-    print("title : " + titre)
+    print("artist : " + artist)
+    print("song : " + song)
 
-    print("search " + artiste + ' '  + titre + ' mp3 with youtubesearchpython')
-    videosSearch = VideosSearch(artiste + ' '  + titre + ' mp3', limit = 5)
+    print("search " + artist + ' '  + song + ' mp3 with youtubesearchpython')
+    videosSearch = VideosSearch(artist + ' '  + song + ' mp3', limit = 5)
     i=0
+    if len(videosSearch.result()["result"]) ==0:
+        print("no result, retry with other other words")
+        exit(0)
     answer =1
     if (not len(sys.argv) >3 or not sys.argv[3] == "auto"):
         for children in videosSearch.result()["result"]:
@@ -67,13 +71,14 @@ def ytdlmusic() :
             print()
 
         print("")
+
         while True:
-            answer = input("which (1-5, 0 to exit properly) ? ")
+            answer = input("which (1-"+str(len(videosSearch.result()["result"]))+", 0 to exit properly) ? ")
             if (answer.isnumeric() and int(answer) >= 0 and int(answer) <= 5):
                 break
         if (int(answer) == 0):
             exit(0)
-    file_name = re.sub('(\W+)','_', artiste.lower() + '_'  + titre.lower())
+    file_name = re.sub('(\W+)','_', artist.lower() + '_'  + song.lower())
     if (os.path.exists(file_name+".mp3")):
         i=0           
         while True:
@@ -82,10 +87,12 @@ def ytdlmusic() :
             if (not os.path.exists(file_name_tmp +".mp3")):
                 file_name = file_name_tmp
                 break
-    print("future file name is : "+file_name+".mp3")            
+    print("future filename is : "+file_name+".mp3")            
     print("download " + videosSearch.result()["result"][int(answer)-1]["link"] + " with youtubedl")
                         
     download_song(videosSearch.result()["result"][int(answer)-1]["link"], file_name)
     print(file_name+".mp3 is ready")
 
-        
+       
+if __name__ == '__main__':
+    ytdlmusic()
