@@ -1,0 +1,28 @@
+name: pipeline release
+
+on:
+  release:
+    types:
+      - created
+jobs:
+  push_to_registry:
+    name: push pip package
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout the repo
+        uses: actions/checkout@v2
+      - name: install python3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.5'
+      - name: install dependencies python3
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install pep517
+      - name: build pip
+        run: python3 -m pep517.build --source --binary --out-dir dist/ .
+      - name: publish to pypi
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: ${{ secrets.PYPI_USER }}
+          password: ${{ secrets.PYPI_PASSWORD }}
