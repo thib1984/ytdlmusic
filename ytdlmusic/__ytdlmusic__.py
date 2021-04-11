@@ -25,6 +25,27 @@ def download_song(song_url, song_title):
 
 def ytdlmusic() :
 
+    if (not len(sys.argv) ==4 and not len(sys.argv) ==3):
+        help_txt = """\
+
+        NAME
+            ytdlmusic
+
+        SYNOPSIS
+           With ytdlmusic, you can download from youtube a mp3 music without use browser. 5 choices are available with small summary 
+           to facilitate the choice. You can also use auto mode to download the first item. 
+
+            help            : display this help
+                            -> ytdlmusic help
+            artist song     : display 5 choices from youtube with given search, then download the mp3 choosen by user
+                            -> example : ytdlmusic "the beatles" "let it be"
+            artist song auto: download mp3 of the first from youtube with given search
+                            -> example : ytdlmusic "the beatles" "let it be" auto
+            """
+        print(help_txt)
+        exit(0)        
+
+
     artiste = sys.argv[1]
     titre = sys.argv[2]
 

@@ -91,14 +91,14 @@ you can use script for loop in a csv file for example
 file_csv="./test.csv"
 colonne_artiste=2
 colonne_titre=1
-sep=','
+sep=';'
 
 i=1
 while true
 do
 	i=$((i+1))
 	line=$(sed $i'!d' $file_csv)
-	artiste=$(echo $line | cut -d $sep -f $colonne_artiste)     # get the first name
+	artiste=$(echo $line | cut -d $sep -f $colonne_artiste)
         titre=$(echo $line | cut -d $sep -f $colonne_titre)
 	echo ""
 	echo ""
@@ -111,3 +111,8 @@ done
 
 ```
 
+## thanks
+
+This package use two very important depedencies :
+- [youtube_dl](https://pypi.org/project/youtube_dl/)
+- [youtube-search-python](https://pypi.org/project/youtube-search-python/)
