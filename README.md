@@ -74,8 +74,8 @@ the_beatles_let_it_be.mp3 is ready
 
 ## use auto
 
-```
-ytdlmusic "the beatles" "let it be" auto`` will dowmnload the first item 
+``ytdlmusic "the beatles" "let it be" auto`` 
+will dowmnload the first item 
 
 ```
 ~$ ytdlmusic "the beattles" "let it be" auto
