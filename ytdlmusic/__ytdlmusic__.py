@@ -61,22 +61,21 @@ def ytdlmusic() :
         exit(0)
     answer =1
     if (not len(sys.argv) >3 or not sys.argv[3] == "auto"):
+        print("")
         for children in videosSearch.result()["result"]:
-            print("")
             i=i+1
             print(i)
             print(children["title"])
             print(children["link"])             
             print(children["duration"] + " - " + children["viewCount"]["text"])   
-            print()
-
-        print("")
+            print("")
 
         while True:
             answer = input("which (1-"+str(len(videosSearch.result()["result"]))+", 0 to exit properly) ? ")
             if (answer.isnumeric() and int(answer) >= 0 and int(answer) <= 5):
                 break
         if (int(answer) == 0):
+            print("")
             exit(0)
     file_name = re.sub('(\W+)','_', artist.lower() + '_'  + song.lower())
     if (os.path.exists(file_name+".mp3")):
