@@ -2,6 +2,8 @@ from youtubesearchpython import VideosSearch
 import sys
 import re
 import youtube_dl
+import os.path
+
 
 def download_song(song_url, song_title):
 
@@ -25,6 +27,11 @@ def ytdlmusic() :
 
     artiste = sys.argv[1]
     titre = sys.argv[2]
+
+    print("artiste : " + artiste)
+    print("title : " + titre)
+
+    print("search " + artiste + ' '  + titre + ' mp3 with youtubesearchpython')
     videosSearch = VideosSearch(artiste + ' '  + titre + ' mp3', limit = 5)
     i=0
     answer =1
@@ -45,7 +52,19 @@ def ytdlmusic() :
                 break
         if (int(answer) == 0):
             exit(0)
-    print("")               
-    download_song(videosSearch.result()["result"][int(answer)-1]["link"], re.sub('(\W+)','-', artiste + '_'  + titre))
+    file_name = re.sub('(\W+)','_', artiste.lower() + '_'  + titre.lower())
+    if (os.path.exists(file_name+".mp3")):
+        i=0           
+        while True:
+            i=i+1
+            file_name_tmp = file_name + "_" + str(i)
+            if (not os.path.exists(file_name_tmp +".mp3")):
+                file_name = file_name_tmp
+                break
+    print("future file name is : "+file_name+".mp3")            
+    print("download " + videosSearch.result()["result"][int(answer)-1]["link"] + " with youtubedl")
+                        
+    download_song(videosSearch.result()["result"][int(answer)-1]["link"], file_name)
+    print(file_name+".mp3 is ready")
 
         
