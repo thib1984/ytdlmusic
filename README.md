@@ -1,10 +1,5 @@
 :warning: ytdlmusic is not compatible with python2 (deprecated), use python3!
 
-:warning: if you observe error during the search or the download, try to upgrade youtube_dl, youtube-search-python, and ytdlmusic with
-
-```
-ytdlmusic update #equal or after version 0.2.0
-```
 
 ## description
 
