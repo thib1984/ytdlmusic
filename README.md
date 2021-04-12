@@ -105,6 +105,7 @@ the_beatles_let_it_be.mp3 is ready
 ## other commands
 
 `` ytdlmusic help`` to display help message
+
 `` ytdlmusic update `` to upgrade ytdlmusic, youtube-dl and youtube-serach-python
 
 ## batch
