@@ -23,6 +23,10 @@ With ytdlmusic, you can download from youtube a mp3 music without use browser. 5
 
 ``pip3 install ytdlmusic #or with pip if pip3 does not exist``
 
+## upgrade
+
+``pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist``
+
 ## use
 
 ``ytdlmusic "the beatles" "let it be"``
