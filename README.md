@@ -1,4 +1,10 @@
 :warning: Not compatible with python2 (deprecated), Use python3
+:warning: I you observe error during the search or the download, try to upgrade youtube_dl or youtube-search-python, with
+```
+pip3 install youtube_dl #or pip install youtube_dl 
+pip3 install youtube-search-python #or pip install youtube_dl 
+```
+
 ## description
 
 With ytdlmusic, you can download from youtube a mp3 music without use browser. 5 choices are available with small summary to facilitate the choice. You can also use auto mode to download the first item.  
@@ -14,7 +20,7 @@ With ytdlmusic, you can download from youtube a mp3 music without use browser. 5
 ## prerequisites
 
 - install python3 for your system
-- install pip for your system
+- install pip3 for your system #or pip
 - install ffmpeg for your system
 
 ## installation
