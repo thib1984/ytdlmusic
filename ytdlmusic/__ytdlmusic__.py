@@ -25,16 +25,16 @@ def download_song(song_url, song_title):
     }
 
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        info_dict = ydl.extract_info(song_url, download=True)
+        ydl.extract_info(song_url, download=True)
 
 
 def ytdlmusic():
 
     if len(sys.argv) == 2 and sys.argv[1] == "update":
-        prog = "pip4"
+        prog = "pip3"
         if which(prog) is None:
             prog = "pip"
-        print("")
+        print
         print("try to update youtube-dl with " + prog)
         subprocess.check_call(
             [
@@ -44,7 +44,7 @@ def ytdlmusic():
                 "youtube-dl",
             ]
         )
-        print("")
+        print
         print("try to update youtube-search-python with " + prog)
         subprocess.check_call(
             [
@@ -54,7 +54,7 @@ def ytdlmusic():
                 "youtube-search-python",
             ]
         )
-        print("")
+        print
         print("try to update ytdlmusic with " + prog)
         subprocess.check_call(
             [
@@ -114,7 +114,7 @@ def ytdlmusic():
             exit(0)
         answer = 1
         if not len(sys.argv) > 3 or not sys.argv[3] == "auto":
-            print("")
+            print
             for children in videosSearch.result()["result"]:
                 i = i + 1
                 print(i)
@@ -125,7 +125,7 @@ def ytdlmusic():
                     + " - "
                     + children["viewCount"]["text"]
                 )
-                print("")
+                print
 
             while True:
                 answer = input(
@@ -140,10 +140,9 @@ def ytdlmusic():
                 ):
                     break
             if int(answer) == 0:
-                print("")
+                print
                 exit(0)
-        file_name = re.sub(
-            "(\W+)", "_", artist.lower() + "_" + song.lower()
+        file_name = re.sub("(\W+)", "_", artist.lower() + "_" + song.lower()
         )
         if os.path.exists(file_name + ".mp3"):
             i = 0
