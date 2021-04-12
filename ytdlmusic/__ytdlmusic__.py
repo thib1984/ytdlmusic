@@ -170,7 +170,10 @@ def ytdlmusic():
         print("Unexpected error:", err)
         print()
         print(
-            "try to upgrade with ytdlmusic update and retry. Have you too install ffmpeg?"
+            "try to upgrade with 'ytdlmusic update' and retry. Have you too install ffmpeg?"
+        )
+        print(
+            "if you reproduce the error after update : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
         )
 
 
