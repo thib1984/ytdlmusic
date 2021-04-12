@@ -1,8 +1,9 @@
-:warning: Not compatible with python2 (deprecated), Use python3
-:warning: I you observe error during the search or the download, try to upgrade youtube_dl or youtube-search-python, with
+:warning: ytdlmusic is not compatible with python2 (deprecated), use python3!
+
+:warning: if you observe error during the search or the download, try to upgrade youtube_dl, youtube-search-python, and ytdlmusic with
+
 ```
-pip3 install youtube_dl #or pip install youtube_dl 
-pip3 install youtube-search-python #or pip install youtube_dl 
+ytdlmusic update #equal or after version 0.2.0
 ```
 
 ## description
@@ -19,13 +20,13 @@ With ytdlmusic, you can download from youtube a mp3 music without use browser. 5
 
 ## prerequisites
 
-- install python3 for your system
-- install pip3 for your system #or pip
+- install python3 for your system #no python2!
+- install pip3 for your system #or pip if pip3 does not exist
 - install ffmpeg for your system
 
 ## installation
 
-``pip install ytdlmusic`` or ``pip3 install ytdlmusic``
+``pip3 install ytdlmusic #or with pip if pip3 does not exist``
 
 ## use
 
@@ -101,16 +102,10 @@ Deleting original file the_beatles_let_it_be.webm (pass -k to keep)
 the_beatles_let_it_be.mp3 is ready
 ```
 
-## local install to develop
+## other commands
 
-```
-git clone https://github.com/thib1984/ytdlmusic.git
-cd ytdlmusic 
-#work!
-python3 ytdlmusic/__ytdlmusic__.py "the beatles" "let it be" #to test
-pip3 install . #to build
-ytdlmusic "the beatles" "let it be"  #to retest
-``` 
+`` ytdlmusic help`` to display help message
+`` ytdlmusic update `` to upgrade ytdlmusic, youtube-dl and youtube-serach-python
 
 ## batch
 
@@ -143,6 +138,17 @@ done
 
 ```
 
+## local install to develop
+
+```
+git clone https://github.com/thib1984/ytdlmusic.git
+cd ytdlmusic 
+#work!
+python3 ytdlmusic/__ytdlmusic__.py "the beatles" "let it be" #to test
+pip3 install . #to build
+ytdlmusic "the beatles" "let it be"  #to retest
+``` 
+ 
 ## thanks
 
 This package use two very important depedencies :
