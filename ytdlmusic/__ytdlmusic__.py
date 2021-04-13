@@ -72,30 +72,30 @@ def version():
         ytdlmusicversion = pkg_resources.get_distribution(
             "ytdlmusic"
         ).version
-    except Exception as err:
+    except Exception:
         ytdlmusicversion = "NON INSTALLE"
     try:
         ytsearchpythonversion = pkg_resources.get_distribution(
             "youtube-search-python"
         ).version
-    except Exception as err:
+    except Exception:
         ytsearchpythonversion = "NON INSTALLE"
     try:
         youtubedlversion = pkg_resources.get_distribution(
             "youtube-dl"
         ).version
-    except Exception as err:
+    except Exception:
         youtubedlversion = "NON INSTALLE"
     try:
         pipversion = pkg_resources.get_distribution("pip3").version
-    except Exception as err:
+    except Exception:
         try:
             pipversion = pkg_resources.get_distribution("pip").version
-        except Exception as err:
+        except Exception:
             pipversion = "NON INSTALLE"
     try:
         pythonversion = "".join(sys.version.splitlines())
-    except Exception as err:
+    except Exception:
         pythonversion = "NON INSTALLE"
     if which("ffmpeg") is None:
         ffmpeg_binary = "NON INSTALLE"
