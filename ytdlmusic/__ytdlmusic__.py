@@ -259,10 +259,10 @@ def display_help():
 
         help            : display this help
                         -> ytdlmusic help
-        update          : try to upgrade ytdlmusic
+        update          : upgrade ytdlmusic
                         -> ytdlmusic update   
-        full-update     : try to upgrade youtube-dl, youtube-search-python and ytdlmusic
-                        -> ytdlmusic update                                                   
+        full-update     : upgrade youtube-dl, youtube-search-python and ytdlmusic
+                        -> ytdlmusic full-update                                                   
         version         : display versions of ytdlmusic and his dependencies
                         -> ytdlmusic version                         
         artist song     : display 5 choices from youtube with given search, then download the mp3 or ogg choosen by user
