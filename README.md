@@ -150,6 +150,24 @@ pip3 install . #to build
 ytdlmusic "the beatles" "let it be"  #to retest
 ``` 
  
+## FAQ
+
+- When i try to update youtube-dl with ``youtube-dl -U``, i obtain the following message in my debian/ubuntu
+
+```
+It looks like you installed youtube-dl with a package manager, pip, setup.py or a tarball. Please use that to update.
+```
+
+instead of 
+
+```
+youtube-dl: error: youtube-dl's self-update mechanism is disabled on Debian.
+Please update youtube-dl using apt(8).
+See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
+```
+
+No panic : you have just downloaded a newer version of youtube-dl who is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``.
+
 ## thanks
 
 This package use two very important depedencies :
