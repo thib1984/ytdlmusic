@@ -3,7 +3,7 @@
 
 ## description
 
-With ytdlmusic, you can download from youtube a mp3 music without use browser. 5 choices are available with small summary to facilitate the choice. You can also use auto mode to download the first item.  
+With ytdlmusic, you can download from youtube a mp3/ogg music without use browser. 5 choices are available with small summary to facilitate the choice. You can also use auto mode to download the first item.  
 
 ## github
 
@@ -30,13 +30,13 @@ With ytdlmusic, you can download from youtube a mp3 music without use browser. 5
 ## use
 
 ``ytdlmusic "the beatles" "let it be"``
-will download, after choice, the mp3 in the current directory
+will download, after choice, the mp3/ogg in the current directory
 
 ```
 ~$ ytdlmusic "the beattles" "let it be"
 artist : the beatles
 song : let it be
-search the beatles let it be mp3 with youtubesearchpython
+search the beatles let it be mp3/ogg with youtubesearchpython
 
 1
 Let It Be (Remastered 2009)
