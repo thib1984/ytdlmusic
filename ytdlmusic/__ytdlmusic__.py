@@ -278,7 +278,7 @@ def update():
     update
     """
     while True:
-        answer = input("update the youtube-dl package [y/n] ? ")
+        answer = input("update the ytdlmusic package [y/n] ? ")
         if answer == "y":
             break
         elif answer == "n":
@@ -298,7 +298,7 @@ def fullupdate():
     """
     while True:
         answer = input(
-            "update the youtube-dl package and the dependencies [y/n] ? "
+            "update the ytdlmusic package and the dependencies [y/n] ? "
         )
         if answer == "y":
             break
