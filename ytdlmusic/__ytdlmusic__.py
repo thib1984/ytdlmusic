@@ -200,15 +200,21 @@ def download_song(song_url, song_title):
 
     print("download " + song_url + " with youtubedl")
     if which("ffmpeg") is None:
+        ext = ".ogg"
         outtmpl = song_title + ".ogg"
         ydl_opts = {"format": "bestaudio/best", "outtmpl": outtmpl}
     else:
-        outtmpl = song_title + ".mp3"
+        ext = ".mp3"
+        outtmpl = song_title + ".%(ext)s"
         ydl_opts = {
             "format": "bestaudio/best",
             "outtmpl": outtmpl,
             "postprocessors": [
-                {"key": "FFmpegExtractAudio"},
+                {
+                    "key": "FFmpegExtractAudio",
+                    "preferredcodec": "mp3",
+                    "preferredquality": "192",
+                },
                 {"key": "FFmpegMetadata"},
             ],
         }
@@ -219,7 +225,7 @@ def download_song(song_url, song_title):
         print(
             "warning : ogg was used. If you want mp3 format, install ffmpeg fo your system."
         )
-    print(outtmpl + " is ready")
+    print(song_title + ext + " is ready")
 
 
 def display_help():
