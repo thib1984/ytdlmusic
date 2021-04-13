@@ -23,6 +23,10 @@ def ytdlmusic():
         update()
         sys.exit(0)
 
+    if len(sys.argv) == 2 and sys.argv[1] == "full-update":
+        fullupdate()
+        sys.exit(0)
+
     if len(sys.argv) == 2 and sys.argv[1] == "version":
         version()
         sys.exit(0)
@@ -59,6 +63,18 @@ def print_error(err):
     )
     print(
         "if you reproduce the error after the update : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
+    )
+
+
+def print_error_update(err):
+    """
+    print generic error
+    """
+    print("Unexpected error:", err)
+
+    version()
+    print(
+        "if you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
     )
 
 
@@ -243,8 +259,10 @@ def display_help():
 
         help            : display this help
                         -> ytdlmusic help
-        update          : try to upgrade youtube-dl, youtube-search-python, and ytdlmusic
-                        -> ytdlmusic update                            
+        update          : try to upgrade ytdlmusic
+                        -> ytdlmusic update   
+        full-update     : try to upgrade youtube-dl, youtube-search-python and ytdlmusic
+                        -> ytdlmusic update                                                   
         version         : display versions of ytdlmusic and his dependencies
                         -> ytdlmusic version                         
         artist song     : display 5 choices from youtube with given search, then download the mp3 or ogg choosen by user
@@ -259,18 +277,54 @@ def update():
     """
     update
     """
-    prog = "pip3"
-    if which(prog) is None:
-        prog = "pip"
-    print("try to update youtube-dl with " + prog)
-    subprocess.check_call(
-        [
-            prog,
-            "install",
-            "--upgrade",
-            "youtube-dl",
-        ]
-    )
+    while True:
+        answer = input("update the youtube-dl package [y/n] ? ")
+        if answer == "y":
+            break
+        elif answer == "n":
+            sys.exit(0)
+    try:
+        print("versions before update")
+        version()
+        prog = "pip3"
+        if which(prog) is None:
+            prog = "pip"
+        update_ytdlmusic(prog)
+        print("versions after update")
+        version()
+    except Exception as err:
+        print_error(err)
+
+
+def fullupdate():
+    """
+    fullupdate
+    """
+    while True:
+        answer = input(
+            "update the youtube-dl package and the dependencies [y/n] ? "
+        )
+        if answer == "y":
+            break
+        elif answer == "n":
+            sys.exit(0)
+    try:
+        print("versions before update")
+        version()
+        prog = "pip3"
+        if which(prog) is None:
+            prog = "pip"
+        update_ytdlmusic(prog)
+        update_dependencies(prog)
+        version()
+    except Exception as err:
+        print_error(err)
+
+
+def update_dependencies(prog):
+    """
+    update of dependencies
+    """
     print("try to update youtube-search-python with " + prog)
     subprocess.check_call(
         [
@@ -287,6 +341,22 @@ def update():
             "install",
             "--upgrade",
             "ytdlmusic",
+        ]
+    )
+    print("versions after update")
+
+
+def update_ytdlmusic(prog):
+    """
+    update of ytdlmusic
+    """
+    print("try to update youtube-dl with " + prog)
+    subprocess.check_call(
+        [
+            prog,
+            "install",
+            "--upgrade",
+            "youtube-dl",
         ]
     )
 

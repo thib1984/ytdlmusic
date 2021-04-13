@@ -25,8 +25,13 @@ With ytdlmusic, you can download from youtube a mp3/ogg music without use browse
 
 ## upgrade
 
+`` ytdlmusic update `` to upgrade ytdlmusic (since 3.2 version)
+
+`` ytdlmusic full-update `` to upgrade ytdlmusic, youtube-dl and youtube-search-python (since 3.4 version)
+
 ``pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist``
 
+``pip3 install -ytdlmusic:x.x.x #to downgrade the app``
 ## use
 
 ``ytdlmusic "the beatles" "let it be"``
@@ -105,7 +110,9 @@ the_beatles_let_it_be.mp3 is ready
 
 `` ytdlmusic help`` to display help message
 
-`` ytdlmusic update `` to upgrade ytdlmusic, youtube-dl and youtube-search-python
+`` ytdlmusic update `` to upgrade ytdlmusic
+
+`` ytdlmusic full-update `` to upgrade ytdlmusic, youtube-dl and youtube-search-python
 
 `` ytdlmusic version `` to display version of ytdlmusic and dependencies
 ## batch
