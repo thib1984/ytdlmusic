@@ -17,7 +17,7 @@ With ytdlmusic, you can download from youtube a mp3 music without use browser. 5
 
 - install python3 for your system #no python2!
 - install pip3 for your system #or pip if pip3 does not exist
-- install ffmpeg for your system
+- optional : install ffmpeg for your system if you want use mp3 format (ogg if not)
 
 ## installation
 

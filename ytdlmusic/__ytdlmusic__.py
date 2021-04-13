@@ -55,7 +55,7 @@ def print_error(err):
 
     version()
     print(
-        "try to upgrade with 'ytdlmusic update' or manually and retry. Have-you too install ffmpeg for your system?"
+        "try to upgrade with 'ytdlmusic update' or manually and retry."
     )
     print(
         "if you reproduce the error after the update : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
@@ -116,15 +116,19 @@ def determine_filename(artist, song):
     file_name = re.sub(
         "(\\W+)", "_", artist.lower() + "_" + song.lower()
     )
-    if os.path.exists(file_name + ".mp3"):
+    if which("ffmpeg") is None:
+        ext = ".ogg"
+    else:
+        ext = ".mp3"
+    if os.path.exists(file_name + ext):
         i = 0
         while True:
             i = i + 1
             file_name_tmp = file_name + "_" + str(i)
-            if not os.path.exists(file_name_tmp + ".mp3"):
+            if not os.path.exists(file_name_tmp + ext):
                 file_name = file_name_tmp
                 break
-    print("future filename is : " + file_name + ".mp3")
+    print("future filename is : " + file_name + ext)
     return file_name
 
 
@@ -190,28 +194,32 @@ def choice(results_search):
 
 def download_song(song_url, song_title):
     """
-    download song in song_title.mp3 format with youtube_dl from url song_url
+    download song in song_title.mp3/ogg format with youtube_dl from url song_url
     """
     import youtube_dl
 
     print("download " + song_url + " with youtubedl")
-    outtmpl = song_title + ".%(ext)s"
-    ydl_opts = {
-        "format": "bestaudio/best",
-        "outtmpl": outtmpl,
-        "postprocessors": [
-            {
-                "key": "FFmpegExtractAudio",
-                "preferredcodec": "mp3",
-                "preferredquality": "192",
-            },
-            {"key": "FFmpegMetadata"},
-        ],
-    }
+    if which("ffmpeg") is None:
+        outtmpl = song_title + ".ogg"
+        ydl_opts = {"format": "bestaudio/best", "outtmpl": outtmpl}
+    else:
+        outtmpl = song_title + ".mp3"
+        ydl_opts = {
+            "format": "bestaudio/best",
+            "outtmpl": outtmpl,
+            "postprocessors": [
+                {"key": "FFmpegExtractAudio"},
+                {"key": "FFmpegMetadata"},
+            ],
+        }
 
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.extract_info(song_url, download=True)
-    print(song_title + ".mp3 is ready")
+    if which("ffmpeg") is None:
+        print(
+            "warning : ogg was used. If you want mp3 format, install ffmpeg fo your system."
+        )
+    print(outtmpl + " is ready")
 
 
 def display_help():
@@ -224,7 +232,7 @@ def display_help():
         ytdlmusic
 
     SYNOPSIS
-       With ytdlmusic, you can download from youtube a mp3 music without use browser. 5 choices are available with small summary 
+       With ytdlmusic, you can download from youtube a mp3 or ogg music without use browser. 5 choices are available with small summary 
        to facilitate the choice. You can also use auto mode to download the first item. 
 
         help            : display this help
@@ -233,9 +241,9 @@ def display_help():
                         -> ytdlmusic update                            
         version         : display versions of ytdlmusic and his dependencies
                         -> ytdlmusic version                         
-        artist song     : display 5 choices from youtube with given search, then download the mp3 choosen by user
+        artist song     : display 5 choices from youtube with given search, then download the mp3 or ogg choosen by user
                         -> example : ytdlmusic "the beatles" "let it be"
-        artist song auto: download mp3 of the first from youtube with given search
+        artist song auto: download mp3 or ogg of the first from youtube with given search
                         -> example : ytdlmusic "the beatles" "let it be" auto
         """
     print(help_txt)
