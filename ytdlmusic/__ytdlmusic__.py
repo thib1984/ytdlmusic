@@ -316,6 +316,7 @@ def fullupdate():
             prog = "pip"
         update_ytdlmusic(prog)
         update_dependencies(prog)
+        print("versions after update")
         version()
     except Exception as err:
         print_error(err)
@@ -334,22 +335,6 @@ def update_dependencies(prog):
             "youtube-search-python",
         ]
     )
-    print("try to update ytdlmusic with " + prog)
-    subprocess.check_call(
-        [
-            prog,
-            "install",
-            "--upgrade",
-            "ytdlmusic",
-        ]
-    )
-    print("versions after update")
-
-
-def update_ytdlmusic(prog):
-    """
-    update of ytdlmusic
-    """
     print("try to update youtube-dl with " + prog)
     subprocess.check_call(
         [
@@ -357,6 +342,21 @@ def update_ytdlmusic(prog):
             "install",
             "--upgrade",
             "youtube-dl",
+        ]
+    )
+
+
+def update_ytdlmusic(prog):
+    """
+    update of ytdlmusic
+    """
+    print("try to update ytdlmusic with " + prog)
+    subprocess.check_call(
+        [
+            prog,
+            "install",
+            "--upgrade",
+            "ytdlmusic",
         ]
     )
 
