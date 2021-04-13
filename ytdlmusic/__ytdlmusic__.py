@@ -284,14 +284,10 @@ def update():
         elif answer == "n":
             sys.exit(0)
     try:
-        print("versions before update")
-        version()
         prog = "pip3"
         if which(prog) is None:
             prog = "pip"
         update_ytdlmusic(prog)
-        print("versions after update")
-        version()
     except Exception as err:
         print_error(err)
 
@@ -309,15 +305,11 @@ def fullupdate():
         elif answer == "n":
             sys.exit(0)
     try:
-        print("versions before update")
-        version()
         prog = "pip3"
         if which(prog) is None:
             prog = "pip"
         update_ytdlmusic(prog)
         update_dependencies(prog)
-        print("versions after update")
-        version()
     except Exception as err:
         print_error(err)
 
