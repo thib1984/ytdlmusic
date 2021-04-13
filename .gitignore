@@ -2,3 +2,4 @@ build
 dist
 ytdlmusic.egg-info
 *.mp3
+.vscode
