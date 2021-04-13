@@ -6,11 +6,9 @@ on:
       - created
 jobs:
   test:
-    name: test
+    name: test and push
     runs-on: ubuntu-18.04
     steps:
-      - name: checkout the repo
-        uses: actions/checkout@v2
       - name: checkout the repo
         uses: actions/checkout@v2
       - name: install python3
@@ -25,22 +23,13 @@ jobs:
           pip install ytdlmusic
           ytdlmusic version
           ytdlmusic "the beatles" "let it be" auto
-          apt install fmpeg
-          ytdlmusic version
-          ytdlmusic "the beatles" "let it be" auto
-  push_to_registry:
-    name: push pip package
-    runs-on: ubuntu-18.04
-    steps:
-      - name: checkout the repo
-        uses: actions/checkout@v2
-      - name: install python3
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8.5'
-      - name: install dependencies python3
+      - name: rm
         run: |
-          python3 -m pip install --upgrade pip
+          rm -rf *
+      - name: checkout the repo
+        uses: actions/checkout@v2          
+      - name: install pep517
+        run: |
           pip install pep517
       - name: build pip
         run: python3 -m pep517.build --source --binary --out-dir dist/ .
