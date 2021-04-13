@@ -105,8 +105,9 @@ the_beatles_let_it_be.mp3 is ready
 
 `` ytdlmusic help`` to display help message
 
-`` ytdlmusic update `` to upgrade ytdlmusic, youtube-dl and youtube-serach-python
+`` ytdlmusic update `` to upgrade ytdlmusic, youtube-dl and youtube-search-python
 
+`` ytdlmusic version `` to display version of ytdlmusic and dependencies
 ## batch
 
 you can use script for loop in a csv file for example 
