@@ -9,11 +9,11 @@ jobs:
     name: test and push
     runs-on: ubuntu-18.04
     steps:
-      - name: checkout the repo
+      - name: checkout
         uses: actions/checkout@v2
       - name: install python3
         uses: actions/setup-python@v2
-      - name: install dependencies python3
+      - name: update pip
         run: |
           python3 -m pip install --upgrade pip
       - name: test ogg
@@ -31,12 +31,12 @@ jobs:
       - name: clean after test
         run: |
           rm -rf *
-      - name: checkout the repo
+      - name: checkout
         uses: actions/checkout@v2          
       - name: install pep517
         run: |
           pip install pep517
-      - name: build pip
+      - name: build
         run: python3 -m pep517.build --source --binary --out-dir dist/ .
       - name: publish to pypi
         uses: pypa/gh-action-pypi-publish@master
