@@ -5,6 +5,22 @@ on:
     types:
       - created
 jobs:
+  test:
+    name: test
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout the repo
+        uses: actions/checkout@v2
+      - name: test
+        run: |
+          apt update
+          apt install python3 python3-pip
+          pip3 install .
+          ytdlmusic version
+          ytdlmusic "the beatles" "let it be" auto
+          apt install fmpeg
+          ytdlmusic version
+          ytdlmusic "the beatles" "let it be" auto
   push_to_registry:
     name: push pip package
     runs-on: ubuntu-18.04
