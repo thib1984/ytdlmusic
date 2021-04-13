@@ -23,6 +23,10 @@ def ytdlmusic():
         update()
         sys.exit(0)
 
+    if len(sys.argv) == 2 and sys.argv[1] == "version":
+        version()
+        sys.exit(0)
+
     if len(sys.argv) != 4 and len(sys.argv) != 3:
         display_help()
         sys.exit(0)
@@ -48,6 +52,20 @@ def print_error(err):
     print generic error
     """
     print("Unexpected error:", err)
+
+    version()
+    print(
+        "try to upgrade with 'ytdlmusic update' or manually and retry. Have-you too install ffmpeg for your system?"
+    )
+    print(
+        "if you reproduce the error after the update : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
+    )
+
+
+def version():
+    """
+    print version
+    """
     import pkg_resources
 
     try:
@@ -76,12 +94,6 @@ def print_error(err):
     print("youtube-search-python version : " + ytsearchpythonversion)
     print("youtube-dl version            : " + youtubedlversion)
     print("ffmpeg                        : " + ffmpeg_binary)
-    print(
-        "try to upgrade with 'ytdlmusic update' or manually and retry. Have-you too install ffmpeg for your system?"
-    )
-    print(
-        "if you reproduce the error after the update : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
-    )
 
 
 def determine_filename(artist, song):
@@ -206,6 +218,8 @@ def display_help():
                         -> ytdlmusic help
         update          : try to upgrade youtube-dl, youtube-search-python, and ytdlmusic
                         -> ytdlmusic update                            
+        version         : display versions of ytdlmusic and his dependencies
+                        -> ytdlmusic version                         
         artist song     : display 5 choices from youtube with given search, then download the mp3 choosen by user
                         -> example : ytdlmusic "the beatles" "let it be"
         artist song auto: download mp3 of the first from youtube with given search
