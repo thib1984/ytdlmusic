@@ -16,13 +16,19 @@ jobs:
       - name: install dependencies python3
         run: |
           python3 -m pip install --upgrade pip
-      - name: test
+      - name: test ogg
         run: |
           pip install ytdlmusic
           ytdlmusic version
           ytdlmusic "the beatles" "let it be" auto
           test -f the_beatles_let_it_be.ogg
-      - name: rm
+      - name: test mp3
+        run: |          
+          sudo apt install ffmpeg
+          ytdlmusic version
+          ytdlmusic "the beatles" "let it be" auto
+          test -f the_beatles_let_it_be.mp3          
+      - name: clean after test
         run: |
           rm -rf *
       - name: checkout the repo
