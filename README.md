@@ -166,7 +166,7 @@ Please update youtube-dl using apt(8).
 See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
 ```
 
-No panic : you have just downloaded a newer version of youtube-dl who is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``.
+No panic : you have just downloaded a newer version of youtube-dl who is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
 
 ## thanks
 
