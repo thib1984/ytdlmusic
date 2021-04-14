@@ -21,7 +21,7 @@ jobs:
           pip install .      
       - name: display version          
         run: |
-          ytdlmusic version
+          ytdlmusic --version
       - name: test ogg auto          
         run: |
           ytdlmusic --auto "the beatles" "let it be"
@@ -35,8 +35,6 @@ jobs:
           test -f the_beatles_let_it_be.mp3 
       - name: test choice
         run: |          
-          sudo apt-get -qq install ffmpeg
-          ytdlmusic version
           yes 3 | ytdlmusic "the beatles" "let it be"
           test -f the_beatles_let_it_be_1.mp3
       - name: test diff
