@@ -13,34 +13,65 @@ def ytdlmusic():
     """
     entry point from ytdlmusic
     """
-
-    # special entries
-    if len(sys.argv) == 2 and sys.argv[1] == "help":
-        display_help()
-        sys.exit(0)
-
-    if len(sys.argv) == 2 and sys.argv[1] == "update":
-        update()
-        sys.exit(0)
-
-    if len(sys.argv) == 2 and sys.argv[1] == "full-update":
-        fullupdate()
-        sys.exit(0)
-
-    if len(sys.argv) == 2 and sys.argv[1] == "version":
-        version()
-        sys.exit(0)
-
-    if len(sys.argv) != 4 and len(sys.argv) != 3:
-        display_help()
-        sys.exit(0)
-
     try:
-        artist = sys.argv[1]
-        song = sys.argv[2]
+        # special entries
+        if len(sys.argv) == 1:
+            display_help()
+        elif len(sys.argv) == 2:
+            if sys.argv[1] == "--help":
+                display_help()
+                sys.exit(0)
 
+            if sys.argv[1] == "--update":
+                update()
+                sys.exit(0)
+
+            if sys.argv[1] == "--full-update":
+                fullupdate()
+                sys.exit(0)
+
+            if sys.argv[1] == "--version":
+                version()
+                sys.exit(0)
+
+            if sys.argv[1].startswith("--"):
+                print_bad_launch()
+                sys.exit(1)
+
+            print_bad_launch()
+            sys.exit(1)
+
+        elif len(sys.argv) == 3:
+            if sys.argv[1].startswith("--") or sys.argv[2].startswith(
+                "--"
+            ):
+                print_bad_launch()
+                sys.exit(1)
+            else:
+                job(sys.argv[1], sys.argv[2], False)
+                sys.exit(0)
+        elif len(sys.argv) == 4:
+            if not sys.argv[1].startswith("--auto"):
+                print_bad_launch()
+                sys.exit(1)
+            else:
+                job(sys.argv[2], sys.argv[3], True)
+                sys.exit(0)
+        else:
+            print_bad_launch()
+            sys.exit(1)
+    except Exception as err:
+        print_error(err)
+        sys.exit(1)
+
+
+def job(artist, song, auto):
+    """
+    use case
+    """
+    try:
         r_search = search(artist, song)
-        answer = choice(r_search)
+        answer = choice(r_search, auto)
         file_name = determine_filename(artist, song)
         u_choice = r_search.result()["result"][answer - 1]
         download_song(
@@ -49,6 +80,15 @@ def ytdlmusic():
         )
     except Exception as err:
         print_error(err)
+        sys.exit(1)
+
+
+def print_bad_launch():
+    """
+    print bad launch
+    """
+    print("bad parameters for ytdlmusic")
+    print("ytdlmusic --help for more information")
 
 
 def print_error(err):
@@ -172,7 +212,7 @@ def search(artist, song):
     return results_search
 
 
-def choice(results_search):
+def choice(results_search, auto):
     """
     user choice
     """
@@ -181,7 +221,7 @@ def choice(results_search):
         print("no result, retry with other words")
         sys.exit(0)
     answer = 1
-    if len(sys.argv) <= 3 or sys.argv[3] != "auto":
+    if not auto:
         for children in results_search.result()["result"]:
             i = i + 1
             print(i)
@@ -259,18 +299,18 @@ def display_help():
        With ytdlmusic, you can download from youtube a mp3 or ogg music without use browser. 5 choices are available with small summary 
        to facilitate the choice. You can also use auto mode to download the first item. 
 
-        help            : display this help
-                        -> ytdlmusic help
-        update          : upgrade ytdlmusic
-                        -> ytdlmusic update   
-        full-update     : upgrade youtube-dl, youtube-search-python and ytdlmusic
-                        -> ytdlmusic full-update                                                   
-        version         : display versions of ytdlmusic and his dependencies
-                        -> ytdlmusic version                         
-        artist song     : display 5 choices from youtube with given search, then download the mp3 or ogg choosen by user
-                        -> example : ytdlmusic "the beatles" "let it be"
-        artist song auto: download mp3 or ogg of the first from youtube with given search
-                        -> example : ytdlmusic "the beatles" "let it be" auto
+        --help              : display this help
+                            -> ytdlmusic --help
+        --update            : upgrade ytdlmusic
+                            -> ytdlmusic --update   
+        --full-update       : upgrade youtube-dl, youtube-search-python and ytdlmusic
+                            -> ytdlmusic --full-update                                                   
+        --version           : display versions of ytdlmusic and his dependencies
+                            -> ytdlmusic --version                         
+        artist song         : display 5 choices from youtube with given search, then download the mp3 or ogg choosen by user
+                            -> example : ytdlmusic "the beatles" "let it be"
+        --auto artist song  : download mp3 or ogg of the first from youtube with given search
+                            -> example : ytdlmusic --auto "the beatles" "let it be"
         """
     print(help_txt)
 

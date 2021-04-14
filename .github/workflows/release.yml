@@ -26,7 +26,7 @@ jobs:
         run: |          
           sudo apt-get -qq install ffmpeg
           ytdlmusic version
-          ytdlmusic "the beatles" "let it be" auto
+          ytdlmusic --auto "the beatles" "let it be"
           test -f the_beatles_let_it_be.mp3 
       - name: test choice
         run: |          

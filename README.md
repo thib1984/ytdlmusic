@@ -25,9 +25,13 @@ With ytdlmusic, you can download from youtube a mp3/ogg music without use browse
 
 ## upgrade
 
-`` ytdlmusic update `` to upgrade ytdlmusic (since 0.4.2 version)
+`` ytdlmusic --update`` to upgrade ytdlmusic since 0.5 version
 
-`` ytdlmusic full-update `` to upgrade ytdlmusic, youtube-dl and youtube-search-python (since 0.4.2 version)
+`` ytdlmusic update`` to upgrade ytdlmusic from 0.4.2 to 0.4.5 version
+
+`` ytdlmusic --full-update`` to upgrade ytdlmusic, youtube-dl and youtube-search-python since 0.5 version
+
+`` ytdlmusic full-update`` to upgrade ytdlmusic, youtube-dl and youtube-search-python from 0.4.2 to 0.4.5 version
 
 ``pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist``
 
@@ -87,11 +91,11 @@ the_beatles_let_it_be.mp3 is ready
 
 ## use auto
 
-``ytdlmusic "the beatles" "let it be" auto`` 
+``ytdlmusic --auto "the beatles" "let it be"`` 
 will dowmnload the first item 
 
 ```
-~$ ytdlmusic "the beattles" "let it be" auto
+~$ ytdlmusic --auto "the beattles" "let it be"
 artist : the beatles
 song : let it be
 search the beatles let it be mp3 with youtubesearchpython
@@ -108,13 +112,13 @@ the_beatles_let_it_be.mp3 is ready
 
 ## other commands
 
-`` ytdlmusic help`` to display help message
+`` ytdlmusic --help`` to display help message
 
-`` ytdlmusic update `` to upgrade ytdlmusic
+`` ytdlmusic --update `` to upgrade ytdlmusic
 
-`` ytdlmusic full-update `` to upgrade ytdlmusic, youtube-dl and youtube-search-python
+`` ytdlmusic --full-update `` to upgrade ytdlmusic, youtube-dl and youtube-search-python
 
-`` ytdlmusic version `` to display version of ytdlmusic and dependencies
+`` ytdlmusic --version `` to display version of ytdlmusic and dependencies
 ## batch
 
 you can use script for loop in a csv file for example 
@@ -140,7 +144,7 @@ do
 	echo "********************"
 	echo $line
 	[ -z "$line" ] && echo "ligne vide : fin du script" && exit 0
-	ytdlmusic "$artiste" "$titre" auto
+	ytdlmusic --auto "$artiste" "$titre"
 	echo "********************"
 done 
 
