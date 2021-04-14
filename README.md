@@ -3,7 +3,7 @@
 
 ## description
 
-With ytdlmusic, you can download from youtube a mp3/ogg music without use browser. 5 choices are available with small summary to facilitate the choice. You can also use auto mode to download the first item.  
+With ytdlmusic, you can download from youtube a mp3/ogg music without use browser. 5 choices are available with a small summary to facilitate the choice. You can also use auto mode to download the first item.  
 
 ## github
 
@@ -17,7 +17,7 @@ With ytdlmusic, you can download from youtube a mp3/ogg music without use browse
 
 - install python3 for your system #no python2!
 - install pip3 for your system #or pip if pip3 does not exist
-- optional : install ffmpeg for your system if you want use mp3 format (ogg if not)
+- optional : install ffmpeg for your system if you want to use mp3 format (ogg if not)
 
 ## installation
 
@@ -25,17 +25,13 @@ With ytdlmusic, you can download from youtube a mp3/ogg music without use browse
 
 ## upgrade
 
-`` ytdlmusic --update`` to upgrade ytdlmusic since 0.5 version
-
-`` ytdlmusic update`` to upgrade ytdlmusic from 0.4.2 to 0.4.5 version
+`` ytdlmusic --update`` to upgrade ytdlmusic
 
 `` ytdlmusic --full-update`` to upgrade ytdlmusic, youtube-dl and youtube-search-python since 0.5 version
 
-`` ytdlmusic full-update`` to upgrade ytdlmusic, youtube-dl and youtube-search-python from 0.4.2 to 0.4.5 version
+``pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist`` to upgrade ytdlmusic with pip
 
-``pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist``
-
-``pip3 install -ytdlmusic:x.x.x #to downgrade the app``
+``pip3 install -ytdlmusic:x.x.x #to downgrade the app`` to downgrade ytdlmusic with pip
 ## use
 
 ``ytdlmusic "the beatles" "let it be"``
@@ -135,17 +131,17 @@ sep=';'
 i=1
 while true
 do
-	i=$((i+1))
-	line=$(sed $i'!d' $file_csv)
-	artiste=$(echo $line | cut -d $sep -f $colonne_artiste)
+    i=$((i+1))
+    line=$(sed $i'!d' $file_csv)
+    artiste=$(echo $line | cut -d $sep -f $colonne_artiste)
         titre=$(echo $line | cut -d $sep -f $colonne_titre)
-	echo ""
-	echo ""
-	echo "********************"
-	echo $line
-	[ -z "$line" ] && echo "ligne vide : fin du script" && exit 0
-	ytdlmusic --auto "$artiste" "$titre"
-	echo "********************"
+    echo ""
+    echo ""
+    echo "********************"
+    echo $line
+    [ -z "$line" ] && echo "ligne vide : fin du script" && exit 0
+    ytdlmusic --auto "$artiste" "$titre"
+    echo "********************"
 done 
 
 ```
@@ -156,7 +152,6 @@ done
 git clone https://github.com/thib1984/ytdlmusic.git
 cd ytdlmusic 
 #work!
-python3 ytdlmusic/__ytdlmusic__.py "the beatles" "let it be" #to test
 pip3 install . #to build
 ytdlmusic "the beatles" "let it be"  #to retest
 ``` 
@@ -177,14 +172,18 @@ Please update youtube-dl using apt(8).
 See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
 ```
 
-No panic : you have just downloaded a newer version of youtube-dl who is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
+No panic : you have just downloaded a newer version of youtube-dl who is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
 
 - I would like a mp3 format but i obtain an ogg format, why?
 
-The ``ffmpeg`` package is required for the mp3 conversion. Install it and retry to lauch ytdlmusic
+The ``ffmpeg`` package is required for the mp3 conversion. Install it and retry to launch ytdlmusic
+
+- The commands indicated in this README don't work! Why?
+
+The  syntax of the commands change, run ``ytdlmusic`` and read the help message. 
 
 ## thanks
 
-This package use two very important depedencies :
+This package use two very important dependencies :
 - [youtube_dl](https://pypi.org/project/youtube_dl/)
 - [youtube-search-python](https://pypi.org/project/youtube-search-python/)

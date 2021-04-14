@@ -21,8 +21,7 @@ setup(
     ],
     zip_safe=False,
     entry_points={
-        "console_scripts": [
-            "ytdlmusic=ytdlmusic.__ytdlmusic__:ytdlmusic"
-        ],
+        "console_scripts": ["ytdlmusic=ytdlmusic.__init__:ytdlmusic"],
     },
+    ython_requires=">=3.6",
 )
