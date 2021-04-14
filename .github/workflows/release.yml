@@ -16,8 +16,7 @@ jobs:
       - name: update pip
         run: |
           python3 -m pip install --upgrade pip
-      - name: test ogg + auto
-      - name: install pip
+      - name: install ytdlmusic
         run: |
           pip install .      
       - name: display version          
