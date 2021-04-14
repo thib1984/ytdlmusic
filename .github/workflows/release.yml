@@ -38,7 +38,7 @@ jobs:
         run: |          
           md5sum the_beatles_let_it_be.mp3
           md5sum the_beatles_let_it_be_1.mp3
-          test "$(the_beatles_let_it_be.mp3)" = "$(he_beatles_let_it_be_1.mp3)"      
+          test "$(md5sum the_beatles_let_it_be.mp3)" != "$(md5sum the_beatles_let_it_be_1.mp3)"      
       - name: clean after test
         run: |
           rm -rf *
