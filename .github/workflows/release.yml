@@ -34,7 +34,7 @@ jobs:
           ytdlmusic version
           yes 3 | ytdlmusic "the beatles" "let it be"
           test -f the_beatles_let_it_be_1.mp3
-          diff the_beatles_let_it_be.mp3 the_beatles_let_it_be_1.mp3 
+          diff the_beatles_let_it_be.ogg the_beatles_let_it_be_1.mp3 
       - name: clean after test
         run: |
           rm -rf *
