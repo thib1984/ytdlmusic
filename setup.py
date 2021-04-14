@@ -23,5 +23,5 @@ setup(
     entry_points={
         "console_scripts": ["ytdlmusic=ytdlmusic.__init__:ytdlmusic"],
     },
-    ython_requires=">=3.6",
+    python_requires=">=3.6",
 )
