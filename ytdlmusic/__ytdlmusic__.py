@@ -281,7 +281,7 @@ def update():
         answer = input("update the ytdlmusic package [y/n] ? ")
         if answer == "y":
             break
-        elif answer == "n":
+        if answer == "n":
             sys.exit(0)
     try:
         prog = "pip3"
@@ -302,7 +302,7 @@ def fullupdate():
         )
         if answer == "y":
             break
-        elif answer == "n":
+        if answer == "n":
             sys.exit(0)
     try:
         prog = "pip3"
