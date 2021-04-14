@@ -20,7 +20,7 @@ jobs:
         run: |
           pip install ytdlmusic
           ytdlmusic version
-          ytdlmusic "the beatles" "let it be" auto
+          ytdlmusic --auto "the beatles" "let it be"
           test -f the_beatles_let_it_be.ogg
       - name: test mp3
         run: |          
