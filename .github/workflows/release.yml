@@ -34,7 +34,12 @@ jobs:
           ytdlmusic version
           yes 3 | ytdlmusic "the beatles" "let it be"
           test -f the_beatles_let_it_be_1.mp3
-          diff the_beatles_let_it_be.mp3 the_beatles_let_it_be_1.mp3;if [ $? -eq 0 ];then echo "les fichiers mp3 sont identiques a tort" && exit 1;else echo "les fichiers mp3 sont differents -> ok";fi
+      - name: test diff
+        run: |          
+          sudo apt-get -qq install md5sum
+          md5sum the_beatles_let_it_be.mp3
+          md5sum the_beatles_let_it_be_1.mp3
+          test "$(the_beatles_let_it_be.mp3)" = "$(he_beatles_let_it_be_1.mp3)"      
       - name: clean after test
         run: |
           rm -rf *
