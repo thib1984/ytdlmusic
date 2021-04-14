@@ -70,11 +70,13 @@ def print_error_update(err):
     """
     print generic error
     """
-    print("Unexpected error:", err)
-
-    version()
     print(
-        "if you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
+        "Error during the update : the update will could be finished at the restart of ytdlmusic",
+        err,
+    )
+
+    print(
+        "Retest the update a second time. If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
     )
 
 
@@ -289,7 +291,7 @@ def update():
             prog = "pip"
         update_ytdlmusic(prog)
     except Exception as err:
-        print_error(err)
+        print_error_update(err)
 
 
 def fullupdate():
@@ -311,7 +313,7 @@ def fullupdate():
         update_ytdlmusic(prog)
         update_dependencies(prog)
     except Exception as err:
-        print_error(err)
+        print_error_update(err)
 
 
 def update_dependencies(prog):
