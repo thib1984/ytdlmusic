@@ -1,7 +1,6 @@
-name: daily pipeline non reg
+name: daily scheduled pipeline
 
 'on':
-  push:
   schedule:
     - cron: "0 3 * * *"
 
@@ -11,7 +10,7 @@ jobs:
     strategy:
       matrix:
         python-version: [ '3.6', '3.7', '3.8', '3.9' ]
-    name: test the full-updated package from pypi - ${{ matrix.python-version }}
+    name: test the full-updated pypi package - ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup python
