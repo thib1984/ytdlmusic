@@ -182,6 +182,10 @@ The ``ffmpeg`` package is required for the MP3 conversion. Install it and retry 
 
 The  syntax of the commands change, run ``ytdlmusic`` and read the help message. 
 
+- I obtain the error about ``_requesthandler.py line 22`` when i try to use ytdlmusic
+
+Sorry... You should update python to 3.6 version or more. youtube-search-python seems not be compatible with python 3.5 and less. In the version 0.6.1 and more, the ytdlmusic package check the python version at the installation process.
+
 ## thanks
 
 This package use two very important dependencies :
