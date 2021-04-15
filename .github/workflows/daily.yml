@@ -2,7 +2,7 @@ name: pipeline daily for test the actual package with dependencies
 
 on:
   schedule:
-    - cron:  '13 20 * * *'
+    - cron:  '30 * * * *'
 
 jobs:
   test:
