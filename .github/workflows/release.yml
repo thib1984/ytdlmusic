@@ -1,22 +1,27 @@
 name: release pipeline
 
 on:
+  push:
   release:
     types:
       - created
 jobs:
   test:
-    name: test local package and push it on pypi
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-version: [ '3.6', '3.7', '3.8', '3.9' ]
+    name: test the full-updated pypi package - ${{ matrix.python-version }}
     steps:
       - name: checkout
-        uses: actions/checkout@v2
-      - name: install python3.6
-        run: |
-          sudo apt install python3.6      
+        uses: actions/checkout@v2 
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: update pip
         run: |
-          python3 -m pip install --upgrade pip
+          python -m pip install --upgrade pip
       - name: install ytdlmusic
         run: |
           pip install .      
@@ -43,12 +48,22 @@ jobs:
           md5sum the_beatles_let_it_be.mp3
           md5sum the_beatles_let_it_be_1.mp3
           echo "les md5 doivent etre differents"
-          test "$(md5sum the_beatles_let_it_be.mp3)" != "$(md5sum the_beatles_let_it_be_1.mp3)"      
-      - name: clean after test
-        run: |
-          rm -rf *
+          test "$(md5sum the_beatles_let_it_be.mp3)" != "$(md5sum the_beatles_let_it_be_1.mp3)"
+
+  push:
+    needs: test
+    name: push
+    runs-on: ubuntu-18.04
+    steps:
       - name: checkout
-        uses: actions/checkout@v2          
+        uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'    
+      - name: update pip
+        run: |
+          python3 -m pip install --upgrade pip        
       - name: install pep517
         run: |
           pip install pep517
