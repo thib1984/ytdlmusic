@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setup(
     name="ytdlmusic",
     version="0.6.1",
-    description="With ytdlmusic, you can download from youtube a mp3/ogg music without use browser. 5 choices are available with small summary to facilitate the choice. You can also use auto mode to download the first item.",
+    description="With ytdlmusic, you can download from youtube a mp3/ogg music without use browser. 5 choices are available with a small summary to facilitate the choice. You can also use auto mode to download the first item.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/thib1984/ytdlmusic",
