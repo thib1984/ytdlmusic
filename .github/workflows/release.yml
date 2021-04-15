@@ -11,8 +11,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: install python3
-        uses: actions/setup-python@v2
+      - name: install python3.6
+        run: |
+          sudo apt install python3.6      
       - name: update pip
         run: |
           python3 -m pip install --upgrade pip
