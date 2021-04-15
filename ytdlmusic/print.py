@@ -15,7 +15,7 @@ def display_help():
         ytdlmusic
 
     SYNOPSIS
-       With ytdlmusic, you can download from youtube a mp3 or ogg music without use browser. 5 choices are available with small summary 
+       With ytdlmusic, you can download from YouTube a MP3 or OGG music without use browser. 5 choices are available with small summary 
        to facilitate the choice. You can also use auto mode to download the first item. 
 
         --help              : display this help
@@ -26,9 +26,9 @@ def display_help():
                             -> ytdlmusic --full-update                                                   
         --version           : display versions of ytdlmusic and his dependencies
                             -> ytdlmusic --version                         
-        artist song         : display 5 choices from youtube with given search, then download the mp3 or ogg chosen by user
+        artist song         : display 5 choices from YouTube with given search, then download the MP3 or OGG chosen by user
                             -> example : ytdlmusic "the beatles" "let it be"
-        --auto artist song  : download mp3 or ogg of the first from youtube with given search
+        --auto artist song  : download MP3 or OGG of the first from YouTube with given search
                             -> example : ytdlmusic --auto "the beatles" "let it be"
         """
     print(help_txt)

@@ -3,7 +3,7 @@
 
 ## description
 
-With ytdlmusic, you can download from youtube a mp3/ogg music without use browser. 5 choices are available with a small summary to facilitate the choice. You can also use auto mode to download the first item.  
+With ytdlmusic, you can download from YouTube a MP3/OGG music without use browser. 5 choices are available with a small summary to facilitate the choice. You can also use auto mode to download the first item.  
 
 ## github
 
@@ -17,7 +17,7 @@ With ytdlmusic, you can download from youtube a mp3/ogg music without use browse
 
 - install python3 for your system #no python2!
 - install pip3 for your system #or pip if pip3 does not exist
-- optional : install ffmpeg for your system if you want to use mp3 format (ogg if not)
+- optional : install ffmpeg for your system if you want to use MP3 format (OGG if not)
 
 ## installation
 
@@ -35,13 +35,13 @@ With ytdlmusic, you can download from youtube a mp3/ogg music without use browse
 ## use
 
 ``ytdlmusic "the beatles" "let it be"``
-will download, after choice, the mp3/ogg in the current directory
+will download, after choice, the MP3/OGG in the current directory
 
 ```
 ~$ ytdlmusic "the beattles" "let it be"
 artist : the beatles
 song : let it be
-search the beatles let it be mp3/ogg with youtubesearchpython
+search the beatles let it be MP3/OGG with youtubesearchpython
 
 1
 Let It Be (Remastered 2009)
@@ -174,9 +174,9 @@ See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
 
 No panic : you have just downloaded a newer version of youtube-dl who is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
 
-- I would like a mp3 format but i obtain an ogg format, why?
+- I would like a MP3 format but i obtain an OGG format, why?
 
-The ``ffmpeg`` package is required for the mp3 conversion. Install it and retry to launch ytdlmusic
+The ``ffmpeg`` package is required for the MP3 conversion. Install it and retry to launch ytdlmusic
 
 - The commands indicated in this README don't work! Why?
 

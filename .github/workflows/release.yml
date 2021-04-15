@@ -22,14 +22,14 @@ jobs:
       - name: display version          
         run: |
           ytdlmusic --version
-      - name: test ogg auto          
+      - name: test OGG auto          
         run: |
           ytdlmusic --auto "the beatles" "let it be"
           test -f the_beatles_let_it_be.ogg          
       - name: install pip
         run: |
           sudo apt-get -qq install ffmpeg          
-      - name: test mp3 auto
+      - name: test MP3 auto
         run: |          
           ytdlmusic --auto "the beatles" "let it be"
           test -f the_beatles_let_it_be.mp3 
