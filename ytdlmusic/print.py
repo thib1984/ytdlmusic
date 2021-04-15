@@ -26,7 +26,7 @@ def display_help():
                             -> ytdlmusic --full-update                                                   
         --version           : display versions of ytdlmusic and his dependencies
                             -> ytdlmusic --version                         
-        artist song         : display 5 choices from youtube with given search, then download the mp3 or ogg choosen by user
+        artist song         : display 5 choices from youtube with given search, then download the mp3 or ogg chosen by user
                             -> example : ytdlmusic "the beatles" "let it be"
         --auto artist song  : download mp3 or ogg of the first from youtube with given search
                             -> example : ytdlmusic --auto "the beatles" "let it be"
@@ -62,10 +62,10 @@ def print_error_update(err):
     print generic error
     """
     print(
-        "Error during the update : the update will could be finished at the restart of ytdlmusic",
+        "error during the update : the update will could be finished at the restart of ytdlmusic",
         err,
     )
 
     print(
-        "Retest the update a second time. If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
+        "retest the update a second time. If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
     )
