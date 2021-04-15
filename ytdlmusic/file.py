@@ -27,5 +27,4 @@ def determine_filename(artist, song):
             if not os.path.exists(file_name_tmp + ext):
                 file_name = file_name_tmp
                 break
-    print("future filename is : " + file_name + ext)
     return file_name
