@@ -6,15 +6,20 @@ name: daily pipeline
 
 jobs:
   test:
-    name: test the actual deployed pip package with updated dependencies
-    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-version: [ '3.6', '3.7', '3.8', '3.9' ]
+    name: test the actual deployed pip package with updated dependencies and ${{ matrix.python-version }}
     steps:
-      - name: install python3.6
-        run: |
-          sudo apt install python3.6      
+      - uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64  
       - name: update pip
         run: |
-          python3 -m pip install --upgrade pip
+          python -m pip install --upgrade pip
       - name: install ytdlmusic
         run: |
           pip install ytdlmusic      
