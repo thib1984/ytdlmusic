@@ -1,17 +1,17 @@
 name: release pipeline
 
 on:
-  push:
   release:
     types:
       - created
+
 jobs:
   test:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
         python-version: [ '3.6', '3.7', '3.8', '3.9' ]
-    name: test the full-updated pypi package - ${{ matrix.python-version }}
+    name: test package with Python ${{ matrix.python-version }}
     steps:
       - name: checkout
         uses: actions/checkout@v2 
@@ -52,7 +52,7 @@ jobs:
 
   push:
     needs: test
-    name: push
+    name: push package on pypi
     runs-on: ubuntu-18.04
     steps:
       - name: checkout
