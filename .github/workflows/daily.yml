@@ -1,8 +1,8 @@
 name: pipeline daily for test the actual package with dependencies
 
-on:
+'on':
   schedule:
-    - cron:  '30 * * * *'
+    - cron: "0 * * * *"
 
 jobs:
   test:
