@@ -1,4 +1,4 @@
-:warning: ytdlmusic is not compatible with python2 (deprecated), use python>=3.6 !
+:warning: ytdlmusic is not compatible with Python 2 (deprecated), use Python >= 3.6 !
 
 
 ## description
@@ -15,7 +15,7 @@ With ytdlmusic, you can download from YouTube a MP3/OGG music without use browse
 
 ## prerequisites
 
-- install python3 for your system #no python2!
+- install Python 3 for your system
 - install pip3 for your system #or pip if pip3 does not exist
 - optional : install ffmpeg for your system if you want to use MP3 format (OGG if not)
 
