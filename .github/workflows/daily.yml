@@ -1,12 +1,12 @@
-name: pipeline daily for test the actual package deployed on pypi with dependencies
+name: daily pipeline
 
 'on':
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 3 * * *"
 
 jobs:
   test:
-    name: test the actual package
+    name: test the actual deployed pip package with updated dependencies
     runs-on: ubuntu-18.04
     steps:
       - name: install python3.6
@@ -25,7 +25,7 @@ jobs:
         run: |
           ytdlmusic --auto "the beatles" "let it be"
           test -f the_beatles_let_it_be.ogg          
-      - name: install pip
+      - name: install ffmpeg
         run: |
           sudo apt-get -qq install ffmpeg          
       - name: test MP3 auto

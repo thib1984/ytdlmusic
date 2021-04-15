@@ -1,4 +1,4 @@
-name: pipeline release for publish
+name: release pipeline
 
 on:
   release:
@@ -6,7 +6,7 @@ on:
       - created
 jobs:
   test:
-    name: test and push
+    name: test local package and push it on pypi
     runs-on: ubuntu-18.04
     steps:
       - name: checkout
@@ -27,7 +27,7 @@ jobs:
         run: |
           ytdlmusic --auto "the beatles" "let it be"
           test -f the_beatles_let_it_be.ogg          
-      - name: install pip
+      - name: install ffmpeg
         run: |
           sudo apt-get -qq install ffmpeg          
       - name: test MP3 auto
