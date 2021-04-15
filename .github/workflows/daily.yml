@@ -1,4 +1,4 @@
-name: pipeline daily for test the actual package with dependencies
+name: pipeline daily for test the actual package deployed on pypi with dependencies
 
 'on':
   schedule:
