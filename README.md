@@ -28,7 +28,7 @@ By default, it will match your request with a selection of 5 results with a brie
 
 `` ytdlmusic --update`` to upgrade ytdlmusic
 
-`` ytdlmusic --full-update`` to upgrade ytdlmusic, youtube-dl and youtube-search-python since 0.5 version
+`` ytdlmusic --full-update`` to upgrade ytdlmusic, youtube-dl and youtube-search-python
 
 ``pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist`` to upgrade ytdlmusic with pip
 
@@ -184,7 +184,7 @@ The  syntax of the commands can be change between versions, run ``ytdlmusic`` an
 
 - I get an error about ``_requesthandler.py line 22`` when I try to use ytdlmusic
 
-Sorry... You should update python to 3.6 version or more. youtube-search-python doesn't seems to be compatible with python 3.5 or less. from version 0.6.1, the ytdlmusic package checks the python version during the installation process.
+Sorry... You should update Python to 3.6 version or more. youtube-search-python doesn't seems to be compatible with Python 3.5 or less. Now, ytdlmusic package checks the Python version during the installation process.
 
 - What are the compatibilities with Python, pip, youtube-dl and youtube-search-python?
 

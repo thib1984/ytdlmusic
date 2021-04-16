@@ -10,7 +10,7 @@ from shutil import which
 
 def determine_filename(artist, song):
     """
-    correct filename to escape special characters
+    correct filename to escape special characters and force lower case
     """
     file_name = re.sub(
         "(\\W+)", "_", artist.lower() + "_" + song.lower()

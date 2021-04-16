@@ -50,5 +50,5 @@ def version():
     print("youtube-search-python version : " + ytsearchpythonversion)
     print("youtube-dl version            : " + youtubedlversion)
     print("pip(3) version                : " + pipversion)
-    print("python version                : " + pythonversion)
+    print("Python version                : " + pythonversion)
     print("ffmpeg                        : " + ffmpeg_binary)
