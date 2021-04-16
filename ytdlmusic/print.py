@@ -2,71 +2,116 @@
 print utils scripts
 """
 
-from ytdlmusic.version import version
+from ytdlmusic.version import (
+    binary_version,
+    python_version,
+    pip_package_version,
+    pip_package_version_of_double,
+)
+from ytdlmusic.const import (
+    HELP_TXT,
+    LICENCE_TXT,
+    BAD_LAUNCH_TXT,
+    EXCEPTION,
+    BUG_MESSSAGE,
+    EXCEPTION_UPDATE,
+    BUG_UPDATE_MESSSAGE,
+    VERSION_YTDLMUSIC,
+    VERSION_DEPENDENCIES,
+    TRY_UPDATE,
+)
 
 
-def display_help():
+def replace_all(text, dic):
     """
-    help
+    replace in text with dic paramaters
     """
-    help_txt = """\
+    for i, j in dic.items():
+        text = text.replace(i, j)
+    return text
 
-    NAME
-        ytdlmusic
 
-    SYNOPSIS
-        With ytdlmusic, you can download directly from YouTube music files in MP3/OGG format from your terminal, 
-        without using your browser. By default, it will match your request with a selection of 5 results 
-        with a brief summary to choose from or you can use auto mode to download automaticaly the first item.
+def print_no_param():
+    """
+    print if no param
+    """
+    print_help()
+    print("")
+    print_licence()
 
-        --help              : display this help
-                            -> ytdlmusic --help
-        --update            : upgrade ytdlmusic
-                            -> ytdlmusic --update   
-        --full-update       : upgrade youtube-dl, youtube-search-python and ytdlmusic
-                            -> ytdlmusic --full-update                                                   
-        --version           : display versions of ytdlmusic and his dependencies
-                            -> ytdlmusic --version                         
-        artist song         : display 5 choices from YouTube with given search, then download the MP3/OGG chosen by user
-                            -> example : ytdlmusic "Rexlambo" "Stay With Me"
-        --auto artist song  : download MP3/OGG of the first from YouTube with given search
-                            -> example : ytdlmusic --auto "Rexlambo" "Stay With Me"
-        """
-    print(help_txt)
+
+def print_licence():
+    """
+    print licence
+    """
+    print_version_ytdlmusic()
+    print(replace_all(LICENCE_TXT, {}))
+
+
+def print_version_ytdlmusic():
+    """
+    print licence
+    """
+    print(
+        replace_all(
+            VERSION_YTDLMUSIC,
+            {"$1": pip_package_version("ytdlmusic")},
+        )
+    )
+
+
+def print_version_dependencies():
+    """
+    print licence
+    """
+    print(
+        replace_all(
+            VERSION_DEPENDENCIES,
+            {
+                "$1": pip_package_version("youtube-search-python"),
+                "$2": pip_package_version("youtube-dl"),
+                "$3": pip_package_version_of_double("pip3", "pip"),
+                "$4": python_version(),
+                "$5": binary_version("ffmpeg"),
+            },
+        )
+    )
+
+
+def print_help():
+    """
+    print help
+    """
+    print(replace_all(HELP_TXT, {}))
 
 
 def print_bad_launch():
     """
     print bad launch
     """
-    print("bad parameters for ytdlmusic")
-    print("ytdlmusic --help for more information")
+    print(replace_all(BAD_LAUNCH_TXT, {}))
 
 
 def print_error(err):
     """
     print generic error
     """
-    print("Unexpected error:", err)
-
-    version()
-    print(
-        "try to upgrade with 'ytdlmusic update' or manually and retry."
-    )
-    print(
-        "if you reproduce the error after the update : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
-    )
+    print(replace_all(EXCEPTION, {"$1": str(err)}))
+    print(replace_all(BUG_MESSSAGE, {}))
 
 
 def print_error_update(err):
     """
     print generic error
     """
-    print(
-        "error during the update : the update will could be finished at the restart of ytdlmusic",
-        err,
-    )
+    print(replace_all(EXCEPTION_UPDATE, {"$1": str(err)}))
+    print_version_ytdlmusic()
+    print_version_dependencies()
+    print(replace_all(BUG_UPDATE_MESSSAGE, {}))
 
-    print(
-        "retest the update a second time. If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"
-    )
+
+def print_try_update(package, prog):
+    """
+    print try update
+    """
+    print(replace_all(TRY_UPDATE, {"$1": package, "$2": prog}))

@@ -6,7 +6,11 @@ update utils scripts
 import sys
 import subprocess
 from shutil import which
-from ytdlmusic.print import print_error_update
+from ytdlmusic.print import print_error_update, print_try_update
+from ytdlmusic.const import (
+    UPDATE_YN,
+    FULL_UPDATE_YN,
+)
 
 
 def update():
@@ -14,18 +18,16 @@ def update():
     update
     """
     while True:
-        answer = input("update the ytdlmusic package [y/n] ? ")
+        answer = input(UPDATE_YN)
         if answer == "y":
             break
         if answer == "n":
             sys.exit(0)
     try:
-        prog = "pip3"
-        if which(prog) is None:
-            prog = "pip"
-        update_ytdlmusic(prog)
+        update_pip_package(pip3_or_pip(), "ytdlmusic")
     except Exception as err:
         print_error_update(err)
+        sys.exit(1)
 
 
 def fullupdate():
@@ -33,57 +35,43 @@ def fullupdate():
     fullupdate
     """
     while True:
-        answer = input(
-            "update the ytdlmusic package and the dependencies [y/n] ? "
-        )
+        answer = input(FULL_UPDATE_YN)
         if answer == "y":
             break
         if answer == "n":
             sys.exit(0)
     try:
-        prog = "pip3"
-        if which(prog) is None:
-            prog = "pip"
-        update_ytdlmusic(prog)
-        update_dependencies(prog)
+        update_pip_package(pip3_or_pip(), "ytdlmusic")
+        update_pip_package(pip3_or_pip(), "youtube-search-python")
+        update_pip_package(pip3_or_pip(), "youtube-dl")
     except Exception as err:
         print_error_update(err)
+        sys.exit(1)
 
 
-def update_dependencies(prog):
+def update_pip_package(prog, package):
     """
-    update of dependencies
+    update pip package
     """
-    print("try to update youtube-search-python with " + prog)
+    print_try_update(package, prog)
     subprocess.check_call(
         [
             prog,
             "install",
             "--upgrade",
-            "youtube-search-python",
-        ]
-    )
-    print("try to update youtube-dl with " + prog)
-    subprocess.check_call(
-        [
-            prog,
-            "install",
-            "--upgrade",
-            "youtube-dl",
+            package,
         ]
     )
 
 
-def update_ytdlmusic(prog):
+def pip3_or_pip():
     """
-    update of ytdlmusic
+    obtain pip3 if installed or pips
     """
-    print("try to update ytdlmusic with " + prog)
-    subprocess.check_call(
-        [
-            prog,
-            "install",
-            "--upgrade",
-            "ytdlmusic",
-        ]
-    )
+    prog = "pip3"
+    if which(prog) is None:
+        prog = "pip"
+        if which(prog) is None:
+            print_error_update("not pip por pip3 package")
+            sys.exit(1)
+    return prog

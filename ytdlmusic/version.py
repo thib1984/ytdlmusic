@@ -6,49 +6,52 @@ version utils scripts
 import sys
 from shutil import which
 import pkg_resources
+from ytdlmusic.const import NOT_INSTALLED
 
 
-def version():
+def python_version():
     """
-    search version
+    obtain python version
     """
-
-    try:
-        ytdlmusicversion = pkg_resources.get_distribution(
-            "ytdlmusic"
-        ).version
-    except Exception:
-        ytdlmusicversion = "NOT INSTALLED"
-    try:
-        ytsearchpythonversion = pkg_resources.get_distribution(
-            "youtube-search-python"
-        ).version
-    except Exception:
-        ytsearchpythonversion = "NOT INSTALLED"
-    try:
-        youtubedlversion = pkg_resources.get_distribution(
-            "youtube-dl"
-        ).version
-    except Exception:
-        youtubedlversion = "NOT INSTALLED"
-    try:
-        pipversion = pkg_resources.get_distribution("pip3").version
-    except Exception:
-        try:
-            pipversion = pkg_resources.get_distribution("pip").version
-        except Exception:
-            pipversion = "NOT INSTALLED"
     try:
         pythonversion = "".join(sys.version.splitlines())
     except Exception:
-        pythonversion = "NOT INSTALLED"
-    if which("ffmpeg") is None:
-        ffmpeg_binary = "NOT INSTALLED"
+        pythonversion = NOT_INSTALLED
+    return pythonversion
+
+
+def binary_version(binary):
+    """
+    obtain binary version
+    """
+    if which(binary) is None:
+        binary_version = NOT_INSTALLED
     else:
-        ffmpeg_binary = which("ffmpeg")
-    print("ytdlmusic version             : " + ytdlmusicversion)
-    print("youtube-search-python version : " + ytsearchpythonversion)
-    print("youtube-dl version            : " + youtubedlversion)
-    print("pip(3) version                : " + pipversion)
-    print("Python version                : " + pythonversion)
-    print("ffmpeg                        : " + ffmpeg_binary)
+        binary_version = which(binary)
+    return binary_version
+
+
+def pip_package_version(package):
+    """
+    obtain package version
+    """
+    try:
+        version = pkg_resources.get_distribution(package).version
+    except Exception:
+        version = NOT_INSTALLED
+    return version
+
+
+def pip_package_version_of_double(package1, package2):
+    """
+    obtain package version of package1 if exists, package in other case
+    """
+    try:
+        version = pkg_resources.get_distribution(package1).version
+    except Exception:
+        try:
+            version = pkg_resources.get_distribution(package2).version
+        except Exception:
+            version = NOT_INSTALLED
+
+    return version

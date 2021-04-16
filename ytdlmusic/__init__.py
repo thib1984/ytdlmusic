@@ -3,10 +3,15 @@ ytdlmusic scripts
 """
 
 import sys
-from ytdlmusic.version import version
 from ytdlmusic.ytdlmusic import job
 from ytdlmusic.update import update, fullupdate
-from ytdlmusic.print import display_help, print_bad_launch
+from ytdlmusic.print import (
+    print_help,
+    print_bad_launch,
+    print_no_param,
+    print_version_ytdlmusic,
+    print_version_dependencies,
+)
 from ytdlmusic.print import print_error
 
 
@@ -17,10 +22,10 @@ def ytdlmusic():
     try:
         # special entries
         if len(sys.argv) == 1:
-            display_help()
+            print_no_param()
         elif len(sys.argv) == 2:
             if sys.argv[1] == "--help":
-                display_help()
+                print_help()
                 sys.exit(0)
 
             if sys.argv[1] == "--update":
@@ -32,7 +37,8 @@ def ytdlmusic():
                 sys.exit(0)
 
             if sys.argv[1] == "--version":
-                version()
+                print_version_ytdlmusic()
+                print_version_dependencies()
                 sys.exit(0)
 
             if sys.argv[1].startswith("--"):
