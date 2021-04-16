@@ -2,9 +2,6 @@ name: release pipeline
 
 on:
   workflow_dispatch:
-  release:
-    types:
-      - created
 
 jobs:
   test:
