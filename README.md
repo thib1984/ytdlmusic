@@ -3,7 +3,8 @@
 
 ## description
 
-With ytdlmusic, you can download from YouTube a MP3/OGG music without use browser. 5 choices are available with a small summary to facilitate the choice. You can also use auto mode to download the first item.  
+With ytdlmusic, you can download directly from YouTube music files in MP3/OGG format from your terminal, without using your browser. 
+By default, it will match your request with a selection of 5 results with a breif summary to choose from or you can use auto mode to download automaticaly the first item.  
 
 ## github
 
@@ -17,7 +18,7 @@ With ytdlmusic, you can download from YouTube a MP3/OGG music without use browse
 
 - install Python 3 for your system
 - install pip3 for your system #or pip if pip3 does not exist
-- optional : install ffmpeg for your system if you want to use MP3 format (OGG if not)
+- optional : install ffmpeg for your system if you want to use MP3 format (OGG otherwise)
 
 ## installation
 
@@ -31,16 +32,16 @@ With ytdlmusic, you can download from YouTube a MP3/OGG music without use browse
 
 ``pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist`` to upgrade ytdlmusic with pip
 
-``pip3 install -ytdlmusic:x.x.x #to downgrade the app`` to downgrade ytdlmusic with pip
+``pip3 install -ytdlmusic:x.x.x #to downgrade the app`` to downgrade ytdlmusic to a specified version with pip
 ## use
 
 ``ytdlmusic "the beatles" "let it be"``
-will download, after choice, the MP3/OGG in the current directory
+will return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
 
 ```
 ~$ ytdlmusic "the beattles" "let it be"
 artist : the beatles
-song : let it be
+song : let it be,
 search the beatles let it be MP3/OGG with youtubesearchpython
 
 1
@@ -88,7 +89,7 @@ the_beatles_let_it_be.mp3 is ready
 ## use auto
 
 ``ytdlmusic --auto "the beatles" "let it be"`` 
-will dowmnload the first item 
+will dowmnload automaticaly the first item
 
 ```
 ~$ ytdlmusic --auto "the beattles" "let it be"
@@ -117,7 +118,7 @@ the_beatles_let_it_be.mp3 is ready
 `` ytdlmusic --version `` to display version of ytdlmusic and dependencies
 ## batch
 
-you can use script for loop in a csv file for example 
+You can use a script to loop in a csv file. ie: 
 
 ```
 
@@ -172,9 +173,9 @@ Please update youtube-dl using apt(8).
 See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
 ```
 
-No panic : you have just downloaded a newer version of youtube-dl who is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
+No panic : you have just downloaded a newer version of youtube-dl which is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
 
-- I would like a MP3 format but i obtain an OGG format, why?
+- I would like a MP3 format but I only get an OGG format, why?
 
 The ``ffmpeg`` package is required for the MP3 conversion. Install it and retry to launch ytdlmusic
 
@@ -182,13 +183,13 @@ The ``ffmpeg`` package is required for the MP3 conversion. Install it and retry 
 
 The  syntax of the commands can be change between versions, run ``ytdlmusic`` and read the help message. 
 
-- I obtain the error about ``_requesthandler.py line 22`` when I try to use ytdlmusic
+- I get an error about ``_requesthandler.py line 22`` when I try to use ytdlmusic
 
-Sorry... You should update python to 3.6 version or more. youtube-search-python seems not to be compatible with python 3.5 and less. In the version 0.6.1 and more, the ytdlmusic package check the python version at the installation process.
+Sorry... You should update python to 3.6 version or more. youtube-search-python doesn't seems to be compatible with python 3.5 or less. from version 0.6.1, the ytdlmusic package checks the python version during the installation process.
 
-- What are the compatibility with Python, pip, youtube-dl and youtube-search-python?
+- What are the compatibilities with Python, pip, youtube-dl and youtube-search-python?
 
-When a new version of ytdlmusic is published, it is tested with the last versions of pip, youtube-dl and youtube-search-python. For Python, the last versions are too tested in the branches 3.6, 3.7, 3.8, and 3.9. Each night, a job retest the actual package with last versions of dependencies and Pythons 3.6, 3.7, 3.8, 3.9 and 3.10. These tests are played with GitHub Actions on an Ubuntu 18.04 image.
+When a new version of ytdlmusic is published, it is tested with the last versions of pip, youtube-dl and youtube-search-python. For Python, the last versions are  tested in the branches 3.6 to 3.9. Each night, a job retest the actual package with last versions of dependencies and Pythons 3.6 to 3.9 and 3.10. These tests are executed with GitHub Actions on an Ubuntu 18.04 image.
 ## thanks
 
 This package use two very important dependencies :
