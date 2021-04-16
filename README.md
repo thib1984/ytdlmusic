@@ -1,4 +1,4 @@
-:warning: ytdlmusic is not compatible with Python < 3.5 (deprecated), use Python >= 3.6 !
+:warning: ytdlmusic is not compatible with Python <= 3.5 (deprecated), use Python >= 3.6 !
 
 
 ## description
