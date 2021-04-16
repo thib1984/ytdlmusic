@@ -195,3 +195,7 @@ When a new version of ytdlmusic is published, it is tested with the last version
 This package use two very important dependencies :
 - [youtube_dl](https://pypi.org/project/youtube_dl/)
 - [youtube-search-python](https://pypi.org/project/youtube-search-python/)
+
+Thanks to contributors :
+
+- https://github.com/albenquer
