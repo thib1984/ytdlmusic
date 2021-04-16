@@ -11,6 +11,7 @@ from ytdlmusic.print import (
     print_no_param,
     print_version_ytdlmusic,
     print_version_dependencies,
+    print_licence,
 )
 from ytdlmusic.print import print_error
 
@@ -39,6 +40,7 @@ def ytdlmusic():
             if sys.argv[1] == "--version":
                 print_version_ytdlmusic()
                 print_version_dependencies()
+                print_licence()
                 sys.exit(0)
 
             if sys.argv[1].startswith("--"):

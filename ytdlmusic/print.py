@@ -36,7 +36,7 @@ def print_no_param():
     print if no param
     """
     print_help()
-    print("")
+    print_version_ytdlmusic()
     print_licence()
 
 
@@ -44,7 +44,6 @@ def print_licence():
     """
     print licence
     """
-    print_version_ytdlmusic()
     print(replace_all(LICENCE_TXT, {}))
 
 
