@@ -75,15 +75,15 @@ https://www.youtube.com/watch?v=hR-3ajVftG4
 
 
 which (1-5, 0 to exit properly) ? 2
-future filename is : the_beatles_let_it_be.mp3
+future filename is : Rexlambo_Stay_With_Me.mp3
 download https://www.youtube.com/watch?v=HzvDofigTKQ with youtubedl
 [youtube] HzvDofigTKQ: Downloading webpage
-[download] Destination: the_beatles_let_it_be.webm
+[download] Destination: Rexlambo_Stay_With_Me.webm
 [download] 100% of 3.73MiB in 00:00
-[ffmpeg] Destination: the_beatles_let_it_be.mp3
-Deleting original file the_beatles_let_it_be.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'the_beatles_let_it_be.mp3'
-the_beatles_let_it_be.mp3 is ready
+[ffmpeg] Destination: Rexlambo_Stay_With_Me.mp3
+Deleting original file Rexlambo_Stay_With_Me.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'Rexlambo_Stay_With_Me.mp3'
+Rexlambo_Stay_With_Me.mp3 is ready
 ````
 
 ## use auto
@@ -96,15 +96,14 @@ will dowmnload automaticaly the first item
 artist : Rexlambo
 song : Stay With Me
 search Rexlambo Stay With Me mp3 with youtubesearchpython
-future filename is : the_beatles_let_it_be.mp3
 download https://www.youtube.com/watch?v=QDYfEBY9NM4 with youtubedl
 [youtube] QDYfEBY9NM4: Downloading webpage
-[download] Destination: the_beatles_let_it_be.webm
+[download] Destination: Rexlambo_Stay_With_Me.webm
 [download] 100% of 3.75MiB in 00:00
-[ffmpeg] Destination: the_beatles_let_it_be.mp3
-Deleting original file the_beatles_let_it_be.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'the_beatles_let_it_be.mp3'
-the_beatles_let_it_be.mp3 is ready
+[ffmpeg] Destination: Rexlambo_Stay_With_Me.mp3
+Deleting original file Rexlambo_Stay_With_Me.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'Rexlambo_Stay_With_Me.mp3'
+Rexlambo_Stay_With_Me.mp3 is ready
 ```
 
 ## other commands
