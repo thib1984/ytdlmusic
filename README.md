@@ -188,7 +188,7 @@ Sorry... You should update python to 3.6 version or more. youtube-search-python 
 
 - What are the compatibility with Python, pip, youtube-dl and youtube-search-python?
 
-When a new version of ytdlmusic is published, it is tested with the last versions of pip, youtube-dl and youtube-search-python. For Python, the last versions are too tested in the branches 3.6, 3.7, 3.8, 3.9 and 3.10. Each night, a job retest the actual package with last versions of dependencies and Pythons 3.6, 3.7, 3.8, 3.9 and 3.10. These tests are played with GitHub Actions on an Ubuntu 18.04 image.
+When a new version of ytdlmusic is published, it is tested with the last versions of pip, youtube-dl and youtube-search-python. For Python, the last versions are too tested in the branches 3.6, 3.7, 3.8, and 3.9. Each night, a job retest the actual package with last versions of dependencies and Pythons 3.6, 3.7, 3.8, 3.9 and 3.10. These tests are played with GitHub Actions on an Ubuntu 18.04 image.
 ## thanks
 
 This package use two very important dependencies :
