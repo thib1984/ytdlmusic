@@ -5,7 +5,9 @@ search utils scripts
 
 def search(artist, song):
     """
-    search the items
+    search the items with youtube-search-python
+    return a json with 5 entries of YouTube results
+    param : the artist and the song
     """
     from youtubesearchpython import VideosSearch
 

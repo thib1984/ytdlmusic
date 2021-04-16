@@ -11,7 +11,7 @@ from ytdlmusic.const import NOT_INSTALLED
 
 def python_version():
     """
-    obtain python version
+    obtain the Python version
     """
     try:
         pythonversion = "".join(sys.version.splitlines())
@@ -20,20 +20,21 @@ def python_version():
     return pythonversion
 
 
-def binary_version(binary):
+def binary_path(binary):
     """
-    obtain binary version
+    obtain 'binary' path
     """
     if which(binary) is None:
-        binary_version = NOT_INSTALLED
+        path = NOT_INSTALLED
     else:
-        binary_version = which(binary)
-    return binary_version
+        path = which(binary)
+    return path
 
 
 def pip_package_version(package):
     """
-    obtain package version
+    obtain pip 'package' version
+    NOT_INSTALLED in no package found
     """
     try:
         version = pkg_resources.get_distribution(package).version
@@ -44,7 +45,8 @@ def pip_package_version(package):
 
 def pip_package_version_of_double(package1, package2):
     """
-    obtain package version of package1 if exists, package in other case
+    obtain package version of package1 if exists, package2 otherwise
+    NOT_INSTALLED in no packages found
     """
     try:
         version = pkg_resources.get_distribution(package1).version

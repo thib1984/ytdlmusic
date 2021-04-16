@@ -15,7 +15,7 @@ from ytdlmusic.const import (
 
 def update():
     """
-    update
+    update ytdlmusic
     """
     while True:
         answer = input(UPDATE_YN)
@@ -32,7 +32,7 @@ def update():
 
 def fullupdate():
     """
-    fullupdate
+    update ytdlmusic, youtube-search-python, youtube-dl
     """
     while True:
         answer = input(FULL_UPDATE_YN)
@@ -51,7 +51,7 @@ def fullupdate():
 
 def update_pip_package(prog, package):
     """
-    update pip package
+    update pip 'package' with 'prog'
     """
     print_try_update(package, prog)
     subprocess.check_call(
@@ -66,7 +66,8 @@ def update_pip_package(prog, package):
 
 def pip3_or_pip():
     """
-    obtain pip3 if installed or pips
+    obtain pip3 if installed, otherwise pip if installed, otherwise,
+    print_error and exit
     """
     prog = "pip3"
     if which(prog) is None:

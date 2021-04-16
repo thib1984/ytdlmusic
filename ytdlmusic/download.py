@@ -7,7 +7,9 @@ from shutil import which
 
 def download_song(song_url, song_title):
     """
-    download song in song_title.mp3/ogg with youtube_dl from url song_url
+    download song with youtube-dl
+    in song_title.mp3/ogg
+    from url song_url
     """
     import youtube_dl
 
@@ -36,6 +38,6 @@ def download_song(song_url, song_title):
         ydl.extract_info(song_url, download=True)
     if which("ffmpeg") is None:
         print(
-            "warning : ogg was used. If you want MP3 format, install ffmpeg fo your system."
+            "Warning : ogg was used. If you want MP3 format, install ffmpeg fo your system."
         )
     print(song_title + ext + " is ready")

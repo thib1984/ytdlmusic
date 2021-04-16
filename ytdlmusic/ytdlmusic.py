@@ -12,13 +12,14 @@ from ytdlmusic.print import print_error
 
 def job(artist, song, auto):
     """
-    use case
+    principale use case
+    auto : True if not interactive choice
     """
     try:
-        r_search = search(artist, song)
-        answer = choice(r_search, auto)
+        results = search(artist, song)
+        answer = choice(results, auto)
         file_name = determine_filename(artist, song)
-        u_choice = r_search.result()["result"][answer - 1]
+        u_choice = results.result()["result"][answer - 1]
         download_song(
             u_choice["link"],
             file_name,

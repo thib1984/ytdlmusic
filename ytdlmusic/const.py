@@ -1,5 +1,5 @@
 """
-constants
+string constants
 """
 
 
@@ -51,30 +51,31 @@ Written by Thibault Garçon.
 """
 
 BAD_LAUNCH_TXT = """\
-bad parameters for ytdlmusic
+Bad parameters for ytdlmusic.
 ytdlmusic --help for more information"""
 
 EXCEPTION = """\
-Unexpected error: $1"""
+Unexpected error: $1
+Try to upgrade with 'ytdlmusic update' or even 'ytdlmusic full-update' and retry."""
 
 BUG_MESSSAGE = """\
-try to upgrade with 'ytdlmusic update' or manually and retry.
-if you reproduce the error after the update : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"""
+You can also try  to manually upgrade ytdlmusic or the dependencies with 'pip(3) install --upgrade name_package'.
+If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log."""
 
 EXCEPTION_UPDATE = """\
-error during the update : $1
-the update will could be finished at the restart of ytdlmusic
-"""
+Unexpected error during the update : $1
+The update will could be finished at the restart of ytdlmusic.
+Retest the update a second time."""
 
-BUG_UPDATE_MESSSAGE = """\
-try to upgrade with 'ytdlmusic update' or manually and retry.
-retest the update a second time. If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"""
+BUG_UPDATE_MESSSAGE = """\ 
+you can also try  to manually upgrade ytdlmusic or the dependencies with 'pip(3) install --upgrade name_package'
+If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"""
 
 NOT_INSTALLED = "NOT INSTALLED"
 
 FULL_UPDATE_YN = """\
-update the ytdlmusic package and the dependencies [y/n] ? """
+Update the ytdlmusic package and the dependencies [y/n] ? """
 
-UPDATE_YN = "update the ytdlmusic package [y/n] ? "
+UPDATE_YN = "Update the ytdlmusic package [y/n] ? "
 
-TRY_UPDATE = "try to update $1 with $2"
+TRY_UPDATE = "Try to update $1 with $2"

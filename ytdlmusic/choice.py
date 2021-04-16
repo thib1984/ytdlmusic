@@ -7,11 +7,13 @@ import sys
 
 def choice(results_search, auto):
     """
-    user choice
+    user choice after return of youtube-search-pythons
+    results : the json of youtube-search-pythons
+    auto : True if no interactive choice, False otherwise
     """
     i = 0
     if len(results_search.result()["result"]) == 0:
-        print("no result, retry with other words")
+        print("No result, retry with other words")
         sys.exit(0)
     answer = 1
     if not auto:
@@ -28,7 +30,7 @@ def choice(results_search, auto):
 
         while True:
             answer = input(
-                "which (1-"
+                "Which (1-"
                 + str(len(results_search.result()["result"]))
                 + ", 0 to exit properly) ? "
             )
