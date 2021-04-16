@@ -17,7 +17,7 @@ def display_help():
     SYNOPSIS
         With ytdlmusic, you can download directly from YouTube music files in MP3/OGG format from your terminal, 
         without using your browser. By default, it will match your request with a selection of 5 results 
-        with a breif summary to choose from or you can use auto mode to download automaticaly the first item.
+        with a brief summary to choose from or you can use auto mode to download automaticaly the first item.
 
         --help              : display this help
                             -> ytdlmusic --help
