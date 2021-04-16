@@ -29,24 +29,24 @@ jobs:
       - name: test OGG auto          
         run: |
           ytdlmusic --auto "Rexlambo" "Stay With Me"
-          test -f Rexlambo_Stay_With_Me.ogg          
+          test -f rexlambo_stay_with_me.ogg          
       - name: install ffmpeg
         run: |
           sudo apt-get -qq install ffmpeg          
       - name: test MP3 auto
         run: |          
           ytdlmusic --auto "Rexlambo" "Stay With Me"
-          test -f Rexlambo_Stay_With_Me.mp3 
+          test -f rexlambo_stay_with_me.mp3 
       - name: test choice
         run: |          
           yes 3 | ytdlmusic "Rexlambo" "Stay With Me"
-          test -f Rexlambo_Stay_With_Me_1.mp3
+          test -f rexlambo_stay_with_me_1.mp3
       - name: test diff
         run: |          
-          md5sum Rexlambo_Stay_With_Me.mp3
-          md5sum Rexlambo_Stay_With_Me_1.mp3
+          md5sum rexlambo_stay_with_me.mp3
+          md5sum rexlambo_stay_with_me_1.mp3
           echo "les md5 doivent etre differents"
-          test "$(md5sum Rexlambo_Stay_With_Me.mp3)" != "$(md5sum Rexlambo_Stay_With_Me_1.mp3)"
+          test "$(md5sum rexlambo_stay_with_me.mp3)" != "$(md5sum rexlambo_stay_with_me_1.mp3)"
 
   push:
     needs: test

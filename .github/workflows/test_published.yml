@@ -31,11 +31,11 @@ jobs:
       - name: test OGG auto          
         run: |
           ytdlmusic --auto "Rexlambo" "Stay With Me"
-          test -f Rexlambo_Stay_With_Me.ogg          
+          test -f rexlambo_stay_with_me.ogg          
       - name: install ffmpeg
         run: |
           sudo apt-get -qq install ffmpeg          
       - name: test MP3 auto
         run: |          
           ytdlmusic --auto "Rexlambo" "Stay With Me"
-          test -f Rexlambo_Stay_With_Me.mp3 
+          test -f rexlambo_stay_with_me.mp3 

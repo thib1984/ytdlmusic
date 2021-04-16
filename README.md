@@ -75,15 +75,15 @@ https://www.youtube.com/watch?v=hR-3ajVftG4
 
 
 which (1-5, 0 to exit properly) ? 2
-future filename is : Rexlambo_Stay_With_Me.mp3
+future filename is : rexlambo_stay_with_me.mp3
 download https://www.youtube.com/watch?v=HzvDofigTKQ with youtubedl
 [youtube] HzvDofigTKQ: Downloading webpage
-[download] Destination: Rexlambo_Stay_With_Me.webm
+[download] Destination: rexlambo_stay_with_me.webm
 [download] 100% of 3.73MiB in 00:00
-[ffmpeg] Destination: Rexlambo_Stay_With_Me.mp3
-Deleting original file Rexlambo_Stay_With_Me.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'Rexlambo_Stay_With_Me.mp3'
-Rexlambo_Stay_With_Me.mp3 is ready
+[ffmpeg] Destination: rexlambo_stay_with_me.mp3
+Deleting original file rexlambo_stay_with_me.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'rexlambo_stay_with_me.mp3'
+rexlambo_stay_with_me.mp3 is ready
 ````
 
 ## use auto
@@ -98,12 +98,12 @@ song : Stay With Me
 search Rexlambo Stay With Me mp3 with youtubesearchpython
 download https://www.youtube.com/watch?v=QDYfEBY9NM4 with youtubedl
 [youtube] QDYfEBY9NM4: Downloading webpage
-[download] Destination: Rexlambo_Stay_With_Me.webm
+[download] Destination: rexlambo_stay_with_me.webm
 [download] 100% of 3.75MiB in 00:00
-[ffmpeg] Destination: Rexlambo_Stay_With_Me.mp3
-Deleting original file Rexlambo_Stay_With_Me.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'Rexlambo_Stay_With_Me.mp3'
-Rexlambo_Stay_With_Me.mp3 is ready
+[ffmpeg] Destination: rexlambo_stay_with_me.mp3
+Deleting original file rexlambo_stay_with_me.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'rexlambo_stay_with_me.mp3'
+rexlambo_stay_with_me.mp3 is ready
 ```
 
 ## other commands
