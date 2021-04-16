@@ -35,41 +35,41 @@ By default, it will match your request with a selection of 5 results with a brei
 ``pip3 install -ytdlmusic:x.x.x #to downgrade the app`` to downgrade ytdlmusic to a specified version with pip
 ## use
 
-``ytdlmusic "the beatles" "let it be"``
+``ytdlmusic "Rexlambo" "Stay With Me"``
 will return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
 
 ```
-~$ ytdlmusic "the beattles" "let it be"
-artist : the beatles
-song : let it be,
-search the beatles let it be MP3/OGG with youtubesearchpython
+~$ ytdlmusic "the beattles" "Stay With Me"
+artist : Rexlambo
+song : Stay With Me,
+search Rexlambo Stay With Me MP3/OGG with youtubesearchpython
 
 1
-Let It Be (Remastered 2009)
+Stay With Me (Remastered 2009)
 https://www.youtube.com/watch?v=QDYfEBY9NM4
 4:04 - 75,940,717 views
 
 
 2
-Let It Be (Remastered 2015)
+Stay With Me (Remastered 2015)
 https://www.youtube.com/watch?v=HzvDofigTKQ
 3:51 - 13,390,170 views
 
 
 3
-The Beatles - Let it be
+Rexlambo - Stay With Me
 https://www.youtube.com/watch?v=7P6X3IWLECY
 4:15 - 29,202,773 views
 
 
 4
-Beatles   Let It Be 1970
+Beatles   Stay With Me 1970
 https://www.youtube.com/watch?v=nt9uBlRuBPw
 3:55 - 326,823 views
 
 
 5
-Let It Be (Remastered 2009)
+Stay With Me (Remastered 2009)
 https://www.youtube.com/watch?v=hR-3ajVftG4
 3:53 - 1,684,647 views
 
@@ -88,14 +88,14 @@ the_beatles_let_it_be.mp3 is ready
 
 ## use auto
 
-``ytdlmusic --auto "the beatles" "let it be"`` 
+``ytdlmusic --auto "Rexlambo" "Stay With Me"`` 
 will dowmnload automaticaly the first item
 
 ```
-~$ ytdlmusic --auto "the beattles" "let it be"
-artist : the beatles
-song : let it be
-search the beatles let it be mp3 with youtubesearchpython
+~$ ytdlmusic --auto "the beattles" "Stay With Me"
+artist : Rexlambo
+song : Stay With Me
+search Rexlambo Stay With Me mp3 with youtubesearchpython
 future filename is : the_beatles_let_it_be.mp3
 download https://www.youtube.com/watch?v=QDYfEBY9NM4 with youtubedl
 [youtube] QDYfEBY9NM4: Downloading webpage
@@ -154,7 +154,7 @@ git clone https://github.com/thib1984/ytdlmusic.git
 cd ytdlmusic 
 #work!
 pip3 install . #to build
-ytdlmusic "the beatles" "let it be"  #to retest
+ytdlmusic "Rexlambo" "Stay With Me"  #to retest
 ``` 
  
 ## FAQ

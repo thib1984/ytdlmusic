@@ -29,18 +29,18 @@ jobs:
           ytdlmusic --version
       - name: test OGG auto          
         run: |
-          ytdlmusic --auto "the beatles" "let it be"
+          ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f the_beatles_let_it_be.ogg          
       - name: install ffmpeg
         run: |
           sudo apt-get -qq install ffmpeg          
       - name: test MP3 auto
         run: |          
-          ytdlmusic --auto "the beatles" "let it be"
+          ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f the_beatles_let_it_be.mp3 
       - name: test choice
         run: |          
-          yes 3 | ytdlmusic "the beatles" "let it be"
+          yes 3 | ytdlmusic "Rexlambo" "Stay With Me"
           test -f the_beatles_let_it_be_1.mp3
       - name: test diff
         run: |          

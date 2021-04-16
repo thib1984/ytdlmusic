@@ -3,8 +3,8 @@ from setuptools import setup
 
 setup(
     name="ytdlmusic",
-    version="1.0.0",
-    description="With ytdlmusic, you can download from youtube a MP3/OGG music without use browser. 5 choices are available with a small summary to facilitate the choice. You can also use auto mode to download the first item.",
+    version="1.0.1",
+    description="With ytdlmusic, you can download directly from YouTube music files in MP3/OGG format from your terminal, without using your browser. By default, it will match your request with a selection of 5 results with a breif summary to choose from or you can use auto mode to download automaticaly the first item.",
     long_description="The complete description/installation/use/FAQ is available at : https://github.com/thib1984/ytdlmusic#readme",
     long_description_content_type="text/markdown",
     url="https://github.com/thib1984/ytdlmusic",

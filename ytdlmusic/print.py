@@ -27,9 +27,9 @@ def display_help():
         --version           : display versions of ytdlmusic and his dependencies
                             -> ytdlmusic --version                         
         artist song         : display 5 choices from YouTube with given search, then download the MP3/OGG chosen by user
-                            -> example : ytdlmusic "the beatles" "let it be"
+                            -> example : ytdlmusic "Rexlambo" "Stay With Me"
         --auto artist song  : download MP3/OGG of the first from YouTube with given search
-                            -> example : ytdlmusic --auto "the beatles" "let it be"
+                            -> example : ytdlmusic --auto "Rexlambo" "Stay With Me"
         """
     print(help_txt)
 
