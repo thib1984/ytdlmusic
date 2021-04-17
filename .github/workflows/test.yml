@@ -31,7 +31,7 @@ jobs:
           ytdlmusic | grep "ytdlmusic version             :"                   
       - name: test 'ytdlmusic --version'
         run: |
-          ytdlmusic --version (exit code and message)
+          ytdlmusic --version
           ytdlmusic --version | grep "ytdlmusic version             :"
       - name: test 'ytdlmusic --help'
         run: |
