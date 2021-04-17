@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  full_test_ubuntu:
+  full_test:
     strategy:
       fail-fast: false
       matrix:
@@ -58,10 +58,6 @@ jobs:
           test -f rexlambo_stay_with_me_1.ogg
       - name: install ffmpeg
         uses: FedericoCarboni/setup-ffmpeg@v1
-        with:
-          # Not strictly necessary, but it may prevent rate limit
-          # errors especially on GitHub-hosted macos machines.
-          token: ${{ secrets.GITHUB_TOKEN }}
         id: setup-ffmpeg
       - name: test 'ytdlmusic --auto artist title' with ffmpeg
         run: |          
