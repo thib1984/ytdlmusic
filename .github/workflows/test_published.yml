@@ -61,7 +61,7 @@ jobs:
       - name: install ffmpeg with token
         uses: FedericoCarboni/setup-ffmpeg@v1
         with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: test 'ytdlmusic --auto artist title' with ffmpeg
         run: |          
           ytdlmusic --auto "Rexlambo" "Stay With Me"
