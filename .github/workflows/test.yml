@@ -24,5 +24,7 @@ jobs:
       - name: install ytdlmusic
         run: |
           pip install .
+      - name: checkout
+        uses: actions/checkout@master           
       - name: "composite test"
         uses: ./.github/actions/test_ytdlmusic@master           
