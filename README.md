@@ -5,17 +5,19 @@ By default, it will match your request with a selection of 5 results with a brie
 
 ## Information
 
+This package is directly available from [pypi](https://pypi.org/project/ytdlmusic/)
+
 It may be illegal to download restricted content with this software, depending on the law in your country.
 
-## Pipy
+This package use two very important dependencies :
+- [youtube_dl](https://pypi.org/project/youtube_dl/)
+- [youtube-search-python](https://pypi.org/project/youtube-search-python/)
 
-[Pipy link](https://pypi.org/project/ytdlmusic/)
+## Installation prerequisites
 
-## Prerequisites
-
-- install Python 3 for your system
-- install pip3* for your system or pip if pip3 does not exist
-- optional : install ffmpeg for your system if you want to use MP3 format (OGG otherwise)
+- Install Python 3 for your system
+- Install pip3* for your system or pip if pip3 does not exist
+- Install ffmpeg for your system if you want to use MP3 format (OGG otherwise)
 
 *Install pip instead of pip3, if pip3 does not exist
 ## Installation
@@ -32,7 +34,7 @@ It may be illegal to download restricted content with this software, depending o
 
 `` pip3 install --upgrade ytdlmusic``* to upgrade ytdlmusic directly with pip
 
-`` pip3 install -ytdlmusic:x.x.x``* to downgrade ytdlmusic to a specified version with pip
+`` pip3 install -upgrade ytdlmusic:x.x.x``* to upgrade/downgrade ytdlmusic to a specified version with pip
 
 `` pip3 install --upgrade youtube-dl``* to upgrade dependency youtube-dl
 
@@ -42,11 +44,10 @@ It may be illegal to download restricted content with this software, depending o
 ## Use
 
 ``ytdlmusic author song``
-will search on YouTube with the given params (author and song) and return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
-
-```
+search on YouTube with the given params (author and song) and return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
 
 Example:
+```
 ~$ ytdlmusic "Rexlambo" "Stay With Me"
 artist : Rexlambo
 song : Stay With Me
@@ -85,7 +86,7 @@ rexlambo_stay_with_me.mp3 is ready
 ## use auto
 
 ``ytdlmusic --auto author song`` 
-will dowmnload automaticaly from YouTube the first item in the result search with the given params author and song
+dowmnload automaticaly from YouTube the first item in the result search with the given params author and song
 
 Example:
 ```
@@ -203,10 +204,6 @@ Each night, another job checks the actual package with last versions of dependen
 
 These tests are executed with GitHub Actions on an Ubuntu 18.04 image.
 ## Thanks
-
-This package use two very important dependencies :
-- [youtube_dl](https://pypi.org/project/youtube_dl/)
-- [youtube-search-python](https://pypi.org/project/youtube-search-python/)
 
 Thanks to contributors and dependencies authors :
 
