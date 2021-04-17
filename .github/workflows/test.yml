@@ -25,4 +25,4 @@ jobs:
         run: |
           pip install .        
       - name: "composite test"
-        uses: ../.github/actions/test_ytdlmusic@main           
+        uses: ./.github/actions/test_ytdlmusic@main           
