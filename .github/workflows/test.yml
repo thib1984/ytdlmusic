@@ -27,6 +27,12 @@ jobs:
       - name: display version          
         run: |
           ytdlmusic --version
+      - name: display help          
+        run: |
+          ytdlmusic --help  
+      - name: display no_param          
+        run: |
+          ytdlmusic                   
       - name: test OGG auto          
         run: |
           ytdlmusic --auto "Rexlambo" "Stay With Me"
