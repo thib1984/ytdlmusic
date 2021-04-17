@@ -66,6 +66,7 @@ jobs:
           # errors especially on GitHub-hosted macos machines.
           token: ${{ secrets.GITHUB_TOKEN }}
         id: setup-ffmpeg
+      - name: test 'ytdlmusic --auto artist title' with ffmpeg
         run: |          
           ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me.mp3 
