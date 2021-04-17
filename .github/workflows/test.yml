@@ -26,6 +26,8 @@ jobs:
           pip install .   
       - name: "pwd"
         run: |
-          pwd                
+          pwd
+      - name: checkout
+        uses: actions/checkout@master                           
       - name: "composite test"
         uses: ./.github/actions/test_ytdlmusic@main           
