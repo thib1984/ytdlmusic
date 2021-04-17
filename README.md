@@ -24,7 +24,7 @@ This package use two very important dependencies :
 
 ``pip3 install ytdlmusic``*
 
-*Use pip instead of pip3, if pip3 does not exist
+*_Use pip instead of pip3, if pip3 does not exist_
 
 ## Upgrade
 
@@ -40,7 +40,7 @@ This package use two very important dependencies :
 
 `` pip3 install --upgrade youtube-search-python``* upgrades dependency youtube-search-python
 
-*Use pip instead of pip3, if pip3 does not exist
+*_Use pip instead of pip3, if pip3 does not exist_
 ## Use
 
 ``ytdlmusic author song``
@@ -204,7 +204,7 @@ Before a new version of ytdlmusic is published, it is checked in an [automatic j
 
 Each night, [another automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/test_published.yml) checks the actual package with last versions of dependencies and Pythons 3.6 to 3.10. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.*
 
-These tests are executed with GitHub Actions on an Ubuntu 18.04 image. Minimal tests are also runned on macOS and Windows images (only very last Python version).
+*_These tests are executed with GitHub Actions on an Ubuntu 18.04 image. Minimal tests are also runned on macOS and Windows images (only very last Python version)._
 ## Thanks
 
 Thanks to contributors and dependencies authors :
