@@ -7,8 +7,8 @@ jobs:
   full_test_ubuntu:
     strategy:
       matrix:
-        python-version: [ '3.6' ]
         os-version: ['ubuntu-18.04','windows-latest','macos-latest']
+        python-version: [ '3.6' ]
         include:
           #keep only 3.9 python version for macos and windows
           - os-version: 'ubuntu-18.04'
@@ -74,9 +74,9 @@ jobs:
       - name: test missing dependency error
         run: |          
           yes | pip3 uninstall youtube-dl
-          ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
-          (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
-          ytdlmusic --auto "Rexlambo" "Stay With Me" | grep "Try to upgrade with 'ytdlmusic update'"
+          #ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
+          #(ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
+          #ytdlmusic --auto "Rexlambo" "Stay With Me" | grep "Try to upgrade with 'ytdlmusic update'"
       - name: test repair full-update
         run: |               
           yes y | ytdlmusic --full-update
