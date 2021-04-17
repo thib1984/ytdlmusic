@@ -23,8 +23,6 @@ jobs:
           python -m pip install --upgrade pip
       - name: install ytdlmusic
         run: |
-          pip install .
-      - name: checkout
-        uses: actions/checkout@master           
+          pip install .        
       - name: "composite test"
-        uses: ./.github/actions/test_ytdlmusic@master           
+        uses: ../.github/actions/test_ytdlmusic@main           
