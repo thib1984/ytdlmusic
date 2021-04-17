@@ -118,36 +118,22 @@ rexlambo_stay_with_me.mp3 is ready
 `` ytdlmusic`` displays help message, version, and license
 ## Batch
 
-You can use a script to loop in a csv file, and auto-download mp3 from it. 
+You can use a beta command to loop in a csv file, and auto-download mp3 from it. 
 
+`` ytdlmusic --batch=path_file%had_header%sep%artist_column%song_column ``
 
-Example : 
-
-```
-#!/bin/bash
-
-file_csv="./list.csv"
-artist_column=2
-song_column=1
-sep=';'
-
-i=1
-while true
-do
-    i=$((i+1))
-    line=$(sed $i'!d' $file_csv)
-    artist=$(echo $line | cut -d $sep -f $artist_column)
-    song=$(echo $line | cut -d $sep -f $song_column)
-    echo ""
-    echo ""
-    echo "********************"
-    echo $line
-    [ -z "$line" ] && echo "empty line : end of script" && exit 0
-    ytdlmusic --auto "$artist" "$song"
-    echo "********************"
-done 
+Example :
 
 ```
+ytdlmusic --batch="~/test.csv"%False%,%1%2
+#loop on csv file : ~/test.csv
+#without header ine the csv file
+#artist on the first field
+#song on the second field 
+```
+
+You can combinate with --auto!
+
 
 ## Local install to develop
 

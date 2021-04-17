@@ -73,7 +73,12 @@ Unexpected error during the update : $1
 The update will could be finished at the restart of ytdlmusic.
 Retest the update a second time."""
 
-BUG_UPDATE_MESSSAGE = """\ 
+EXCEPTION_BATCH = """\
+Unexpected error during the batch : $1
+Verify the params of --batch."""
+
+
+BUG_UPDATE_MESSSAGE = """\
 you can also try  to manually upgrade ytdlmusic or the dependencies with 'pip(3) install --upgrade name_package'
 If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"""
 

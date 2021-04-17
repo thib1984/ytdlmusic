@@ -12,7 +12,9 @@ from ytdlmusic.print import (
     print_version_ytdlmusic,
     print_version_dependencies,
     print_licence,
+    print_error_batch,
 )
+from ytdlmusic.batch import batch
 from ytdlmusic.print import print_error
 
 
@@ -39,14 +41,30 @@ def ytdlmusic():
                 print_version_dependencies()
                 print_licence()
 
+            elif sys.argv[1].startswith("--batch="):
+                batch_param = sys.argv[1]
+                launch_batch(False, batch_param)
+
             else:
-                newmethod948()
+                bad_launch()
 
         elif len(sys.argv) == 3:
             if sys.argv[1].startswith("--") or sys.argv[2].startswith(
                 "--"
             ):
-                newmethod948()
+                if (
+                    sys.argv[1].startswith("--auto")
+                    and sys.argv[2].startswith("--batch")
+                ) or (
+                    sys.argv[2].startswith("--auto")
+                    and sys.argv[1].startswith("--batch")
+                ):
+                    if sys.argv[1].startswith("--auto"):
+                        launch_batch(True, sys.argv[2])
+                    else:
+                        launch_batch(True, sys.argv[1])
+                else:
+                    bad_launch()
             else:
                 job(sys.argv[1], sys.argv[2], False)
         elif len(sys.argv) == 4:
@@ -56,13 +74,34 @@ def ytdlmusic():
             else:
                 job(sys.argv[2], sys.argv[3], True)
         else:
-            newmethod948()
-        sys.exit(0)    
+            bad_launch()
+        sys.exit(0)
     except Exception as err:
         print_error(err)
         sys.exit(1)
 
-def newmethod948():
+
+def launch_batch(auto, batch_param):
+    try:
+        list_param = str.replace(
+            batch_param, "--batch=", "", 1
+        ).split("%")
+        if len(list_param) != 5:
+            bad_launch()
+        batch(
+            list_param[0],
+            list_param[1],
+            list_param[2],
+            int(list_param[3]),
+            int(list_param[4]),
+            auto,
+        )
+    except Exception as err:
+        print_error_batch(err)
+        sys.exit(1)
+
+
+def bad_launch():
     print_bad_launch()
     sys.exit(1)
 

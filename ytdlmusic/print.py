@@ -16,6 +16,7 @@ from ytdlmusic.const import (
     EXCEPTION,
     BUG_MESSSAGE,
     EXCEPTION_UPDATE,
+    EXCEPTION_BATCH,
     BUG_UPDATE_MESSSAGE,
     VERSION_YTDLMUSIC,
     VERSION_DEPENDENCIES,
@@ -113,6 +114,16 @@ def print_error_update(err):
     print the error message with additional informations
     """
     print(replace_all(EXCEPTION_UPDATE, {"$1": str(err)}))
+    print_version_ytdlmusic()
+    print_version_dependencies()
+    print(BUG_UPDATE_MESSSAGE)
+
+
+def print_error_batch(err):
+    """
+    print the error message with additional informations
+    """
+    print(replace_all(EXCEPTION_BATCH, {"$1": str(err)}))
     print_version_ytdlmusic()
     print_version_dependencies()
     print(BUG_UPDATE_MESSSAGE)
