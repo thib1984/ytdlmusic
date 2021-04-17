@@ -24,11 +24,51 @@ jobs:
       - name: install ytdlmusic
         run: |
           pip install .   
-      - name: "pwd"
+      - name: test 'ytdlmusic'         
         run: |
-          pwd
-          ls /home/runner/work/ytdlmusic/ytdlmusic/.github/actions/test_ytdlmusic
-      - name: checkout
-        uses: actions/checkout@main                           
-      - name: "composite test"
-        uses: ./.github/actions/test_ytdlmusic@v1.3          
+          ytdlmusic
+          ytdlmusic | grep "SYNOPSIS"
+          ytdlmusic | grep "ytdlmusic version             :"                   
+      - name: test 'ytdlmusic --version'
+        run: |
+          ytdlmusic --version
+          ytdlmusic --version | grep "ytdlmusic version             :"
+      - name: test 'ytdlmusic --help'
+        run: |
+          ytdlmusic --help
+          ytdlmusic --help | grep "SYNOPSIS"  
+      - name: test 'ytdlmusic --auto artist title' without ffmpeg
+        run: |
+          ytdlmusic --auto "Rexlambo" "Stay With Me"
+          test -f rexlambo_stay_with_me.ogg          
+      - name: install ffmpeg
+        run: |
+          sudo apt-get -qq install ffmpeg          
+      - name: test 'ytdlmusic --auto artist title' with ffmpeg
+        run: |          
+          ytdlmusic --auto "Rexlambo" "Stay With Me"
+          test -f rexlambo_stay_with_me.mp3 
+      - name: test 'ytdlmusic artist title' with ffmpeg
+        run: |          
+          yes 3 | ytdlmusic "Rexlambo" "Stay With Me"
+          test -f rexlambo_stay_with_me_1.mp3
+      - name: test downloaded files
+        run: |          
+          md5sum rexlambo_stay_with_me.mp3
+          md5sum rexlambo_stay_with_me_1.mp3
+          echo "les md5 doivent etre differents"
+          test "$(md5sum rexlambo_stay_with_me.mp3)" != "$(md5sum rexlambo_stay_with_me_1.mp3)"
+      - name: test bad launch
+        run: |          
+          (ytdlmusic --tetet || echo "good exit code") | grep "good exit code"
+          ytdlmusic --rttrt | grep "Bad parameters"
+      - name: test missing dependency error
+        run: |          
+          yes | pip3 uninstall youtube-dl
+          ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
+          (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
+          ytdlmusic --auto "Rexlambo" "Stay With Me" | grep "Try to upgrade with 'ytdlmusic update'"
+      - name: test repair full-update
+        run: |               
+          yes y | ytdlmusic --full-update
+          ytdlmusic --auto "Rexlambo" "Stay With Me"
