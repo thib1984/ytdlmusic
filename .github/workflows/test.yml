@@ -24,37 +24,41 @@ jobs:
       - name: install ytdlmusic
         run: |
           pip install .      
-      - name: display version          
+      - name: test 'ytdlmusic'         
         run: |
-          ytdlmusic --version
-      - name: display help          
+          ytdlmusic
+          ytdlmusic | grep "SYNOPSIS"
+          ytdlmusic | grep "ytdlmusic version             :"                   
+      - name: test 'ytdlmusic --version'
         run: |
-          ytdlmusic --help  
-      - name: display no_param          
+          ytdlmusic --version (exit code and message)
+          ytdlmusic --version | grep "ytdlmusic version             :"
+      - name: test 'ytdlmusic --help'
         run: |
-          ytdlmusic                   
-      - name: test OGG auto          
+          ytdlmusic --help
+          ytdlmusic --help | grep "SYNOPSIS"  
+      - name: test 'ytdlmusic --auto artist title' without ffmpeg
         run: |
           ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me.ogg          
       - name: install ffmpeg
         run: |
           sudo apt-get -qq install ffmpeg          
-      - name: test MP3 auto
+      - name: test 'ytdlmusic --auto artist title' with ffmpeg
         run: |          
           ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me.mp3 
-      - name: test choice
+      - name: test 'ytdlmusic artist title' with ffmpeg
         run: |          
           yes 3 | ytdlmusic "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me_1.mp3
-      - name: test diff
+      - name: test downloaded files
         run: |          
           md5sum rexlambo_stay_with_me.mp3
           md5sum rexlambo_stay_with_me_1.mp3
           echo "les md5 doivent etre differents"
           test "$(md5sum rexlambo_stay_with_me.mp3)" != "$(md5sum rexlambo_stay_with_me_1.mp3)"
-      - name: test bad param and correct exit code
+      - name: test bad launch
         run: |          
           (ytdlmusic --tetet || echo "good exit code") | grep "good exit code"
           ytdlmusic --rttrt | grep "Bad parameters"
@@ -64,11 +68,7 @@ jobs:
           ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
           (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
           ytdlmusic --auto "Rexlambo" "Stay With Me" | grep "Try to upgrade with 'ytdlmusic update'"
-      - name: test full-update
+      - name: test repair full-update
         run: |               
           yes y | ytdlmusic --full-update
-          ytdlmusic --auto "Rexlambo" "Stay With Me"
-      - name: test update
-        run: |               
-          yes y | ytdlmusic update
           ytdlmusic --auto "Rexlambo" "Stay With Me"
