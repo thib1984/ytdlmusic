@@ -84,8 +84,6 @@ Deleting original file rexlambo_stay_with_me.webm (pass -k to keep)
 rexlambo_stay_with_me.mp3 is ready
 ````
 
-## use auto
-
 ``ytdlmusic --auto author song``
 
 dowmnloads automaticaly from YouTube the first item in the result search with the given params author and song
