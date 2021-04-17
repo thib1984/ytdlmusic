@@ -41,10 +41,12 @@ It may be illegal to download restricted content with this software, depending o
 *Use pip instead of pip3, if pip3 does not exist
 ## Use
 
-``ytdlmusic "the_author" "the_title"``
-will search on YouTube with the given params and return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
+``ytdlmusic author song``
+will search on YouTube with the given params (author and song) and return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
 
 ```
+
+Example:
 ~$ ytdlmusic "Rexlambo" "Stay With Me"
 artist : Rexlambo
 song : Stay With Me
@@ -82,9 +84,10 @@ rexlambo_stay_with_me.mp3 is ready
 
 ## use auto
 
-``ytdlmusic --auto "the_author" "the_title"`` 
-will dowmnload automaticaly form YouTube the first item in the result search with the given params
+``ytdlmusic --auto author song`` 
+will dowmnload automaticaly from YouTube the first item in the result search with the given params author and song
 
+Example:
 ```
 ~$ ytdlmusic --auto "Rexlambo" "Stay With Me"
 artist : Rexlambo
@@ -102,26 +105,29 @@ rexlambo_stay_with_me.mp3 is ready
 
 ## Other commands
 
-`` ytdlmusic`` to display help message, version, and license
 
-`` ytdlmusic --help`` to display help message
+`` ytdlmusic --update `` upgrades ytdlmusic
 
-`` ytdlmusic --update `` to upgrade ytdlmusic
+`` ytdlmusic --full-update `` upgrades ytdlmusic, youtube-dl and youtube-search-python
 
-`` ytdlmusic --full-update `` to upgrade ytdlmusic, youtube-dl and youtube-search-python
+`` ytdlmusic --help`` displays help message
 
-`` ytdlmusic --version `` to display version of ytdlmusic and dependencies
+`` ytdlmusic --version `` displays version of ytdlmusic and dependencies
+
+`` ytdlmusic`` displays help message, version, and license
 ## Batch
 
-You can use a script to loop in a csv file, and auto-download mp3 from it. ie: 
+You can use a script to loop in a csv file, and auto-download mp3 from it. 
+
+
+Example : 
 
 ```
-
 #!/bin/bash
 
-file_csv="./test.csv"
-colonne_artiste=2
-colonne_titre=1
+file_csv="./list.csv"
+artist_column=2
+song_column=1
 sep=';'
 
 i=1
@@ -129,14 +135,14 @@ while true
 do
     i=$((i+1))
     line=$(sed $i'!d' $file_csv)
-    artiste=$(echo $line | cut -d $sep -f $colonne_artiste)
-        titre=$(echo $line | cut -d $sep -f $colonne_titre)
+    artist=$(echo $line | cut -d $sep -f $artist_column)
+    song=$(echo $line | cut -d $sep -f $song_column)
     echo ""
     echo ""
     echo "********************"
     echo $line
-    [ -z "$line" ] && echo "ligne vide : fin du script" && exit 0
-    ytdlmusic --auto "$artiste" "$titre"
+    [ -z "$line" ] && echo "empty line : end of script" && exit 0
+    ytdlmusic --auto "$artist" "$song"
     echo "********************"
 done 
 
@@ -150,6 +156,7 @@ cd ytdlmusic
 #work!
 pip3 install . #to build
 ytdlmusic "Rexlambo" "Stay With Me"  #to retest
+pip3 uninstall #to properly uninstall the dev version
 ``` 
  
 ## FAQ
@@ -170,7 +177,7 @@ Please update youtube-dl using apt(8).
 See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
 ```
 
-, noo panic! You have just downloaded a newer version of youtube-dl which is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
+, no panic! You have just downloaded a newer version of youtube-dl which is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
 
 ### I would like a MP3 format but I only get an OGG format, why?
 
@@ -190,7 +197,7 @@ When an new version is released, it is compatible with the last Python version i
 
 ### Have you tested your package?
 
-Before a new version of ytdlmusic is published, it is checked in automatic job, with the last versions of pip, youtube-dl and youtube-search-python, all in the last versions of Python in the branches 3.6 to 3.9. 
+Before a new version of ytdlmusic is published, it is checked in automatic job, with the last versions of pip, youtube-dl and youtube-search-python, and too in the last versions of Python in the four branches 3.6 to 3.9. 
 
 Each night, another job checks the actual package with last versions of dependencies and Pythons 3.6 to 3.9 and 3.10. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.
 
