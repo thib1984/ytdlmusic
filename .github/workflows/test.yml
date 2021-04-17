@@ -12,7 +12,7 @@ jobs:
         include:
           #keep only 3.9 python version for macos and windows
           - os-version: 'ubuntu-18.04'
-            python-version: '3.7'
+            python-version: [ '3.7','3.8','3.9','3.10-dev' ]
     runs-on: ${{ matrix.os-version }}
     name: test package on ${{ matrix.os-version }} with ${{ matrix.python-version }}
     steps:
