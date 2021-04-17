@@ -29,6 +29,6 @@ jobs:
           pwd
           ls /home/runner/work/ytdlmusic/ytdlmusic/.github/actions/test_ytdlmusic
       - name: checkout
-        uses: actions/checkout@master                           
+        uses: actions/checkout@main                           
       - name: "composite test"
         uses: ./.github/actions/test_ytdlmusic@main           
