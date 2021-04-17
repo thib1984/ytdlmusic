@@ -14,12 +14,15 @@ It may be illegal to download restricted content with this software, depending o
 ## Prerequisites
 
 - install Python 3 for your system
-- install pip3 for your system or pip if pip3 does not exist
+- install pip3* for your system or pip if pip3 does not exist
 - optional : install ffmpeg for your system if you want to use MP3 format (OGG otherwise)
 
+*Install pip instead of pip3, if pip3 does not exist
 ## Installation
 
-``pip3 install ytdlmusic #or with pip if pip3 does not exist``
+``pip3 install ytdlmusic``*
+
+*Use pip instead of pip3, if pip3 does not exist
 
 ## Upgrade
 
@@ -27,20 +30,22 @@ It may be illegal to download restricted content with this software, depending o
 
 `` ytdlmusic --full-update`` to upgrade ytdlmusic, youtube-dl and youtube-search-python
 
-`` pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist`` to upgrade ytdlmusic directly with pip
+`` pip3 install --upgrade ytdlmusic``* to upgrade ytdlmusic directly with pip
 
-`` pip3 install -ytdlmusic:x.x.x #to downgrade the app`` to downgrade ytdlmusic to a specified version with pip
+`` pip3 install -ytdlmusic:x.x.x``* to downgrade ytdlmusic to a specified version with pip
 
-`` pip3 install --upgrade youtube-dl`` to upgrade dependency youtube-dl
+`` pip3 install --upgrade youtube-dl``* to upgrade dependency youtube-dl
 
-`` pip3 install --upgrade youtube-search-python`` to upgrade dependency youtube-search-python
+`` pip3 install --upgrade youtube-search-python``* to upgrade dependency youtube-search-python
+
+*Use pip instead of pip3, if pip3 does not exist
 ## Use
 
-``ytdlmusic "Rexlambo" "Stay With Me"``
-will return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
+``ytdlmusic "the_author" "the_title"``
+will search on YouTube with the given params and return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
 
 ```
-~$ ytdlmusic "the beattles" "Stay With Me"
+~$ ytdlmusic "Rexlambo" "Stay With Me"
 artist : Rexlambo
 song : Stay With Me
 search "Rexlambo Stay With Me" with youtube-search-python
@@ -77,11 +82,11 @@ rexlambo_stay_with_me.mp3 is ready
 
 ## use auto
 
-``ytdlmusic --auto "Rexlambo" "Stay With Me"`` 
-will dowmnload automaticaly the first item
+``ytdlmusic --auto "the_author" "the_title"`` 
+will dowmnload automaticaly form YouTube the first item in the result search with the given params
 
 ```
-~$ ytdlmusic --auto "the beattles" "Stay With Me"
+~$ ytdlmusic --auto "Rexlambo" "Stay With Me"
 artist : Rexlambo
 song : Stay With Me
 search "Rexlambo Stay With Me" with youtube-search-python
