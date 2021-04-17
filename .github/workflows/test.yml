@@ -9,7 +9,14 @@ jobs:
       matrix:
         python-version: [ '3.6', '3.7', '3.8', '3.9', '3.10-dev' ]
         os-version: ['ubuntu-18.04','windows-latest','macos-latest']
-    runs-on: matrix.os-version
+        include:
+          # includes a new variable of npm with a value of 6
+          # for the matrix leg matching the os and version
+          - os: windows-latest
+            python-version: "3.6"
+          - os: macos-latest
+            python-version: "3.6"
+    runs-on: ${{ matrix.os-version }}
     name: test package on ${{ matrix.os-version }} with ${{ matrix.python-version }}
     steps:
       - name: checkout
