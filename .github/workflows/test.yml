@@ -58,7 +58,7 @@ jobs:
         run: |          
           #ytdlmusic --rttrt; if [[ $? -eq 0 ]]; then echo "exit code 0"; exit 1; else echo "exit code 1"; fi
           #ytdlmusic --rttrt | grep "Bad parameters"
-          ytdlmusic --rttrt || echo "coucou"
+          (ytdlmusic --rttrt && exit 1) || echo "good exit code"
 
       - name: test missing dependency error
         run: |          
