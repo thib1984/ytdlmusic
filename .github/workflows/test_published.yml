@@ -58,9 +58,10 @@ jobs:
         run: |          
           printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me_1.ogg
-      - name: install ffmpeg
+      - name: install ffmpeg with token
         uses: FedericoCarboni/setup-ffmpeg@v1
-        id: setup-ffmpeg
+        with:
+        token: ${{ secrets.GITHUB_TOKEN }}
       - name: test 'ytdlmusic --auto artist title' with ffmpeg
         run: |          
           ytdlmusic --auto "Rexlambo" "Stay With Me"
