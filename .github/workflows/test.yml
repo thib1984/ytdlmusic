@@ -31,4 +31,4 @@ jobs:
       - name: checkout
         uses: actions/checkout@main                           
       - name: "composite test"
-        uses: actions/ytdlmusic@main           
+        uses: ./.github/actions/test_ytdlmusic@v1           
