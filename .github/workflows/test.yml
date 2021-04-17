@@ -7,14 +7,12 @@ jobs:
   full_test_ubuntu:
     strategy:
       matrix:
-        python-version: [ '3.6', '3.7', '3.8', '3.9', '3.10-dev' ]
+        python-version: [ '3.6' ]
         os-version: ['ubuntu-18.04','windows-latest','macos-latest']
-        exclude:
+        include:
           #keep only 3.9 python version for macos and windows
-          - os-version: windows-latest
-            python-version: [ '3.6', '3.7', '3.8', '3.10-dev' ]
-          - os-version: macos-latest
-            python-version: [ '3.6', '3.7', '3.8', '3.10-dev' ]
+          - os-version: 'ubuntu-18.04'
+            python-version: '3.7'
     runs-on: ${{ matrix.os-version }}
     name: test package on ${{ matrix.os-version }} with ${{ matrix.python-version }}
     steps:
