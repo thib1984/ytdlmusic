@@ -31,10 +31,7 @@ jobs:
           architecture: x64  
       - name: update pip
         run: |
-          python -m pip install --upgrade pip
-      - name: update pip
-        run: |
-          python -m pip install --upgrade pip        
+          python -m pip install --upgrade pip       
       - name: install ytdlmusic
         run: |
           pip install .   
@@ -70,6 +67,11 @@ jobs:
         run: |          
           ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me.mp3 
+      - name: install md5sum for macos
+        if: ${{ matrix.os-version == 'macos-latest' }} 
+        run: |
+          brew install coreutils
+          brew install md5sha1sum                   
       - name: test downloaded files
         run: |          
           md5sum rexlambo_stay_with_me.ogg
