@@ -207,9 +207,10 @@ Each night, [another automatic job](https://github.com/thib1984/ytdlmusic/action
 
 Thanks to contributors and dependencies authors :
 
-- [albenquer](https://github.com/albenquer)
-- [Hitesh Kumar Saini](https://github.com/alexmercerind)
-- [youtube-dl](https://github.com/youtube-dl)
+- [albenquer](https://github.com/albenquer) for contribution!
+- [Hitesh Kumar Saini](https://github.com/alexmercerind) for [youtube-search-python](https://github.com/alexmercerind/youtube-search-python)
+- [ytdl-org](https://github.com/ytdl-org) for [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+- [Federico Carboni](https://github.com/FedericoCarboni) for [setup-ffmpeg](https://github.com/FedericoCarboni/setup-ffmpeg)
 
 ## License
 
