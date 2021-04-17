@@ -79,10 +79,10 @@ jobs:
       - name: test missing dependency error
         run: |          
           pip uninstall --yes youtube-dl
-          #ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
-          #(ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
-          #ytdlmusic --auto "Rexlambo" "Stay With Me" | grep "Try to upgrade with 'ytdlmusic update'"
+          ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
+          (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
+          ytdlmusic --auto "Rexlambo" "Stay With Me" | grep "Try to upgrade with 'ytdlmusic update'"
       - name: test repair full-update
         run: |               
-          yes y | ytdlmusic --full-update
+          printf 'y\n' | ytdlmusic --full-update
           ytdlmusic --auto "Rexlambo" "Stay With Me"
