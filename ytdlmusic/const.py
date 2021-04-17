@@ -43,6 +43,9 @@ pip(3) version                : $3
 Python version                : $4
 ffmpeg                        : $5"""
 
+PLATFORM_OS = """\
+OS platform                   : $1"""
+
 LICENCE_TXT = """\
 
 MIT Licence.
@@ -75,6 +78,7 @@ you can also try  to manually upgrade ytdlmusic or the dependencies with 'pip(3)
 If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"""
 
 NOT_INSTALLED = "NOT INSTALLED"
+NOT_FOUND = "NOT FOUND"
 
 FULL_UPDATE_YN = """\
 Update the ytdlmusic package and the dependencies [y/n] ? """

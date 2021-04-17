@@ -6,7 +6,8 @@ version utils scripts
 import sys
 from shutil import which
 import pkg_resources
-from ytdlmusic.const import NOT_INSTALLED
+from ytdlmusic.const import NOT_INSTALLED, NOT_FOUND
+import platform
 
 
 def python_version():
@@ -16,16 +17,27 @@ def python_version():
     try:
         pythonversion = "".join(sys.version.splitlines())
     except Exception:
-        pythonversion = NOT_INSTALLED
+        pythonversion = NOT_FOUND
     return pythonversion
+
+
+def platform_version():
+    """
+    obtain platform version
+    """
+    try:
+        platformversion = platform.system() + " " + platform.release()
+    except Exception:
+        platformversion = NOT_FOUND
+    return platformversion
 
 
 def binary_path(binary):
     """
-    obtain 'binary' path
+    obtain 'binary' patha
     """
     if which(binary) is None:
-        path = NOT_INSTALLED
+        path = NOT_FOUND
     else:
         path = which(binary)
     return path

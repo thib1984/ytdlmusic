@@ -7,6 +7,7 @@ from ytdlmusic.version import (
     python_version,
     pip_package_version,
     pip_package_version_of_double,
+    platform_version,
 )
 from ytdlmusic.const import (
     HELP_TXT,
@@ -19,6 +20,7 @@ from ytdlmusic.const import (
     VERSION_YTDLMUSIC,
     VERSION_DEPENDENCIES,
     TRY_UPDATE,
+    PLATFORM_OS,
 )
 
 
@@ -79,6 +81,7 @@ def print_version_dependencies():
             },
         )
     )
+    print(replace_all(PLATFORM_OS, {"$1": platform_version()}))
 
 
 def print_help():
