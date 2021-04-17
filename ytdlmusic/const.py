@@ -13,6 +13,10 @@ HELP_TXT = """\
         without using your browser. By default, it will match your request with a selection of 5 results 
         with a brief summary to choose from or you can use auto mode to download automaticaly the first item.
 
+        artist song         : display 5 choices from YouTube with given search, then download the MP3/OGG chosen by user
+                            -> example : ytdlmusic "Rexlambo" "Stay With Me"
+        --auto artist song  : download MP3/OGG of the first from YouTube with given search
+                            -> example : ytdlmusic --auto "Rexlambo" "Stay With Me"
         --help              : display this help
                             -> ytdlmusic --help
         --update            : upgrade ytdlmusic
@@ -21,11 +25,16 @@ HELP_TXT = """\
                             -> ytdlmusic --full-update                                                   
         --version           : display versions of ytdlmusic and his dependencies
                             -> ytdlmusic --version                         
-        artist song         : display 5 choices from YouTube with given search, then download the MP3/OGG chosen by user
-                            -> example : ytdlmusic "Rexlambo" "Stay With Me"
-        --auto artist song  : download MP3/OGG of the first from YouTube with given search
-                            -> example : ytdlmusic --auto "Rexlambo" "Stay With Me"
-    
+        --batch=path_file%had_header%sep%artist_column%song_column  
+                            : loop on a csv and call for each line `ytdlmusic artist song`
+                            -> example : ytdlmusic --batch="~/test.csv"%False%,%1%2
+                                #loop on csv file : ~/test.csv
+                                #without header line the csv file
+                                #coma separator
+                                #artist on the first field
+                                #song on the second field         
+                            -> example : ytdlmusic --auto --batch="~/test.csv"%False%,%1%2
+                                #same with auto-mode
     INFORMATION
         It may be illegal to download restricted content with this software, depending on the law in your country.                            
 

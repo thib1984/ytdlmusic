@@ -19,7 +19,7 @@ This package use two very important dependencies :
 - Install pip3* for your system or pip if pip3 does not exist
 - Install ffmpeg for your system if you want to use MP3 format (OGG otherwise)
 
-*Install pip instead of pip3, if pip3 does not exist
+*_Install pip instead of pip3, if pip3 does not exist for your OS_
 ## Installation
 
 ``pip3 install ytdlmusic``*
@@ -118,7 +118,7 @@ rexlambo_stay_with_me.mp3 is ready
 `` ytdlmusic`` displays help message, version, and license
 ## Batch
 
-You can use a beta command to loop in a csv file, and auto-download mp3 from it. 
+You can use a beta command to loop in a csv file, and download all MP3/OGG files from it. 
 
 `` ytdlmusic --batch=path_file%had_header%sep%artist_column%song_column ``
 
@@ -127,7 +127,8 @@ Example :
 ```
 ytdlmusic --batch="~/test.csv"%False%,%1%2
 #loop on csv file : ~/test.csv
-#without header ine the csv file
+#without header line the csv file
+#coma separator
 #artist on the first field
 #song on the second field 
 ```
@@ -184,7 +185,7 @@ When an new version is released, it is compatible with the last Python version i
 
 ### Have you tested your package?
 
-Before a new version of ytdlmusic is published, it is checked in an [automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/release.yml), with the last versions of pip, youtube-dl and youtube-search-python, and also in the last versions of Python in the four branches 3.6 to 3.10. *
+Before a new version of ytdlmusic is published, it is checked in an [automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/release.yml), with the last versions of pip, youtube-dl and youtube-search-python, and also in the last versions of Python in the four branches 3.6 to 3.10.*
 
 Each night, [another automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/test_published.yml) checks the actual package with last versions of dependencies and Pythons 3.6 to 3.10. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.*
 
