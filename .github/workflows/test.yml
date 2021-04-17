@@ -31,6 +31,9 @@ jobs:
       - name: update pip
         run: |
           python -m pip install --upgrade pip
+      - name: update pip3
+        run: |
+          python -m pip install --upgrade pip3          
       - name: install ytdlmusic
         run: |
           pip install .   
@@ -47,10 +50,14 @@ jobs:
         run: |
           ytdlmusic --help
           ytdlmusic --help | grep "SYNOPSIS"  
-      - name: test 'ytdlmusic --auto artist title' without ffmpeg
+      - name: test 'ytdlmusic --auto artist title'
         run: |
           ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me.ogg          
+      - name: test 'ytdlmusic artist title' interactive mode
+        run: |          
+          printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
+          test -f rexlambo_stay_with_me_1.ogg
       - name: install ffmpeg
         if: ${{ matrix.os-version == 'ubuntu-18.04' }} 
         run: |
@@ -60,18 +67,12 @@ jobs:
         run: |          
           ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me.mp3 
-      - name: test 'ytdlmusic artist title' with ffmpegs
-        if: ${{ matrix.os-version == 'ubuntu-18.04' }} 
-        run: |          
-          yes 3 | ytdlmusic "Rexlambo" "Stay With Me"
-          test -f rexlambo_stay_with_me_1.mp3
       - name: test downloaded files
-        if: ${{ matrix.os-version == 'ubuntu-18.04' }} 
         run: |          
-          md5sum rexlambo_stay_with_me.mp3
-          md5sum rexlambo_stay_with_me_1.mp3
+          md5sum rexlambo_stay_with_me.ogg
+          md5sum rexlambo_stay_with_me_1.ogg
           echo "les md5 doivent etre differents"
-          test "$(md5sum rexlambo_stay_with_me.mp3)" != "$(md5sum rexlambo_stay_with_me_1.mp3)"
+          test "$(md5sum rexlambo_stay_with_me.ogg)" != "$(md5sum rexlambo_stay_with_me_1.ogg)"
       - name: test bad launch
         run: |          
           (ytdlmusic --tetet || echo "good exit code") | grep "good exit code"
