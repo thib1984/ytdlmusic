@@ -54,6 +54,21 @@ jobs:
           md5sum rexlambo_stay_with_me_1.mp3
           echo "les md5 doivent etre differents"
           test "$(md5sum rexlambo_stay_with_me.mp3)" != "$(md5sum rexlambo_stay_with_me_1.mp3)"
-      - name: test bad param
+      - name: test bad param and correct exit code
         run: |          
-          ytdlmusic test || exit 0
+          ytdlmusic -rttrt | grep "good exit code"
+          ytdlmusic -rttrt | grep "Bad parameters"
+      - name: test missing dependency error
+        run: |          
+          pip3 uninstall youtube-dl
+          ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
+          ytdlmusic --auto "Rexlambo" "Stay With Me" | grep "good exit code"
+          ytdlmusic --auto "Rexlambo" "Stay With Me" | grep "Try to upgrade with 'ytdlmusic update'"
+      - name: test full-update
+        run: |               
+          yes y | ytdlmusic --full-update
+          ytdlmusic --auto "Rexlambo" "Stay With Me"
+      - name: test update
+        run: |               
+          yes y | ytdlmusic update
+          ytdlmusic --auto "Rexlambo" "Stay With Me"
