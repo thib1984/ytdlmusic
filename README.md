@@ -28,23 +28,24 @@ This package use two very important dependencies :
 
 ## Upgrade
 
-`` ytdlmusic --update`` to upgrade ytdlmusic
+`` ytdlmusic --update`` upgrades ytdlmusic
 
-`` ytdlmusic --full-update`` to upgrade ytdlmusic, youtube-dl and youtube-search-python
+`` ytdlmusic --full-update`` upgrades ytdlmusic, youtube-dl and youtube-search-python
 
-`` pip3 install --upgrade ytdlmusic``* to upgrade ytdlmusic directly with pip
+`` pip3 install --upgrade ytdlmusic``* upgrades ytdlmusic directly with pip
 
-`` pip3 install -upgrade ytdlmusic:x.x.x``* to upgrade/downgrade ytdlmusic to a specified version with pip
+`` pip3 install -upgrade ytdlmusic:x.x.x``* upgrades/downgrades ytdlmusic to a specified version with pip
 
-`` pip3 install --upgrade youtube-dl``* to upgrade dependency youtube-dl
+`` pip3 install --upgrade youtube-dl``* upgrades dependency youtube-dl
 
-`` pip3 install --upgrade youtube-search-python``* to upgrade dependency youtube-search-python
+`` pip3 install --upgrade youtube-search-python``* upgrades dependency youtube-search-python
 
 *Use pip instead of pip3, if pip3 does not exist
 ## Use
 
 ``ytdlmusic author song``
-search on YouTube with the given params (author and song) and return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
+
+searches on YouTube with the given params (author and song) and returns a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
 
 Example:
 ```
@@ -85,8 +86,9 @@ rexlambo_stay_with_me.mp3 is ready
 
 ## use auto
 
-``ytdlmusic --auto author song`` 
-dowmnload automaticaly from YouTube the first item in the result search with the given params author and song
+``ytdlmusic --auto author song``
+
+dowmnloads automaticaly from YouTube the first item in the result search with the given params author and song
 
 Example:
 ```
@@ -157,7 +159,7 @@ cd ytdlmusic
 #work!
 pip3 install . #to build
 ytdlmusic "Rexlambo" "Stay With Me"  #to retest
-pip3 uninstall #to properly uninstall the dev version
+pip3 uninstall ytdlmusic #to properly uninstall the dev version
 ``` 
  
 ## FAQ
