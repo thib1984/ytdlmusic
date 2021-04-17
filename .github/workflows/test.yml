@@ -47,21 +47,21 @@ jobs:
           ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me.ogg          
       - name: install ffmpeg
-        if: ${{ matrix.os }} == 'ubuntu-18.04'
+        if: ${{ matrix.os-version }} == 'ubuntu-18.04'
         run: |
           sudo apt-get -qq install ffmpeg          
       - name: test 'ytdlmusic --auto artist title' with ffmpeg
-        if: ${{ matrix.os }} == 'ubuntu-18.04'
+        if: ${{ matrix.os-version }} == 'ubuntu-18.04'
         run: |          
           ytdlmusic --auto "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me.mp3 
       - name: test 'ytdlmusic artist title' with ffmpegs
-        if: ${{ matrix.os }} == 'ubuntu-18.04'
+        if: ${{ matrix.os-version }} == 'ubuntu-18.04'
         run: |          
           yes 3 | ytdlmusic "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me_1.mp3
       - name: test downloaded files
-        if: ${{ matrix.os }} == 'ubuntu-18.04'
+        if: ${{ matrix.os-version }} == 'ubuntu-18.04'
         run: |          
           md5sum rexlambo_stay_with_me.mp3
           md5sum rexlambo_stay_with_me_1.mp3
