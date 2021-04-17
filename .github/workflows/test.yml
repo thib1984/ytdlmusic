@@ -6,7 +6,7 @@ on:
 jobs:
   full_test_ubuntu:
     strategy:
-      fail_fast: false
+      fail-fast: false
       matrix:
         os-version: ['ubuntu-18.04','windows-latest','macos-latest']
         python-version: [ '3.9' ]
