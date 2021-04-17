@@ -13,15 +13,10 @@ def search(artist, song):
 
     print("artist : " + artist)
     print("song : " + song)
+    search_pattern = artist + " " + song
     print(
-        "search "
-        + artist
-        + " "
-        + song
-        + " mp3 with youtubesearchpython"
+        'search "' + search_pattern + '" with youtube-search-python'
     )
-    results_search = VideosSearch(
-        artist + " " + song + " mp3", limit=5
-    )
+    results_search = VideosSearch(search_pattern, limit=5)
 
     return results_search

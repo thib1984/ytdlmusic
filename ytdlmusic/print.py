@@ -40,6 +40,7 @@ def print_no_param():
     """
     print_help()
     print_version_ytdlmusic()
+    print_version_dependencies()
     print_licence()
 
 

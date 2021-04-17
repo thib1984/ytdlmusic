@@ -7,7 +7,7 @@ import sys
 
 def choice(results_search, auto):
     """
-    user choice after return of youtube-search-pythons
+    user choice after return of youtube-search-python
     results : the json of youtube-search-pythons
     auto : True if no interactive choice, False otherwise
     """

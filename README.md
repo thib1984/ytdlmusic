@@ -1,39 +1,40 @@
-:warning: ytdlmusic is not compatible with Python <= 3.5 (deprecated), use Python >= 3.6 !
-
-
-## description
+## Description
 
 With ytdlmusic, you can download directly from YouTube music files in MP3/OGG format from your terminal, without using your browser. 
 By default, it will match your request with a selection of 5 results with a brief summary to choose from or you can use auto mode to download automaticaly the first item.  
 
-## github
+## Information
 
-[Github link](https://github.com/thib1984/ytdlmusic/)
+It may be illegal to download restricted content with this software, depending on the law in your country.
 
-## pipy
+## Pipy
 
 [Pipy link](https://pypi.org/project/ytdlmusic/)
 
-## prerequisites
+## Prerequisites
 
 - install Python 3 for your system
-- install pip3 for your system #or pip if pip3 does not exist
+- install pip3 for your system or pip if pip3 does not exist
 - optional : install ffmpeg for your system if you want to use MP3 format (OGG otherwise)
 
-## installation
+## Installation
 
 ``pip3 install ytdlmusic #or with pip if pip3 does not exist``
 
-## upgrade
+## Upgrade
 
 `` ytdlmusic --update`` to upgrade ytdlmusic
 
 `` ytdlmusic --full-update`` to upgrade ytdlmusic, youtube-dl and youtube-search-python
 
-``pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist`` to upgrade ytdlmusic with pip
+`` pip3 install --upgrade ytdlmusic #or with pip if pip3 does not exist`` to upgrade ytdlmusic directly with pip
 
-``pip3 install -ytdlmusic:x.x.x #to downgrade the app`` to downgrade ytdlmusic to a specified version with pip
-## use
+`` pip3 install -ytdlmusic:x.x.x #to downgrade the app`` to downgrade ytdlmusic to a specified version with pip
+
+`` pip3 install --upgrade youtube-dl`` to upgrade dependency youtube-dl
+
+`` pip3 install --upgrade youtube-search-python`` to upgrade dependency youtube-search-python
+## Use
 
 ``ytdlmusic "Rexlambo" "Stay With Me"``
 will return a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
@@ -41,45 +42,33 @@ will return a 5 items result list from which to chose which item to download, as
 ```
 ~$ ytdlmusic "the beattles" "Stay With Me"
 artist : Rexlambo
-song : Stay With Me,
-search Rexlambo Stay With Me MP3/OGG with youtubesearchpython
-
+song : Stay With Me
+search "Rexlambo Stay With Me" with youtube-search-python
 1
-Stay With Me (Remastered 2009)
-https://www.youtube.com/watch?v=QDYfEBY9NM4
-4:04 - 75,940,717 views
-
-
+Rexlambo - stay with me
+https://www.youtube.com/watch?v=LrED6SSFf-I
+3:52 - 9,161 views
 2
-Stay With Me (Remastered 2015)
-https://www.youtube.com/watch?v=HzvDofigTKQ
-3:51 - 13,390,170 views
-
-
+stay with me – Rexlambo (No Copyright Music)
+https://www.youtube.com/watch?v=a0hkrjqpIOo
+3:52 - 164,205 views
 3
-Rexlambo - Stay With Me
-https://www.youtube.com/watch?v=7P6X3IWLECY
-4:15 - 29,202,773 views
-
-
+Rexlambo - stay with me
+https://www.youtube.com/watch?v=TjATW8iAwa0
+3:52 - 658 views
 4
-Beatles   Stay With Me 1970
-https://www.youtube.com/watch?v=nt9uBlRuBPw
-3:55 - 326,823 views
-
-
+Rexlambo - stay with me
+https://www.youtube.com/watch?v=0vnOMFmBUGk
+3:52 - 831 views
 5
-Stay With Me (Remastered 2009)
-https://www.youtube.com/watch?v=hR-3ajVftG4
-3:53 - 1,684,647 views
-
-
-which (1-5, 0 to exit properly) ? 2
-future filename is : rexlambo_stay_with_me.mp3
-download https://www.youtube.com/watch?v=HzvDofigTKQ with youtubedl
-[youtube] HzvDofigTKQ: Downloading webpage
+Rexlambo - stay with me
+https://www.youtube.com/watch?v=utrYsNKMcQc
+3:52 - 549 views
+Which (1-5, 0 to exit properly) ? 2
+download https://www.youtube.com/watch?v=a0hkrjqpIOo with youtubedl
+[youtube] a0hkrjqpIOo: Downloading webpage
 [download] Destination: rexlambo_stay_with_me.webm
-[download] 100% of 3.73MiB in 00:00
+[download] 100% of 3.69MiB in 00:02
 [ffmpeg] Destination: rexlambo_stay_with_me.mp3
 Deleting original file rexlambo_stay_with_me.webm (pass -k to keep)
 [ffmpeg] Adding metadata to 'rexlambo_stay_with_me.mp3'
@@ -95,18 +84,20 @@ will dowmnload automaticaly the first item
 ~$ ytdlmusic --auto "the beattles" "Stay With Me"
 artist : Rexlambo
 song : Stay With Me
-search Rexlambo Stay With Me mp3 with youtubesearchpython
-download https://www.youtube.com/watch?v=QDYfEBY9NM4 with youtubedl
-[youtube] QDYfEBY9NM4: Downloading webpage
+search "Rexlambo Stay With Me" with youtube-search-python
+download https://www.youtube.com/watch?v=LrED6SSFf-I with youtubedl
+[youtube] LrED6SSFf-I: Downloading webpage
 [download] Destination: rexlambo_stay_with_me.webm
-[download] 100% of 3.75MiB in 00:00
+[download] 100% of 3.72MiB in 00:02
 [ffmpeg] Destination: rexlambo_stay_with_me.mp3
 Deleting original file rexlambo_stay_with_me.webm (pass -k to keep)
 [ffmpeg] Adding metadata to 'rexlambo_stay_with_me.mp3'
 rexlambo_stay_with_me.mp3 is ready
 ```
 
-## other commands
+## Other commands
+
+`` ytdlmusic`` to display help message, version, and license
 
 `` ytdlmusic --help`` to display help message
 
@@ -115,9 +106,9 @@ rexlambo_stay_with_me.mp3 is ready
 `` ytdlmusic --full-update `` to upgrade ytdlmusic, youtube-dl and youtube-search-python
 
 `` ytdlmusic --version `` to display version of ytdlmusic and dependencies
-## batch
+## Batch
 
-You can use a script to loop in a csv file. ie: 
+You can use a script to loop in a csv file, and auto-download mp3 from it. ie: 
 
 ```
 
@@ -146,7 +137,7 @@ done
 
 ```
 
-## local install to develop
+## Local install to develop
 
 ```
 git clone https://github.com/thib1984/ytdlmusic.git
@@ -158,7 +149,9 @@ ytdlmusic "Rexlambo" "Stay With Me"  #to retest
  
 ## FAQ
 
-- When i try to update youtube-dl with ``youtube-dl -U``, i obtain the following message in my debian/ubuntu
+### When i try to update youtube-dl with ``youtube-dl -U``, i obtain an error message in my debian/ubuntu
+
+If you obtain the following message : 
 
 ```
 It looks like you installed youtube-dl with a package manager, pip, setup.py or a tarball. Please use that to update.
@@ -172,29 +165,47 @@ Please update youtube-dl using apt(8).
 See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
 ```
 
-No panic : you have just downloaded a newer version of youtube-dl which is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
+, noo panic! You have just downloaded a newer version of youtube-dl which is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
 
-- I would like a MP3 format but I only get an OGG format, why?
+### I would like a MP3 format but I only get an OGG format, why?
 
 The ``ffmpeg`` package is required for the MP3 conversion. Install it and retry to launch ytdlmusic
 
-- The commands indicated in this README don't work! Why?
+### The commands indicated in this README don't work for me! Why?
 
 The  syntax of the commands can be change between versions, run ``ytdlmusic`` and read the help message. 
 
-- I get an error about ``_requesthandler.py line 22`` when I try to use ytdlmusic
+### I get an error about ``_requesthandler.py line 22`` when I try to use ytdlmusic
 
 Sorry... You should update Python to 3.6 version or more. youtube-search-python doesn't seems to be compatible with Python 3.5 or less. Now, ytdlmusic package checks the Python version during the installation process.
 
-- What are the compatibilities with Python, pip, youtube-dl and youtube-search-python?
+### What are the compatibilities with Python, pip, youtube-dl and youtube-search-python?
 
-When a new version of ytdlmusic is published, it is tested with the last versions of pip, youtube-dl and youtube-search-python. For Python, the last versions are  tested in the branches 3.6 to 3.9. Each night, a job retest the actual package with last versions of dependencies and Pythons 3.6 to 3.9 and 3.10. These tests are executed with GitHub Actions on an Ubuntu 18.04 image.
-## thanks
+When an new version is released, it is compatible with the last Python version ine the branches 3.6 to 3.9, on the release date. It's also compatible with the last versions of dependencies, on the release date.
+
+### Have you tested your package?
+
+Before a new version of ytdlmusic is published, it is checked in automatic job, with the last versions of pip, youtube-dl and youtube-search-python, all in the last versions of Python in the branches 3.6 to 3.9. 
+
+Each night, another job checks the actual package with last versions of dependencies and Pythons 3.6 to 3.9 and 3.10. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.
+
+These tests are executed with GitHub Actions on an Ubuntu 18.04 image.
+## Thanks
 
 This package use two very important dependencies :
 - [youtube_dl](https://pypi.org/project/youtube_dl/)
 - [youtube-search-python](https://pypi.org/project/youtube-search-python/)
 
-Thanks to contributors :
+Thanks to contributors and dependencies authors :
 
-- https://github.com/albenquer
+- [albenquer](https://github.com/albenquer)
+- [Hitesh Kumar Saini](https://github.com/alexmercerind)
+- [youtube-dl](https://github.com/youtube-dl)
+
+## License
+
+MIT License
+
+Copyright (c) 2021 [thib1984](https://github.com/thib1984)
+
+

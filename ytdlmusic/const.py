@@ -25,6 +25,9 @@ HELP_TXT = """\
                             -> example : ytdlmusic "Rexlambo" "Stay With Me"
         --auto artist song  : download MP3/OGG of the first from YouTube with given search
                             -> example : ytdlmusic --auto "Rexlambo" "Stay With Me"
+    
+    INFORMATION
+        It may be illegal to download restricted content with this software, depending on the law in your country.                            
 
     Full documentation at: <https://github.com/thib1984/ytdlmusic>
     Report bugs to <https://github.com/thib1984/ytdlmusic/issues>
@@ -47,7 +50,7 @@ Copyright (c) 2021 thib1984.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
-Written by Thibault Garçon.
+Written by thib1984.
 """
 
 BAD_LAUNCH_TXT = """\

@@ -10,9 +10,8 @@ setup(
     url="https://github.com/thib1984/ytdlmusic",
     author="thib1984",
     author_email="thibault.garcon@gmail.com",
-    license="mit",
+    license="MIT",
     packages=["ytdlmusic"],
-    packages_data={"ytdlmusic": ["txt/*.txt"]},
     install_requires=[
         "setuptools",
         "youtube-search-python",
@@ -22,5 +21,10 @@ setup(
     entry_points={
         "console_scripts": ["ytdlmusic=ytdlmusic.__init__:ytdlmusic"],
     },
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: MIT License",
+        "Operating System :: OS Independent",
+    ],
     python_requires=">=3.6",
 )
