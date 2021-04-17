@@ -120,10 +120,7 @@ jobs:
           test -f rexlambo_stay_with_me.ogg
 
   push:
-    needs: |
-      full_test_ubuntu
-      light_test_windows
-      light_test_mac
+    needs: [full_test_ubuntu, light_test_windows, light_test_mac]
     name: push package on pypi
     runs-on: ubuntu-18.04
     steps:
