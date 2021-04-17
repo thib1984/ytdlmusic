@@ -60,7 +60,7 @@ jobs:
           printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me_1.ogg
       - name: install ffmpeg
-      - uses: FedericoCarboni/setup-ffmpeg@v1
+        uses: FedericoCarboni/setup-ffmpeg@v1
         with:
           # Not strictly necessary, but it may prevent rate limit
           # errors especially on GitHub-hosted macos machines.
