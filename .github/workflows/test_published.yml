@@ -76,6 +76,10 @@ jobs:
           md5sum rexlambo_stay_with_me_1.ogg
           echo "les md5 doivent etre differents"
           test "$(md5sum rexlambo_stay_with_me.ogg)" != "$(md5sum rexlambo_stay_with_me_1.ogg)"
+      - name: test 'ytdlmusic --auto artist title' with force ogg
+        run: |          
+          ytdlmusic --auto --ogg "Rexlambo" "Stay With Me"
+          test -f rexlambo_stay_with_me_2.ogg          
       - name: test batch
         run: |
           echo "launch batch and verify three downloads"

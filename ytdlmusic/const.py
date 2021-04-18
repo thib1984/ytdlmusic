@@ -30,7 +30,7 @@ HELP_TXT = """\
                             -> example : ytdlmusic --ogg "Rexlambo" "Stay With Me"
         --verbose          : verbose mode
                             -> example : ytdlmusic --verbose "Rexlambo" "Stay With Me"
-                            -> example : ytdlmusic --verbose --update                                                                                                                         
+                            -> example : ytdlmusic --verbose --update
         --batch=path_file%had_header%sep%artist_column%song_column  
                             : loop on a csv and call for each line `ytdlmusic artist song`
                             -> example : ytdlmusic --batch="~/test.csv"%False%,%1%2
