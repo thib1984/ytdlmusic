@@ -18,39 +18,31 @@ def download_song(song_url, song_title):
     if which("ffmpeg") is None:
         ext = ".ogg"
         outtmpl = song_title + ".ogg"
-        ydl_opts = {"format": "bestaudio/best", "outtmpl": outtmpl}
+        ydl_opts = {
+            "quiet": True,
+            "format": "bestaudio/best",
+            "outtmpl": outtmpl,
+        }
     else:
         ext = ".mp3"
         outtmpl = song_title + ".%(ext)s"
-        if not is_verbose():
-            ydl_opts = {
-                "quiet": True,
-                "format": "bestaudio/best",
-                "outtmpl": outtmpl,
-                "postprocessors": [
-                    {
-                        "key": "FFmpegExtractAudio",
-                        "preferredcodec": "mp3",
-                        "preferredquality": "192",
-                    },
-                    {"key": "FFmpegMetadata"},
-                ],
-            }
-        else:
-            ydl_opts = {
-                "verbose": True,
-                "format": "bestaudio/best",
-                "outtmpl": outtmpl,
-                "postprocessors": [
-                    {
-                        "key": "FFmpegExtractAudio",
-                        "preferredcodec": "mp3",
-                        "preferredquality": "192",
-                    },
-                    {"key": "FFmpegMetadata"},
-                ],
-            }
+        ydl_opts = {
+            "quiet": True,
+            "format": "bestaudio/best",
+            "outtmpl": outtmpl,
+            "postprocessors": [
+                {
+                    "key": "FFmpegExtractAudio",
+                    "preferredcodec": "mp3",
+                    "preferredquality": "192",
+                },
+                {"key": "FFmpegMetadata"},
+            ],
+        }
 
+    if is_verbose():
+        ydl_opts.pop("quiet")
+        ydl_opts["verbose"] = "True"
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.extract_info(song_url, download=True)
     if which("ffmpeg") is None:
