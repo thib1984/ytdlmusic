@@ -13,7 +13,7 @@ HELP_TXT = """\
         without using your browser. By default, it will match your request with a selection of 5 results 
         with a brief summary to choose from or you can use auto mode to download automaticaly the first item.
 
-        The version options can ben combined into one (example : "-au" for "--auto --update")
+        The short options can ben combined into one (example : "-au" for "--auto --update")
 
         artist song         : display 5 choices from YouTube with given search, then download the MP3/OGG chosen by user
                             -> example : ytdlmusic "Rexlambo" "Stay With Me"
