@@ -103,3 +103,5 @@ Update the ytdlmusic package and the dependencies [y/n] ? """
 UPDATE_YN = "Update the ytdlmusic package [y/n] ? "
 
 TRY_UPDATE = "Try to update $1 with $2"
+
+DEBUG_HEADER = "[debug] stack trace :"
