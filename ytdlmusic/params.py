@@ -128,7 +128,9 @@ def is_verbose():
     Return True if flag --verbose, False otherwise
     """
     return "--verbose" in sys.argv or [
-        i for i in sys.argv if re.search("^-.*d.*", i)
+        i
+        for i in sys.argv
+        if (re.search("^-.*d.*", i) and re.search("^-[A-Za-z]+$", i))
     ]
 
 
@@ -137,7 +139,9 @@ def is_auto():
     Return True if flag --auto, False otherwise
     """
     return "--auto" in sys.argv or [
-        i for i in sys.argv if re.search("^-.*a.*", i)
+        i
+        for i in sys.argv
+        if (re.search("^-.*a.*", i) and re.search("^-[A-Za-z]+$", i))
     ]
 
 
@@ -146,7 +150,9 @@ def is_ogg():
     Return True if flag --ogg, False otherwise
     """
     return "--ogg" in sys.argv or [
-        i for i in sys.argv if re.search("^-.*f.*", i)
+        i
+        for i in sys.argv
+        if (re.search("^-.*f.*", i) and re.search("^-[A-Za-z]+$", i))
     ]
 
 
@@ -155,7 +161,9 @@ def is_help():
     Return True if flag --help, False otherwise
     """
     return "--help" in sys.argv or [
-        i for i in sys.argv if re.search("^-.*h.*", i)
+        i
+        for i in sys.argv
+        if (re.search("^-.*h.*", i) and re.search("^-[A-Za-z]+$", i))
     ]
 
 
@@ -164,7 +172,9 @@ def is_version():
     Return True if flag --version, False otherwise
     """
     return "--version" in sys.argv or [
-        i for i in sys.argv if re.search("^-.*v.*", i)
+        i
+        for i in sys.argv
+        if (re.search("^-.*v.*", i) and re.search("^-[A-Za-z]+$", i))
     ]
 
 
@@ -173,7 +183,9 @@ def is_update():
     Return True if flag --update, False otherwise
     """
     return "--update" in sys.argv or [
-        i for i in sys.argv if re.search("^-.*u.*", i)
+        i
+        for i in sys.argv
+        if (re.search("^-.*u.*", i) and re.search("^-[A-Za-z]+$", i))
     ]
 
 
@@ -182,7 +194,9 @@ def is_fullupdate():
     Return True if flag --full-update, False otherwise
     """
     return "--full-update" in sys.argv or [
-        i for i in sys.argv if re.search("^-.*U.*", i)
+        i
+        for i in sys.argv
+        if (re.search("^-.*U.*", i) and re.search("^-[A-Za-z]+$", i))
     ]
 
 
