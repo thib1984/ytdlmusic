@@ -121,7 +121,7 @@ scandinavianz;avalon;information
 
 ## Other flags
 
-You can also add these flags to your commands :
+You can also add these flags to your commands (except help and version) :
 
 `` --auto `` or `` -a `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
 
