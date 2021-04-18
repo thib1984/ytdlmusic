@@ -58,6 +58,7 @@ def update_pip_package(prog, package):
     """
     print_try_update(package, prog)
     if is_verbose():
+        print("[debug] install process : ")
         subprocess.check_call(
             [
                 prog,
@@ -76,7 +77,7 @@ def update_pip_package(prog, package):
                 package,
             ]
         )
-    print("update ok")
+    print("Update ok")
 
 
 def pip3_or_pip():

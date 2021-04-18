@@ -37,7 +37,7 @@ def batch(
         for row in reader:
             if is_verbose():
                 print(
-                    "ligne numero "
+                    "[debug] ligne numero "
                     + str(reader.line_num)
                     + " en cours : "
                     + str(row)

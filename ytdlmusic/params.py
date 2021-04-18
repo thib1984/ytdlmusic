@@ -15,6 +15,7 @@ option_list_others = [
     "--full-update",
     "--auto",
     "--verbose",
+    "--ogg",
 ]
 
 BATCH_OPTION = "--batch="
@@ -95,6 +96,13 @@ def is_auto():
     Return True if flag --auto, False otherwise
     """
     return "--auto" in sys.argv
+
+
+def is_ogg():
+    """
+    Return True if flag --ogg, False otherwise
+    """
+    return "--ogg" in sys.argv
 
 
 def is_help():

@@ -106,6 +106,7 @@ def print_error(err):
     print the error message with additional informations
     """
     if is_verbose():
+        print("[debug] stack trace :")
         traceback.print_exc()
     print(replace_all(EXCEPTION, {"$1": str(err)}))
     print_version_ytdlmusic()
@@ -118,6 +119,7 @@ def print_error_update(err):
     print the error message with additional informations
     """
     if is_verbose():
+        print("[debug] stack trace :")
         traceback.print_exc()
     print(replace_all(EXCEPTION_UPDATE, {"$1": str(err)}))
     print_version_ytdlmusic()
@@ -130,6 +132,7 @@ def print_error_batch(err):
     print the error message with additional informations
     """
     if is_verbose():
+        print("[debug] stack trace :")
         traceback.print_exc()
     print(replace_all(EXCEPTION_BATCH, {"$1": str(err)}))
     print_version_ytdlmusic()

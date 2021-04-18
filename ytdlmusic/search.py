@@ -13,8 +13,8 @@ def search(artist, song):
     from youtubesearchpython import VideosSearch
 
     if is_verbose():
-        print("artist : " + artist)
-        print("song : " + song)
+        print("[debug] artist : " + artist)
+        print("[debug] song : " + song)
     search_pattern = artist + " " + song
     print(
         'search "' + search_pattern + '" with youtube-search-python'

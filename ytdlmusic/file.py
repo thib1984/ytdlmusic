@@ -6,6 +6,7 @@ file utils scripts
 import os
 import re
 from shutil import which
+from ytdlmusic.params import is_ogg, is_verbose
 
 
 def determine_filename(artist, song):
@@ -16,10 +17,12 @@ def determine_filename(artist, song):
     file_name = re.sub(
         "(\\W+)", "_", artist.lower() + "_" + song.lower()
     )
-    if which("ffmpeg") is None:
+    if which("ffmpeg") is None or is_ogg():
         ext = ".ogg"
     else:
         ext = ".mp3"
+    if is_verbose():
+        print("[debug] extension used : " + ext)
     if os.path.exists(file_name + ext):
         i = 0
         while True:
@@ -28,4 +31,13 @@ def determine_filename(artist, song):
             if not os.path.exists(file_name_tmp + ext):
                 file_name = file_name_tmp
                 break
+            if is_verbose():
+                print(
+                    "[debug] "
+                    + file_name_tmp
+                    + ext
+                    + " : already exists"
+                )
+    if is_verbose():
+        print("[debug] " + file_name + " will be used")
     return file_name

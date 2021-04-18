@@ -124,6 +124,7 @@ You can also add these flags to your commands :
 
 `` --verbose `` : increase verbosity of the logs.
 
+`` --ogg `` : force use ogg extension
 
 ## Local install to develop
 
