@@ -26,7 +26,7 @@ HELP_TXT = """\
         --auto              : automatic mode (first choide for classic use, auto accept for other options)
                             -> example : ytdlmusic --auto "Rexlambo" "Stay With Me"
                             -> example : ytdlmusic --auto --update
-        --versbose          : verbose mode
+        --verbose          : verbose mode
                             -> example : ytdlmusic --verbose "Rexlambo" "Stay With Me"
                             -> example : ytdlmusic --verbose --update                                                                                                
         --batch=path_file%had_header%sep%artist_column%song_column  
