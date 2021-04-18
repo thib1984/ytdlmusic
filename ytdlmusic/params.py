@@ -62,15 +62,14 @@ def is_good_launch():
             if len(i) == 1:
                 print("Option '-' is not valid")
                 return False
-            else:
-                for k in range(1, len(i)):
-                    element = i[k]
-                    if (
-                        element not in option_list_alone_light
-                        and element not in option_list_others_light
-                    ):
-                        print("Option '-" + element + " is not valid")
-                        return False
+            for k in range(1, len(i)):
+                element = i[k]
+                if (
+                    element not in option_list_alone_light
+                    and element not in option_list_others_light
+                ):
+                    print("Option '-" + element + " is not valid")
+                    return False
     # option not alone
     if (had_alone_option()) and (
         number_options() > 1 or (is_author() or is_song())

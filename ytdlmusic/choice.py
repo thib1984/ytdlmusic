@@ -3,7 +3,7 @@ choice user scripts
 """
 
 import sys
-from ytdlmusic.params import is_auto
+from ytdlmusic.params import is_auto, is_batch
 
 
 def choice(results_search):
@@ -15,7 +15,9 @@ def choice(results_search):
     i = 0
     if len(results_search.result()["result"]) == 0:
         print("No result, retry with other words")
-        sys.exit(0)
+        if not is_batch():
+            sys.exit(1)
+        return 0
     answer = 1
     if not is_auto():
         for children in results_search.result()["result"]:
@@ -41,6 +43,4 @@ def choice(results_search):
                 and int(answer) <= 5
             ):
                 break
-        if int(answer) == 0:
-            sys.exit(0)
     return int(answer)
