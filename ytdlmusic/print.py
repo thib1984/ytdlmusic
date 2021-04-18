@@ -138,4 +138,7 @@ def print_error_batch(err):
 
 
 def print_try_update(package, prog):
+    """
+    print try update message
+    """
     print(replace_all(TRY_UPDATE, {"$1": package, "$2": prog}))

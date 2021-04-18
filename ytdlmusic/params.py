@@ -1,3 +1,7 @@
+"""
+ytdlmusic params scripts
+"""
+
 import sys
 
 
@@ -13,10 +17,15 @@ option_list_others = [
     "--verbose",
 ]
 
-batch_option = "--batch="
+BATCH_OPTION = "--batch="
 
 
 def is_good_launch():
+    """
+    is_launch_ok for ytdlmusic
+    """
+    if no_param():
+        return True
     # too classic parameters
     if is_third_param():
         print("Max only 2 classic params")
@@ -25,7 +34,7 @@ def is_good_launch():
     for i in sys.argv:
         if (
             i.startswith("--")
-            and not i.startswith(batch_option)
+            and not i.startswith(BATCH_OPTION)
             and i not in option_list_alone
             and i not in option_list_others
         ):
@@ -59,87 +68,95 @@ def is_good_launch():
 
 
 def no_param():
+    """
+    True if no param in sys.argv (except sys.argv(0)), False other
+    """
     if len(sys.argv) == 1:
         return True
     return False
 
 
 def number_options():
-    j = -1
-    for i in sys.argv:
-        if not i.startswith(batch_option) or i in option_list:
-            j = j + 1
-    return j
+    """
+    Return number of options (except sys.argv(0)) in sys.argv
+    """
+    return len(sys.argv) - 1
 
 
 def is_verbose():
-    if "--verbose" in sys.argv:
-        return True
-    else:
-        return False
+    """
+    Return True if flag --verbose, False otherwise
+    """
+    return "--verbose" in sys.argv
 
 
 def is_auto():
-    if "--auto" in sys.argv:
-        return True
-    else:
-        return False
+    """
+    Return True if flag --auto, False otherwise
+    """
+    return "--auto" in sys.argv
 
 
 def is_help():
-    if "--help" in sys.argv:
-        return True
-    else:
-        return False
+    """
+    Return True if flag --help, False otherwise
+    """
+    return "--help" in sys.argv
 
 
 def is_version():
-    if "--version" in sys.argv:
-        return True
-    else:
-        return False
+    """
+    Return True if flag --version, False otherwise
+    """
+    return "--version" in sys.argv
 
 
 def is_update():
-    if "--update" in sys.argv:
-        return True
-    else:
-        return False
+    """
+    Return True if flag --update, False otherwise
+    """
+    return "--update" in sys.argv
 
 
 def is_fullupdate():
-    if "--full-update" in sys.argv:
-        return True
-    else:
-        return False
+    """
+    Return True if flag --full-update, False otherwise
+    """
+    return "--full-update" in sys.argv
 
 
 def is_batch():
-    if [i for i in sys.argv if i.startswith(batch_option)]:
-        return True
-    else:
-        return False
+    """
+    Return True if flag --batch=, False otherwise
+    """
+    return [i for i in sys.argv if i.startswith(BATCH_OPTION)]
 
 
 def is_third_param():
-    if param_third() == None:
-        return False
-    return True
+    """
+    Return True if number classic params >=3 (sys.argv excluded)
+    """
+    return not param_third() is None
 
 
 def is_author():
-    if param_author() == None:
-        return False
-    return True
+    """
+    Return the author from sys.argv
+    """
+    return not param_author() is None
 
 
 def is_song():
-    if param_song() == None:
-        return False
-    return True
+    """
+    Return true if the song exists from sys.argv
+    """
+    return not param_song() is None
 
 
 def param_author():
+    """
+    Return true if the author exists from sys.argv
+    """
     j = 0
     for i in sys.argv:
         if not i.startswith("--"):
@@ -150,6 +167,9 @@ def param_author():
 
 
 def param_song():
+    """
+    Return the song from sys.argv
+    """
     j = 0
     for i in sys.argv:
         if not i.startswith("--"):
@@ -160,6 +180,9 @@ def param_song():
 
 
 def param_third():
+    """
+    Return the third classic param from sys.argv
+    """
     j = 0
     for i in sys.argv:
         if not i.startswith("--"):
@@ -170,13 +193,19 @@ def param_third():
 
 
 def param_batch():
+    """
+    Return the list of batch param without "--batch="
+    """
     for i in sys.argv:
-        if i.startswith(batch_option):
-            return str.replace(i, batch_option, "", 1).split("%")
+        if i.startswith(BATCH_OPTION):
+            return str.replace(i, BATCH_OPTION, "", 1).split("%")
     return ""
 
 
 def had_alone_option():
+    """
+    Return True if one or more param should be alone
+    """
     for i in sys.argv:
         if i in option_list_alone:
             return True
