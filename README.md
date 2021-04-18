@@ -50,60 +50,58 @@ searches on YouTube with the given params (author and song) and returns a 5 item
 Example:
 ```
 ~$ ytdlmusic "Rexlambo" "Stay With Me"
-artist : Rexlambo
-song : Stay With Me
 search "Rexlambo Stay With Me" with youtube-search-python
 1
 Rexlambo - stay with me
 https://www.youtube.com/watch?v=LrED6SSFf-I
-3:52 - 9,161 views
+3:52 - 9,196 views
 2
 stay with me – Rexlambo (No Copyright Music)
 https://www.youtube.com/watch?v=a0hkrjqpIOo
-3:52 - 164,205 views
+3:52 - 165,489 views
 3
 Rexlambo - stay with me
 https://www.youtube.com/watch?v=TjATW8iAwa0
 3:52 - 658 views
 4
+Mon week-end de GT4 à Nogaro !
+https://www.youtube.com/watch?v=erxK0DtIhYI
+11:02 - 796 views
+5
 Rexlambo - stay with me
 https://www.youtube.com/watch?v=0vnOMFmBUGk
 3:52 - 831 views
-5
-Rexlambo - stay with me
-https://www.youtube.com/watch?v=utrYsNKMcQc
-3:52 - 549 views
 Which (1-5, 0 to exit properly) ? 2
 download https://www.youtube.com/watch?v=a0hkrjqpIOo with youtubedl
-[youtube] a0hkrjqpIOo: Downloading webpage
-[download] Destination: rexlambo_stay_with_me.webm
-[download] 100% of 3.69MiB in 00:02
-[ffmpeg] Destination: rexlambo_stay_with_me.mp3
-Deleting original file rexlambo_stay_with_me.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'rexlambo_stay_with_me.mp3'
 rexlambo_stay_with_me.mp3 is ready
 ````
+## Batch
 
-``ytdlmusic --auto author song``
+You can use a beta command to loop in a csv file, and download all MP3/OGG files from it. 
 
-dowmnloads automaticaly from YouTube the first item in the result search with the given params author and song
+`` ytdlmusic --batch=path_file%had_header%sep%artist_column%song_column ``
 
-Example:
+Example :
+
 ```
-~$ ytdlmusic --auto "Rexlambo" "Stay With Me"
-artist : Rexlambo
-song : Stay With Me
-search "Rexlambo Stay With Me" with youtube-search-python
-download https://www.youtube.com/watch?v=LrED6SSFf-I with youtubedl
-[youtube] LrED6SSFf-I: Downloading webpage
-[download] Destination: rexlambo_stay_with_me.webm
-[download] 100% of 3.72MiB in 00:02
-[ffmpeg] Destination: rexlambo_stay_with_me.mp3
-Deleting original file rexlambo_stay_with_me.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'rexlambo_stay_with_me.mp3'
-rexlambo_stay_with_me.mp3 is ready
+ytdlmusic --auto --batch="./test.csv"%False%";"%2%1
+search "above limujii" with youtube-search-python
+download https://www.youtube.com/watch?v=cUWU_T9KBk8 with youtubedl
+above_limujii.mp3 is ready
+search "awake nomyn" with youtube-search-python
+download https://www.youtube.com/watch?v=hZQDfGX8Cu4 with youtubedl
+awake_nomyn.mp3 is ready
+search "avalon scandinavianz" with youtube-search-python
+download https://www.youtube.com/watch?v=B5CYUMs6-eo with youtubedl
+avalon_scandinavianz.mp3 is ready
 ```
 
+with csv file 
+```
+limujii;above;no
+nomyn;awake;use
+scandinavianz;avalon;information
+```
 ## Other commands
 
 
@@ -116,24 +114,15 @@ rexlambo_stay_with_me.mp3 is ready
 `` ytdlmusic --version `` displays version of ytdlmusic and dependencies
 
 `` ytdlmusic`` displays help message, version, and license
-## Batch
 
-You can use a beta command to loop in a csv file, and download all MP3/OGG files from it. 
 
-`` ytdlmusic --batch=path_file%had_header%sep%artist_column%song_column ``
+## Other flags
 
-Example :
+You can also add these flags to your commands :
 
-```
-ytdlmusic --batch="~/test.csv"%False%,%1%2
-#loop on csv file : ~/test.csv
-#without header line the csv file
-#coma separator
-#artist on the first field
-#song on the second field 
-```
+`` --auto `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
 
-You can combinate with --auto!
+`` --verbose `` : increase verbosity of the logs.
 
 
 ## Local install to develop

@@ -4,3 +4,6 @@ ytdlmusic.egg-info
 *.mp3
 *.ogg
 .vscode
+*.m4a
+*.part
+*.csv

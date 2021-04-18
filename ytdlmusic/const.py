@@ -15,16 +15,20 @@ HELP_TXT = """\
 
         artist song         : display 5 choices from YouTube with given search, then download the MP3/OGG chosen by user
                             -> example : ytdlmusic "Rexlambo" "Stay With Me"
-        --auto artist song  : download MP3/OGG of the first from YouTube with given search
-                            -> example : ytdlmusic --auto "Rexlambo" "Stay With Me"
-        --help              : display this help
+        --help              : display this help (alone option)
                             -> ytdlmusic --help
+        --version           : display versions of ytdlmusic and his dependencies (alone option)
+                            -> ytdlmusic --version                         
         --update            : upgrade ytdlmusic
                             -> ytdlmusic --update   
         --full-update       : upgrade youtube-dl, youtube-search-python and ytdlmusic
-                            -> ytdlmusic --full-update                                                   
-        --version           : display versions of ytdlmusic and his dependencies
-                            -> ytdlmusic --version                         
+                            -> ytdlmusic --full-update 
+        --auto              : automatic mode (first choide for classic use, auto accept for other options)
+                            -> example : ytdlmusic --auto "Rexlambo" "Stay With Me"
+                            -> example : ytdlmusic --auto --update
+        --versbose          : verbose mode
+                            -> example : ytdlmusic --verbose "Rexlambo" "Stay With Me"
+                            -> example : ytdlmusic --verbose --update                                                                                                
         --batch=path_file%had_header%sep%artist_column%song_column  
                             : loop on a csv and call for each line `ytdlmusic artist song`
                             -> example : ytdlmusic --batch="~/test.csv"%False%,%1%2
@@ -35,7 +39,7 @@ HELP_TXT = """\
                                 #song on the second field         
                             -> example : ytdlmusic --auto --batch="~/test.csv"%False%,%1%2
                                 #same with auto-mode
-                                
+
     INFORMATION
         It may be illegal to download restricted content with this software, depending on the law in your country.                            
 
@@ -74,10 +78,6 @@ EXCEPTION = """\
 Unexpected error: $1
 Try to upgrade with 'ytdlmusic update' or even 'ytdlmusic full-update' and retry."""
 
-BUG_MESSSAGE = """\
-You can also try  to manually upgrade ytdlmusic or the dependencies with 'pip(3) install --upgrade name_package'.
-If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log."""
-
 EXCEPTION_UPDATE = """\
 Unexpected error during the update : $1
 The update will could be finished at the restart of ytdlmusic.
@@ -87,10 +87,10 @@ EXCEPTION_BATCH = """\
 Unexpected error during the batch : $1
 Verify the params of --batch."""
 
+BUG_MESSSAGE = """\
+You can also try  to manually upgrade ytdlmusic or the dependencies with 'pip(3) install --upgrade name_package'
+If you reproduce the error : add the flag '--verbose' flag and open an issue at https://github.com/thib1984/ytdlmusic/issues with the complete log"""
 
-BUG_UPDATE_MESSSAGE = """\
-you can also try  to manually upgrade ytdlmusic or the dependencies with 'pip(3) install --upgrade name_package'
-If you reproduce the error : you can open an issue at https://github.com/thib1984/ytdlmusic/issues with this log"""
 
 NOT_INSTALLED = "NOT INSTALLED"
 NOT_FOUND = "NOT FOUND"

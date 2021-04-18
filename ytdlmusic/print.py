@@ -2,6 +2,8 @@
 print utils scripts
 """
 
+import traceback
+
 from ytdlmusic.version import (
     binary_path,
     python_version,
@@ -17,12 +19,12 @@ from ytdlmusic.const import (
     BUG_MESSSAGE,
     EXCEPTION_UPDATE,
     EXCEPTION_BATCH,
-    BUG_UPDATE_MESSSAGE,
     VERSION_YTDLMUSIC,
     VERSION_DEPENDENCIES,
     TRY_UPDATE,
     PLATFORM_OS,
 )
+from ytdlmusic.params import is_verbose
 
 
 def replace_all(text, dic):
@@ -103,6 +105,8 @@ def print_error(err):
     """
     print the error message with additional informations
     """
+    if is_verbose():
+        traceback.print_exc()
     print(replace_all(EXCEPTION, {"$1": str(err)}))
     print_version_ytdlmusic()
     print_version_dependencies()
@@ -113,16 +117,20 @@ def print_error_update(err):
     """
     print the error message with additional informations
     """
+    if is_verbose():
+        traceback.print_exc()
     print(replace_all(EXCEPTION_UPDATE, {"$1": str(err)}))
     print_version_ytdlmusic()
     print_version_dependencies()
-    print(BUG_UPDATE_MESSSAGE)
+    print(BUG_MESSSAGE)
 
 
 def print_error_batch(err):
     """
     print the error message with additional informations
     """
+    if is_verbose():
+        traceback.print_exc()
     print(replace_all(EXCEPTION_BATCH, {"$1": str(err)}))
     print_version_ytdlmusic()
     print_version_dependencies()

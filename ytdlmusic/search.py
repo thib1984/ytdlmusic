@@ -1,6 +1,7 @@
 """
 search utils scripts
 """
+from ytdlmusic.params import is_verbose
 
 
 def search(artist, song):
@@ -11,8 +12,9 @@ def search(artist, song):
     """
     from youtubesearchpython import VideosSearch
 
-    print("artist : " + artist)
-    print("song : " + song)
+    if is_verbose():
+        print("artist : " + artist)
+        print("song : " + song)
     search_pattern = artist + " " + song
     print(
         'search "' + search_pattern + '" with youtube-search-python'

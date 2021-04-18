@@ -11,18 +11,20 @@ from ytdlmusic.const import (
     UPDATE_YN,
     FULL_UPDATE_YN,
 )
+from ytdlmusic.params import is_verbose, is_auto
 
 
 def update():
     """
     update ytdlmusic
     """
-    while True:
-        answer = input(UPDATE_YN)
-        if answer == "y":
-            break
-        if answer == "n":
-            sys.exit(0)
+    if not is_auto():
+        while True:
+            answer = input(UPDATE_YN)
+            if answer == "y":
+                break
+            if answer == "n":
+                sys.exit(0)
     try:
         update_pip_package(pip3_or_pip(), "ytdlmusic")
     except Exception as err:
@@ -34,12 +36,13 @@ def fullupdate():
     """
     update ytdlmusic, youtube-search-python, youtube-dl
     """
-    while True:
-        answer = input(FULL_UPDATE_YN)
-        if answer == "y":
-            break
-        if answer == "n":
-            sys.exit(0)
+    if not is_auto():
+        while True:
+            answer = input(FULL_UPDATE_YN)
+            if answer == "y":
+                break
+            if answer == "n":
+                sys.exit(0)
     try:
         update_pip_package(pip3_or_pip(), "ytdlmusic")
         update_pip_package(pip3_or_pip(), "youtube-search-python")
@@ -54,14 +57,26 @@ def update_pip_package(prog, package):
     update pip 'package' with 'prog'
     """
     print_try_update(package, prog)
-    subprocess.check_call(
-        [
-            prog,
-            "install",
-            "--upgrade",
-            package,
-        ]
-    )
+    if is_verbose():
+        subprocess.check_call(
+            [
+                prog,
+                "install",
+                "--upgrade",
+                package,
+            ]
+        )
+    else:
+        subprocess.check_call(
+            [
+                prog,
+                "install",
+                "--quiet",
+                "--upgrade",
+                package,
+            ]
+        )
+    print("update ok")
 
 
 def pip3_or_pip():

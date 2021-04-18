@@ -14,7 +14,7 @@ from ytdlmusic.print import (
     print_licence,
     print_error_batch,
 )
-from ytdlmusic.batch import batch
+from ytdlmusic.batch import batch, launch_batch
 from ytdlmusic.print import print_error
 from ytdlmusic.params import (
     is_auto,
@@ -38,45 +38,30 @@ def ytdlmusic():
     entry point from ytdlmusic
     """
     try:
-        # special entries
         if not is_good_launch():
-            bad_launch()
+            print_bad_launch()
+            sys.exit(1)
+
+        if no_param() == 1:
+            print_no_param()
+        elif is_help():
+            print_help()
+        elif is_update():
+            update()
+        elif is_fullupdate():
+            fullupdate()
+        elif is_version():
+            print_version_ytdlmusic()
+            print_version_dependencies()
+            print_licence()
+        elif is_batch():
+            launch_batch(param_batch())
         else:
-            if no_param() == 1:
-                print_no_param()
-            elif is_help():
-                print_help()
-            elif is_update():
-                update()
-            elif is_fullupdate():
-                fullupdate()
-            elif is_version():
-                print_version_ytdlmusic()
-                print_version_dependencies()
-                print_licence()
-            elif is_batch():
-                launch_batch(param_batch())
-            else:
-                job(param_author(), param_song())
-            sys.exit(0)
+            job(param_author(), param_song())
+        sys.exit(0)
     except Exception as err:
         print_error(err)
         sys.exit(1)
-
-
-def launch_batch(param):
-    try:
-        batch(
-            param[0], param[1], param[2], int(param[3]), int(param[4])
-        )
-    except Exception as err:
-        print_error_batch(err)
-        sys.exit(1)
-
-
-def bad_launch():
-    print_bad_launch()
-    sys.exit(1)
 
 
 if __name__ == "__main__":
