@@ -28,6 +28,8 @@ from ytdlmusic.params import (
     is_song,
     param_author,
     param_song,
+    is_good_launch,
+    no_param,
 )
 
 
@@ -37,10 +39,12 @@ def ytdlmusic():
     """
     try:
         # special entries
-        if len(sys.argv) == 1:
-            print_no_param()
-        elif len(sys.argv) == 2:
-            if is_help():
+        if not is_good_launch():
+            bad_launch()
+        else:
+            if no_param() == 1:
+                print_no_param()
+            elif is_help():
                 print_help()
             elif is_update():
                 update()
@@ -53,22 +57,8 @@ def ytdlmusic():
             elif is_batch():
                 launch_batch(param_batch())
             else:
-                bad_launch()
-        elif len(sys.argv) == 3:
-            if is_auto() and is_batch():
-                launch_batch(param_batch())
-            elif is_song() and is_author():
                 job(param_author(), param_song())
-            else:
-                bad_launch()
-        elif len(sys.argv) == 4:
-            if not is_auto:
-                bad_launch()
-            else:
-                job(param_author(), param_song())
-        else:
-            bad_launch()
-        sys.exit(0)
+            sys.exit(0)
     except Exception as err:
         print_error(err)
         sys.exit(1)

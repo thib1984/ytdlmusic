@@ -126,7 +126,7 @@ def print_error_batch(err):
     print(replace_all(EXCEPTION_BATCH, {"$1": str(err)}))
     print_version_ytdlmusic()
     print_version_dependencies()
-    print(BUG_UPDATE_MESSSAGE)
+    print(BUG_MESSSAGE)
 
 
 def print_try_update(package, prog):

@@ -1,5 +1,62 @@
 import sys
 
+option_list = [
+    "--help",
+    "--update",
+    "--full-update",
+    "--auto",
+    "--version",
+]
+batch_option = "--batch="
+
+
+def is_good_launch():
+    # too classic parameters
+    if is_third_param():
+        return False
+    # option not recognized
+    if [
+        i
+        for i in sys.argv
+        if (
+            i.startswith("--")
+            and not i.startswith(batch_option)
+            and i not in option_list
+        )
+    ]:
+        return False
+    # option not alone
+    if (
+        is_help() or is_fullupdate() or is_update() or is_version()
+    ) and (number_options() > 1 or (is_author() or is_song())):
+        return False
+    # batch and clasic param
+    if is_batch() and (is_author() or is_song()):
+        return False
+    if (
+        not is_batch()
+        and not is_help()
+        and not is_fullupdate()
+        and not is_update
+        and (not is_author() or not is_song())
+    ):
+        return False
+    return True
+
+
+def no_param():
+    if len(sys.argv) == 1:
+        return True
+    return False
+
+
+def number_options():
+    j = -1
+    for i in sys.argv:
+        if not i.startswith(batch_option) or i in option_list:
+            j = j + 1
+    return j
+
 
 def is_auto():
     if "--auto" in sys.argv:
@@ -37,10 +94,16 @@ def is_fullupdate():
 
 
 def is_batch():
-    if [i for i in sys.argv if i.startswith("--batch=")]:
+    if [i for i in sys.argv if i.startswith(batch_option)]:
         return True
     else:
         return False
+
+
+def is_third_param():
+    if param_third() == None:
+        return False
+    return True
 
 
 def is_author():
@@ -75,8 +138,18 @@ def param_song():
     return None
 
 
+def param_third():
+    j = 0
+    for i in sys.argv:
+        if not i.startswith("--"):
+            j = j + 1
+            if j == 4:
+                return i
+    return None
+
+
 def param_batch():
     for i in sys.argv:
-        if i.startswith("--batch="):
-            return str.replace(i, "--batch=", "", 1).split("%")
+        if i.startswith(batch_option):
+            return str.replace(i, batch_option, "", 1).split("%")
     return ""
