@@ -14,7 +14,7 @@ from ytdlmusic.print import (
     print_licence,
     print_error_batch,
 )
-from ytdlmusic.batch import batch
+from ytdlmusic.batch import batch, launch_batch
 from ytdlmusic.print import print_error
 from ytdlmusic.params import (
     is_auto,
@@ -61,16 +61,6 @@ def ytdlmusic():
             sys.exit(0)
     except Exception as err:
         print_error(err)
-        sys.exit(1)
-
-
-def launch_batch(param):
-    try:
-        batch(
-            param[0], param[1], param[2], int(param[3]), int(param[4])
-        )
-    except Exception as err:
-        print_error_batch(err)
         sys.exit(1)
 
 
