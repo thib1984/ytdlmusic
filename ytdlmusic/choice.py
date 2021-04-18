@@ -3,9 +3,10 @@ choice user scripts
 """
 
 import sys
+from ytdlmusic.params import is_auto
 
 
-def choice(results_search, auto):
+def choice(results_search):
     """
     user choice after return of youtube-search-python
     results : the json of youtube-search-pythons
@@ -16,7 +17,7 @@ def choice(results_search, auto):
         print("No result, retry with other words")
         sys.exit(0)
     answer = 1
-    if not auto:
+    if not is_auto():
         for children in results_search.result()["result"]:
             i = i + 1
             print(i)

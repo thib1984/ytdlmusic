@@ -10,14 +10,14 @@ from ytdlmusic.download import download_song
 from ytdlmusic.print import print_error
 
 
-def job(artist, song, auto):
+def job(artist, song):
     """
     principale use case
     auto : True if not interactive choice
     """
     try:
         results = search(artist, song)
-        answer = choice(results, auto)
+        answer = choice(results)
         file_name = determine_filename(artist, song)
         u_choice = results.result()["result"][answer - 1]
         download_song(
