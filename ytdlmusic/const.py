@@ -35,6 +35,7 @@ HELP_TXT = """\
                                 #song on the second field         
                             -> example : ytdlmusic --auto --batch="~/test.csv"%False%,%1%2
                                 #same with auto-mode
+                                
     INFORMATION
         It may be illegal to download restricted content with this software, depending on the law in your country.                            
 
