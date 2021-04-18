@@ -6,5 +6,4 @@ ytdlmusic.egg-info
 .vscode
 *.m4a
 *.part
-*.csv
 *.webm
