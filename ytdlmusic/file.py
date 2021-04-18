@@ -39,5 +39,5 @@ def determine_filename(artist, song):
                     + " : already exists"
                 )
     if is_verbose():
-        print("[debug] " + file_name + " will be used")
+        print("[debug] " + file_name + ext + " will be used")
     return file_name
