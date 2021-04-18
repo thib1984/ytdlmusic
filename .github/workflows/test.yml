@@ -77,9 +77,7 @@ jobs:
       - name: test batch
         run: |
           echo "launch batch and verify three downloads"
-          pwd
-          ls
-          ytdlmusic --auto --batch="../test/test.csv"%True%";"%2%1
+          ytdlmusic --auto --batch="../test/test.csv"%True%";"%2%1 | grep "is ready" | wc -l | grep 3
           test -f above_limujii.mp3
           test -f awake_nomyn.mp3
           test -f avalon_scandinavianz.mp3
