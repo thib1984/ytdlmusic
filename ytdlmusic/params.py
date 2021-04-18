@@ -3,11 +3,17 @@ ytdlmusic params scripts
 """
 
 import sys
+import re
 
 
 option_list_alone = [
     "--help",
     "--version",
+]
+
+option_list_alone_light = [
+    "h",
+    "v",
 ]
 
 option_list_others = [
@@ -16,6 +22,14 @@ option_list_others = [
     "--auto",
     "--verbose",
     "--ogg",
+]
+
+option_list_others_light = [
+    "u",
+    "U",
+    "a",
+    "d",
+    "f",
 ]
 
 BATCH_OPTION = "--batch="
@@ -41,6 +55,22 @@ def is_good_launch():
         ):
             print("Not recognized param option : " + i)
             return False
+        if i == "-":
+            print("Not recognized param option : " + i)
+            return False
+        if re.search("^-[A-Za-z]+$", i):
+            if len(i) == 1:
+                print("Option '-' is not valid")
+                return False
+            else:
+                for k in range(1, len(i)):
+                    element = i[k]
+                    if (
+                        element not in option_list_alone_light
+                        and element not in option_list_others_light
+                    ):
+                        print("Option '-" + element + " is not valid")
+                        return False
     # option not alone
     if (had_alone_option()) and (
         number_options() > 1 or (is_author() or is_song())
@@ -48,6 +78,8 @@ def is_good_launch():
         print(
             "Options "
             + str(option_list_alone)
+            + " or "
+            + str(option_list_alone_light)
             + " will be given alone"
         )
         return False
@@ -81,56 +113,77 @@ def number_options():
     """
     Return number of options (except sys.argv(0)) in sys.argv
     """
-    return len(sys.argv) - 1
+    j = 0
+    for element in range(1, len(sys.argv)):
+        i = sys.argv[element]
+        if re.search("^-[A-Za-z]+$", i):
+            j = j + len(i) - 1
+        else:
+            j = j + 1
+    return j
 
 
 def is_verbose():
     """
     Return True if flag --verbose, False otherwise
     """
-    return "--verbose" in sys.argv
+    return "--verbose" in sys.argv or [
+        i for i in sys.argv if re.search("^-.*d.*", i)
+    ]
 
 
 def is_auto():
     """
     Return True if flag --auto, False otherwise
     """
-    return "--auto" in sys.argv
+    return "--auto" in sys.argv or [
+        i for i in sys.argv if re.search("^-.*a.*", i)
+    ]
 
 
 def is_ogg():
     """
     Return True if flag --ogg, False otherwise
     """
-    return "--ogg" in sys.argv
+    return "--ogg" in sys.argv or [
+        i for i in sys.argv if re.search("^-.*f.*", i)
+    ]
 
 
 def is_help():
     """
     Return True if flag --help, False otherwise
     """
-    return "--help" in sys.argv
+    return "--help" in sys.argv or [
+        i for i in sys.argv if re.search("^-.*h.*", i)
+    ]
 
 
 def is_version():
     """
     Return True if flag --version, False otherwise
     """
-    return "--version" in sys.argv
+    return "--version" in sys.argv or [
+        i for i in sys.argv if re.search("^-.*v.*", i)
+    ]
 
 
 def is_update():
     """
     Return True if flag --update, False otherwise
     """
-    return "--update" in sys.argv
+    return "--update" in sys.argv or [
+        i for i in sys.argv if re.search("^-.*u.*", i)
+    ]
 
 
 def is_fullupdate():
     """
     Return True if flag --full-update, False otherwise
     """
-    return "--full-update" in sys.argv
+    return "--full-update" in sys.argv or [
+        i for i in sys.argv if re.search("^-.*U.*", i)
+    ]
 
 
 def is_batch():
@@ -167,7 +220,7 @@ def param_author():
     """
     j = 0
     for i in sys.argv:
-        if not i.startswith("--"):
+        if not i.startswith("-"):
             j = j + 1
             if j == 2:
                 return i
@@ -180,7 +233,7 @@ def param_song():
     """
     j = 0
     for i in sys.argv:
-        if not i.startswith("--"):
+        if not i.startswith("-"):
             j = j + 1
             if j == 3:
                 return i
@@ -193,7 +246,7 @@ def param_third():
     """
     j = 0
     for i in sys.argv:
-        if not i.startswith("--"):
+        if not i.startswith("-"):
             j = j + 1
             if j == 4:
                 return i
@@ -217,4 +270,9 @@ def had_alone_option():
     for i in sys.argv:
         if i in option_list_alone:
             return True
+        if re.search("^-[A-Za-z]+$", i):
+            for k in range(1, len(i)):
+                element = i[k]
+                if element in option_list_alone_light:
+                    return True
     return False

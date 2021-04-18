@@ -84,7 +84,7 @@ You can use a beta command to loop in a csv file, and download all MP3/OGG files
 Example :
 
 ```
-ytdlmusic --auto --batch="./test.csv"%False%";"%2%1
+ytdlmusic -a --batch="./test.csv"%False%";"%2%1
 search "above limujii" with youtube-search-python
 download https://www.youtube.com/watch?v=cUWU_T9KBk8 with youtubedl
 above_limujii.mp3 is ready
@@ -105,13 +105,13 @@ scandinavianz;avalon;information
 ## Other commands
 
 
-`` ytdlmusic --update `` upgrades ytdlmusic
+`` ytdlmusic --update `` or `` ytdlmusic -u `` upgrades ytdlmusic
 
-`` ytdlmusic --full-update `` upgrades ytdlmusic, youtube-dl and youtube-search-python
+`` ytdlmusic --full-update `` or `` ytdlmusic -U `` upgrades ytdlmusic, youtube-dl and youtube-search-python
 
-`` ytdlmusic --help`` displays help message
+`` ytdlmusic --help`` or `` ytdlmusic -h `` displays help message
 
-`` ytdlmusic --version `` displays version of ytdlmusic and dependencies
+`` ytdlmusic --version `` or `` ytdlmusic -v `` displays version of ytdlmusic and dependencies
 
 `` ytdlmusic`` displays help message, version, and license
 
@@ -120,11 +120,11 @@ scandinavianz;avalon;information
 
 You can also add these flags to your commands :
 
-`` --auto `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
+`` --auto `` or `` -a `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
 
-`` --verbose `` : increase verbosity of the logs.
+`` --verbose `` or `` -d `` : increase verbosity of the logs.
 
-`` --ogg `` : force use ogg extension
+`` --ogg `` or `` -f `` : force use ogg extension
 
 ## Local install to develop
 

@@ -13,24 +13,26 @@ HELP_TXT = """\
         without using your browser. By default, it will match your request with a selection of 5 results 
         with a brief summary to choose from or you can use auto mode to download automaticaly the first item.
 
+        The version options can ben combined into one (example : "-au" for "--auto --update")
+
         artist song         : display 5 choices from YouTube with given search, then download the MP3/OGG chosen by user
                             -> example : ytdlmusic "Rexlambo" "Stay With Me"
-        --help              : display this help (alone option)
-                            -> ytdlmusic --help
-        --version           : display versions of ytdlmusic and his dependencies (alone option)
-                            -> ytdlmusic --version                         
-        --update            : upgrade ytdlmusic
-                            -> ytdlmusic --update   
-        --full-update       : upgrade youtube-dl, youtube-search-python and ytdlmusic
-                            -> ytdlmusic --full-update 
-        --auto              : automatic mode (first choide for classic use, auto accept for other options)
-                            -> example : ytdlmusic --auto "Rexlambo" "Stay With Me"
-                            -> example : ytdlmusic --auto --update
-        --ogg               : force ogg extension even if ffmpeg is installed
-                            -> example : ytdlmusic --ogg "Rexlambo" "Stay With Me"
-        --verbose          : verbose mode
-                            -> example : ytdlmusic --verbose "Rexlambo" "Stay With Me"
-                            -> example : ytdlmusic --verbose --update
+        -h, --help          : display this help (alone option)
+                            -> ytdlmusic -h
+        -v, --version       : display versions of ytdlmusic and his dependencies (alone option)
+                            -> ytdlmusic -v                        
+        -u, --update        : upgrade ytdlmusic
+                            -> ytdlmusic -u   
+        -U, --full-update   : upgrade youtube-dl, youtube-search-python and ytdlmusic
+                            -> ytdlmusic -U 
+        -a, --auto          : automatic mode (first choide for classic use, auto accept for other options)
+                            -> example : ytdlmusic -a "Rexlambo" "Stay With Me"
+                            -> example : ytdlmusic -a --update
+        -f, --ogg           : force ogg extension even if ffmpeg is installed
+                            -> example : ytdlmusic -f "Rexlambo" "Stay With Me"
+        -d, --verbose       : verbose mode
+                            -> example : ytdlmusic -d "Rexlambo" "Stay With Me"
+                            -> example : ytdlmusic -du
         --batch=path_file%had_header%sep%artist_column%song_column  
                             : loop on a csv and call for each line `ytdlmusic artist song`
                             -> example : ytdlmusic --batch="~/test.csv"%False%,%1%2
@@ -39,8 +41,8 @@ HELP_TXT = """\
                                 #coma separator
                                 #artist on the first field
                                 #song on the second field         
-                            -> example : ytdlmusic --auto --batch="~/test.csv"%False%,%1%2
-                                #same with auto-mode
+                            -> example : ytdlmusic --afd --batch="~/test.csv"%False%,%1%2
+                                #same with auto-mode, force ogg and debug
 
     INFORMATION
         It may be illegal to download restricted content with this software, depending on the law in your country.                            
