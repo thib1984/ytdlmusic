@@ -92,7 +92,7 @@ jobs:
       - name: test short params
         run: |          
           ytdlmusic -fad "Rexlambo" "Stay With Me"
-          test -f rexlambo_stay_with_me_2.ogg  
+          test -f rexlambo_stay_with_me_3.ogg  
       - name: test bad launch short params
         run: |          
           (ytdlmusic -dvU || echo "good exit code") | grep "good exit code"
