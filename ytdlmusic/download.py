@@ -23,6 +23,12 @@ def download_song(song_url, song_title):
             "format": "bestaudio/best",
             "outtmpl": outtmpl,
         }
+        if is_verbose():
+            ydl_opts = {
+                "verbose": True,
+                "format": "bestaudio/best",
+                "outtmpl": outtmpl,
+            }
     else:
         ext = ".mp3"
         outtmpl = song_title + ".%(ext)s"
@@ -39,10 +45,21 @@ def download_song(song_url, song_title):
                 {"key": "FFmpegMetadata"},
             ],
         }
+        if is_verbose():
+            ydl_opts = {
+                "verbose": True,
+                "format": "bestaudio/best",
+                "outtmpl": outtmpl,
+                "postprocessors": [
+                    {
+                        "key": "FFmpegExtractAudio",
+                        "preferredcodec": "mp3",
+                        "preferredquality": "192",
+                    },
+                    {"key": "FFmpegMetadata"},
+                ],
+            }
 
-    if is_verbose():
-        ydl_opts.pop("quiet")
-        ydl_opts["verbose"] = "True"
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.extract_info(song_url, download=True)
     if which("ffmpeg") is None:
