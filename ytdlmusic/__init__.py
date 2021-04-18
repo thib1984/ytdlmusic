@@ -38,12 +38,12 @@ def ytdlmusic():
     entry point from ytdlmusic
     """
     try:
+        if no_param():
+            print_no_param()
+            sys.exit(0)
         if not is_good_launch():
             print_bad_launch()
             sys.exit(1)
-
-        if no_param() == 1:
-            print_no_param()
         elif is_help():
             print_help()
         elif is_update():
