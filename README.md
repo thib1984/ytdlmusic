@@ -188,9 +188,9 @@ When an new version is released, it is compatible with the last Python version i
 
 ### Have you tested your package?
 
-Before a new version of ytdlmusic is published, it is checked in an [automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/release.yml), with the last versions of pip, youtube-dl and youtube-search-python, and also in the last versions of Python in the four branches 3.6 to 3.10.*
+Before a new version of ytdlmusic is published, it is checked in an [automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/publish.yml), with the last versions of pip, youtube-dl and youtube-search-python, and also in the last versions of Python in the four branches 3.6 to 3.10.*
 
-Each night, [another automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/test_published.yml) checks the actual package with last versions of dependencies and Pythons 3.6 to 3.10. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.*
+Each night, [another automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/test_published_release.yml) checks the actual package with last versions of dependencies and Pythons 3.6 to 3.10. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.*
 
 *_These tests are executed with GitHub Actions on an Ubuntu 18.04 image. Tests are also runned on macOS and Windows images (only very last Python version)._
 ## Thanks
