@@ -18,7 +18,11 @@ jobs:
       - name: install ffmpeg with token
         uses: FedericoCarboni/setup-ffmpeg@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}        
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: install md5sum for macos
+        if: ${{ matrix.os-version == 'macos-latest' }} 
+        run: |
+          brew install md5sha1sum                    
       - name: Setup python
         uses: actions/setup-python@v2
         with:
@@ -30,5 +34,5 @@ jobs:
       - name: install ytdlmusic
         run: |
           pip install .   
-      - name: Use local my-action
-        uses: ./.github/actions/my-action          
+      - name: Launch test
+        uses: ./.github/actions/test          
