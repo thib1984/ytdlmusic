@@ -156,7 +156,7 @@ def is_verbose():
         i
         for i in sys.argv
         if (
-            re.search("^-.*d.*", i)
+            re.search(FLAG_VERBOSE_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
@@ -170,7 +170,7 @@ def is_auto():
         i
         for i in sys.argv
         if (
-            re.search("^-.*a.*", i)
+            re.search(FLAG_AUTO_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
@@ -184,7 +184,7 @@ def is_ogg():
         i
         for i in sys.argv
         if (
-            re.search("^-.*f.*", i)
+            re.search(FLAG_OGG_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
@@ -198,7 +198,7 @@ def is_help():
         i
         for i in sys.argv
         if (
-            re.search("^-.*h.*", i)
+            re.search(FLAG_HELP_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
@@ -212,7 +212,7 @@ def is_version():
         i
         for i in sys.argv
         if (
-            re.search("^-.*v.*", i)
+            re.search(FLAG_VERBOSE_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
@@ -226,7 +226,7 @@ def is_update():
         i
         for i in sys.argv
         if (
-            re.search("^-.*u.*", i)
+            re.search(FLAG_UPDATE_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
@@ -240,7 +240,7 @@ def is_fullupdate():
         i
         for i in sys.argv
         if (
-            re.search("^-.*U.*", i)
+            re.search(FLAG_FULL_UPDATE_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
