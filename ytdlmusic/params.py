@@ -68,6 +68,7 @@ def check_order_param_and_flags():
     True if ok
     False otherwise
     """
+    one_param = False
     for i in range(1, len(sys.argv)):
         if not sys.argv[i].startswith("-"):
             one_param = True
