@@ -1,7 +1,6 @@
 ## Description
 
-With ytdlmusic, you can download directly from YouTube music files in MP3/OGG format from your terminal, without using your browser. 
-By default, it will match your request with a selection of 5 results with a brief summary to choose from or you can use auto mode to download automaticaly the first item.  
+``ytdlmusic`` is a command-line program to search and download music files from YouTube without use browser. 
 
 ## Information
 
