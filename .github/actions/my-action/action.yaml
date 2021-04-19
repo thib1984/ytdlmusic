@@ -32,19 +32,13 @@ runs:
     - name: test 'ytdlmusic --auto artist title'
       shell: bash
       run: |
-        ytdlmusic --auto "Rexlambo" "Stay With Me"
+        ytdlmusic -f --auto "Rexlambo" "Stay With Me"
         test -f rexlambo_stay_with_me.ogg          
     - name: test 'ytdlmusic artist title' interactive mode
       shell: bash
       run: |          
-        printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
+        printf '3\n' | ytdlmusic -f "Rexlambo" "Stay With Me"
         test -f rexlambo_stay_with_me_1.ogg
-    - name: checkout
-      uses: actions/checkout@v2 
-    - name: install ffmpeg with token
-      uses: FedericoCarboni/setup-ffmpeg@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
     - name: test 'ytdlmusic --auto artist title' with ffmpeg
       shell: bash
       run: |          

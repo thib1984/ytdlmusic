@@ -15,6 +15,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2 
+      - name: install ffmpeg with token
+        uses: FedericoCarboni/setup-ffmpeg@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}        
       - name: Setup python
         uses: actions/setup-python@v2
         with:
