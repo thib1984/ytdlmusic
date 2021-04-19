@@ -91,6 +91,8 @@ above_limujii.mp3 is ready
 search "awake nomyn" with youtube-search-python
 download https://www.youtube.com/watch?v=hZQDfGX8Cu4 with youtubedl
 awake_nomyn.mp3 is ready
+search "zhhezhahkzaj eyazttyzaeyz" with youtube-search-python
+No result, retry with other words
 search "avalon scandinavianz" with youtube-search-python
 download https://www.youtube.com/watch?v=B5CYUMs6-eo with youtubedl
 avalon_scandinavianz.mp3 is ready
@@ -100,6 +102,7 @@ with csv file
 ```
 limujii;above;no
 nomyn;awake;use
+eyazttyzaeyz;zhhezhahkzaj;inexistant
 scandinavianz;avalon;information
 ```
 ## Other commands
@@ -118,7 +121,7 @@ scandinavianz;avalon;information
 
 ## Other flags
 
-You can also add these flags to your commands :
+You can also add these flags to your commands (except help and version) :
 
 `` --auto `` or `` -a `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
 
