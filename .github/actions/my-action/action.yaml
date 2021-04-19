@@ -8,7 +8,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: test 'ytdlmusic'         
+    - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
+    - id: random-number-generator
+      shell: bash
+      run: echo "::set-output name=random-id::$(echo $RANDOM)"
+    - name: test 'ytdlmusic'   
+      shell: bash      
       run: |
         ytdlmusic
         ytdlmusic | grep "SYNOPSIS"
@@ -75,4 +81,4 @@ runs:
     - name: test repair full-update
       run: |               
         printf 'y\n' | ytdlmusic --full-update
-        ytdlmusic --auto "Rexlambo" "Stay With Me"
+        ytdlmusic --auto "Rexlambo" "Stay With Me"      
