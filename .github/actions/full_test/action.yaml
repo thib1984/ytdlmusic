@@ -1,5 +1,5 @@
 name: 'Full Test'
-description: 'Test for ytdlmusic'
+description: 'Full Test for ytdlmusic'
 inputs:
   who-to-greet:
     description: 'Who to greet'
