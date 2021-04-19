@@ -1,4 +1,4 @@
-name: 'Tesy'
+name: 'Full Test'
 description: 'Test for ytdlmusic'
 inputs:
   who-to-greet:
