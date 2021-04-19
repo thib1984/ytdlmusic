@@ -31,10 +31,7 @@ jobs:
         run: |
           pip install .
       - name: Launch minimal test
-        shell: bash
-        run: |          
-          printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
-          test -f rexlambo_stay_with_me.ogg
+        uses: ./.github/actions/full_test 
       - name: install ffmpeg with token
         uses: FedericoCarboni/setup-ffmpeg@v1
         with:
