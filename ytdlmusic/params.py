@@ -29,7 +29,7 @@ option_list_light = [
 BATCH_OPTION = "--batch="
 LONG_OPTION_FORMAT = "^--[A-Za-z]+"
 SHORT_OPTION_FORMAT = "^-[A-Za-z]+$"
-OPTION_FORMAT = "^-(-[A-Za-z]+|[A-Za-z]+)+$"
+OPTION_FORMAT = "^-(-[A-Za-z]+|[A-Za-z]+$)"
 
 
 def check_options():
