@@ -9,11 +9,13 @@ HELP_TXT = """\
         ytdlmusic
 
     SYNOPSIS
-        ytdlmusic is a command-line program to download directly music files from YouTube. By default, 
-        it will match your request with a selection of 5 results with a brief summary to choose from. 
-        The format used is MP3 if ffmpeg is installed, OGG otherwise.
-
+        ytdlmusic is a command-line program to search and download music files from YouTube without use browser. 
+    
     USAGE : ytdlmusic [OPTION]... [ARTIST] [SONG]
+
+        By default, it will match your request [ARTIST] + [SONG] with a selection of 5 results 
+        with a brief summary to choose from. The format used is MP3 if ffmpeg is installed, OGG otherwise.
+
 
         Options:
         -h, --help          : print this help text and exit
