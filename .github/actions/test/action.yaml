@@ -1,0 +1,93 @@
+name: 'Full test'
+description: 'Full test for ytdlmusic'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
+    - id: random-number-generator
+      shell: bash
+      run: echo "::set-output name=random-id::$(echo $RANDOM)"
+    - name: test 'ytdlmusic'   
+      shell: bash      
+      run: |
+        ytdlmusic
+        ytdlmusic | grep "SYNOPSIS"
+        ytdlmusic | grep "ytdlmusic version             :"                   
+    - name: test 'ytdlmusic --version'
+      shell: bash 
+      run: |
+        ytdlmusic --version
+        ytdlmusic --version | grep "ytdlmusic version             :"
+    - name: test 'ytdlmusic --help'
+      shell: bash
+      run: |
+        ytdlmusic --help
+        ytdlmusic --help | grep "SYNOPSIS"  
+    - name: test 'ytdlmusic --auto artist title'
+      shell: bash
+      run: |
+        ytdlmusic -f --auto "Rexlambo" "Stay With Me"
+        test -f rexlambo_stay_with_me.ogg          
+    - name: test 'ytdlmusic artist title' interactive mode
+      shell: bash
+      run: |          
+        printf '3\n' | ytdlmusic -f "Rexlambo" "Stay With Me"
+        test -f rexlambo_stay_with_me_1.ogg
+    - name: test 'ytdlmusic --auto artist title' with ffmpeg
+      shell: bash
+      run: |          
+        ytdlmusic --auto "Rexlambo" "Stay With Me"
+        test -f rexlambo_stay_with_me.mp3                    
+    - name: test downloaded files
+      shell: bash
+      run: |          
+        md5sum rexlambo_stay_with_me.ogg
+        md5sum rexlambo_stay_with_me_1.ogg
+        echo "les md5 doivent etre differents"
+        test "$(md5sum rexlambo_stay_with_me.ogg)" != "$(md5sum rexlambo_stay_with_me_1.ogg)"
+    - name: test 'ytdlmusic --auto artist title' with force ogg
+      shell: bash
+      run: |          
+        ytdlmusic --auto --ogg "Rexlambo" "Stay With Me"
+        test -f rexlambo_stay_with_me_2.ogg       
+    - name: test batch
+      shell: bash
+      run: |
+        echo "launch batch and verify three downloads"
+        ytdlmusic --auto --batch="./test/test.csv"%True%";"%2%1 | grep "is ready" | wc -l | grep 3
+        test -f above_limujii.mp3
+        test -f awake_nomyn.mp3
+        test -f avalon_scandinavianz.mp3
+    - name: test bad launch
+      shell: bash
+      run: |          
+        (ytdlmusic --tetet || echo "good exit code") | grep "good exit code"
+        (ytdlmusic --tetet || echo "good exit code") | grep "Not recognized option"
+    - name: test short params
+      shell: bash
+      run: |          
+        ytdlmusic -fyd "Rexlambo" "Stay With Me"
+        test -f rexlambo_stay_with_me_3.ogg  
+    - name: test bad launch short params
+      shell: bash
+      run: |          
+        (ytdlmusic -dvUz || echo "good exit code") | grep "good exit code"
+        (ytdlmusic -dvUz || echo "good exit code") | grep "Not recognized option"      
+    - name: test missing dependency error
+      shell: bash
+      run: |          
+        pip uninstall --yes youtube-dl
+        ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
+        (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
+        (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "Try to upgrade with 'ytdlmusic update'"
+    - name: test repair full-update
+      shell: bash
+      run: |               
+        printf 'y\n' | ytdlmusic --full-update
+        ytdlmusic --auto "Rexlambo" "Stay With Me"      
