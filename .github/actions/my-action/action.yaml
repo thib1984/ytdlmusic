@@ -40,7 +40,6 @@ runs:
         printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
         test -f rexlambo_stay_with_me_1.ogg
     - name: install ffmpeg with token
-      shell: bash
       uses: FedericoCarboni/setup-ffmpeg@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
