@@ -8,8 +8,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    -name: "minimal use case"
-    shell: bash
-    run: |          
-      printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
-      test -f rexlambo_stay_with_me.ogg    
+    - name: "minimal use case"
+      shell: bash
+      run: |          
+        printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
+        test -f rexlambo_stay_with_me.ogg    
