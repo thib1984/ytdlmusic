@@ -14,11 +14,12 @@ jobs:
     name: test package on ${{ matrix.os-version }} with ${{ matrix.python-version }}
     steps:
       - name: checkout
-        uses: actions/checkout@v2 
-      - name: install ffmpeg with token
-        uses: FedericoCarboni/setup-ffmpeg@v1
+        uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          python-version: ${{ matrix.python-version }}
+          architecture: x64           
       - name: install md5sum for macos
         if: ${{ matrix.os-version == 'macos-latest' }} 
         run: |
@@ -29,15 +30,14 @@ jobs:
       - name: install ytdlmusic
         run: |
           pip install .
-      - name: minimal test
+      - name: Launch minimal test
         shell: bash
         run: |          
           printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me.ogg
-      - name: Setup python
-        uses: actions/setup-python@v2
+      - name: install ffmpeg with token
+        uses: FedericoCarboni/setup-ffmpeg@v1
         with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64  
-      - name: Launch test
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Launch full test
         uses: ./.github/actions/full_test          
