@@ -73,7 +73,7 @@ def check_order_param_and_flags():
         if not sys.argv[i].startswith("-"):
             one_param = True
         if one_param and sys.argv[i].startswith("-"):
-            print("the flags must be set before [AUTHOR] and [SONG]")
+            print("the flags must be set before [ARTIST] and [SONG]")
             return False
     return True
 
@@ -116,8 +116,8 @@ def check_classic_params():
     if is_third_param():
         print("Max only 2 classic params")
         return False
-    if not is_author() or not is_song:
-        print("Missing author")
+    if not is_artist() or not is_song:
+        print("Missing artist")
         return False
     if not is_song:
         print("Missing song")
@@ -260,11 +260,11 @@ def is_third_param():
     return not param_third() is None
 
 
-def is_author():
+def is_artist():
     """
-    Return the author from sys.argv
+    Return the artist from sys.argv
     """
-    return not param_author() is None
+    return not param_artist() is None
 
 
 def is_song():
@@ -274,9 +274,9 @@ def is_song():
     return not param_song() is None
 
 
-def param_author():
+def param_artist():
     """
-    Return true if the author exists from sys.argv
+    Return true if the artist exists from sys.argv
     """
     j = 0
     for i in sys.argv:

@@ -2,16 +2,6 @@
 
 ``ytdlmusic`` is a command-line program to search and download music files from YouTube without use browser. 
 
-```
-    USAGE : ytdlmusic [OPTION]... [ARTIST] [SONG]
-
-        By default, ytdlmusic searches Youtube for "[ARTIST] [SONG]" and displays 
-        the top five result and their  description. The selected result is downloaded 
-        in your current directory. The format used is MP3 if  ffmpeg is installed, 
-        OGG otherwise. The filename is [ARTIST]_[SONG].mp3/ogg to lowercase, and special 
-        characters replaced by '_'. 
-```
-
 ## Information
 
 This package is directly available from [pypi](https://pypi.org/project/ytdlmusic/)
@@ -35,20 +25,11 @@ This package use two very important dependencies :
 
 *_Use pip instead of pip3, if pip3 does not exist_
 
-## Upgrade
-
-`` ytdlmusic --update`` upgrades ytdlmusic
-
-`` ytdlmusic --full-update`` upgrades ytdlmusic, youtube-dl and youtube-search-python
-
-*_Use pip instead of pip3, if pip3 does not exist_
-
-
 ## Use
 
-``ytdlmusic author song``
+``ytdlmusic [ARTIST] [SONG]``
 
-searches on YouTube with the given params (author and song) and returns a 5 items result list from which to chose which item to download, as a mp3/OGG file in the current directory
+searches Youtube for "\[ARTIST\] \[SONG\]" and displays  the top five result and their  description. The selected result is downloaded  in your current directory. The format used is MP3 if  ffmpeg is installed, OGG otherwise. The filename is \[ARTIST\]\_\[SONG\].mp3/ogg to lowercase, and special  characters replaced by '_'. 
 
 Example:
 ```
@@ -103,7 +84,7 @@ avalon_scandinavianz.mp3 is ready
 
 with csv file 
 ```
-song_column;author_column;unused column
+song_column;artist_column;unused column
 limujii;above;no
 nomyn;awake;use
 eyazttyzaeyz;zhhezhahkzaj;inexistant

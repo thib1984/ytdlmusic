@@ -24,9 +24,9 @@ from ytdlmusic.params import (
     is_version,
     is_batch,
     param_batch,
-    is_author,
+    is_artist,
     is_song,
-    param_author,
+    param_artist,
     param_song,
     check_flags,
     no_param,
@@ -63,7 +63,7 @@ def ytdlmusic():
             if not check_classic_params():
                 print_bad_launch()
                 sys.exit(1)
-            job(param_author(), param_song())
+            job(param_artist(), param_song())
         sys.exit(0)
     except Exception as err:
         print_error(err)
