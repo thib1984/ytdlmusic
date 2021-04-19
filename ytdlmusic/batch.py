@@ -5,8 +5,9 @@ ytdlmusic batch
 import csv
 import sys
 from ytdlmusic.ytdlmusic import job
-from ytdlmusic.print import print_error_batch, print_debug
+from ytdlmusic.print import print_error_batch
 from ytdlmusic.params import is_verbose
+from ytdlmusic.log import print_debug
 
 
 def launch_batch(param):

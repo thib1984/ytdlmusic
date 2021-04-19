@@ -7,9 +7,9 @@ import os
 import re
 import pathlib
 from shutil import which
-from ytdlmusic.print import print_debug
+from ytdlmusic.log import print_debug
 from ytdlmusic.params import is_ogg
-from ytdlmusic.const import NOT_FOUND, NOT_INSTALLED
+from ytdlmusic.const import NOT_FOUND
 
 
 def determine_filename(artist, song):

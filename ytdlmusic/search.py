@@ -1,7 +1,12 @@
 """
 search utils scripts
 """
-from ytdlmusic.print import print_debug
+from ytdlmusic.log import print_debug
+
+try:
+    from youtubesearchpython import VideosSearch
+except ImportError:
+    print_debug("youtubesearchpython import problem")
 
 
 def search(artist, song):
@@ -10,7 +15,6 @@ def search(artist, song):
     return a json with 5 entries of YouTube results
     param : the artist and the song
     """
-    from youtubesearchpython import VideosSearch
 
     print_debug("artist : " + artist)
     print_debug("song : " + song)

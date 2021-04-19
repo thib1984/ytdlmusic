@@ -146,11 +146,3 @@ def print_try_update(package, prog):
     print try update message
     """
     print(replace_all(TRY_UPDATE, {"$1": package, "$2": prog}))
-
-
-def print_debug(message):
-    """
-    print "[debug] " + message only if --verbose
-    """
-    if is_verbose():
-        print("[debug] " + message)

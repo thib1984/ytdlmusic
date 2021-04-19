@@ -5,7 +5,12 @@ download scripts
 from ytdlmusic.params import is_verbose, is_ogg
 from ytdlmusic.file import extension
 from ytdlmusic.file import name_without_extension, is_ffmpeg_installed
-from ytdlmusic.print import print_debug
+from ytdlmusic.log import print_debug
+
+try:
+    import youtube_dl
+except ImportError:
+    print_debug("youtubde_dl import problem")
 
 
 def download_song(song_url, filename):
@@ -14,7 +19,6 @@ def download_song(song_url, filename):
     in filename
     from url song_url
     """
-    import youtube_dl
 
     print("download " + song_url + " with youtubedl")
 

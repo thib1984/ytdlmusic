@@ -8,7 +8,6 @@ import subprocess
 from ytdlmusic.print import (
     print_error_update,
     print_try_update,
-    print_debug,
 )
 from ytdlmusic.const import (
     UPDATE_YN,
@@ -16,6 +15,7 @@ from ytdlmusic.const import (
 )
 from ytdlmusic.params import is_verbose, is_auto
 from ytdlmusic.file import is_binary_installed
+from ytdlmusic.log import print_debug
 
 
 def update():
