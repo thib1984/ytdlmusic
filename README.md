@@ -41,15 +41,9 @@ This package use two very important dependencies :
 
 `` ytdlmusic --full-update`` upgrades ytdlmusic, youtube-dl and youtube-search-python
 
-`` pip3 install --upgrade ytdlmusic``* upgrades ytdlmusic directly with pip
-
-`` pip3 install -upgrade ytdlmusic:x.x.x``* upgrades/downgrades ytdlmusic to a specified version with pip
-
-`` pip3 install --upgrade youtube-dl``* upgrades dependency youtube-dl
-
-`` pip3 install --upgrade youtube-search-python``* upgrades dependency youtube-search-python
-
 *_Use pip instead of pip3, if pip3 does not exist_
+
+
 ## Use
 
 ``ytdlmusic author song``
