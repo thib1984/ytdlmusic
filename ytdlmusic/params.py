@@ -6,17 +6,9 @@ import sys
 import re
 
 
-option_list_alone = [
+option_list = [
     "--help",
     "--version",
-]
-
-option_list_alone_light = [
-    "h",
-    "v",
-]
-
-option_list_others = [
     "--update",
     "--full-update",
     "--auto",
@@ -24,7 +16,9 @@ option_list_others = [
     "--ogg",
 ]
 
-option_list_others_light = [
+option_list_light = [
+    "h",
+    "v",
     "u",
     "U",
     "a",
@@ -33,68 +27,66 @@ option_list_others_light = [
 ]
 
 BATCH_OPTION = "--batch="
+LONG_OPTION_FORMAT = "^--[A-Za-z]+"
+SHORT_OPTION_FORMAT = "^-[A-Za-z]+$"
+OPTION_FORMAT = "^-(-[A-Za-z]+|[A-Za-z]+)+$"
 
 
-def is_good_launch():
+def check_options():
     """
     is_launch_ok for ytdlmusic
     """
-    if no_param():
-        return True
+    # option not recognized
+    for i in sys.argv:
+        if not check_param(i):
+            print(i)
+            return False
+    return True
+
+
+def check_param(sysargv):
+    """
+    test_param
+    """
+    if sysargv.startswith("-") and not re.search(
+        OPTION_FORMAT, sysargv
+    ):
+        return bad_options(sysargv)
+    if (
+        re.search(LONG_OPTION_FORMAT, sysargv)
+        and sysargv not in option_list
+        and not sysargv.startswith(BATCH_OPTION)
+    ):
+        return bad_options(sysargv)
+    if re.search(SHORT_OPTION_FORMAT, sysargv):
+        for k in range(1, len(sysargv)):
+            element = sysargv[k]
+            if element not in option_list_light:
+                return bad_options(sysargv)
+    return True
+
+
+def bad_options(i):
+    """
+    return false and print message
+    """
+    print("Not recognized option : " + i)
+    return False
+
+
+def check_classic_params():
+    """
+    check the classic params for classic use
+    """
     # too classic parameters
     if is_third_param():
         print("Max only 2 classic params")
         return False
-    # option not recognized
-    for i in sys.argv:
-        if (
-            i.startswith("--")
-            and not i.startswith(BATCH_OPTION)
-            and i not in option_list_alone
-            and i not in option_list_others
-        ):
-            print("Not recognized param option : " + i)
-            return False
-        if i == "-":
-            print("Not recognized param option : " + i)
-            return False
-        if re.search("^-[A-Za-z]+$", i):
-            if len(i) == 1:
-                print("Option '-' is not valid")
-                return False
-            for k in range(1, len(i)):
-                element = i[k]
-                if (
-                    element not in option_list_alone_light
-                    and element not in option_list_others_light
-                ):
-                    print("Option '-" + element + " is not valid")
-                    return False
-    # option not alone
-    if (had_alone_option()) and (
-        number_options() > 1 or (is_author() or is_song())
-    ):
-        print(
-            "Options "
-            + str(option_list_alone)
-            + " or "
-            + str(option_list_alone_light)
-            + " will be given alone"
-        )
+    if not is_author() or not is_song:
+        print("Missing author")
         return False
-    # batch and clasic param
-    if is_batch() and (is_author() or is_song()):
-        print("For --batch option do not give classic params")
-        return False
-    if (
-        not is_batch()
-        and not is_version()
-        and not is_help()
-        and not is_fullupdate()
-        and not is_update()
-        and (not is_author() or not is_song())
-    ):
-        print("For param options given you shoud give classic params")
+    if not is_song:
+        print("Missing song")
         return False
     return True
 
@@ -115,7 +107,7 @@ def number_options():
     j = 0
     for element in range(1, len(sys.argv)):
         i = sys.argv[element]
-        if re.search("^-[A-Za-z]+$", i):
+        if re.search(SHORT_OPTION_FORMAT, i):
             j = j + len(i) - 1
         else:
             j = j + 1
@@ -129,7 +121,10 @@ def is_verbose():
     return "--verbose" in sys.argv or [
         i
         for i in sys.argv
-        if (re.search("^-.*d.*", i) and re.search("^-[A-Za-z]+$", i))
+        if (
+            re.search("^-.*d.*", i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
     ]
 
 
@@ -140,7 +135,10 @@ def is_auto():
     return "--auto" in sys.argv or [
         i
         for i in sys.argv
-        if (re.search("^-.*a.*", i) and re.search("^-[A-Za-z]+$", i))
+        if (
+            re.search("^-.*a.*", i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
     ]
 
 
@@ -151,7 +149,10 @@ def is_ogg():
     return "--ogg" in sys.argv or [
         i
         for i in sys.argv
-        if (re.search("^-.*f.*", i) and re.search("^-[A-Za-z]+$", i))
+        if (
+            re.search("^-.*f.*", i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
     ]
 
 
@@ -162,7 +163,10 @@ def is_help():
     return "--help" in sys.argv or [
         i
         for i in sys.argv
-        if (re.search("^-.*h.*", i) and re.search("^-[A-Za-z]+$", i))
+        if (
+            re.search("^-.*h.*", i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
     ]
 
 
@@ -173,7 +177,10 @@ def is_version():
     return "--version" in sys.argv or [
         i
         for i in sys.argv
-        if (re.search("^-.*v.*", i) and re.search("^-[A-Za-z]+$", i))
+        if (
+            re.search("^-.*v.*", i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
     ]
 
 
@@ -184,7 +191,10 @@ def is_update():
     return "--update" in sys.argv or [
         i
         for i in sys.argv
-        if (re.search("^-.*u.*", i) and re.search("^-[A-Za-z]+$", i))
+        if (
+            re.search("^-.*u.*", i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
     ]
 
 
@@ -195,7 +205,10 @@ def is_fullupdate():
     return "--full-update" in sys.argv or [
         i
         for i in sys.argv
-        if (re.search("^-.*U.*", i) and re.search("^-[A-Za-z]+$", i))
+        if (
+            re.search("^-.*U.*", i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
     ]
 
 
@@ -274,18 +287,3 @@ def param_batch():
         if i.startswith(BATCH_OPTION):
             return str.replace(i, BATCH_OPTION, "", 1).split("%")
     return ""
-
-
-def had_alone_option():
-    """
-    Return True if one or more param should be alone
-    """
-    for i in sys.argv:
-        if i in option_list_alone:
-            return True
-        if re.search("^-[A-Za-z]+$", i):
-            for k in range(1, len(i)):
-                element = i[k]
-                if element in option_list_alone_light:
-                    return True
-    return False

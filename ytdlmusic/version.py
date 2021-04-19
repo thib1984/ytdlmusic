@@ -4,7 +4,6 @@ version utils scripts
 
 
 import sys
-from shutil import which
 import platform
 import pkg_resources
 from ytdlmusic.const import NOT_INSTALLED, NOT_FOUND

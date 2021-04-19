@@ -28,8 +28,9 @@ from ytdlmusic.params import (
     is_song,
     param_author,
     param_song,
-    is_good_launch,
+    check_options,
     no_param,
+    check_classic_params,
 )
 
 
@@ -41,7 +42,7 @@ def ytdlmusic():
         if no_param():
             print_no_param()
             sys.exit(0)
-        if not is_good_launch():
+        if not check_options():
             print_bad_launch()
             sys.exit(1)
         elif is_help():
@@ -57,6 +58,9 @@ def ytdlmusic():
         elif is_batch():
             launch_batch(param_batch())
         else:
+            if not check_classic_params():
+                print_bad_launch()
+                sys.exit(1)
             job(param_author(), param_song())
         sys.exit(0)
     except Exception as err:
