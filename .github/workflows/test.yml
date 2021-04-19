@@ -1,4 +1,4 @@
-name: test
+name: test on demand
 
 on:
   workflow_dispatch:
@@ -43,7 +43,7 @@ jobs:
           pip install .
       #test 1
       - name: Launch minimal test
-        uses: ./.github/actions/full_test 
+        uses: ./.github/actions/minimal_test 
       #configuration
       - name: install ffmpeg with token
         uses: FedericoCarboni/setup-ffmpeg@v1
