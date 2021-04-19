@@ -45,6 +45,7 @@ runs:
         ytdlmusic --auto "Rexlambo" "Stay With Me"
         test -f rexlambo_stay_with_me.mp3                
     - name: install md5sum for macos
+      shell: bash
       if: ${{ matrix.os-version == 'macos-latest' }} 
       run: |
         brew install md5sha1sum       
