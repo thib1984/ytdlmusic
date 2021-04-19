@@ -1,4 +1,4 @@
-name: test full on demand
+name: test full
 
 on:
   workflow_dispatch:

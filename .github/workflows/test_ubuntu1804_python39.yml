@@ -1,4 +1,4 @@
-name: test ubuntu1804 python39 on demand
+name: test ubuntu1804 python39
 
 on:
   workflow_dispatch:
