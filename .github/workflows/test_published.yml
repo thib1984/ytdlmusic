@@ -90,15 +90,15 @@ jobs:
       - name: test bad launch
         run: |          
           (ytdlmusic --tetet || echo "good exit code") | grep "good exit code"
-          ytdlmusic --rttrt | grep "Not recognized param option"
+          ytdlmusic --rttrt | grep "Not recognized option"
       - name: test short params
         run: |          
           ytdlmusic -fad "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me_3.ogg  
       - name: test bad launch short params
         run: |          
-          (ytdlmusic -dvU || echo "good exit code") | grep "good exit code"
-          ytdlmusic -dvU | grep "will be given alone"         
+          (ytdlmusic -dvUz || echo "good exit code") | grep "good exit code"
+          ytdlmusic -dvUz | grep "Not recognized option"      
       - name: test missing dependency error
         run: |          
           pip uninstall --yes youtube-dl
@@ -108,6 +108,6 @@ jobs:
       - name: test repair full-update
         run: |               
           printf 'y\n' | ytdlmusic --full-update
-          ytdlmusic --auto "Rexlambo" "Stay With Me"   
+          ytdlmusic --auto "Rexlambo" "Stay With Me" 
 
 

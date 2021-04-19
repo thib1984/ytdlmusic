@@ -39,7 +39,6 @@ def check_options():
     # option not recognized
     for i in sys.argv:
         if not check_param(i):
-            print(i)
             return False
     return True
 
