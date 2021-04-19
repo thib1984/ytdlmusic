@@ -2,12 +2,13 @@
 
 ``ytdlmusic`` is a command-line program to search and download music files from YouTube without use browser. 
 
-```    
+```
     USAGE : ytdlmusic [OPTION]... [ARTIST] [SONG]
 
-        By default, ytdlmusic searches Youtube for "[ARTIST] [SONG]" and displays the top five result and their 
-        description. The selected result is downloaded in your current directory. The format used is MP3 if 
-        ffmpeg is installed, OGG otherwise. The filename is [ARTIST]_[SONG].mp3/ogg to lowercase, and special 
+        By default, ytdlmusic searches Youtube for "[ARTIST] [SONG]" and displays 
+        the top five result and their  description. The selected result is downloaded 
+        in your current directory. The format used is MP3 if  ffmpeg is installed, 
+        OGG otherwise. The filename is [ARTIST]_[SONG].mp3/ogg to lowercase, and special 
         characters replaced by '_'. 
 ```
 
