@@ -5,7 +5,7 @@ ytdlmusic batch
 import csv
 import sys
 from ytdlmusic.ytdlmusic import job
-from ytdlmusic.print import print_error_batch
+from ytdlmusic.print import print_error_batch, print_debug
 from ytdlmusic.params import is_verbose
 
 
@@ -36,12 +36,7 @@ def batch(
             next(reader, None)
         for row in reader:
             if is_verbose():
-                print(
-                    "[debug] ligne numero "
-                    + str(reader.line_num)
-                    + " en cours : "
-                    + str(row)
+                print_debug(
+                    str(reader.line_num) + " en cours : " + str(row)
                 )
-            artist = row[artist_column - 1]
-            song = row[song_column - 1]
-            job(artist, song)
+            job(row[artist_column - 1], row[song_column - 1])

@@ -19,11 +19,11 @@ def job(artist, song):
         results = search(artist, song)
         answer = choice(results)
         if answer != 0:
-            file_name = determine_filename(artist, song)
-            u_choice = results.result()["result"][answer - 1]
+            filename = determine_filename(artist, song)
+            item = results.result()["result"][answer - 1]
             download_song(
-                u_choice["link"],
-                file_name,
+                item["link"],
+                filename,
             )
     except Exception as err:
         print_error(err)

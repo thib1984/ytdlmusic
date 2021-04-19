@@ -5,7 +5,6 @@ print utils scripts
 import traceback
 
 from ytdlmusic.version import (
-    binary_path,
     python_version,
     pip_package_version,
     pip_package_version_of_double,
@@ -25,6 +24,7 @@ from ytdlmusic.const import (
     PLATFORM_OS,
     DEBUG_HEADER,
 )
+from ytdlmusic.file import binary_path
 from ytdlmusic.params import is_verbose
 
 
@@ -146,3 +146,11 @@ def print_try_update(package, prog):
     print try update message
     """
     print(replace_all(TRY_UPDATE, {"$1": package, "$2": prog}))
+
+
+def print_debug(message):
+    """
+    print "[debug] " + message only if --verbose
+    """
+    if is_verbose():
+        print("[debug] " + message)

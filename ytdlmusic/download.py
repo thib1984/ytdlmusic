@@ -2,55 +2,50 @@
 download scripts
 """
 
-from shutil import which
 from ytdlmusic.params import is_verbose, is_ogg
+from ytdlmusic.file import extension
+from ytdlmusic.file import name_without_extension, is_ffmpeg_installed
+from ytdlmusic.print import print_debug
 
 
-def download_song(song_url, song_title):
+def download_song(song_url, filename):
     """
     download song with youtube-dl
-    in song_title.mp3/ogg
+    in filename
     from url song_url
     """
     import youtube_dl
 
     print("download " + song_url + " with youtubedl")
-    if which("ffmpeg") is None or is_ogg():
-        ext = ".ogg"
-        outtmpl = song_title + ".ogg"
-        ydl_opts = {
-            "quiet": True,
-            "no_warnings": True,
-            "format": "bestaudio/best",
-            "outtmpl": outtmpl,
-        }
-    else:
-        ext = ".mp3"
-        outtmpl = song_title + ".%(ext)s"
-        ydl_opts = {
-            "quiet": True,
-            "no_warnings": True,
-            "format": "bestaudio/best",
-            "outtmpl": outtmpl,
-            "postprocessors": [
-                {
-                    "key": "FFmpegExtractAudio",
-                    "preferredcodec": "mp3",
-                    "preferredquality": "192",
-                },
-                {"key": "FFmpegMetadata"},
-            ],
-        }
+
+    opts = {
+        "quiet": True,
+        "no_warnings": True,
+        "format": "bestaudio/best",
+        "outtmpl": name_without_extension(filename) + ".%(ext)s",
+        "postprocessors": [
+            {
+                "key": "FFmpegExtractAudio",
+                "preferredcodec": "mp3",
+                "preferredquality": "192",
+            },
+            {"key": "FFmpegMetadata"},
+        ],
+    }
+
+    if extension(filename) == ".ogg":
+        opts["outtmpl"] = filename
+        opts.pop("postprocessors")
 
     if is_verbose():
-        print("[debug] debug youtube-dl : ")
-        ydl_opts.pop("quiet")
-        ydl_opts.pop("no_warnings")
-        ydl_opts["verbose"] = "True"
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        opts.pop("quiet")
+        opts.pop("no_warnings")
+        opts["verbose"] = "True"
+        print_debug("debug youtube-dl : ")
+    with youtube_dl.YoutubeDL(opts) as ydl:
         ydl.extract_info(song_url, download=True)
-    if which("ffmpeg") is None and not is_ogg():
+    if is_ffmpeg_installed() is None and not is_ogg():
         print(
-            "Warning : ogg was used. If you want MP3 format, install ffmpeg fo your system."
+            "[warning] ogg was used. If you want MP3 format, install ffmpeg."
         )
-    print(song_title + ext + " is ready")
+    print(filename + " is ready")

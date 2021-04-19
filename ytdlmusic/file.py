@@ -5,8 +5,11 @@ file utils scripts
 
 import os
 import re
+import pathlib
 from shutil import which
-from ytdlmusic.params import is_ogg, is_verbose
+from ytdlmusic.print import print_debug
+from ytdlmusic.params import is_ogg
+from ytdlmusic.const import NOT_FOUND, NOT_INSTALLED
 
 
 def determine_filename(artist, song):
@@ -14,30 +17,66 @@ def determine_filename(artist, song):
     correct filename to escape special characters with '_'
     and force lower case from artist and song
     """
-    file_name = re.sub(
-        "(\\W+)", "_", artist.lower() + "_" + song.lower()
-    )
-    if which("ffmpeg") is None or is_ogg():
+    if is_ogg() or not is_ffmpeg_installed():
         ext = ".ogg"
     else:
         ext = ".mp3"
-    if is_verbose():
-        print("[debug] extension used : " + ext)
-    if os.path.exists(file_name + ext):
+    print_debug("extension used : " + ext)
+    filename = (
+        re.sub("(\\W+)", "_", artist + "_" + song).lower() + ext
+    )
+    print_debug("filename found " + filename)
+    if os.path.exists(filename):
+        # loop to find non existent filename
+        print_debug(filename + " already exists")
         i = 0
         while True:
-            i = i + 1
-            file_name_tmp = file_name + "_" + str(i)
-            if not os.path.exists(file_name_tmp + ext):
-                file_name = file_name_tmp
+            i += 1
+            tmp = (
+                name_without_extension(filename) + "_" + str(i) + ext
+            )
+            if not os.path.exists(tmp):
+                filename = tmp
                 break
-            if is_verbose():
-                print(
-                    "[debug] "
-                    + file_name_tmp
-                    + ext
-                    + " : already exists"
-                )
-    if is_verbose():
-        print("[debug] " + file_name + ext + " will be used")
-    return file_name
+            print_debug(tmp + " already exists")
+    print_debug(filename + " will be used as filename")
+    return filename
+
+
+def name_without_extension(filename):
+    """
+    return the extension of filename with point
+    """
+    return pathlib.Path(filename).stem
+
+
+def extension(filename):
+    """
+    return the filename without the extension
+    """
+    return pathlib.Path(filename).suffix
+
+
+def binary_path(binary):
+    """
+    obtain 'binary' patha
+    """
+    if which(binary) is None:
+        path = NOT_FOUND
+    else:
+        path = which(binary)
+    return path
+
+
+def is_ffmpeg_installed():
+    """
+    test if ffmpeg is installed
+    """
+    return is_binary_installed("ffmpeg")
+
+
+def is_binary_installed(binary):
+    """
+    test if binary is installed
+    """
+    return which(binary) is not None

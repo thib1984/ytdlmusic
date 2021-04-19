@@ -32,17 +32,6 @@ def platform_version():
     return platformversion
 
 
-def binary_path(binary):
-    """
-    obtain 'binary' patha
-    """
-    if which(binary) is None:
-        path = NOT_FOUND
-    else:
-        path = which(binary)
-    return path
-
-
 def pip_package_version(package):
     """
     obtain pip 'package' version

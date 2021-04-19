@@ -13,16 +13,18 @@ HELP_TXT = """\
     
     USAGE : ytdlmusic [OPTION]... [ARTIST] [SONG]
 
-        By default, it will match your request [ARTIST] + [SONG] with a selection of 5 results 
-        with a brief summary to choose from. The format used is MP3 if ffmpeg is installed, OGG otherwise.
-
+        By default, it will execute your request [ARTIST] + [SONG] in a Youtube search and return the five first 
+        results, with a brief summary to choose one from. The selected result is downloaded in your current directory.
+        The format used is MP3 if ffmpeg is installed, OGG otherwise. The filename is [ARTIST]_[SONG].mp3/ogg to
+        lowercase, and special characters replaced by '_'. If the file already exists before, a suffix number 
+        is added to the filename, to avoid it.
 
         Options:
         -h, --help          : print this help text and exit
         -v, --version       : print program version and exit                     
         -u, --update        : upgrade this program to latest version and exit
         -U, --full-update   : upgrade this program and the dependencies to latest version and exit
-        -a, --auto          : force the default choices 
+        -a, --auto          : use automatic default choices 
         -f, --ogg           : use ogg extension even if ffmpeg is installed
         -d, --verbose       : give more output
         --batch=<path>%<bool_h>%<s>%<art_col>%<song_col>  
@@ -92,3 +94,5 @@ UPDATE_YN = "Update the ytdlmusic package [Y/n] ? "
 TRY_UPDATE = "Try to update $1 with $2"
 
 DEBUG_HEADER = "[debug] stack trace :"
+
+CHOICE_RESULT_QUESTION = "Which (1-$1, 0 to exit, 1 by default) ? "

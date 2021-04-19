@@ -1,7 +1,7 @@
 """
 search utils scripts
 """
-from ytdlmusic.params import is_verbose
+from ytdlmusic.print import print_debug
 
 
 def search(artist, song):
@@ -12,13 +12,11 @@ def search(artist, song):
     """
     from youtubesearchpython import VideosSearch
 
-    if is_verbose():
-        print("[debug] artist : " + artist)
-        print("[debug] song : " + song)
+    print_debug("artist : " + artist)
+    print_debug("song : " + song)
     search_pattern = artist + " " + song
     print(
         'search "' + search_pattern + '" with youtube-search-python'
     )
-    results_search = VideosSearch(search_pattern, limit=5)
 
-    return results_search
+    return VideosSearch(search_pattern, limit=5)

@@ -62,7 +62,3 @@ def ytdlmusic():
     except Exception as err:
         print_error(err)
         sys.exit(1)
-
-
-if __name__ == "__main__":
-    ytdlmusic()
