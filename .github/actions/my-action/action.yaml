@@ -3,4 +3,6 @@ description: 'Greet someone'
 runs:
   using: "composite"
   steps:
-    - run: echo Hello world
+    - name: test
+    - run: |
+      echo "hello world"   
