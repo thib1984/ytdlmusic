@@ -28,9 +28,10 @@ from ytdlmusic.params import (
     is_song,
     param_author,
     param_song,
-    check_options,
+    check_flags,
     no_param,
     check_classic_params,
+    check_order_param_and_flags,
 )
 
 
@@ -42,7 +43,7 @@ def ytdlmusic():
         if no_param():
             print_no_param()
             sys.exit(0)
-        if not check_options():
+        if not check_flags() or not check_order_param_and_flags():
             print_bad_launch()
             sys.exit(1)
         elif is_help():
@@ -57,6 +58,7 @@ def ytdlmusic():
             print_licence()
         elif is_batch():
             launch_batch(param_batch())
+        # classic use case
         else:
             if not check_classic_params():
                 print_bad_launch()

@@ -2,6 +2,15 @@
 
 ``ytdlmusic`` is a command-line program to search and download music files from YouTube without use browser. 
 
+```    
+    USAGE : ytdlmusic [OPTION]... [ARTIST] [SONG]
+
+        By default, ytdlmusic searches Youtube for "[ARTIST] [SONG]" and displays the top five result and their 
+        description. The selected result is downloaded in your current directory. The format used is MP3 if 
+        ffmpeg is installed, OGG otherwise. The filename is [ARTIST]_[SONG].mp3/ogg to lowercase, and special 
+        characters replaced by '_'. 
+```
+
 ## Information
 
 This package is directly available from [pypi](https://pypi.org/project/ytdlmusic/)
@@ -83,7 +92,7 @@ You can use a beta command to loop in a csv file, and download all MP3/OGG files
 Example :
 
 ```
-ytdlmusic -a --batch="./test.csv"%False%";"%2%1
+ytdlmusic -a --batch="./test.csv"%True%";"%2%1
 search "above limujii" with youtube-search-python
 download https://www.youtube.com/watch?v=cUWU_T9KBk8 with youtubedl
 above_limujii.mp3 is ready
@@ -99,6 +108,7 @@ avalon_scandinavianz.mp3 is ready
 
 with csv file 
 ```
+song_column;author_column;unused column
 limujii;above;no
 nomyn;awake;use
 eyazttyzaeyz;zhhezhahkzaj;inexistant
@@ -122,7 +132,7 @@ scandinavianz;avalon;information
 
 You can also add these flags to your commands (except help and version) :
 
-`` --auto `` or `` -a `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
+`` --auto `` or `` -y `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
 
 `` --verbose `` or `` -d `` : increase verbosity of the logs.
 

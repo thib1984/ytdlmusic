@@ -13,18 +13,17 @@ HELP_TXT = """\
     
     USAGE : ytdlmusic [OPTION]... [ARTIST] [SONG]
 
-        By default, it will execute your request [ARTIST] + [SONG] in a Youtube search and return the five first 
-        results, with a brief summary to choose one from. The selected result is downloaded in your current directory.
-        The format used is MP3 if ffmpeg is installed, OGG otherwise. The filename is [ARTIST]_[SONG].mp3/ogg to
-        lowercase, and special characters replaced by '_'. If the file already exists before, a suffix number 
-        is added to the filename, to avoid it.
+        By default, ytdlmusic searches Youtube for "[ARTIST] [SONG]" and displays the top five result and their 
+        description. The selected result is downloaded in your current directory. The format used is MP3 if 
+        ffmpeg is installed, OGG otherwise. The filename is [ARTIST]_[SONG].mp3/ogg to lowercase, and special 
+        characters replaced by '_'. 
 
-        Options:
+        Options are played in this order:
         -h, --help          : print this help text and exit
-        -v, --version       : print program version and exit                     
         -u, --update        : upgrade this program to latest version and exit
         -U, --full-update   : upgrade this program and the dependencies to latest version and exit
-        -a, --auto          : use automatic default choices 
+        -v, --version       : print program version and exit                     
+        -y, --auto          : use automatic default choices 
         -f, --ogg           : use ogg extension even if ffmpeg is installed
         -d, --verbose       : give more output
         --batch=<path>%<bool_h>%<s>%<art_col>%<song_col>  
@@ -80,7 +79,8 @@ Verify the params of --batch."""
 
 BUG_MESSSAGE = """\
 You can also try  to manually upgrade ytdlmusic or the dependencies with 'pip(3) install --upgrade name_package'
-If you reproduce the error : add the flag '--verbose' flag and open an issue at https://github.com/thib1984/ytdlmusic/issues with the complete log"""
+If you reproduce the error : add the flag '--verbose' flag and open an issue at 
+https://github.com/thib1984/ytdlmusic/issues with the complete log"""
 
 
 NOT_INSTALLED = "NOT INSTALLED"
@@ -96,3 +96,19 @@ TRY_UPDATE = "Try to update $1 with $2"
 DEBUG_HEADER = "[debug] stack trace :"
 
 CHOICE_RESULT_QUESTION = "Which (1-$1, 0 to exit, 1 by default) ? "
+
+FLAG_HELP_LONG = "--help"
+FLAG_VERSION_LONG = "--version"
+FLAG_UPDATE_LONG = "--update"
+FLAG_FULL_UPDATE_LONG = "--full-update"
+FLAG_AUTO_LONG = "--auto"
+FLAG_VERSBOSE_LONG = "--verbose"
+FLAG_UPDATE_OGG = "--ogg"
+FLAG_HELP_SHORT = "h"
+FLAG_VERSION_SHORT = "v"
+FLAG_UPDATE_SHORT = "u"
+FLAG_FULL_UPDATE_SHORT = "U"
+FLAG_AUTO_SHORT = "y"
+FLAG_VERBOSE_SHORT = "d"
+FLAG_OGG_SHORT = "f"
+FLAG_BATCH_LONG = "--batch="

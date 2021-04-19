@@ -4,41 +4,75 @@ ytdlmusic params scripts
 
 import sys
 import re
-
+from ytdlmusic.const import (
+    FLAG_HELP_LONG,
+    FLAG_VERSION_LONG,
+    FLAG_UPDATE_LONG,
+    FLAG_FULL_UPDATE_LONG,
+    FLAG_AUTO_LONG,
+    FLAG_VERSBOSE_LONG,
+    FLAG_UPDATE_OGG,
+    FLAG_HELP_SHORT,
+    FLAG_VERSION_SHORT,
+    FLAG_UPDATE_SHORT,
+    FLAG_FULL_UPDATE_SHORT,
+    FLAG_AUTO_SHORT,
+    FLAG_VERBOSE_SHORT,
+    FLAG_OGG_SHORT,
+    FLAG_BATCH_LONG,
+)
 
 option_list = [
-    "--help",
-    "--version",
-    "--update",
-    "--full-update",
-    "--auto",
-    "--verbose",
-    "--ogg",
+    FLAG_HELP_LONG,
+    FLAG_VERSION_LONG,
+    FLAG_UPDATE_LONG,
+    FLAG_FULL_UPDATE_LONG,
+    FLAG_AUTO_LONG,
+    FLAG_VERSBOSE_LONG,
+    FLAG_UPDATE_OGG,
 ]
+
 
 option_list_light = [
-    "h",
-    "v",
-    "u",
-    "U",
-    "a",
-    "d",
-    "f",
+    FLAG_HELP_SHORT,
+    FLAG_VERSION_SHORT,
+    FLAG_UPDATE_SHORT,
+    FLAG_FULL_UPDATE_SHORT,
+    FLAG_AUTO_SHORT,
+    FLAG_VERBOSE_SHORT,
+    FLAG_OGG_SHORT,
 ]
 
-BATCH_OPTION = "--batch="
 LONG_OPTION_FORMAT = "^--[A-Za-z]+"
 SHORT_OPTION_FORMAT = "^-[A-Za-z]+$"
 OPTION_FORMAT = "^-(-[A-Za-z]+|[A-Za-z]+$)"
 
 
-def check_options():
+def check_flags():
     """
-    is_launch_ok for ytdlmusic
+    verify the flags
+    True if ok
+    False otherwise
     """
     # option not recognized
     for i in sys.argv:
         if not check_param(i):
+            return False
+
+    return True
+
+
+def check_order_param_and_flags():
+    """
+    verify order of flags and params
+    True if ok
+    False otherwise
+    """
+    for i in range(1, len(sys.argv)):
+        if not sys.argv[i].startswith("-"):
+            one_param = True
+        if one_param and sys.argv[i].startswith("-"):
+            print("the flags must be set before [AUTHOR] and [SONG]")
             return False
     return True
 
@@ -54,7 +88,7 @@ def check_param(sysargv):
     if (
         re.search(LONG_OPTION_FORMAT, sysargv)
         and sysargv not in option_list
-        and not sysargv.startswith(BATCH_OPTION)
+        and not sysargv.startswith(FLAG_BATCH_LONG)
     ):
         return bad_options(sysargv)
     if re.search(SHORT_OPTION_FORMAT, sysargv):
@@ -117,7 +151,7 @@ def is_verbose():
     """
     Return True if flag --verbose, False otherwise
     """
-    return "--verbose" in sys.argv or [
+    return FLAG_VERSBOSE_LONG in sys.argv or [
         i
         for i in sys.argv
         if (
@@ -131,7 +165,7 @@ def is_auto():
     """
     Return True if flag --auto, False otherwise
     """
-    return "--auto" in sys.argv or [
+    return FLAG_AUTO_LONG in sys.argv or [
         i
         for i in sys.argv
         if (
@@ -145,7 +179,7 @@ def is_ogg():
     """
     Return True if flag --ogg, False otherwise
     """
-    return "--ogg" in sys.argv or [
+    return FLAG_UPDATE_OGG in sys.argv or [
         i
         for i in sys.argv
         if (
@@ -159,7 +193,7 @@ def is_help():
     """
     Return True if flag --help, False otherwise
     """
-    return "--help" in sys.argv or [
+    return FLAG_HELP_LONG in sys.argv or [
         i
         for i in sys.argv
         if (
@@ -173,7 +207,7 @@ def is_version():
     """
     Return True if flag --version, False otherwise
     """
-    return "--version" in sys.argv or [
+    return FLAG_VERSION_LONG in sys.argv or [
         i
         for i in sys.argv
         if (
@@ -187,7 +221,7 @@ def is_update():
     """
     Return True if flag --update, False otherwise
     """
-    return "--update" in sys.argv or [
+    return FLAG_UPDATE_LONG in sys.argv or [
         i
         for i in sys.argv
         if (
@@ -201,7 +235,7 @@ def is_fullupdate():
     """
     Return True if flag --full-update, False otherwise
     """
-    return "--full-update" in sys.argv or [
+    return FLAG_FULL_UPDATE_LONG in sys.argv or [
         i
         for i in sys.argv
         if (
@@ -215,7 +249,7 @@ def is_batch():
     """
     Return True if flag --batch=, False otherwise
     """
-    return [i for i in sys.argv if i.startswith(BATCH_OPTION)]
+    return [i for i in sys.argv if i.startswith(FLAG_BATCH_LONG)]
 
 
 def is_third_param():
@@ -283,6 +317,6 @@ def param_batch():
     Return the list of batch param without "--batch="
     """
     for i in sys.argv:
-        if i.startswith(BATCH_OPTION):
-            return str.replace(i, BATCH_OPTION, "", 1).split("%")
+        if i.startswith(FLAG_BATCH_LONG):
+            return str.replace(i, FLAG_BATCH_LONG, "", 1).split("%")
     return ""
