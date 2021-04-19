@@ -132,3 +132,29 @@ jobs:
         with:
           user: ${{ secrets.PYPI_USER }}
           password: ${{ secrets.PYPI_PASSWORD }}
+
+  commit:
+    needs: push
+    name: commit tje new action.yaml
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'    
+      - name: update pip
+        run: |
+          python3 -m pip install --upgrade pip        
+      - name: install pep517
+        run: |
+          pip install pep517
+      - name: build
+        run: python3 -m pep517.build --source --binary --out-dir dist/ .
+      - name: publish to pypi
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: ${{ secrets.PYPI_USER }}
+          password: ${{ secrets.PYPI_PASSWORD }}
+

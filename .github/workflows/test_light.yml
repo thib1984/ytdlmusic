@@ -1,4 +1,4 @@
-name: test
+name: test on push
 
 on:
   push:
@@ -23,16 +23,21 @@ jobs:
         if: ${{ matrix.os-version == 'macos-latest' }} 
         run: |
           brew install md5sha1sum                    
-      - name: Setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64  
       - name: update pip
         run: |
           python -m pip install --upgrade pip       
       - name: install ytdlmusic
         run: |
-          pip install .   
+          pip install .
+      - name: minimal test
+        shell: bash
+        run: |          
+          printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
+          test -f rexlambo_stay_with_me.ogg
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64  
       - name: Launch test
-        uses: ./.github/actions/test          
+        uses: ./.github/actions/full_test          
