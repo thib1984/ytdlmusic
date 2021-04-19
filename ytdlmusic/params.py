@@ -95,7 +95,7 @@ def check_param(sysargv):
     if re.search(SHORT_OPTION_FORMAT, sysargv):
         for k in range(1, len(sysargv)):
             element = sysargv[k]
-            if element not in option_list_light:
+            if "^-.*" + element + ".*" not in option_list_light:
                 return bad_options(sysargv)
     return True
 
@@ -212,7 +212,7 @@ def is_version():
         i
         for i in sys.argv
         if (
-            re.search(FLAG_VERBOSE_SHORT, i)
+            re.search(FLAG_VERSION_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
