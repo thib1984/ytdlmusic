@@ -91,7 +91,7 @@ jobs:
           ytdlmusic --rttrt | grep "Not recognized option"
       - name: test short params
         run: |          
-          ytdlmusic -fad "Rexlambo" "Stay With Me"
+          ytdlmusic -fyd "Rexlambo" "Stay With Me"
           test -f rexlambo_stay_with_me_3.ogg  
       - name: test bad launch short params
         run: |          
