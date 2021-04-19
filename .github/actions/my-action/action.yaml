@@ -4,5 +4,5 @@ runs:
   using: "composite"
   steps:
     - name: test
-    - run: |
+      run: |
       echo "hello world"   
