@@ -19,12 +19,10 @@ def update():
     update ytdlmusic
     """
     if not is_auto():
-        while True:
-            answer = input(UPDATE_YN)
-            if answer == "y":
-                break
-            if answer == "n":
-                sys.exit(0)
+        answer = input(UPDATE_YN)
+        if not (answer == "y" or answer == "Y" or answer == ""):
+            print("Abort.")
+            sys.exit(1)
     try:
         update_pip_package(pip3_or_pip(), "ytdlmusic")
     except Exception as err:
@@ -37,12 +35,10 @@ def fullupdate():
     update ytdlmusic, youtube-search-python, youtube-dl
     """
     if not is_auto():
-        while True:
-            answer = input(FULL_UPDATE_YN)
-            if answer == "y":
-                break
-            if answer == "n":
-                sys.exit(0)
+        answer = input(FULL_UPDATE_YN)
+        if not (answer == "y" or answer == "Y" or answer == ""):
+            print("Abort.")
+            sys.exit(1)
     try:
         update_pip_package(pip3_or_pip(), "ytdlmusic")
         update_pip_package(pip3_or_pip(), "youtube-search-python")

@@ -14,7 +14,7 @@ def choice(results_search):
     """
     i = 0
     if len(results_search.result()["result"]) == 0:
-        print("No result, retry with other words")
+        print("No result found, retry with other words.")
         if not is_batch():
             sys.exit(1)
         return 0
@@ -31,16 +31,19 @@ def choice(results_search):
                 + children["viewCount"]["text"]
             )
 
-        while True:
-            answer = input(
-                "Which (1-"
-                + str(len(results_search.result()["result"]))
-                + ", 0 to exit properly) ? "
-            )
-            if (
-                answer.isnumeric()
-                and int(answer) >= 0
-                and int(answer) <= 5
-            ):
-                break
+        answer = input(
+            "Which (1-"
+            + str(len(results_search.result()["result"]))
+            + ", 0 to exit properly, 1 by default) ? "
+        )
+        if answer == "":
+            answer = "1"
+        if (
+            (not answer.isnumeric())
+            or int(answer) <= 0
+            or int(answer) > len(results_search.result()["result"])
+        ):
+            print("Abort.")
+            if not is_batch():
+                sys.exit(1)
     return int(answer)

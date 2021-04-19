@@ -9,40 +9,23 @@ HELP_TXT = """\
         ytdlmusic
 
     SYNOPSIS
-        With ytdlmusic, you can download directly from YouTube music files in MP3/OGG format from your terminal, 
-        without using your browser. By default, it will match your request with a selection of 5 results 
-        with a brief summary to choose from or you can use auto mode to download automaticaly the first item.
+        ytdlmusic is a command-line program to download directly music files from YouTube. By default, 
+        it will match your request with a selection of 5 results with a brief summary to choose from. 
+        The format used is MP3 if ffmpeg is installed, OGG otherwise.
 
-        The short options can ben combined into one (example : "-au" for "--auto --update")
+    USAGE : ytdlmusic [OPTION]... [ARTIST] [SONG]
 
-        artist song         : display 5 choices from YouTube with given search, then download the MP3/OGG chosen by user
-                            -> example : ytdlmusic "Rexlambo" "Stay With Me"
-        -h, --help          : display this help (alone option)
-                            -> ytdlmusic -h
-        -v, --version       : display versions of ytdlmusic and his dependencies (alone option)
-                            -> ytdlmusic -v                        
-        -u, --update        : upgrade ytdlmusic
-                            -> ytdlmusic -u   
-        -U, --full-update   : upgrade youtube-dl, youtube-search-python and ytdlmusic
-                            -> ytdlmusic -U 
-        -a, --auto          : automatic mode (first choide for classic use, auto accept for other options)
-                            -> example : ytdlmusic -a "Rexlambo" "Stay With Me"
-                            -> example : ytdlmusic -a --update
-        -f, --ogg           : force ogg extension even if ffmpeg is installed
-                            -> example : ytdlmusic -f "Rexlambo" "Stay With Me"
-        -d, --verbose       : verbose mode
-                            -> example : ytdlmusic -d "Rexlambo" "Stay With Me"
-                            -> example : ytdlmusic -du
-        --batch=path_file%had_header%sep%artist_column%song_column  
-                            : loop on a csv and call for each line `ytdlmusic artist song`
-                            -> example : ytdlmusic --batch="~/test.csv"%False%,%1%2
-                                #loop on csv file : ~/test.csv
-                                #without header line the csv file
-                                #coma separator
-                                #artist on the first field
-                                #song on the second field         
-                            -> example : ytdlmusic --afd --batch="~/test.csv"%False%,%1%2
-                                #same with auto-mode, force ogg and debug
+        Options:
+        -h, --help          : print this help text and exit
+        -v, --version       : print program version and exit                     
+        -u, --update        : upgrade this program to latest version and exit
+        -U, --full-update   : upgrade this program and the dependencies to latest version and exit
+        -a, --auto          : force the default choices 
+        -f, --ogg           : use ogg extension even if ffmpeg is installed
+        -d, --verbose       : give more output
+        --batch=<path>%<bool_h>%<s>%<art_col>%<song_col>  
+                            : batch mode, loop on a <path> csv file with an header <bool_h>, with separator 
+                            <sep>, artist on colum number <art_col>, song aon column number <song_col>
 
     INFORMATION
         It may be illegal to download restricted content with this software, depending on the law in your country.                            
@@ -100,9 +83,9 @@ NOT_INSTALLED = "NOT INSTALLED"
 NOT_FOUND = "NOT FOUND"
 
 FULL_UPDATE_YN = """\
-Update the ytdlmusic package and the dependencies [y/n] ? """
+Update the ytdlmusic package and the dependencies [Y/n] ? """
 
-UPDATE_YN = "Update the ytdlmusic package [y/n] ? "
+UPDATE_YN = "Update the ytdlmusic package [Y/n] ? "
 
 TRY_UPDATE = "Try to update $1 with $2"
 
