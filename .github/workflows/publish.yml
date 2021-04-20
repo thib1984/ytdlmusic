@@ -112,7 +112,7 @@ jobs:
       - name: commit push
         run: |
           git status
-          git commit -am "CHORE : maj test to test_published" || echo "nothing to commit"
+          git commit -am "TEST : maj test to test_published" || echo "nothing to commit"
           git push || echo "nothing to push"
 
 
