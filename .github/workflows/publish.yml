@@ -15,8 +15,6 @@ jobs:
     - name: Test pypi
       run: |
         curl -iL https://pypi.org/project/ytdlmusic/${{ steps.vars.outputs.relase_tag }} | grep "Error code 404" || echo "version deja existante"   
-      with:
-        args: ${{ steps.vars.outputs.relase_tag }}
 
 
 
