@@ -65,7 +65,5 @@ def download_song(song_url, filename):
         print(
             "[warning] To disable this message activate "
             + FLAG_M4A_LONG
-            + " or "
-            + FLAG_M4A_SHORT
         )
     print(filename + " is ready")
