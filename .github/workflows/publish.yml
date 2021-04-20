@@ -12,7 +12,9 @@ jobs:
         uses: actions/checkout@v2
       - name: git version
         run: |
-          git --version           
+          git --version
+          git config --global user.name 'thib1984'
+          git config --global user.email 'thib1984@users.noreply.github.com'           
       - name: copy
         run: |
           cp .github/actions/full_test/action.yaml .github/actions/full_test_published/action.yaml
