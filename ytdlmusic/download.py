@@ -25,8 +25,8 @@ def download_song(song_url, filename):
     opts = {
         "quiet": True,
         "no_warnings": True,
-        "format": "bestaudio/best",
         "outtmpl": name_without_extension(filename) + ".%(ext)s",
+        "format": "bestaudio/best",
         "postprocessors": [
             {
                 "key": "FFmpegExtractAudio",
@@ -38,7 +38,7 @@ def download_song(song_url, filename):
     }
 
     if extension(filename) == ".m4a":
-        opts["format"] = "m4a"
+        opts["format"] = "m4a/best"
         opts.pop("postprocessors")
 
     if is_verbose():
@@ -47,8 +47,7 @@ def download_song(song_url, filename):
         opts["verbose"] = "True"
         print_debug("debug youtube-dl : ")
     with youtube_dl.YoutubeDL(opts) as ydl:
-        try:
-            ydl.extract_info(song_url, download=True)
+        ydl.extract_info(song_url, download=True)
     if is_ffmpeg_installed() is None and not is_m4a():
         print(
             "[warning] M4A was used. If you want MP3 format, install ffmpeg."
