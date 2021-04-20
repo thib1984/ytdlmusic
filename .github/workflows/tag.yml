@@ -1,0 +1,21 @@
+name: tag
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tag:
+    name: Publish Release
+    on: [push]
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@master
+        - name: Create a Release
+          uses: elgohr/Github-Release-Action@master
+          with:
+            args: MyReleaseMessage
+
+
+
