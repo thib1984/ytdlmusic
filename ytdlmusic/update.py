@@ -58,6 +58,7 @@ def fullupdate():
         sys.exit(1)
     print("Full-update ok")
 
+
 def update_pip_package(prog, package):
     """
     update pip 'package' with 'prog'

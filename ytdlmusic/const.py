@@ -14,12 +14,12 @@ HELP_TXT = """\
 
     USAGE : ytdlmusic [OPTION]... [ARTIST] [SONG]
 
-        By default, ytdlmusic searches Youtube for "[ARTIST] [SONG]" and
-        displays the top five result and their description. The selected result
-        is downloaded in your current directory. The format used is MP3 
-        (default) or OGG. If ffmpeg is installed, M4A is used. The filename is
-        [ARTIST]_[SONG].xxx to lowercase, and special characters replaced
-        by '_'.
+        ytdlmusic searches Youtube for "[ARTIST] [SONG]" and displays the top
+        five result and their description. The selected result is  downloaded
+        in your current directory. The format used is MP3 (default) or OGG.
+        If ffmpeg is not installed, M4A is used.
+        The filename is [ARTIST]_[SONG].mp3/ogg to lowercase, with special
+        characters replaced by '_'.
 
         Options are activated in this order:
         -y, --auto          : use automatic default choices

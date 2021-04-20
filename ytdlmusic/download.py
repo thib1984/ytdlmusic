@@ -2,7 +2,12 @@
 download scripts
 """
 
-from ytdlmusic.params import is_verbose, is_m4a
+from ytdlmusic.params import (
+    is_verbose,
+    is_m4a,
+    FLAG_M4A_LONG,
+    FLAG_M4A_SHORT,
+)
 from ytdlmusic.file import extension
 from ytdlmusic.file import name_without_extension, is_ffmpeg_installed
 from ytdlmusic.log import print_debug
@@ -55,7 +60,11 @@ def download_song(song_url, filename):
     with youtube_dl.YoutubeDL(opts) as ydl:
         ydl.extract_info(song_url, download=True)
     if is_ffmpeg_installed() is None and not is_m4a():
+        print("[warning] If you want MP3/OGG format, install ffmpeg.")
         print(
-            "[warning] M4A was used. If you want MP3/OGG format, install ffmpeg."
+            "[warning]To disable this message ativate "
+            + FLAG_M4A_LONG
+            + " or "
+            + FLAG_M4A_SHORT
         )
     print(filename + " is ready")
