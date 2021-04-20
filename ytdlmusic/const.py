@@ -18,14 +18,14 @@ HELP_TXT = """\
         ffmpeg is installed, OGG otherwise. The filename is [ARTIST]_[SONG].mp3/ogg to lowercase, and special 
         characters replaced by '_'. 
 
-        Options are played in this order:
+        Options are activated in this order:
+        -y, --auto          : use automatic default choices 
+        -f, --ogg           : use ogg extension even if ffmpeg is installed
+        -d, --verbose       : give more output
         -h, --help          : print this help text and exit
         -u, --update        : upgrade this program to latest version and exit
         -U, --full-update   : upgrade this program and the dependencies to latest version and exit
         -v, --version       : print program version and exit                     
-        -y, --auto          : use automatic default choices 
-        -f, --ogg           : use ogg extension even if ffmpeg is installed
-        -d, --verbose       : give more output
         --batch=<path>%<bool_h>%<s>%<art_col>%<song_col>  
                             : batch mode, loop on a <path> csv file with an header <bool_h>, with separator 
                             <sep>, artist on colum number <art_col>, song aon column number <song_col>
