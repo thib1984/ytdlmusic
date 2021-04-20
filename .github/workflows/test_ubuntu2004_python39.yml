@@ -13,6 +13,8 @@ jobs:
     runs-on: ${{ matrix.os-version }}
     name: test package on ${{ matrix.os-version }} with ${{ matrix.python-version }}
     steps:
+      - name: checkout
+        uses: actions/checkout@v2    
       #preparation
       - name: Prepa test
         uses: ./.github/actions/prepa_install
