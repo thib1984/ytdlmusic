@@ -9,29 +9,36 @@ HELP_TXT = """\
         ytdlmusic
 
     SYNOPSIS
-        ytdlmusic is a command-line program to search and download music files from YouTube without use browser. 
-    
+        ytdlmusic is a command-line program to search and download music files
+        from YouTube without use browser.
+
     USAGE : ytdlmusic [OPTION]... [ARTIST] [SONG]
 
-        By default, ytdlmusic searches Youtube for "[ARTIST] [SONG]" and displays the top five result and their 
-        description. The selected result is downloaded in your current directory. The format used is MP3 if 
-        ffmpeg is installed, OGG otherwise. The filename is [ARTIST]_[SONG].mp3/ogg to lowercase, and special 
-        characters replaced by '_'. 
+        By default, ytdlmusic searches Youtube for "[ARTIST] [SONG]" and
+        displays the top five result and their description. The selected result
+        is downloaded in your current directory. The format used is MP3 if
+        ffmpeg is installed, OGG otherwise. The filename is
+        [ARTIST]_[SONG].mp3/ogg to lowercase, and special haracters replaced
+        by '_'.
 
         Options are activated in this order:
-        -y, --auto          : use automatic default choices 
+        -y, --auto          : use automatic default choices
         -f, --ogg           : use ogg extension even if ffmpeg is installed
         -d, --verbose       : give more output
         -h, --help          : print this help text and exit
         -u, --update        : upgrade this program to latest version and exit
-        -U, --full-update   : upgrade this program and the dependencies to latest version and exit
-        -v, --version       : print program version and exit                     
-        --batch=<path>%<bool_h>%<s>%<art_col>%<song_col>  
-                            : batch mode, loop on a <path> csv file with an header <bool_h>, with separator 
-                            <sep>, artist on colum number <art_col>, song aon column number <song_col>
+        -U, --full-update   : upgrade this program and the dependencies to
+                            latest version and exit
+        -v, --version       : print program version and exit
+        --batch=<path>%<bool_h>%<s>%<art_col>%<song_col>
+                            : batch mode, loop on a <path> csv file with an
+                            header <bool_h>, with separator <sep>, artist on
+                            colum number <art_col>, song aon column number
+                            <song_col>
 
     INFORMATION
-        It may be illegal to download restricted content with this software, depending on the law in your country.                            
+        It may be illegal to download restricted content with this software,
+        depending on the law in your country.
 
     Full documentation at: <https://github.com/thib1984/ytdlmusic>
     Report bugs to <https://github.com/thib1984/ytdlmusic/issues>
@@ -66,7 +73,7 @@ ytdlmusic --help for more information"""
 
 EXCEPTION = """\
 Unexpected error: $1
-Try to upgrade with 'ytdlmusic update' or even 'ytdlmusic full-update' and retry."""
+Try to upgrade with 'ytdlmusic update' or 'ytdlmusic full-update' and retry."""
 
 EXCEPTION_UPDATE = """\
 Unexpected error during the update : $1
@@ -78,8 +85,9 @@ Unexpected error during the batch : $1
 Verify the params of --batch."""
 
 BUG_MESSSAGE = """\
-You can also try  to manually upgrade ytdlmusic or the dependencies with 'pip(3) install --upgrade name_package'
-If you reproduce the error : add the flag '--verbose' flag and open an issue at 
+You can also try  to manually upgrade ytdlmusic or the dependencies
+with 'pip(3) install --upgrade name_package'
+If you reproduce the error : add the flag '--verbose' flag and open an issue at
 https://github.com/thib1984/ytdlmusic/issues with the complete log"""
 
 

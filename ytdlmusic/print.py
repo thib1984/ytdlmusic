@@ -110,9 +110,17 @@ def print_error(err):
         print(DEBUG_HEADER)
         traceback.print_exc()
     print(replace_all(EXCEPTION, {"$1": str(err)}))
-    print_version_ytdlmusic()
-    print_version_dependencies()
-    print(BUG_MESSSAGE)
+    print_addtional_informations()
+
+
+def print_error_update_package(err):
+    """
+    print the error message with minimal informations
+    """
+    if is_verbose():
+        print(DEBUG_HEADER)
+        traceback.print_exc()
+    print(replace_all(EXCEPTION_UPDATE, {"$1": str(err)}))
 
 
 def print_error_update(err):
@@ -123,9 +131,14 @@ def print_error_update(err):
         print(DEBUG_HEADER)
         traceback.print_exc()
     print(replace_all(EXCEPTION_UPDATE, {"$1": str(err)}))
-    print_version_ytdlmusic()
-    print_version_dependencies()
-    print(BUG_MESSSAGE)
+    print_addtional_informations()
+
+
+def print_error_full_update():
+    """
+    print the the additional informations
+    """
+    print_addtional_informations()
 
 
 def print_error_batch(err):
@@ -136,6 +149,13 @@ def print_error_batch(err):
         print(DEBUG_HEADER)
         traceback.print_exc()
     print(replace_all(EXCEPTION_BATCH, {"$1": str(err)}))
+    print_addtional_informations()
+
+
+def print_addtional_informations():
+    """
+    print footer informations
+    """
     print_version_ytdlmusic()
     print_version_dependencies()
     print(BUG_MESSSAGE)

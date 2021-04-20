@@ -5,27 +5,23 @@ ytdlmusic scripts
 import sys
 from ytdlmusic.ytdlmusic import job
 from ytdlmusic.update import update, fullupdate
+from ytdlmusic.batch import launch_batch
 from ytdlmusic.print import (
+    print_error,
     print_help,
     print_bad_launch,
     print_no_param,
     print_version_ytdlmusic,
     print_version_dependencies,
     print_licence,
-    print_error_batch,
 )
-from ytdlmusic.batch import batch, launch_batch
-from ytdlmusic.print import print_error
 from ytdlmusic.params import (
-    is_auto,
     is_fullupdate,
     is_help,
     is_update,
     is_version,
     is_batch,
     param_batch,
-    is_artist,
-    is_song,
     param_artist,
     param_song,
     check_flags,
