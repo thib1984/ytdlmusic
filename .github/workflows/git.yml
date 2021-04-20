@@ -10,11 +10,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2        
-      - name: git version
+      - name: git config
         run: |
           git --version
-          git config --global user.name '$GITHUB_REPOSITORY'
-          git config --global user.email '$GITHUB_REPOSITORY@users.noreply.github.com'
+          git config --global user.name $GITHUB_ACTOR
+          git config --global user.email $GITHUB_ACTOR@users.noreply.github.com
           git config --list        
       - name: copy
         run: |
