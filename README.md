@@ -16,7 +16,7 @@ This package use two very important dependencies :
 
 - Install Python 3 for your system
 - Install pip3* for your system or pip if pip3 does not exist
-- Install ffmpeg for your system if you want to use MP3 format (OGG otherwise)
+- Install ffmpeg for your system if you want to use MP3 format (M4A otherwise)
 
 *_Install pip instead of pip3, if pip3 does not exist for your OS_
 ## Installation
@@ -29,7 +29,7 @@ This package use two very important dependencies :
 
 ``ytdlmusic [ARTIST] [SONG]``
 
-searches Youtube for "\[ARTIST\] \[SONG\]" and displays  the top five result and their  description. The selected result is downloaded  in your current directory. The format used is MP3 if  ffmpeg is installed, OGG otherwise. The filename is \[ARTIST\]\_\[SONG\].mp3/ogg to lowercase, and special  characters replaced by '_'. 
+searches Youtube for "\[ARTIST\] \[SONG\]" and displays  the top five result and their  description. The selected result is downloaded  in your current directory. The format used is MP3 if  ffmpeg is installed, M4A otherwise. The filename is \[ARTIST\]\_\[SONG\].mp3/m4a to lowercase, and special  characters replaced by '_'. 
 
 Example:
 ```
@@ -61,7 +61,7 @@ rexlambo_stay_with_me.mp3 is ready
 ````
 ## Batch
 
-You can use a beta command to loop in a csv file, and download all MP3/OGG files from it. 
+You can use a beta command to loop in a csv file, and download all MP3/M4A files from it. 
 
 `` ytdlmusic --batch=path_file%had_header%sep%artist_column%song_column ``
 
@@ -112,7 +112,7 @@ You can also add these flags to your commands (except help and version) :
 
 `` --verbose `` or `` -d `` : increase verbosity of the logs.
 
-`` --ogg `` or `` -f `` : force use ogg extension
+`` --m4a `` or `` -f `` : force use m4a extension
 
 ## Local install to develop
 
@@ -145,7 +145,7 @@ See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
 
 , no panic! You have just downloaded a newer version of youtube-dl which is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
 
-### I would like a MP3 format but I only get an OGG format, why?
+### I would like a MP3 format but I only get an M4A format, why?
 
 The ``ffmpeg`` package is required for the MP3 conversion. Install it and retry to launch ytdlmusic
 

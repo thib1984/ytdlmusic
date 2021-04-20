@@ -12,4 +12,4 @@ runs:
       shell: bash
       run: |          
         printf '3\n' | ytdlmusic "Rexlambo" "Stay With Me"
-        test -f rexlambo_stay_with_me.ogg    
+        test -f rexlambo_stay_with_me.m4a    

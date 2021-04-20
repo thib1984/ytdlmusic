@@ -8,7 +8,7 @@ import re
 import pathlib
 from shutil import which
 from ytdlmusic.log import print_debug
-from ytdlmusic.params import is_ogg
+from ytdlmusic.params import is_m4a
 from ytdlmusic.const import NOT_FOUND
 
 
@@ -17,8 +17,8 @@ def determine_filename(artist, song):
     correct filename to escape special characters with '_'
     and force lower case from artist and song
     """
-    if is_ogg() or not is_ffmpeg_installed():
-        ext = ".ogg"
+    if is_m4a() or not is_ffmpeg_installed():
+        ext = ".m4a"
     else:
         ext = ".mp3"
     print_debug("extension used : " + ext)

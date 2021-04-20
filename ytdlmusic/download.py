@@ -2,7 +2,7 @@
 download scripts
 """
 
-from ytdlmusic.params import is_verbose, is_ogg
+from ytdlmusic.params import is_verbose, is_m4a
 from ytdlmusic.file import extension
 from ytdlmusic.file import name_without_extension, is_ffmpeg_installed
 from ytdlmusic.log import print_debug
@@ -37,8 +37,8 @@ def download_song(song_url, filename):
         ],
     }
 
-    if extension(filename) == ".ogg":
-        opts["outtmpl"] = filename
+    if extension(filename) == ".m4a":
+        opts["format"] = "m4a"
         opts.pop("postprocessors")
 
     if is_verbose():
@@ -47,9 +47,10 @@ def download_song(song_url, filename):
         opts["verbose"] = "True"
         print_debug("debug youtube-dl : ")
     with youtube_dl.YoutubeDL(opts) as ydl:
-        ydl.extract_info(song_url, download=True)
-    if is_ffmpeg_installed() is None and not is_ogg():
+        try:
+            ydl.extract_info(song_url, download=True)
+    if is_ffmpeg_installed() is None and not is_m4a():
         print(
-            "[warning] ogg was used. If you want MP3 format, install ffmpeg."
+            "[warning] M4A was used. If you want MP3 format, install ffmpeg."
         )
     print(filename + " is ready")

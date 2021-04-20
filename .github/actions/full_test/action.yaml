@@ -28,12 +28,12 @@ runs:
       shell: bash
       run: |
         ytdlmusic -f --auto "Rexlambo" "Stay With Me"
-        test -f rexlambo_stay_with_me_1.ogg          
+        test -f rexlambo_stay_with_me_1.m4a          
     - name: test 'ytdlmusic artist title' interactive mode
       shell: bash
       run: |          
         printf '3\n' | ytdlmusic -f "Rexlambo" "Stay With Me"
-        test -f rexlambo_stay_with_me_2.ogg
+        test -f rexlambo_stay_with_me_2.m4a
     - name: test 'ytdlmusic --auto artist title' with ffmpeg
       shell: bash
       run: |          
@@ -42,15 +42,15 @@ runs:
     - name: test downloaded files
       shell: bash
       run: |          
-        md5sum rexlambo_stay_with_me.ogg
-        md5sum rexlambo_stay_with_me_1.ogg
+        md5sum rexlambo_stay_with_me.m4a
+        md5sum rexlambo_stay_with_me_1.m4a
         echo "les md5 doivent etre differents"
-        test "$(md5sum rexlambo_stay_with_me.ogg)" != "$(md5sum rexlambo_stay_with_me_1.ogg)"
-    - name: test 'ytdlmusic --auto artist title' with force ogg
+        test "$(md5sum rexlambo_stay_with_me.m4a)" != "$(md5sum rexlambo_stay_with_me_1.m4a)"
+    - name: test 'ytdlmusic --auto artist title' with force m4a
       shell: bash
       run: |          
-        ytdlmusic --auto --ogg "Rexlambo" "Stay With Me"
-        test -f rexlambo_stay_with_me_2.ogg       
+        ytdlmusic --auto --m4a "Rexlambo" "Stay With Me"
+        test -f rexlambo_stay_with_me_2.m4a       
     - name: test batch
       shell: bash
       run: |
@@ -68,7 +68,7 @@ runs:
       shell: bash
       run: |          
         ytdlmusic -fyd "Rexlambo" "Stay With Me"
-        test -f rexlambo_stay_with_me_3.ogg  
+        test -f rexlambo_stay_with_me_3.m4a  
     - name: test bad launch short params
       shell: bash
       run: |          
