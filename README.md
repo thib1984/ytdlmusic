@@ -68,7 +68,7 @@ You can use a beta command to loop in a csv file, and download all MP3/OGG files
 Example :
 
 ```
-ytdlmusic -a --batch="./test.csv"%True%";"%2%1
+ytdlmusic -y --batch="./test.csv"%True%";"%2%1
 search "above limujii" with youtube-search-python
 download https://www.youtube.com/watch?v=cUWU_T9KBk8 with youtubedl
 above_limujii.mp3 is ready
