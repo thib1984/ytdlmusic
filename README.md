@@ -167,7 +167,7 @@ Before a new version of ytdlmusic is published, it is checked in an [automatic j
 
 Each night, [another automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/test_published_release.yml) checks the actual package with last versions of dependencies and Pythons 3.6 to 3.10. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.*
 
-*_These tests are executed with GitHub Actions on an Ubuntu 18.04 image. Tests are also runned on macOS and Windows images (only very last Python version)._
+*_These tests are executed with GitHub Actions on an Ubuntu 20.04 image. Tests are also runned on macOS and Windows images (only very last Python version)._
 ## Thanks
 
 Thanks to contributors and dependencies authors :

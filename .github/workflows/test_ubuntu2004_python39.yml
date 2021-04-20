@@ -1,4 +1,4 @@
-name: test ubuntu1804 python39
+name: test ubuntu2004 python39
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os-version: ['ubuntu-18.04']
+        os-version: ['ubuntu-20.04']
         python-version: [ '3.9' ]          
     runs-on: ${{ matrix.os-version }}
     name: test package on ${{ matrix.os-version }} with ${{ matrix.python-version }}
