@@ -11,7 +11,8 @@ from ytdlmusic.const import (
     FLAG_FULL_UPDATE_LONG,
     FLAG_AUTO_LONG,
     FLAG_VERSBOSE_LONG,
-    FLAG_UPDATE_M4A,
+    FLAG_M4A_LONG,
+    FLAG_OGG_LONG,
     FLAG_HELP_SHORT,
     FLAG_VERSION_SHORT,
     FLAG_UPDATE_SHORT,
@@ -19,6 +20,7 @@ from ytdlmusic.const import (
     FLAG_AUTO_SHORT,
     FLAG_VERBOSE_SHORT,
     FLAG_M4A_SHORT,
+    FLAG_OGG_SHORT,
     FLAG_BATCH_LONG,
 )
 
@@ -29,7 +31,8 @@ option_list = [
     FLAG_FULL_UPDATE_LONG,
     FLAG_AUTO_LONG,
     FLAG_VERSBOSE_LONG,
-    FLAG_UPDATE_M4A,
+    FLAG_M4A_LONG,
+    FLAG_OGG_LONG,
 ]
 
 
@@ -41,6 +44,7 @@ option_list_light = [
     FLAG_AUTO_SHORT,
     FLAG_VERBOSE_SHORT,
     FLAG_M4A_SHORT,
+    FLAG_OGG_SHORT,
 ]
 
 LONG_OPTION_FORMAT = "^--[A-Za-z]+"
@@ -180,11 +184,25 @@ def is_m4a():
     """
     Return True if flag --m4a, False otherwise
     """
-    return FLAG_UPDATE_M4A in sys.argv or [
+    return FLAG_M4A_LONG in sys.argv or [
         i
         for i in sys.argv
         if (
             re.search(FLAG_M4A_SHORT, i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
+    ]
+
+
+def is_ogg():
+    """
+    Return True if flag --ogg, False otherwise
+    """
+    return FLAG_OGG_LONG in sys.argv or [
+        i
+        for i in sys.argv
+        if (
+            re.search(FLAG_OGG_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]

@@ -8,7 +8,7 @@ import re
 import pathlib
 from shutil import which
 from ytdlmusic.log import print_debug
-from ytdlmusic.params import is_m4a
+from ytdlmusic.params import is_m4a, is_ogg
 from ytdlmusic.const import NOT_FOUND
 
 
@@ -19,6 +19,8 @@ def determine_filename(artist, song):
     """
     if is_m4a() or not is_ffmpeg_installed():
         ext = ".m4a"
+    elif is_ogg():
+        ext = ".ogg"
     else:
         ext = ".mp3"
     print_debug("extension used : " + ext)

@@ -7,3 +7,4 @@ ytdlmusic.egg-info
 *.part
 *.webm
 venv
+*.ogg

@@ -16,14 +16,15 @@ HELP_TXT = """\
 
         By default, ytdlmusic searches Youtube for "[ARTIST] [SONG]" and
         displays the top five result and their description. The selected result
-        is downloaded in your current directory. The format used is MP3 if
-        ffmpeg is installed, M4A otherwise. The filename is
-        [ARTIST]_[SONG].mp3/m4a to lowercase, and special haracters replaced
+        is downloaded in your current directory. The format used is MP3 
+        (default) or OGG. If ffmpeg is installed, M4A is used. The filename is
+        [ARTIST]_[SONG].xxx to lowercase, and special characters replaced
         by '_'.
 
         Options are activated in this order:
         -y, --auto          : use automatic default choices
         -f, --m4a           : use m4a extension even if ffmpeg is installed
+        -o, --ogg           : use ogg instead of mp3
         -d, --verbose       : give more output
         -h, --help          : print this help text and exit
         -u, --update        : upgrade this program to latest version and exit
@@ -111,7 +112,8 @@ FLAG_UPDATE_LONG = "--update"
 FLAG_FULL_UPDATE_LONG = "--full-update"
 FLAG_AUTO_LONG = "--auto"
 FLAG_VERSBOSE_LONG = "--verbose"
-FLAG_UPDATE_M4A = "--m4a"
+FLAG_M4A_LONG = "--m4a"
+FLAG_OGG_LONG = "--m4a"
 FLAG_HELP_SHORT = "^-.*h.*"
 FLAG_VERSION_SHORT = "^-.*v.*"
 FLAG_UPDATE_SHORT = "^-.*u.*"
@@ -119,4 +121,5 @@ FLAG_FULL_UPDATE_SHORT = "^-.*U.*"
 FLAG_AUTO_SHORT = "^-.*y.*"
 FLAG_VERBOSE_SHORT = "^-.*d.*"
 FLAG_M4A_SHORT = "^-.*f.*"
+FLAG_OGG_SHORT = "^-.*o.*"
 FLAG_BATCH_LONG = "--batch="
