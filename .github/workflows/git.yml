@@ -10,6 +10,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+      - name: TZ  
+        uses: actions/set-timezone-action@v1.1
+        with:
+          timezoneLinux: "Europe/Paris"      
       - name: git version
         run: |
           git --version
@@ -22,5 +26,5 @@ jobs:
       - name: commit push
         run: |
           git status
-          git commit -am "CHORE : maj test to test_published"
-          git push
+          git commit -am "CHORE : maj test to test_published" || echo "nothing to commit"
+          git push || echo "nothing to push"
