@@ -38,7 +38,12 @@ runs:
       shell: bash
       run: |          
         ytdlmusic --auto "Rexlambo" "Stay With Me"
-        test -f rexlambo_stay_with_me.mp3                    
+        test -f rexlambo_stay_with_me.mp3
+    - name: test 'ytdlmusic --auto artist title' with ffmpeg force ogg
+      shell: bash
+      run: |          
+        ytdlmusic -yo "Rexlambo" "Stay With Me"
+        test -f rexlambo_stay_with_me.ogg                               
     - name: test downloaded files
       shell: bash
       run: |          
