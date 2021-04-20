@@ -9,16 +9,13 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: checkout
-        uses: actions/checkout@v2
-      - name: TZ  
-        uses: actions/set-timezone-action@v1.1
-        with:
-          timezoneLinux: "Europe/Paris"      
+        uses: actions/checkout@v2        
       - name: git version
         run: |
           git --version
           git config --global user.name '$GITHUB_REPOSITORY'
-          git config --global user.email '$GITHUB_REPOSITORY@users.noreply.github.com'           
+          git config --global user.email '$GITHUB_REPOSITORY@users.noreply.github.com'
+          git info        
       - name: copy
         run: |
           cp .github/actions/full_test/action.yaml .github/actions/full_test_published/action.yaml
