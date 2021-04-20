@@ -5,7 +5,6 @@ on:
 
 jobs:
   commit:
-    needs: test to test_published
     name: push package on pypi
     runs-on: ubuntu-18.04
     steps:
@@ -20,6 +19,7 @@ jobs:
           cp .github/actions/minimal_test/action.yaml .github/actions/minimal_test_published/action.yaml    
       - name: commit push
         run: |
+          git status
           git commit -am "CHORE : maj test to test_published"
           git push
 
