@@ -81,7 +81,7 @@ jobs:
   commit:
     needs: push
     name: copy test to test_published
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -103,7 +103,7 @@ jobs:
   commit:
     name: copy test to test_published
     needs: push
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2        
@@ -122,5 +122,21 @@ jobs:
           git status
           git commit -am "CHORE : maj test to test_published" || echo "nothing to commit"
           git push || echo "nothing to push"
+
+  tag:
+    name: tag the release
+    needs: commit
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Deduce relase
+      id: vars
+      run: echo ::set-output name=relase_tag::$(grep version setup.py | cut -d "\"" -f2)
+    - name: Create a Release
+      uses: elgohr/Github-Release-Action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}      
+      with:
+        args: ${{ steps.vars.outputs.relase_tag }}
 
 
