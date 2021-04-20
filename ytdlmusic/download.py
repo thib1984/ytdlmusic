@@ -31,7 +31,7 @@ def download_song(song_url, filename):
             {
                 "key": "FFmpegExtractAudio",
                 "preferredcodec": "mp3",
-                "preferredquality": "192",
+                "preferredquality": "256",
             },
             {"key": "FFmpegMetadata"},
         ],
