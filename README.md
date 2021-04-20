@@ -176,7 +176,8 @@ Thanks to contributors and dependencies authors :
 - [Hitesh Kumar Saini](https://github.com/alexmercerind) for [youtube-search-python](https://github.com/alexmercerind/youtube-search-python)
 - [ytdl-org](https://github.com/ytdl-org) for [youtube-dl](https://github.com/ytdl-org/youtube-dl)
 - [Federico Carboni](https://github.com/FedericoCarboni) for [setup-ffmpeg](https://github.com/FedericoCarboni/setup-ffmpeg)
-
+- [pypa](https://github.com/pypa) for [gh-action-pypi-publish](https://github.com/pypa/gh-action-pypi-publish)
+- [elgohrf](https://github.com/elgohr) for [Github-Release-Action](https://github.com/elgohr/Github-Release-Action)
 ## License
 
 MIT License
