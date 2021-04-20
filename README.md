@@ -16,7 +16,7 @@ This package use two very important dependencies :
 
 - Install Python 3 for your system
 - Install pip3* for your system or pip if pip3 does not exist
-- Install ffmpeg for your system if you want to use MP3 format (M4A otherwise)
+- Install ffmpeg for your system if you want to use MP3/OGG format (M4A otherwise)
 
 *_Install pip instead of pip3, if pip3 does not exist for your OS_
 ## Installation
