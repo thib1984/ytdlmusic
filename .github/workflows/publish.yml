@@ -4,7 +4,24 @@ on:
   workflow_dispatch:
 
 jobs:
+  verify_version:
+    name: verify version is not already psuhed
+    runs-on : ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Deduce relase
+      id: vars
+      run: echo ::set-output name=relase_tag::$(grep version setup.py | cut -d "\"" -f2)
+    - name: Test pypi
+      run: |
+        curl -iL https://pypi.org/project/ytdlmusic/${{ steps.vars.outputs.relase_tag }} | grep "Error code 404" || echo "version deja existante"   
+      with:
+        args: ${{ steps.vars.outputs.relase_tag }}
+
+
+
   full_test:
+    needs: verify_version
     strategy:
       fail-fast: false
       matrix:
