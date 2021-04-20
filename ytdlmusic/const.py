@@ -23,8 +23,8 @@ HELP_TXT = """\
 
         Options are activated in this order:
         -y, --auto          : use automatic default choices
-        -f, --m4a           : use m4a extension even if ffmpeg is installed
-        -o, --ogg           : use ogg instead of mp3 if mmpeg is installed
+        -f, --m4a           : force m4a format
+        -o, --ogg           : use ogg instead of mp3 format
         -d, --verbose       : give more output
         -h, --help          : print this help text and exit
         -u, --update        : upgrade this program to latest version and exit

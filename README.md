@@ -112,9 +112,9 @@ You can also add these flags to your commands (except help and version) :
 
 `` --verbose `` or `` -d `` : increase verbosity of the logs.
 
-`` --m4a `` or `` -f `` : force use m4a extension even if mmpeg is installed
+`` --m4a `` or `` -f `` : force use m4a format
 
-`` --ogg `` or `` -o `` : use ogg instead of mp3 if mmpeg is installed
+`` --ogg `` or `` -o `` : use ogg instead of mp3 format
 ## Local install to develop
 
 ```
