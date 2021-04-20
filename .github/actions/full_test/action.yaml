@@ -39,11 +39,13 @@ runs:
       run: |          
         ytdlmusic --auto "Rexlambo" "Stay With Me"
         test -f rexlambo_stay_with_me.mp3
+        file -b rexlambo_stay_with_me.mp3 | grep "Audio file with ID3 version 2.4.0, contains:MPEG ADTS, layer III, v1, 256 kbps, 48 kHz, Stereo"
     - name: test 'ytdlmusic --auto artist title' with ffmpeg force ogg
       shell: bash
       run: |          
         ytdlmusic -yo "Rexlambo" "Stay With Me"
-        test -f rexlambo_stay_with_me.ogg                               
+        test -f rexlambo_stay_with_me.ogg
+        file -b rexlambo_stay_with_me.ogg | grep -b "Ogg data, Vorbis audio, stereo, 48000 Hz, ~112000 bps"                               
     - name: test downloaded files
       shell: bash
       run: |          
