@@ -10,11 +10,6 @@ jobs:
     - uses: actions/checkout@master
     - name: Deduce relase
       run: echo ::set-output name=relase_tag::grep version setup.py | cut -d "\"" -f2
-      uses: elgohr/Github-Release-Action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}      
-      with:
-        args: MyReleaseMessage
     - name: Create a Release
       uses: elgohr/Github-Release-Action@master
       env:
