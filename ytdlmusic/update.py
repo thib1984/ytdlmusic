@@ -53,10 +53,10 @@ def fullupdate():
     boolean_ytdl = update_pip_package(pip3_or_pip(), "youtube-dl")
     boolean_ytdlm = update_pip_package(pip3_or_pip(), "ytdlmusic")
 
-    if boolean_ysp or boolean_ytdl or boolean_ytdlm:
+    if not (boolean_ysp and boolean_ytdl and boolean_ytdlm):
         print_error_full_update()
         sys.exit(1)
-
+    print("Full-update ok")
 
 def update_pip_package(prog, package):
     """
@@ -77,10 +77,10 @@ def update_pip_package(prog, package):
 
         subprocess.check_call(params)
         print("Update ok")
+        return True
     except Exception as err:
         print_error_update_package(err)
         return False
-    return True
 
 
 def pip3_or_pip():
