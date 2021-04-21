@@ -120,10 +120,10 @@ def check_classic_params():
     if is_third_param():
         print("Max only 2 classic params")
         return False
-    if not is_artist() or not is_song:
+    if not is_artist():
         print("Missing artist")
         return False
-    if not is_song:
+    if not is_song():
         print("Missing song")
         return False
     return True
