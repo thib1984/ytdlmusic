@@ -87,7 +87,7 @@ runs:
         pip uninstall --yes youtube-dl
         ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
         (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
-        (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "Try to upgrade with 'ytdlmusic update'"
+        (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "Try to upgrade with 'ytdlmusic --update'"
     - name: test repair full-update
       shell: bash
       run: |               
