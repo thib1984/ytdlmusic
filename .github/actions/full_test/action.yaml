@@ -52,7 +52,7 @@ runs:
         md5sum rexlambo_stay_with_me.m4a
         md5sum rexlambo_stay_with_me_1.m4a
         echo "les md5 doivent etre differents"
-        test "$(md5sum rexlambo_stay_with_me.m4a)" != "$(md5sum rexlambo_stay_with_me_1.m4a)"
+        test "$(md5sum rexlambo_stay_with_me.m4a | cut -d " " -f 1)" != "$(md5sum rexlambo_stay_with_me_1.m4a | cut -d " " -f 1)"
     - name: test 'ytdlmusic --auto artist title' with force m4a
       shell: bash
       run: |          
@@ -97,7 +97,8 @@ runs:
         echo "les md5 doivent etre differents"
         md5sum rexlambo_stay_with_me_2.mp3
         md5sum rexlambo_stay_with_me_1.mp3
-        test "$(md5sum rexlambo_stay_with_me_2.mp3)" != "$(md5sum rexlambo_stay_with_me_1.mp3)"        
+        test "$(md5sum rexlambo_stay_with_me_2.mp3 | cut -d " " -f 1)" != "$(md5sum rexlambo_stay_with_me_1.mp3 | cut -d " " -f 1)"        
+        ytdlmusic -dkQ --auto "avalon" "scandinavianz"
         test -f avalon_scandinavianz_no_copyright_music_.mp3
         printf 'y\n' | ytdlmusic --full-update | grep "No update available"
     - name: test bad launch (one parameter)
