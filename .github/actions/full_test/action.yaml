@@ -93,7 +93,9 @@ runs:
       run: |               
         printf 'y\n' | ytdlmusic --full-update | grep "Update available"
         ytdlmusic --auto -q "Rexlambo" "Stay With Me" | grep "ffmpeg" || echo "ffmpeg non trouve" | grep "ffmpeg non trouve"
-        ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me" | grep "320"
+        ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"
+        echo "les md5 doivent etre differents"
+        test "$(md5sum rexlambo_stay_with_me_2.mp3)" != "$(md5sum rexlambo_stay_with_me_1.mp3)"        
         test -f avalon_scandinavianz_no_copyright_music_.mp3
         printf 'y\n' | ytdlmusic --full-update | grep "No update available"
     - name: test bad launch (one parameter)
