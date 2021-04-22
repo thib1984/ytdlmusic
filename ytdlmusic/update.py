@@ -106,46 +106,50 @@ def pip3_or_pip():
 
 def check_list_packages(list_of_search_packages):
     print("Search available update...")
-    excludes = []
-    update_available = False
-    # list all packages without search update
-    list_packages = str(
-        subprocess.check_output([pip3_or_pip(), "list"]).decode(
-            "utf-8"
-        )
-    )
-    # if a package in paramater does not appear -> need update
-    for package in list_of_search_packages:
-        if package not in list_packages:
-            print(package + " : not installed !")
-            update_available = True
-    # suppress all others packages not in parameter
-    for line in list_packages.splitlines():
-        # print(line.split()[0])
-        if line.split(" ")[0] not in list_of_search_packages + [
-            "Package",
-            "----------------------",
-        ]:
-            excludes.append("--exclude")
-            excludes.append(line.split(" ")[0])
-
-    # search outdated package in the small list obtained
-    for line in str(
-        subprocess.check_output(
-            [pip3_or_pip(), "list", "--outdated"] + excludes
-        ).decode("utf-8")
-    ).splitlines():
-        if line.split(" ")[0] in list_of_search_packages:
-            print(
-                line.split()[0]
-                + " : available update : "
-                + line.split()[1]
-                + " -> "
-                + line.split()[2]
+    try:
+        excludes = []
+        update_available = False
+        # list all packages without search update
+        list_packages = str(
+            subprocess.check_output([pip3_or_pip(), "list"]).decode(
+                "utf-8"
             )
-            update_available = True
-    if not update_available:
-        print("No update available")
-    else:
-        print("Update available!")
-    return update_available
+        )
+        # if a package in paramater does not appear -> need update
+        for package in list_of_search_packages:
+            if package not in list_packages:
+                print(package + " : not installed !")
+                update_available = True
+        # suppress all others packages not in parameter
+        for line in list_packages.split("\n", 2)[2].splitlines():
+            # print(line.split()[0])
+            if line.split(" ")[0] not in list_of_search_packages:
+                excludes.append("--exclude")
+                excludes.append(line.split(" ")[0])
+
+        # search outdated package in the small list obtained
+        for line in str(
+            subprocess.check_output(
+                [pip3_or_pip(), "list", "--outdated"] + excludes
+            ).decode("utf-8")
+        ).splitlines():
+            if line.split(" ")[0] in list_of_search_packages:
+                print(
+                    line.split()[0]
+                    + " : available update : "
+                    + line.split()[1]
+                    + " -> "
+                    + line.split()[2]
+                )
+                update_available = True
+        if not update_available:
+            print("No update available")
+        else:
+            print("Update available!")
+        return update_available
+    except Exception as err:
+        print_debug(str(err))
+        print(
+            "Can't check if update available. You can relaunch with --verbose/-d for analysis."
+        )
+        return True
