@@ -22,6 +22,20 @@ from ytdlmusic.const import (
     FLAG_M4A_SHORT,
     FLAG_OGG_SHORT,
     FLAG_BATCH_LONG,
+    FLAG_NUMBER_LONG,
+    FLAG_CHECK_LONG,
+    FLAG_CHECK_SHORT,
+    FLAG_CHECKALL_LONG,
+    FLAG_CHECKALL_SHORT,
+    FLAG_QUIET_SHORT,
+    FLAG_QUIET_LONG,
+    FLAG_QUALITY_SHORT,
+    FLAG_QUALITY_LONG,
+    FLAG_KEEP_SHORT,
+    FLAG_KEEP_LONG,
+    OPTION_FORMAT,
+    LONG_OPTION_FORMAT,
+    SHORT_OPTION_FORMAT,
 )
 
 option_list = [
@@ -33,6 +47,12 @@ option_list = [
     FLAG_VERSBOSE_LONG,
     FLAG_M4A_LONG,
     FLAG_OGG_LONG,
+    FLAG_CHECK_LONG,
+    FLAG_CHECKALL_LONG,
+    FLAG_QUIET_LONG,
+    FLAG_QUALITY_LONG,
+    FLAG_KEEP_LONG,
+    FLAG_NUMBER_LONG,
 ]
 
 
@@ -45,11 +65,12 @@ option_list_light = [
     FLAG_VERBOSE_SHORT,
     FLAG_M4A_SHORT,
     FLAG_OGG_SHORT,
+    FLAG_CHECK_SHORT,
+    FLAG_CHECKALL_SHORT,
+    FLAG_QUIET_SHORT,
+    FLAG_QUALITY_SHORT,
+    FLAG_KEEP_SHORT,
 ]
-
-LONG_OPTION_FORMAT = "^--[A-Za-z]+"
-SHORT_OPTION_FORMAT = "^-[A-Za-z]+$"
-OPTION_FORMAT = "^-(-[A-Za-z]+|[A-Za-z]+$)"
 
 
 def check_flags():
@@ -62,7 +83,13 @@ def check_flags():
     for i in sys.argv:
         if not check_param(i):
             return False
-
+    if is_number() and (
+        not param_number().isnumeric()
+        or int(param_number()) < 1
+        or int(param_number()) > 10
+    ):
+        print("the flag --n=" + param_number() + " is not valid")
+        return False
     return True
 
 
@@ -94,6 +121,7 @@ def check_param(sysargv):
         re.search(LONG_OPTION_FORMAT, sysargv)
         and sysargv not in option_list
         and not sysargv.startswith(FLAG_BATCH_LONG)
+        and not sysargv.startswith(FLAG_NUMBER_LONG)
     ):
         return bad_options(sysargv)
     if re.search(SHORT_OPTION_FORMAT, sysargv):
@@ -101,6 +129,7 @@ def check_param(sysargv):
             element = sysargv[k]
             if "^-.*" + element + ".*" not in option_list_light:
                 return bad_options(sysargv)
+
     return True
 
 
@@ -152,6 +181,34 @@ def number_options():
     return j
 
 
+def is_quiet():
+    """
+    Return True if flag --quiet, False otherwise
+    """
+    return FLAG_QUIET_LONG in sys.argv or [
+        i
+        for i in sys.argv
+        if (
+            re.search(FLAG_QUIET_SHORT, i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
+    ]
+
+
+def is_quality():
+    """
+    Return True if flag --quality, False otherwise
+    """
+    return FLAG_QUALITY_LONG in sys.argv or [
+        i
+        for i in sys.argv
+        if (
+            re.search(FLAG_QUALITY_SHORT, i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
+    ]
+
+
 def is_verbose():
     """
     Return True if flag --verbose, False otherwise
@@ -161,6 +218,34 @@ def is_verbose():
         for i in sys.argv
         if (
             re.search(FLAG_VERBOSE_SHORT, i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
+    ]
+
+
+def is_check():
+    """
+    Return True if flag --check, False otherwise
+    """
+    return FLAG_CHECK_LONG in sys.argv or [
+        i
+        for i in sys.argv
+        if (
+            re.search(FLAG_CHECK_SHORT, i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
+    ]
+
+
+def is_check_all():
+    """
+    Return True if flag --check, False otherwise
+    """
+    return FLAG_CHECKALL_LONG in sys.argv or [
+        i
+        for i in sys.argv
+        if (
+            re.search(FLAG_CHECKALL_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
@@ -189,6 +274,20 @@ def is_m4a():
         for i in sys.argv
         if (
             re.search(FLAG_M4A_SHORT, i)
+            and re.search(SHORT_OPTION_FORMAT, i)
+        )
+    ]
+
+
+def is_keep():
+    """
+    Return True if flag --ogg, False otherwise
+    """
+    return FLAG_KEEP_LONG in sys.argv or [
+        i
+        for i in sys.argv
+        if (
+            re.search(FLAG_KEEP_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
@@ -271,6 +370,13 @@ def is_batch():
     return [i for i in sys.argv if i.startswith(FLAG_BATCH_LONG)]
 
 
+def is_number():
+    """
+    Return True if flag --n=, False otherwise
+    """
+    return [i for i in sys.argv if i.startswith(FLAG_NUMBER_LONG)]
+
+
 def is_third_param():
     """
     Return True if number classic params >=3 (sys.argv excluded)
@@ -338,4 +444,14 @@ def param_batch():
     for i in sys.argv:
         if i.startswith(FLAG_BATCH_LONG):
             return str.replace(i, FLAG_BATCH_LONG, "", 1).split("%")
+    return ""
+
+
+def param_number():
+    """
+    Return the number of param number param without "--number="
+    """
+    for i in sys.argv:
+        if i.startswith(FLAG_NUMBER_LONG):
+            return str.replace(i, FLAG_NUMBER_LONG, "", 1)
     return ""

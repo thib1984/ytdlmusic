@@ -2,6 +2,7 @@
 search utils scripts
 """
 from ytdlmusic.log import print_debug
+from ytdlmusic.params import is_number, param_number
 
 try:
     from youtubesearchpython import VideosSearch
@@ -22,5 +23,7 @@ def search(artist, song):
     print(
         'search "' + search_pattern + '" with youtube-search-python'
     )
-
-    return VideosSearch(search_pattern, limit=5)
+    my_limit = 5
+    if is_number():
+        my_limit = int(param_number())
+    return VideosSearch(search_pattern, limit=my_limit)

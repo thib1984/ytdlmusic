@@ -23,8 +23,12 @@ HELP_TXT = """\
 
         Options are activated in this order:
         -y, --auto          : use automatic default choices
+        --n=X               : number of choices (default=5, min=1, max=10)
+        -k, --keep          : keep the YouTube video title for filename
+        -Q, --quality       : if mp3, set quality to 320kbs instead of 256kbs
         -f, --m4a           : force m4a format
         -o, --ogg           : use ogg instead of mp3 format
+        -q, --quiet         : give less output
         -d, --verbose       : give more output
         -h, --help          : print this help text and exit
         -u, --update        : upgrade this program to latest version and exit
@@ -34,7 +38,7 @@ HELP_TXT = """\
         --batch=<path>%<bool_h>%<s>%<art_col>%<song_col>
                             : batch mode, loop on a <path> csv file with an
                             header <bool_h>, with separator <sep>, artist on
-                            colum number <art_col>, song aon column number
+                            column number <art_col>, song on column number
                             <song_col>
 
     INFORMATION
@@ -74,7 +78,8 @@ ytdlmusic --help for more information"""
 
 EXCEPTION = """\
 Unexpected error: $1
-Try to upgrade with 'ytdlmusic --update' or 'ytdlmusic --full-update' and retry."""
+Try to upgrade with 'ytdlmusic --update' or 'ytdlmusic --full-update'
+and retry."""
 
 EXCEPTION_UPDATE = """\
 Unexpected error during the update : $1
@@ -96,9 +101,9 @@ NOT_INSTALLED = "NOT INSTALLED"
 NOT_FOUND = "NOT FOUND"
 
 FULL_UPDATE_YN = """\
-Update the ytdlmusic package and the dependencies [Y/n] ? """
+Update [Y/n] ? """
 
-UPDATE_YN = "Update the ytdlmusic package [Y/n] ? "
+UPDATE_YN = "Update [Y/n] ? "
 
 TRY_UPDATE = "Try to update $1 with $2"
 
@@ -123,3 +128,18 @@ FLAG_VERBOSE_SHORT = "^-.*d.*"
 FLAG_M4A_SHORT = "^-.*f.*"
 FLAG_OGG_SHORT = "^-.*o.*"
 FLAG_BATCH_LONG = "--batch="
+FLAG_NUMBER_LONG = "--n="
+FLAG_CHECK_SHORT = "^-.*c.*"
+FLAG_CHECK_LONG = "--check"
+FLAG_CHECKALL_SHORT = "^-.*C.*"
+FLAG_CHECKALL_LONG = "--check-all"
+FLAG_QUIET_LONG = "--quiet"
+FLAG_QUIET_SHORT = "^-.*q.*"
+FLAG_QUALITY_LONG = "--quality"
+FLAG_QUALITY_SHORT = "^-.*Q.*"
+FLAG_KEEP_LONG = "--keep"
+FLAG_KEEP_SHORT = "^-.*k.*"
+
+LONG_OPTION_FORMAT = "^--[A-Za-z]+"
+SHORT_OPTION_FORMAT = "^-[A-Za-z]+$"
+OPTION_FORMAT = "^-(-[A-Za-z]+|[A-Za-z]+$)"

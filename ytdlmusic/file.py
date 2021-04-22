@@ -8,11 +8,11 @@ import re
 import pathlib
 from shutil import which
 from ytdlmusic.log import print_debug
-from ytdlmusic.params import is_m4a, is_ogg
+from ytdlmusic.params import is_m4a, is_ogg, is_keep
 from ytdlmusic.const import NOT_FOUND
 
 
-def determine_filename(artist, song):
+def determine_filename(artist, song, title):
     """
     correct filename to escape special characters with '_'
     and force lower case from artist and song
@@ -27,6 +27,9 @@ def determine_filename(artist, song):
     filename = (
         re.sub("(\\W+)", "_", artist + "_" + song).lower() + ext
     )
+    if is_keep():
+        print_debug(" file name deduced from YouTube")
+        filename = re.sub("(\\W+)", "_", title).lower() + ext
     print_debug("filename found " + filename)
     if os.path.exists(filename):
         # loop to find non existent filename

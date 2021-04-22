@@ -19,8 +19,8 @@ def job(artist, song):
         results = search(artist, song)
         answer = choice(results)
         if answer != 0:
-            filename = determine_filename(artist, song)
             item = results.result()["result"][answer - 1]
+            filename = determine_filename(artist, song, item["title"])
             download_song(
                 item["link"],
                 filename,

@@ -15,7 +15,7 @@ This package use two very important dependencies :
 ## Installation prerequisites
 
 - Install Python 3 for your system
-- Install pip3* for your system or pip if pip3 does not exist
+- Install pip3* for your system
 - Install ffmpeg for your system if you want to use MP3/OGG format (M4A otherwise)
 
 *_Install pip instead of pip3, if pip3 does not exist for your OS_
@@ -108,9 +108,18 @@ scandinavianz;avalon;information
 
 You can also add these flags to your commands (except help and version) :
 
+
 `` --auto `` or `` -y `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
 
-`` --verbose `` or `` -d `` : increase verbosity of the logs.
+`` --n=X `` : number of choices (default=5, min=1, max=10)
+
+`` --k `` or `` --keep `` : kepp the YouTube video title for the filename
+
+`` --Q `` or `` --quality `` : if mp3, set quality to 320kbs instead of 256kbs
+
+`` --quiet `` or `` -q `` : give less output 
+
+`` --verbose `` or `` -d `` : give more output
 
 `` --m4a `` or `` -f `` : force use m4a format
 
