@@ -101,5 +101,3 @@ runs:
       run: |          
         (ytdlmusic --tetet || echo "good exit code") | grep "good exit code"
         (ytdlmusic --tetet || echo "good exit code") | grep "Missing song"            
-      #TODO
-      #add number 
