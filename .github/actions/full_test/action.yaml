@@ -103,7 +103,10 @@ runs:
         printf 'y\n' | ytdlmusic --full-update | grep "No update available"
     - name: test bad launch (one parameter)
       shell: bash
-      run: |          
-        (ytdlmusic --tetet || echo "good exit code") | grep "good exit code"
-        (ytdlmusic --tetet || echo "good exit code") | grep "Missing song"   
+      run: |   
+        echo "ytdlmusic tetet renvoie un code erreur different de 0"       
+        (ytdlmusic tetet || echo "good exit code") | grep "good exit code"
+        echo "ytdlmusic tetet renvoie un 'Missing song'"
+        (ytdlmusic tetet || echo "good exit code") | grep "Missing song"  
+        echo "ytdlmusic --n=13 renvoie 13 is not valid"
         (ytdlmusic --n=13 "Rexlambo" "Stay With Me" || echo "good exit code") | grep "13 is not valid"           
