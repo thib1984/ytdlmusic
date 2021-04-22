@@ -92,6 +92,9 @@ scandinavianz;avalon;information
 ```
 ## Other commands
 
+`` ytdlmusic --check `` or `` ytdlmusic -c `` check if update is available for program
+
+`` ytdlmusic --Check `` or `` ytdlmusic -c `` check if update are available for program and dependencies
 
 `` ytdlmusic --update `` or `` ytdlmusic -u `` upgrades ytdlmusic
 

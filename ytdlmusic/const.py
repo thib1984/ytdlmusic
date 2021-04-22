@@ -31,6 +31,9 @@ HELP_TXT = """\
         -q, --quiet         : give less output
         -d, --verbose       : give more output
         -h, --help          : print this help text and exit
+        -c, --check         : check if update is available for program
+        -C, --Check         : check if updates are available for program
+                            and dependencies   
         -u, --update        : upgrade this program to latest version and exit
         -U, --full-update   : upgrade this program and the dependencies to
                             latest version and exit
