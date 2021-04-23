@@ -2,7 +2,7 @@
 search utils scripts
 """
 from ytdlmusic.log import print_debug
-from ytdlmusic.params import is_number, param_number
+from ytdlmusic.params import param_number
 
 try:
     from youtubesearchpython import VideosSearch

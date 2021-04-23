@@ -5,7 +5,6 @@ ytdlmusic params scripts
 import argparse
 
 import sys
-import re
 
 
 def compute_args():
@@ -125,10 +124,10 @@ def check_classic_params():
     check the classic params for classic use
     """
     # too classic parameters
-    if compute_args().artist == None:
+    if compute_args().artist is None:
         print("Missing artist")
         return False
-    if compute_args().song == None:
+    if compute_args().song is None:
         print("Missing song")
         return False
     return True

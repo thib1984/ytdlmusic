@@ -21,7 +21,6 @@ from ytdlmusic.params import (
     param_batch,
     param_artist,
     param_song,
-    compute_args,
     check_classic_params,
 )
 
