@@ -16,50 +16,16 @@ def compute_args():
         """,
     )
 
-    my_third_group = my_parser.add_mutually_exclusive_group()
-    my_third_group.add_argument(
-        "-f",
-        "--m4a",
-        action="store_true",
-        help="force use m4a format",
-    )
-    my_third_group.add_argument(
-        "-o",
-        "--ogg",
-        action="store_true",
-        help="force use m4a format",
+    my_group = my_parser.add_mutually_exclusive_group(required=True)
+
+    my_group.add_argument(
+        "artist", metavar="artist", type=str, nargs="?"
     )
 
     my_parser.add_argument(
-        "-Q",
-        "--quality",
-        action="store_true",
-        help="set quality to 320kbs instead of 256kbs for mp3 format",
-    )
-    my_parser.add_argument(
-        "-y",
-        "--auto",
-        action="store_true",
-        help="auto-choose first item for classic use, auto-accept for other commands",
-    )
-    my_parser.add_argument(
-        "-k",
-        "--keep",
-        action="store_true",
-        help="keep the YouTube video title for the filename",
-    )
-    my_parser.add_argument(
-        "-n",
-        "--choices",
-        metavar="X",
-        action="store",
-        type=int,
-        default=5,
-        choices=range(1, 11),
-        help="set the number X of choices (default=5, min=1, max=10)",
+        "song", metavar="song", type=str, nargs="?"
     )
 
-    my_group = my_parser.add_mutually_exclusive_group()
     my_group.add_argument(
         "-v",
         "--version",
@@ -88,8 +54,47 @@ def compute_args():
         help="batch mode, loop on a <path> csv file with an header <bool_h>, with separator <s>, artist on column number <art_col>, song on column number <song_col>",
     )
 
-    my_group.add_argument(
-        "artist", metavar="artist", type=str, nargs="?"
+    my_third_group = my_parser.add_mutually_exclusive_group()
+    my_third_group.add_argument(
+        "-f",
+        "--m4a",
+        action="store_true",
+        help="force use m4a format",
+    )
+    my_third_group.add_argument(
+        "-o",
+        "--ogg",
+        action="store_true",
+        help="force use m4a format",
+    )
+
+    my_third_group.add_argument(
+        "-Q",
+        "--quality",
+        action="store_true",
+        help="set quality to 320kbs instead of 256kbs for mp3 format",
+    )
+    my_parser.add_argument(
+        "-y",
+        "--auto",
+        action="store_true",
+        help="auto-choose first item for classic use, auto-accept for other commands",
+    )
+    my_parser.add_argument(
+        "-k",
+        "--keep",
+        action="store_true",
+        help="keep the YouTube video title for the filename",
+    )
+    my_parser.add_argument(
+        "-n",
+        "--choices",
+        metavar="X",
+        action="store",
+        type=int,
+        default=5,
+        choices=range(1, 11),
+        help="set the number X of choices (default=5, min=1, max=10)",
     )
 
     my_second_group = my_parser.add_mutually_exclusive_group()
@@ -106,15 +111,12 @@ def compute_args():
         help="give less output",
     )
 
-    my_parser.add_argument(
-        "song", metavar="song", type=str, nargs="?"
-    )
-
-    args = my_parser.parse_args()
     # if no parameter
     if len(sys.argv) == 1:
         my_parser.print_help()
         exit(0)
+
+    args = my_parser.parse_args()
 
     return args
 
