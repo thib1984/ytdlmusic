@@ -91,7 +91,7 @@ runs:
     - name: test repair full-update
       shell: bash
       run: |               
-        printf 'y\n' | ytdlmusic --full-update | grep "Update available"
+        printf 'y\n' | ytdlmusic --full-update | grep "Successfully installed youtube-dl"
         ytdlmusic --auto -q "Rexlambo" "Stay With Me" | grep "ffmpeg" || echo "ffmpeg non trouve" | grep "ffmpeg non trouve"
         ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"
         echo "les md5 doivent etre differents"
@@ -100,7 +100,7 @@ runs:
         test "$(md5sum rexlambo_stay_with_me_2.mp3 | cut -d " " -f 1)" != "$(md5sum rexlambo_stay_with_me_1.mp3 | cut -d " " -f 1)"        
         ytdlmusic -dkQ --auto "avalon" "scandinavianz"
         test -f avalon_scandinavianz_no_copyright_music_.mp3
-        printf 'y\n' | ytdlmusic --full-update | grep "No update available"
+        printf 'y\n' | ytdlmusic --full-update | grep "Requirement already satisfied" | wc -l | grep 3
     - name: test bad launch (one parameter)
       shell: bash
       run: |   
