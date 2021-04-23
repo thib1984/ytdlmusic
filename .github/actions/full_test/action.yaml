@@ -81,7 +81,7 @@ runs:
       shell: bash
       run: |
         echo "launch batch and verify three downloads"
-        ytdlmusic --auto --batch= "./test/test.csv" "True" ";" 2 1 | grep "is ready" | wc -l | grep 3
+        ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2 1 | grep "is ready" | wc -l | grep 3
         echo "test la presence des trois fichiers"
         test -f above_limujii.mp3
         test -f awake_nomyn.mp3
