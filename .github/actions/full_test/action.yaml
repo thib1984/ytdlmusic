@@ -89,10 +89,8 @@ runs:
     - name: test bad launch
       shell: bash
       run: |  
-        echo "verifie le code erreur"        
-        (ytdlmusic --tetet || echo "good exit code") | grep "good exit code"
-        echo "verifie le retour"  
-        (ytdlmusic --tetet || echo "good exit code") | grep "unrecognized arguments"
+        echo "verifie le code erreur 2"        
+        (ytdlmusic --tetet || echo $?) | grep "2"   
     - name: test short params
       shell: bash
       run: |
@@ -103,10 +101,8 @@ runs:
     - name: test bad launch short params
       shell: bash
       run: |
-        echo "verifie le code erreur"            
-        (ytdlmusic -dvUz || echo "good exit code") | grep "good exit code"
-        echo "verifie le retour" 
-        (ytdlmusic -dvUz || echo "good exit code") | grep "unrecognized arguments"      
+        echo "verifie le code erreur 2 "            
+        (ytdlmusic -dvUz || echo $?) | grep "2"     
     - name: test missing dependency error
       shell: bash
       run: | 
@@ -144,5 +140,5 @@ runs:
         (ytdlmusic tetet || echo "good exit code") | grep "good exit code"
         echo "ytdlmusic tetet renvoie un 'Missing song'"
         (ytdlmusic tetet || echo "good exit code") | grep "Missing song"  
-        echo "ytdlmusic --n 13 renvoie invalid choice: 13"
-        (ytdlmusic -n 13 "Rexlambo" "Stay With Me" || echo "good exit code") | grep "invalid choice: 13"           
+        echo "ytdlmusic --n 13 renvoie un code erreur 2 (argparse)
+        (ytdlmusic -n 13 "Rexlambo" "Stay With Me" || echo $?) | grep "2"           
