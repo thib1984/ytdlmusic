@@ -37,7 +37,7 @@ HELP_TXT = """\
         -v, --version       : print program version and exit
         --batch=<path>%<bool_h>%<s>%<art_col>%<song_col>
                             : batch mode, loop on a <path> csv file with an
-                            header <bool_h>, with separator <sep>, artist on
+                            header <bool_h>, with separator <s>, artist on
                             column number <art_col>, song on column number
                             <song_col>
 
