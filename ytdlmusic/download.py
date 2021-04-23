@@ -6,7 +6,6 @@ from ytdlmusic.params import (
     is_verbose,
     is_quiet,
     is_m4a,
-    FLAG_M4A_LONG,
     is_ogg,
     is_quality,
 )
@@ -64,8 +63,5 @@ def download_song(song_url, filename):
         ydl.extract_info(song_url, download=True)
     if not is_ffmpeg_installed() and not is_m4a() and not is_ogg():
         print("[warning] If you want MP3/OGG format, install ffmpeg.")
-        print(
-            "[warning] To disable this message activate "
-            + FLAG_M4A_LONG
-        )
+        print("[warning] To disable this message activate -f")
     print(filename + " is ready")

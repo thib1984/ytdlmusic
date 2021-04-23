@@ -23,7 +23,5 @@ def search(artist, song):
     print(
         'search "' + search_pattern + '" with youtube-search-python'
     )
-    my_limit = 5
-    if is_number():
-        my_limit = int(param_number())
+    my_limit = int(param_number())
     return VideosSearch(search_pattern, limit=my_limit)

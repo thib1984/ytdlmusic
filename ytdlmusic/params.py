@@ -2,135 +2,122 @@
 ytdlmusic params scripts
 """
 
+import argparse
+
 import sys
 import re
-from ytdlmusic.const import (
-    FLAG_HELP_LONG,
-    FLAG_VERSION_LONG,
-    FLAG_UPDATE_LONG,
-    FLAG_FULL_UPDATE_LONG,
-    FLAG_AUTO_LONG,
-    FLAG_VERSBOSE_LONG,
-    FLAG_M4A_LONG,
-    FLAG_OGG_LONG,
-    FLAG_HELP_SHORT,
-    FLAG_VERSION_SHORT,
-    FLAG_UPDATE_SHORT,
-    FLAG_FULL_UPDATE_SHORT,
-    FLAG_AUTO_SHORT,
-    FLAG_VERBOSE_SHORT,
-    FLAG_M4A_SHORT,
-    FLAG_OGG_SHORT,
-    FLAG_BATCH_LONG,
-    FLAG_NUMBER_LONG,
-    FLAG_QUIET_SHORT,
-    FLAG_QUIET_LONG,
-    FLAG_QUALITY_SHORT,
-    FLAG_QUALITY_LONG,
-    FLAG_KEEP_SHORT,
-    FLAG_KEEP_LONG,
-    OPTION_FORMAT,
-    LONG_OPTION_FORMAT,
-    SHORT_OPTION_FORMAT,
-)
-
-option_list = [
-    FLAG_HELP_LONG,
-    FLAG_VERSION_LONG,
-    FLAG_UPDATE_LONG,
-    FLAG_FULL_UPDATE_LONG,
-    FLAG_AUTO_LONG,
-    FLAG_VERSBOSE_LONG,
-    FLAG_M4A_LONG,
-    FLAG_OGG_LONG,
-    FLAG_QUIET_LONG,
-    FLAG_QUALITY_LONG,
-    FLAG_KEEP_LONG,
-    FLAG_NUMBER_LONG,
-]
 
 
-option_list_light = [
-    FLAG_HELP_SHORT,
-    FLAG_VERSION_SHORT,
-    FLAG_UPDATE_SHORT,
-    FLAG_FULL_UPDATE_SHORT,
-    FLAG_AUTO_SHORT,
-    FLAG_VERBOSE_SHORT,
-    FLAG_M4A_SHORT,
-    FLAG_OGG_SHORT,
-    FLAG_QUIET_SHORT,
-    FLAG_QUALITY_SHORT,
-    FLAG_KEEP_SHORT,
-]
+def compute_args():
+    my_parser = argparse.ArgumentParser(
+        description="ytdlmusic is a command-line program to search and download music files from YouTube without use browser.",
+        epilog="""
+        Full documentation at: <https://github.com/thib1984/ytdlmusic>.
+        Report bugs to <https://github.com/thib1984/ytdlmusic/issues>.
+        """,
+    )
 
+    my_third_group = my_parser.add_mutually_exclusive_group()
+    my_third_group.add_argument(
+        "-f",
+        "--m4a",
+        action="store_true",
+        help="force use m4a format",
+    )
+    my_third_group.add_argument(
+        "-o",
+        "--ogg",
+        action="store_true",
+        help="force use m4a format",
+    )
 
-def check_flags():
-    """
-    verify the flags
-    True if ok
-    False otherwise
-    """
-    # option not recognized
-    for i in sys.argv:
-        if not check_param(i):
-            return False
-    if is_number() and (
-        not param_number().isnumeric()
-        or int(param_number()) < 1
-        or int(param_number()) > 10
-    ):
-        print("the flag --n=" + param_number() + " is not valid")
-        return False
-    return True
+    my_parser.add_argument(
+        "-Q",
+        "--quality",
+        action="store_true",
+        help="set quality to 320kbs instead of 256kbs for mp3 format",
+    )
+    my_parser.add_argument(
+        "-y",
+        "--auto",
+        action="store_true",
+        help="auto-choose first item for classic use, auto-accept for other commands",
+    )
+    my_parser.add_argument(
+        "-k",
+        "--keep",
+        action="store_true",
+        help="keep the YouTube video title for the filename",
+    )
+    my_parser.add_argument(
+        "-n",
+        "--choices",
+        metavar="X",
+        action="store",
+        type=int,
+        default=5,
+        choices=range(1, 5),
+        help="set the number X of choices (default=5, min=1, max=10)",
+    )
 
+    my_group = my_parser.add_mutually_exclusive_group()
+    my_group.add_argument(
+        "-v",
+        "--version",
+        action="store_true",
+        help="display ytdlmusic version",
+    )
+    my_group.add_argument(
+        "-u",
+        "--update",
+        action="store_true",
+        help="upgrade ytdlmusic",
+    )
+    my_group.add_argument(
+        "-U",
+        "--fullupdate",
+        action="store_true",
+        help="upgrade ytdlmusic, youtube-dl and youtube-search-python",
+    )
+    my_group.add_argument(
+        "-b",
+        "--batch",
+        metavar=("path", "bool_h", "s", "art_col", "song_col"),
+        action="store",
+        nargs=5,
+        type=str,
+        help="batch mode, loop on a <path> csv file with an header <bool_h>, with separator <s>, artist on column number <art_col>, song on column number <song_col>",
+    )
 
-def check_order_param_and_flags():
-    """
-    verify order of flags and params
-    True if ok
-    False otherwise
-    """
-    one_param = False
-    for i in range(1, len(sys.argv)):
-        if not sys.argv[i].startswith("-"):
-            one_param = True
-        if one_param and sys.argv[i].startswith("-"):
-            print("the flags must be set before [ARTIST] and [SONG]")
-            return False
-    return True
+    my_group.add_argument(
+        "artist", metavar="artist", type=str, nargs="?"
+    )
 
+    my_second_group = my_parser.add_mutually_exclusive_group()
+    my_second_group.add_argument(
+        "-d",
+        "--verbose",
+        action="store_true",
+        help="give more output",
+    )
+    my_second_group.add_argument(
+        "-q",
+        "--quiet",
+        action="store_true",
+        help="give less output",
+    )
 
-def check_param(sysargv):
-    """
-    test_param
-    """
-    if sysargv.startswith("-") and not re.search(
-        OPTION_FORMAT, sysargv
-    ):
-        return bad_options(sysargv)
-    if (
-        re.search(LONG_OPTION_FORMAT, sysargv)
-        and sysargv not in option_list
-        and not sysargv.startswith(FLAG_BATCH_LONG)
-        and not sysargv.startswith(FLAG_NUMBER_LONG)
-    ):
-        return bad_options(sysargv)
-    if re.search(SHORT_OPTION_FORMAT, sysargv):
-        for k in range(1, len(sysargv)):
-            element = sysargv[k]
-            if "^-.*" + element + ".*" not in option_list_light:
-                return bad_options(sysargv)
+    my_parser.add_argument(
+        "song", metavar="song", type=str, nargs="?"
+    )
 
-    return True
+    args = my_parser.parse_args()
+    # if no parameter
+    if len(sys.argv) == 1:
+        my_parser.print_help()
+        exit(0)
 
-
-def bad_options(i):
-    """
-    return false and print message
-    """
-    print("Not recognized option : " + i)
-    return False
+    return args
 
 
 def check_classic_params():
@@ -138,214 +125,97 @@ def check_classic_params():
     check the classic params for classic use
     """
     # too classic parameters
-    if is_third_param():
-        print("Max only 2 classic params")
-        return False
-    if not is_artist():
+    if compute_args().artist == None:
         print("Missing artist")
         return False
-    if not is_song():
+    if compute_args().song == None:
         print("Missing song")
         return False
     return True
-
-
-def no_param():
-    """
-    True if no param in sys.argv (except sys.argv(0)), False other
-    """
-    if len(sys.argv) == 1:
-        return True
-    return False
-
-
-def number_options():
-    """
-    Return number of options (except sys.argv(0)) in sys.argv
-    """
-    j = 0
-    for element in range(1, len(sys.argv)):
-        i = sys.argv[element]
-        if re.search(SHORT_OPTION_FORMAT, i):
-            j = j + len(i) - 1
-        else:
-            j = j + 1
-    return j
 
 
 def is_quiet():
     """
     Return True if flag --quiet, False otherwise
     """
-    return FLAG_QUIET_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_QUIET_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().quiet
 
 
 def is_quality():
     """
     Return True if flag --quality, False otherwise
     """
-    return FLAG_QUALITY_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_QUALITY_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().quality
 
 
 def is_verbose():
     """
     Return True if flag --verbose, False otherwise
     """
-    return FLAG_VERSBOSE_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_VERBOSE_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().verbose
 
 
 def is_auto():
     """
     Return True if flag --auto, False otherwise
     """
-    return FLAG_AUTO_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_AUTO_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().auto
 
 
 def is_m4a():
     """
     Return True if flag --m4a, False otherwise
     """
-    return FLAG_M4A_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_M4A_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().m4a
 
 
 def is_keep():
     """
     Return True if flag --ogg, False otherwise
     """
-    return FLAG_KEEP_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_KEEP_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().keep
 
 
 def is_ogg():
     """
     Return True if flag --ogg, False otherwise
     """
-    return FLAG_OGG_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_OGG_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
-
-
-def is_help():
-    """
-    Return True if flag --help, False otherwise
-    """
-    return FLAG_HELP_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_HELP_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().ogg
 
 
 def is_version():
     """
     Return True if flag --version, False otherwise
     """
-    return FLAG_VERSION_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_VERSION_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().version
 
 
 def is_update():
     """
     Return True if flag --update, False otherwise
     """
-    return FLAG_UPDATE_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_UPDATE_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().update
 
 
 def is_fullupdate():
     """
-    Return True if flag --full-update, False otherwise
+    Return True if flag --fullupdate, False otherwise
     """
-    return FLAG_FULL_UPDATE_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_FULL_UPDATE_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
+    return compute_args().fullupdate
 
 
 def is_batch():
     """
     Return True if flag --batch=, False otherwise
     """
-    return [i for i in sys.argv if i.startswith(FLAG_BATCH_LONG)]
+    return compute_args().batch
 
 
 def is_number():
     """
     Return True if flag --n=, False otherwise
     """
-    return [i for i in sys.argv if i.startswith(FLAG_NUMBER_LONG)]
-
-
-def is_third_param():
-    """
-    Return True if number classic params >=3 (sys.argv excluded)
-    """
-    return not param_third() is None
+    return compute_args().choices
 
 
 def is_artist():
@@ -366,56 +236,25 @@ def param_artist():
     """
     Return true if the artist exists from sys.argv
     """
-    j = 0
-    for i in sys.argv:
-        if not i.startswith("-"):
-            j = j + 1
-            if j == 2:
-                return i
-    return None
+    return compute_args().artist
 
 
 def param_song():
     """
     Return the song from sys.argv
     """
-    j = 0
-    for i in sys.argv:
-        if not i.startswith("-"):
-            j = j + 1
-            if j == 3:
-                return i
-    return None
-
-
-def param_third():
-    """
-    Return the third classic param from sys.argv
-    """
-    j = 0
-    for i in sys.argv:
-        if not i.startswith("-"):
-            j = j + 1
-            if j == 4:
-                return i
-    return None
+    return compute_args().song
 
 
 def param_batch():
     """
     Return the list of batch param without "--batch="
     """
-    for i in sys.argv:
-        if i.startswith(FLAG_BATCH_LONG):
-            return str.replace(i, FLAG_BATCH_LONG, "", 1).split("%")
-    return ""
+    return compute_args().batch.split("%")
 
 
 def param_number():
     """
     Return the number of param number param without "--number="
     """
-    for i in sys.argv:
-        if i.startswith(FLAG_NUMBER_LONG):
-            return str.replace(i, FLAG_NUMBER_LONG, "", 1)
-    return ""
+    return compute_args().choices

@@ -11,7 +11,6 @@ from ytdlmusic.version import (
     platform_version,
 )
 from ytdlmusic.const import (
-    HELP_TXT,
     LICENCE_TXT,
     BAD_LAUNCH_TXT,
     EXCEPTION,
@@ -38,16 +37,6 @@ def replace_all(text, dic):
     for i, j in dic.items():
         text = text.replace(i, j)
     return text
-
-
-def print_no_param():
-    """
-    if no params, display help + short_version + licence
-    """
-    print_help()
-    print_version_ytdlmusic()
-    print_version_dependencies()
-    print_licence()
 
 
 def print_licence():
@@ -86,13 +75,6 @@ def print_version_dependencies():
         )
     )
     print(replace_all(PLATFORM_OS, {"$1": platform_version()}))
-
-
-def print_help():
-    """
-    print the help message
-    """
-    print(replace_all(HELP_TXT, {}))
 
 
 def print_bad_launch():
