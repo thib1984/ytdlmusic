@@ -49,7 +49,7 @@ runs:
       shell: bash
       run: |
         echo "test l absence d erreur sur le lancement --auto -f et le non affichage du nombre de choix"          
-        printf '3\n' | ytdlmusic -f --n 4 "Rexlambo" "Stay With Me" | grep "1-4" | wc -l | grep 1    
+        printf '3\n' | ytdlmusic -f -choices 4 "Rexlambo" "Stay With Me" | grep "1-4" | wc -l | grep 1    
         echo "test la presence du fichier genere"
         test -f rexlambo_stay_with_me_2.m4a
     - name: test 'ytdlmusic --auto artist title' with ffmpeg force ogg
