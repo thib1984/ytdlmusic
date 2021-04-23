@@ -82,6 +82,8 @@ def update_pip_package(prog, package):
                 print(line.strip(" "))
             elif (
                 "Requirement already satisfied: " + package
+            ) in line or (
+                "Requirement already up-to-date: " + package
             ) in line:
                 print(line.strip(" "))
         print("Update ok")
