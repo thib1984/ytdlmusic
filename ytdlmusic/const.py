@@ -32,7 +32,7 @@ ytdlmusic --help for more information"""
 
 EXCEPTION = """\
 Unexpected error: $1
-Try to upgrade with 'ytdlmusic --update' or 'ytdlmusic --full-update'
+Try to upgrade with 'ytdlmusic --update' or 'ytdlmusic --fullupdate'
 and retry."""
 
 EXCEPTION_UPDATE = """\

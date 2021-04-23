@@ -92,15 +92,16 @@ scandinavianz;avalon;information
 ```
 ## Other commands
 
-`` ytdlmusic --update `` or `` ytdlmusic -u `` upgrades ytdlmusic
+`` ytdlmusic`` display help message
 
-`` ytdlmusic --full-update `` or `` ytdlmusic -U `` upgrades ytdlmusic, youtube-dl and youtube-search-python
+`` ytdlmusic --update `` or `` ytdlmusic -u `` upgrade ytdlmusic
 
-`` ytdlmusic --help`` or `` ytdlmusic -h `` displays help message
+`` ytdlmusic --fullupdate `` or `` ytdlmusic -U `` upgrade ytdlmusic, youtube-dl and youtube-search-python
 
-`` ytdlmusic --version `` or `` ytdlmusic -v `` displays version of ytdlmusic and dependencies
+`` ytdlmusic --help`` or `` ytdlmusic -h `` display help message
 
-`` ytdlmusic`` displays help message, version, and license
+`` ytdlmusic --version `` or `` ytdlmusic -v `` display version of ytdlmusic and dependencies
+
 
 
 ## Other flags
@@ -110,7 +111,7 @@ You can also add these flags to your commands (except help and version) :
 
 `` --auto `` or `` -y `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
 
-`` --n=X `` : number of choices (default=5, min=1, max=10)
+`` --choices X `` or `` -n X `` : number of choices (default=5, min=1, max=10)
 
 `` --k `` or `` --keep `` : kepp the YouTube video title for the filename
 
