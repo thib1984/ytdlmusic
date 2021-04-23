@@ -91,7 +91,7 @@ runs:
     - name: test repair full-update
       shell: bash
       run: |               
-        printf 'y\n' | ytdlmusic --full-update | grep "Update available"
+        printf 'y\n' | ytdlmusic --full-update | grep "Successfully installed youtube-dl"
         ytdlmusic --auto -q "Rexlambo" "Stay With Me" | grep "ffmpeg" || echo "ffmpeg non trouve" | grep "ffmpeg non trouve"
         ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"
         echo "les md5 doivent etre differents"
