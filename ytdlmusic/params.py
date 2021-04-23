@@ -56,7 +56,7 @@ def compute_args():
         action="store",
         type=int,
         default=5,
-        choices=range(1, 5),
+        choices=range(1, 11),
         help="set the number X of choices (default=5, min=1, max=10)",
     )
 
@@ -250,7 +250,7 @@ def param_batch():
     """
     Return the list of batch param without "--batch="
     """
-    return compute_args().batch.split("%")
+    return compute_args().batch
 
 
 def param_number():

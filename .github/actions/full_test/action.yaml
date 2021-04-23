@@ -11,95 +11,131 @@ runs:
     - name: test 'ytdlmusic'   
       shell: bash      
       run: |
+        echo "test l absence d erreur sur le lancement sans parametre"
         ytdlmusic
-        ytdlmusic | grep "SYNOPSIS"
-        ytdlmusic | grep "ytdlmusic version             :"                   
+        echo "test le contenu du retour sur le lancement sans parametre"
+        ytdlmusic | grep "usage: "                
     - name: test 'ytdlmusic --version'
       shell: bash 
       run: |
+        echo "test l absence d erreur sur le lancement --version"
         ytdlmusic --version
+        echo "test le contenu du retour sur le lancement --version"
         ytdlmusic --version | grep "ytdlmusic version             :"
     - name: test 'ytdlmusic --help'
       shell: bash
       run: |
+        echo "test l absence d erreur sur le lancement --help"
         ytdlmusic --help
-        ytdlmusic --help | grep "SYNOPSIS"  
-    - name: test 'ytdlmusic --auto artist title'
+        echo "test le contenu du retour sur le lancement --help"
+        ytdlmusic --help | grep "usage: "  
+    - name: test 'ytdlmusic --auto artist title' with ffmpeg
+      shell: bash
+      run: | 
+        echo "test l absence d erreur sur le lancement --auto"         
+        ytdlmusic --auto "Rexlambo" "Stay With Me"
+        echo "test la presence du fichier genere"
+        test -f rexlambo_stay_with_me.mp3
+        echo "test le format reel du fichier genere"
+        file -b rexlambo_stay_with_me.mp3 | grep "Audio file with ID3 version 2.4.0, contains:MPEG ADTS, layer III, v1, 256 kbps, 48 kHz, Stereo"
+    - name: test 'ytdlmusic -f --auto artist title'
       shell: bash
       run: |
+        echo "test l absence d erreur sur le lancement --auto -f"
         ytdlmusic -f --auto "Rexlambo" "Stay With Me"
+        echo "test la presence du fichier genere"
         test -f rexlambo_stay_with_me_1.m4a          
     - name: test 'ytdlmusic artist title' interactive mode
       shell: bash
-      run: |          
-        printf '3\n' | ytdlmusic -f --n=4 "Rexlambo" "Stay With Me" | grep "1-4" | wc -l | grep 1
+      run: |
+        echo "test l absence d erreur sur le lancement --auto -f et le non affichage du nombre de choix"          
+        printf '3\n' | ytdlmusic -f --n 4 "Rexlambo" "Stay With Me" | grep "1-4" | wc -l | grep 1    
+        echo "test la presence du fichier genere"
         test -f rexlambo_stay_with_me_2.m4a
-    - name: test 'ytdlmusic --auto artist title' with ffmpeg
-      shell: bash
-      run: |          
-        ytdlmusic --auto "Rexlambo" "Stay With Me"
-        test -f rexlambo_stay_with_me.mp3
-        file -b rexlambo_stay_with_me.mp3 | grep "Audio file with ID3 version 2.4.0, contains:MPEG ADTS, layer III, v1, 256 kbps, 48 kHz, Stereo"
     - name: test 'ytdlmusic --auto artist title' with ffmpeg force ogg
       shell: bash
-      run: |          
+      run: | 
+        echo "test l absence d erreur sur le lancement -y -o"         
         ytdlmusic -yo "Rexlambo" "Stay With Me"
+        echo "test la presence du fichier genere"
         test -f rexlambo_stay_with_me.ogg
+        echo "test le format reel du fichier genere"
         file -b rexlambo_stay_with_me.ogg | grep -b "Ogg data, Vorbis audio, stereo, 48000 Hz, ~112000 bps"                               
     - name: test downloaded files
       shell: bash
-      run: |          
+      run: |
+        echo "affiche le md5 de rexlambo_stay_with_me"            
         md5sum rexlambo_stay_with_me.m4a
+        echo "affiche le md5 de rexlambo_stay_with_me_1" 
         md5sum rexlambo_stay_with_me_1.m4a
-        echo "les md5 doivent etre differents"
+        echo "les md5 doivent etre differents car urls differentes"
         test "$(md5sum rexlambo_stay_with_me.m4a | cut -d " " -f 1)" != "$(md5sum rexlambo_stay_with_me_1.m4a | cut -d " " -f 1)"
     - name: test 'ytdlmusic --auto artist title' with force m4a
       shell: bash
-      run: |          
+      run: |      
+        echo "test l absence d erreur sur le lancement en forcage --m4a"    
         ytdlmusic --auto --m4a "Rexlambo" "Stay With Me"
+        echo "test la presence du fichier genere"
         test -f rexlambo_stay_with_me_2.m4a       
     - name: test batch
       shell: bash
       run: |
         echo "launch batch and verify three downloads"
-        ytdlmusic --auto --batch="./test/test.csv"%True%";"%2%1 | grep "is ready" | wc -l | grep 3
+        ytdlmusic --auto --batch= "./test/test.csv" "True" ";" 2 1 | grep "is ready" | wc -l | grep 3
+        echo "test la presence des trois fichiers"
         test -f above_limujii.mp3
         test -f awake_nomyn.mp3
         test -f avalon_scandinavianz.mp3
     - name: test bad launch
       shell: bash
-      run: |          
+      run: |  
+        echo "verifie le code erreur"        
         (ytdlmusic --tetet || echo "good exit code") | grep "good exit code"
-        (ytdlmusic --tetet || echo "good exit code") | grep "Not recognized option"
+        echo "verifie le retour"  
+        (ytdlmusic --tetet || echo "good exit code") | grep "unrecognized arguments"
     - name: test short params
       shell: bash
-      run: |          
+      run: |
+        echo "test une combinaison de flags courts"          
         ytdlmusic -fyd "Rexlambo" "Stay With Me"
+        echo "test l existence du fichier généré"
         test -f rexlambo_stay_with_me_3.m4a  
     - name: test bad launch short params
       shell: bash
-      run: |          
+      run: |
+        echo "verifie le code erreur"            
         (ytdlmusic -dvUz || echo "good exit code") | grep "good exit code"
-        (ytdlmusic -dvUz || echo "good exit code") | grep "Not recognized option"      
+        echo "verifie le retour" 
+        (ytdlmusic -dvUz || echo "good exit code") | grep "unrecognized arguments"      
     - name: test missing dependency error
       shell: bash
-      run: |          
+      run: | 
+        echo "retire une dependance"         
         pip uninstall --yes youtube-dl
+        echo "verifie la version" 
         ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
+        echo "verifie que l erreur est remontee" 
         (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
+        echo "verifie que l erreur est propre" 
         (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "Try to upgrade with 'ytdlmusic --update'"
     - name: test repair full-update
       shell: bash
-      run: |               
+      run: |  
+        echo "verifie l upgrade"               
         printf 'y\n' | ytdlmusic --full-update | grep "Successfully installed youtube-dl"
-        ytdlmusic --auto -q "Rexlambo" "Stay With Me" | grep "ffmpeg" || echo "ffmpeg non trouve" | grep "ffmpeg non trouve"
+        echo "verifie que l application refonctionne en HQ"
         ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"
-        echo "les md5 doivent etre differents"
+        echo "verifie le quiet est fonctionnel"
+        ytdlmusic --auto -q "Rexlambo" "Stay With Me" | grep "ffmpeg" || echo "ffmpeg non trouve" | grep "ffmpeg non trouve"
+        echo "les md5 doivent etre differents (un en HQ l autre non)"
         md5sum rexlambo_stay_with_me_2.mp3
         md5sum rexlambo_stay_with_me_1.mp3
         test "$(md5sum rexlambo_stay_with_me_2.mp3 | cut -d " " -f 1)" != "$(md5sum rexlambo_stay_with_me_1.mp3 | cut -d " " -f 1)"        
+        echo "verifie le telechargement keep"
         ytdlmusic -dkQ --auto "avalon" "scandinavianz"
+        echo "verifie le nom genere"
         test -f avalon_scandinavianz_no_copyright_music_.mp3
+        echo "verifie que l upgrade n esy plus disponible"
         printf 'y\n' | ytdlmusic --full-update | grep "Requirement already satisfied" | wc -l | grep 3
     - name: test bad launch (one parameter)
       shell: bash
@@ -108,5 +144,5 @@ runs:
         (ytdlmusic tetet || echo "good exit code") | grep "good exit code"
         echo "ytdlmusic tetet renvoie un 'Missing song'"
         (ytdlmusic tetet || echo "good exit code") | grep "Missing song"  
-        echo "ytdlmusic --n=13 renvoie 13 is not valid"
-        (ytdlmusic --n=13 "Rexlambo" "Stay With Me" || echo "good exit code") | grep "13 is not valid"           
+        echo "ytdlmusic --n 13 renvoie invalid choice: 13"
+        (ytdlmusic -n 13 "Rexlambo" "Stay With Me" || echo "good exit code") | grep "invalid choice: 13"           
