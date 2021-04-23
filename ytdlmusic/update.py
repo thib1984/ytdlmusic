@@ -24,8 +24,6 @@ def update():
     """
     update ytdlmusic
     """
-    if not check_list_packages(["ytdlmusic"]):
-        return
     if not is_auto():
         answer = input(UPDATE_YN)
         if answer.lower() not in ["y", ""]:
@@ -43,10 +41,6 @@ def fullupdate():
     update ytdlmusic, youtube-search-python, youtube-dl
     """
 
-    if not check_list_packages(
-        ["ytdlmusic", "youtube-search-python", "youtube-dl"]
-    ):
-        return
     if not is_auto():
         answer = input(FULL_UPDATE_YN)
         if answer.lower() not in ["y", ""]:
@@ -75,15 +69,21 @@ def update_pip_package(prog, package):
         params = [
             prog,
             "install",
-            "--quiet",
             "--upgrade",
             package,
         ]
-        if is_verbose():
-            params.remove("--quiet")
-            print_debug("install process : ")
-
-        subprocess.check_call(params)
+        print_debug("full trace pip")
+        output = subprocess.check_output(params)
+        # print(output)
+        for line in output.decode("utf-8").split("\n"):
+            if is_verbose():
+                print(line.strip(" "))
+            elif "Successfully" in line:
+                print(line.strip(" "))
+            elif (
+                "Requirement already satisfied: " + package
+            ) in line:
+                print(line.strip(" "))
         print("Update ok")
         return True
     except Exception as err:
@@ -102,54 +102,3 @@ def pip3_or_pip():
         return "pip"
     print_error_update("Not pip por pip3 package")
     sys.exit(1)
-
-
-def check_list_packages(list_of_search_packages):
-    print("Search available update...")
-    try:
-        excludes = []
-        update_available = False
-        # list all packages without search update
-        list_packages = str(
-            subprocess.check_output([pip3_or_pip(), "list"]).decode(
-                "utf-8"
-            )
-        )
-        # if a package in paramater does not appear -> need update
-        for package in list_of_search_packages:
-            if package not in list_packages:
-                print(package + " : not installed !")
-                update_available = True
-        # suppress all others packages not in parameter
-        for line in list_packages.split("\n", 2)[2].splitlines():
-            # print(line.split()[0])
-            if line.split(" ")[0] not in list_of_search_packages:
-                excludes.append("--exclude")
-                excludes.append(line.split(" ")[0])
-
-        # search outdated package in the small list obtained
-        for line in str(
-            subprocess.check_output(
-                [pip3_or_pip(), "list", "--outdated"] + excludes
-            ).decode("utf-8")
-        ).splitlines():
-            if line.split(" ")[0] in list_of_search_packages:
-                print(
-                    line.split()[0]
-                    + " : available update : "
-                    + line.split()[1]
-                    + " -> "
-                    + line.split()[2]
-                )
-                update_available = True
-        if not update_available:
-            print("No update available")
-        else:
-            print("Update available!")
-        return update_available
-    except Exception as err:
-        print_debug(str(err))
-        print(
-            "Can't check if update available. You can relaunch with --verbose/-d for analysis."
-        )
-        return True

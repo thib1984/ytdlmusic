@@ -31,9 +31,6 @@ HELP_TXT = """\
         -q, --quiet         : give less output
         -d, --verbose       : give more output
         -h, --help          : print this help text and exit
-        -c, --check         : check if update is available for program
-        -C, --Check         : check if updates are available for program
-                            and dependencies   
         -u, --update        : upgrade this program to latest version and exit
         -U, --full-update   : upgrade this program and the dependencies to
                             latest version and exit
@@ -132,10 +129,6 @@ FLAG_M4A_SHORT = "^-.*f.*"
 FLAG_OGG_SHORT = "^-.*o.*"
 FLAG_BATCH_LONG = "--batch="
 FLAG_NUMBER_LONG = "--n="
-FLAG_CHECK_SHORT = "^-.*c.*"
-FLAG_CHECK_LONG = "--check"
-FLAG_CHECKALL_SHORT = "^-.*C.*"
-FLAG_CHECKALL_LONG = "--check-all"
 FLAG_QUIET_LONG = "--quiet"
 FLAG_QUIET_SHORT = "^-.*q.*"
 FLAG_QUALITY_LONG = "--quality"

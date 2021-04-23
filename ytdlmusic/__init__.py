@@ -4,7 +4,7 @@ ytdlmusic scripts
 
 import sys
 from ytdlmusic.ytdlmusic import job
-from ytdlmusic.update import update, fullupdate, check_list_packages
+from ytdlmusic.update import update, fullupdate
 from ytdlmusic.batch import launch_batch
 from ytdlmusic.print import (
     print_error,
@@ -28,8 +28,6 @@ from ytdlmusic.params import (
     no_param,
     check_classic_params,
     check_order_param_and_flags,
-    is_check,
-    is_check_all,
 )
 
 
@@ -54,12 +52,6 @@ def ytdlmusic():
             print_version_ytdlmusic()
             print_version_dependencies()
             print_licence()
-        elif is_check():
-            check_list_packages(["ytdlmusic"])
-        elif is_check_all():
-            check_list_packages(
-                ["ytdlmusic", "youtube-search-python", "youtube-dl"]
-            )
         elif is_batch():
             launch_batch(param_batch())
         # classic use case

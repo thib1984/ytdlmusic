@@ -23,10 +23,6 @@ from ytdlmusic.const import (
     FLAG_OGG_SHORT,
     FLAG_BATCH_LONG,
     FLAG_NUMBER_LONG,
-    FLAG_CHECK_LONG,
-    FLAG_CHECK_SHORT,
-    FLAG_CHECKALL_LONG,
-    FLAG_CHECKALL_SHORT,
     FLAG_QUIET_SHORT,
     FLAG_QUIET_LONG,
     FLAG_QUALITY_SHORT,
@@ -47,8 +43,6 @@ option_list = [
     FLAG_VERSBOSE_LONG,
     FLAG_M4A_LONG,
     FLAG_OGG_LONG,
-    FLAG_CHECK_LONG,
-    FLAG_CHECKALL_LONG,
     FLAG_QUIET_LONG,
     FLAG_QUALITY_LONG,
     FLAG_KEEP_LONG,
@@ -65,8 +59,6 @@ option_list_light = [
     FLAG_VERBOSE_SHORT,
     FLAG_M4A_SHORT,
     FLAG_OGG_SHORT,
-    FLAG_CHECK_SHORT,
-    FLAG_CHECKALL_SHORT,
     FLAG_QUIET_SHORT,
     FLAG_QUALITY_SHORT,
     FLAG_KEEP_SHORT,
@@ -218,34 +210,6 @@ def is_verbose():
         for i in sys.argv
         if (
             re.search(FLAG_VERBOSE_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
-
-
-def is_check():
-    """
-    Return True if flag --check, False otherwise
-    """
-    return FLAG_CHECK_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_CHECK_SHORT, i)
-            and re.search(SHORT_OPTION_FORMAT, i)
-        )
-    ]
-
-
-def is_check_all():
-    """
-    Return True if flag --check, False otherwise
-    """
-    return FLAG_CHECKALL_LONG in sys.argv or [
-        i
-        for i in sys.argv
-        if (
-            re.search(FLAG_CHECKALL_SHORT, i)
             and re.search(SHORT_OPTION_FORMAT, i)
         )
     ]
