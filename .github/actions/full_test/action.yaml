@@ -118,7 +118,7 @@ runs:
       shell: bash
       run: |  
         echo "verifie l upgrade"               
-        printf 'y\n' | ytdlmusic --full-update | grep "Successfully installed youtube-dl"
+        printf 'y\n' | ytdlmusic --fullupdate | grep "Successfully installed youtube-dl"
         echo "verifie que l application refonctionne en HQ"
         ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"
         echo "verifie le quiet est fonctionnel"
@@ -132,7 +132,7 @@ runs:
         echo "verifie le nom genere"
         test -f avalon_scandinavianz_no_copyright_music_.mp3
         echo "verifie que l upgrade n esy plus disponible"
-        printf 'y\n' | ytdlmusic --full-update | grep "Requirement already satisfied" | wc -l | grep 3
+        printf 'y\n' | ytdlmusic --fullupdate | grep "Requirement already satisfied" | wc -l | grep 3
     - name: test bad launch (one parameter)
       shell: bash
       run: |   
