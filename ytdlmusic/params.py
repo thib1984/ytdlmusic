@@ -65,7 +65,7 @@ def compute_args():
         "-o",
         "--ogg",
         action="store_true",
-        help="force use m4a format",
+        help="force use ogg format",
     )
 
     my_third_group.add_argument(
