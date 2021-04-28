@@ -41,7 +41,7 @@ def choice(results_search):
             + result["link"]
             + "\n"
             + result["duration"]
-            + "-"
+            + " - "
             + result["viewCount"]["text"]
         )
 

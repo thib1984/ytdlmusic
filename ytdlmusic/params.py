@@ -19,11 +19,7 @@ def compute_args():
     my_group = my_parser.add_mutually_exclusive_group(required=True)
 
     my_group.add_argument(
-        "artist", metavar="artist", type=str, nargs="?"
-    )
-
-    my_parser.add_argument(
-        "song", metavar="song", type=str, nargs="?"
+        "search", metavar="search", type=str, nargs="?", help="words to search in YouTube",
     )
 
     my_group.add_argument(
@@ -74,17 +70,24 @@ def compute_args():
         action="store_true",
         help="set quality to 320kbs instead of 256kbs for mp3 format",
     )
+    my_fourth_group = my_parser.add_mutually_exclusive_group()
+    my_fourth_group.add_argument(
+        "-k",
+        "--keep",
+        action="store_true",
+        help="keep the YouTube video title for the filename",
+    )
+    my_fourth_group.add_argument(
+        "-t",
+        "--tag",
+        action="store_true",
+        help="determine the filename from tags",
+    )    
     my_parser.add_argument(
         "-y",
         "--auto",
         action="store_true",
         help="auto-choose first item for classic use, auto-accept for other commands",
-    )
-    my_parser.add_argument(
-        "-k",
-        "--keep",
-        action="store_true",
-        help="keep the YouTube video title for the filename",
     )
     my_parser.add_argument(
         "-n",
@@ -126,11 +129,8 @@ def check_classic_params():
     check the classic params for classic use
     """
     # too classic parameters
-    if compute_args().artist is None:
-        print("Missing artist")
-        return False
-    if compute_args().song is None:
-        print("Missing song")
+    if compute_args().search is None:
+        print("Missing search")
         return False
     return True
 
@@ -175,6 +175,13 @@ def is_keep():
     Return True if flag --ogg, False otherwise
     """
     return compute_args().keep
+
+
+def is_tag():
+    """
+    Return True if flag --ogg, False otherwise
+    """
+    return compute_args().tag
 
 
 def is_ogg():
@@ -233,18 +240,11 @@ def is_song():
     return not param_song() is None
 
 
-def param_artist():
+def param_search():
     """
-    Return true if the artist exists from sys.argv
+    Return true if the search exists from sys.argv
     """
-    return compute_args().artist
-
-
-def param_song():
-    """
-    Return the song from sys.argv
-    """
-    return compute_args().song
+    return compute_args().search
 
 
 def param_batch():

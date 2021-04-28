@@ -8,14 +8,27 @@ import re
 import pathlib
 from shutil import which
 from ytdlmusic.log import print_debug
-from ytdlmusic.params import is_m4a, is_ogg, is_keep
+from ytdlmusic.params import is_m4a, is_ogg, is_keep, is_tag
 from ytdlmusic.const import NOT_FOUND
+from ytdlmusic.tag import obtain_tags
+import unidecode
 
 
-def determine_filename(artist, song, title):
+def unicode_lower(text_to_translate):
+    print_debug("raw format : " + text_to_translate)
+    step_1 = re.sub("(\\W+)", "_", text_to_translate)
+    step_2 = re.sub("_+", "_", step_1)
+    step_3 = re.sub("^_", "", step_2)
+    step_4 = re.sub("_$", "", step_3)
+    file_name_unicode = unidecode.unidecode(step_4).lower()
+    print_debug("unicode format : " + file_name_unicode)
+    return file_name_unicode
+
+
+def determine_filename(search, title):
     """
     correct filename to escape special characters with '_'
-    and force lower case from artist and song
+    and force lower case
     """
     if is_m4a() or not is_ffmpeg_installed():
         ext = ".m4a"
@@ -24,13 +37,21 @@ def determine_filename(artist, song, title):
     else:
         ext = ".mp3"
     print_debug("extension used : " + ext)
-    filename = (
-        re.sub("(\\W+)", "_", artist + "_" + song).lower() + ext
-    )
-    if is_keep():
-        print_debug(" file name deduced from YouTube")
-        filename = re.sub("(\\W+)", "_", title).lower() + ext
-    print_debug("filename found " + filename)
+
+    if is_keep() or is_tag():
+        print_debug("file name will be deduced from YouTube : ")
+        return find_unique_name(unicode_lower(title) + ext)
+    if is_tag():
+        print_debug(
+            "temporary file name will be deduced from YouTube : "
+        )
+        return find_unique_name(unicode_lower(title) + ext)
+    print_debug("file name will be deduced key words : ")
+    return find_unique_name(unicode_lower(search) + ext)
+
+
+def find_unique_name(filename):
+    print_debug("initial filename found : " + filename)
     if os.path.exists(filename):
         # loop to find non existent filename
         print_debug(filename + " already exists")
@@ -38,14 +59,41 @@ def determine_filename(artist, song, title):
         while True:
             i += 1
             tmp = (
-                name_without_extension(filename) + "_" + str(i) + ext
+                name_without_extension(filename)
+                + "_"
+                + str(i)
+                + extension(filename)
             )
             if not os.path.exists(tmp):
                 filename = tmp
                 break
             print_debug(tmp + " already exists")
-    print_debug(filename + " will be used as filename")
+    print_debug("final available filename found : " + filename)
     return filename
+
+
+def determine_finame_from_tag(filename):
+    print("filename conversion with metadata")
+    nom_genere = ""
+    if not is_ffmpeg_installed() or is_m4a():
+        print(
+            "[warning] If you want use metadata tags, install ffmpeg and use mp3 or ogg format."
+        )
+        print("[warning] -> keep the YouTube format.")
+        return filename
+
+    title, artist, album = obtain_tags(filename)
+
+    if not title or not artist:
+        print("[warning] Not enough tags information")
+        return filename
+    nom_genere = title + "_" + artist + "_" + album
+    print_debug("file name deduced from metadata : ")
+    return find_unique_name(
+        unicode_lower(nom_genere) + extension(filename)
+    )
+
+
 
 
 def name_without_extension(filename):
@@ -85,3 +133,5 @@ def is_binary_installed(binary):
     test if binary is installed
     """
     return which(binary) is not None
+
+

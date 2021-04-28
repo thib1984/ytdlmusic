@@ -50,18 +50,25 @@ def download_song(song_url, filename):
     if extension(filename) == ".ogg":
         opts["format"] = "bestaudio/best"
         opts["postprocessors"] = [
-            {"key": "FFmpegVideoConvertor", "preferedformat": "ogg"}
+            {
+                "key": "FFmpegExtractAudio",
+                "preferredcodec": "vorbis",
+            },
+            {"key": "FFmpegMetadata"},
         ]
 
     if is_verbose():
         opts["verbose"] = "True"
-        print_debug("debug youtube-dl : ")
+        print_debug("debug youtube-dl is activated")
+    if not is_quiet():
+        print("start youtube-dl operation")
     elif is_quiet():
         opts["quiet"] = True
         opts["no_warnings"] = True
     with youtube_dl.YoutubeDL(opts) as ydl:
         ydl.extract_info(song_url, download=True)
+    if not is_quiet():
+        print("end youtube-dl operation")
     if not is_ffmpeg_installed() and not is_m4a() and not is_ogg():
         print("[warning] If you want MP3/OGG format, install ffmpeg.")
         print("[warning] To disable this message activate -f")
-    print(filename + " is ready")
