@@ -39,6 +39,7 @@ def batch(
         if has_header == "True":
             next(reader, None)
         for row in reader:
+            search=""
             if is_verbose():
                 print_debug(
                     str(reader.line_num) + " en cours : " + str(row)
