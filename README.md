@@ -27,13 +27,13 @@ This package use two very important dependencies :
 
 ## Use
 
-``ytdlmusic [ARTIST] [SONG]``
+``ytdlmusic [KEY WORDS]``
 
-ytdlmusic searches Youtube for "\[ARTIST\] \[SONG\]" and displays the top five result and their description. The selected result is  downloaded in your current directory. The format used is MP3 (default) or OGG. If ffmpeg is not installed, M4A is used. The filename is \[ARTIST\]\_\[SONG\].mp3/ogg to lowercase, with special characters replaced by '\_'. 
+ytdlmusic searches YouTube for "\[KEY WORDS\]" and displays the top five result and their description. The selected result is  downloaded in your current directory. The format used is MP3 (default) or OGG. If ffmpeg is not installed, M4A is used. The default filename is \[KEY WORDS\].mp3/ogg to lowercase, with special characters replaced by '\_'. 
 
 Example:
 ```
-~$ ytdlmusic "Rexlambo" "Stay With Me"
+~$ ytdlmusic "Rexlambo Stay With Me"
 search "Rexlambo Stay With Me" with youtube-search-python
 1
 Rexlambo - stay with me
@@ -63,7 +63,9 @@ rexlambo_stay_with_me.mp3 is ready
 
 You can use a beta command to loop in a csv file, and download all MP3/M4A files from it. 
 
-`` ytdlmusic --batch path_file had_header sep artist_column song_column ``
+`` ytdlmusic --batch path_file had_header sep first_column second_column ``*
+
+You can indicate one or more columns that you want concatenate
 
 Example :
 
@@ -113,7 +115,9 @@ You can also add these flags to your commands (except help and version) :
 
 `` --choices X `` or `` -n X `` : number of choices (default=5, min=1, max=10)
 
-`` --k `` or `` --keep `` : kepp the YouTube video title for the filename
+`` --k `` or `` --keep `` : keep the YouTube video title for the filename
+
+`` --t `` or `` --tag `` : use medatas of the downloaded file to rename it in artist_song_album
 
 `` --Q `` or `` --quality `` : if mp3, set quality to 320kbs instead of 256kbs
 
