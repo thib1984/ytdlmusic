@@ -30,7 +30,7 @@ runs:
         echo "---->test if file exists"
         test -f "Rexlambo Stay With Me.mp3"
         echo "---->test the file type"
-        file -b rexlambo_stay_with_me.mp3 | grep "Audio file with ID3 version 2.4.0, contains:MPEG ADTS, layer III, v1, 256 kbps, 48 kHz, Stereo"
+        file -b "Rexlambo Stay With Me.mp3" | grep "Audio file with ID3 version 2.4.0, contains:MPEG ADTS, layer III, v1, 256 kbps, 48 kHz, Stereo"
     - name: test m4a
       shell: bash
       run: |
