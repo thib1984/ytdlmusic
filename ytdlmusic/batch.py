@@ -44,6 +44,6 @@ def batch(
                     print_debug(
                         str(reader.line_num) + " en cours : " + str(row)
                     )
-                for element in range(3, len(params)):
-                    search = search + " " +row[int(params[element]) - 1]    
+                for element in str(params[3]).split("+"):
+                    search = search + " " + row[int(element)-1]  
                 job(search.replace(" ","",1))
