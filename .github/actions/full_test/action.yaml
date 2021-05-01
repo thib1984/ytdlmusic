@@ -13,41 +13,41 @@ runs:
       run: |
         echo "---->ytdlmusic"
         ytdlmusic
-        echo "---->test the return content"
+        echo "---->test the return content of ytdlmusic"
         ytdlmusic | grep "usage: "                
     - name: test 'ytdlmusic --version'
       shell: bash 
       run: |
         echo "---->ytdlmusic --version"
         ytdlmusic --version
-        echo "---->test the return content"
+        echo "---->test the return content of 'ytdlmusic --version'"
         ytdlmusic --version | grep "ytdlmusic version             :" 
     - name: test mp3
       shell: bash
       run: | 
         echo '---->ytdlmusic --auto "Rexlambo Stay With Me"'         
         ytdlmusic --auto "Rexlambo Stay With Me"
-        echo "---->test if file exists"
+        echo "---->test if mp3 file exists"
         test -f "Rexlambo Stay With Me.mp3"
-        echo "---->test the file type"
+        echo "---->test the mp3 file type"
         file -b "Rexlambo Stay With Me.mp3" | grep "Audio file with ID3 version 2.4.0, contains:MPEG ADTS, layer III, v1, 256 kbps, 48 kHz, Stereo"
     - name: test m4a
       shell: bash
       run: |
         echo '---->ytdlmusic -f --auto "Rexlambo Stay With Me"'  
         ytdlmusic -f --auto "Rexlambo Stay With Me"
-        echo "---->test if file exists"
+        echo "---->test if m4a file exists"
         test -f "Rexlambo Stay With Me_1.m4a"
-        echo "---->test the file type"
+        echo "---->test the m4a file type"
         file -b "Rexlambo Stay With Me_1.m4a" | grep "ISO Media, MPEG v4 system, Dynamic Adaptive Streaming over HTTP"
     - name: test ogg
       shell: bash
       run: | 
         echo '---->ytdlmusic -yo "Rexlambo Stay With Me"' 
         ytdlmusic -yo "Rexlambo Stay With Me"
-        echo "---->test if file exists"
+        echo "---->test if ogg file exists"
         test -f "Rexlambo Stay With Me.ogg"
-        echo "---->test the file type"
+        echo "---->test the ogg file type"
         file -b "Rexlambo Stay With Me.ogg" | grep -b "Ogg data, Vorbis audio, stereo, 48000 Hz, ~112000 bps"                                                
     - name: test downloaded files
       shell: bash
@@ -56,7 +56,7 @@ runs:
         md5sum "Rexlambo Stay With Me.m4a"
         echo '---->md5sum "Rexlambo Stay With Me_1.m4a"' 
         md5sum "Rexlambo Stay With Me_1.m4a"
-        echo '---->md5sum should be differentes because from differents urls' 
+        echo '---->md5sum should be differents because from differents urls' 
         test "$(md5sum 'Rexlambo Stay With Me.m4a' | cut -d " " -f 1)" == "$(md5sum 'Rexlambo Stay With Me_1.m4a' | cut -d " " -f 1)"     
     - name: test batch
       shell: bash
@@ -64,9 +64,7 @@ runs:
         echo '---->ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2+1'
         ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2+1 | grep "is ready" | wc -l | grep 3
         echo '---->test the existence of the three files'
-        test -f above_limujii.mp3
-        test -f awake_nomyn.mp3
-        test -f avalon_scandinavianz.mp3
+        test -f above_limujii.mp3 && test -f awake_nomyn.mp3 && test -f avalon_scandinavianz.mp3
     - name: test bad launch
       shell: bash
       run: |  
