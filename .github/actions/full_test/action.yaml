@@ -61,9 +61,9 @@ runs:
     - name: test batch
       shell: bash
       run: |
-        echo "launch batch and verify three downloads"
-        ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2 1 | grep "is ready" | wc -l | grep 3
-        echo "test la presence des trois fichiers"
+        echo '---->ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2+1'
+        ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2+1 | grep "is ready" | wc -l | grep 3
+        echo '---->test the existence of the three files'
         test -f above_limujii.mp3
         test -f awake_nomyn.mp3
         test -f avalon_scandinavianz.mp3
