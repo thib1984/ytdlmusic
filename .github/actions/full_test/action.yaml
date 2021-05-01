@@ -94,8 +94,8 @@ runs:
     - name: HQ
       shell: bash
       run: |         
-        echo '---->ytdlmusic -dkQ --auto "Rexlambo Stay With Me"'
-        ytdlmusic -dkQ --auto "Rexlambo Stay With Me"
+        echo '---->ytdlmusic -dQ --auto "Rexlambo Stay With Me"'
+        ytdlmusic -dQ --auto "Rexlambo Stay With Me"
         echo '---->md5sum "Rexlambo Stay With Me.mp3"'    
         md5sum "Rexlambo Stay With Me.mp3"
         echo '---->md5sum "Rexlambo Stay With Me_2.mp3"'    
