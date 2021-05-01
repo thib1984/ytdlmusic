@@ -40,11 +40,7 @@ def ytdlmusic():
             print_licence()
         elif is_batch():
             launch_batch(param_batch())
-        # classic use case
         else:
-            if not check_classic_params():
-                print_bad_launch()
-                sys.exit(1)
             job(param_search())
         sys.exit(0)
     except Exception as err:
