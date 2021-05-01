@@ -62,62 +62,50 @@ runs:
       shell: bash
       run: |
         echo '---->ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2+1'
-        ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2+1 | grep "is ready" | wc -l | grep 3
+        ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2+1
         echo '---->test the existence of the three files'
         test -f "above limujii.mp3" && test -f "awake nomyn.mp3" && test -f "avalon scandinavianz.mp3"
     - name: test bad launch
       shell: bash
-      run: |  
-        echo "verifie le code erreur 2"        
-        (ytdlmusic --tetet || echo $?) | grep "2"   
-    - name: test short params
-      shell: bash
-      run: |
-        echo "test une combinaison de flags courts"          
-        ytdlmusic -fyd "Rexlambo" "Stay With Me"
-        echo "test l existence du fichier généré"
-        test -f rexlambo_stay_with_me_3.m4a  
-    - name: test bad launch short params
-      shell: bash
-      run: |
-        echo "verifie le code erreur 2 "            
-        (ytdlmusic -dvUz || echo $?) | grep "2"     
-    - name: test missing dependency error
+      run: | 
+        echo "---->ytdlmusic --tetet verify is error" 
+        ytdlmusic --tetet || echo "error is ok"
+        echo "---->verify error code"        
+        (ytdlmusic --tetet || echo $?) | grep "2"       
+    - name: test missing dependency error + upgrade
       shell: bash
       run: | 
-        echo "retire une dependance"         
+        echo "---->remove dependency"        
         pip uninstall --yes youtube-dl
-        echo "verifie la version" 
+        echo "---->verify is version not installed"
         ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
-        echo "verifie que l erreur est remontee" 
-        (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "good exit code"
-        echo "verifie que l erreur est propre" 
-        (ytdlmusic --auto "Rexlambo" "Stay With Me" || echo "good exit code") | grep "Try to upgrade with 'ytdlmusic --update'"
-    - name: test repair full-update
-      shell: bash
-      run: |  
-        echo "verifie l upgrade"               
+        echo "---->verify the error" 
+        (ytdlmusic --auto "Rexlambo Stay With Me" || echo "good exit code") | grep "good exit code"
+        echo "---->verify the error is corretly displayed" 
+        (ytdlmusic --auto "Rexlambo Stay With Me" || echo "good exit code") | grep "Try to upgrade with 'ytdlmusic --update'"
+        echo "---->test upgrade contains waited text"               
         printf 'y\n' | ytdlmusic --fullupdate | grep "Successfully installed youtube-dl"
-        echo "verifie que l application refonctionne en HQ"
-        ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"
-        echo "verifie le quiet est fonctionnel"
-        ytdlmusic --auto -q "Rexlambo" "Stay With Me" | grep "ffmpeg" || echo "ffmpeg non trouve" | grep "ffmpeg non trouve"
-        echo "les md5 doivent etre differents (un en HQ l autre non)"
-        md5sum rexlambo_stay_with_me_2.mp3
-        md5sum rexlambo_stay_with_me_1.mp3
-        test "$(md5sum rexlambo_stay_with_me_2.mp3 | cut -d " " -f 1)" != "$(md5sum rexlambo_stay_with_me_1.mp3 | cut -d " " -f 1)"        
-        echo "verifie le telechargement keep"
-        ytdlmusic -dkQ --auto "avalon" "scandinavianz"
-        echo "verifie le nom genere"
-        test -f avalon_scandinavianz_no_copyright_music_.mp3
-        echo "verifie que l upgrade n esy plus disponible"
-        printf 'y\n' | ytdlmusic --fullupdate | grep "Requirement already satisfied" | wc -l | grep 3
-    - name: test bad launch (one parameter)
+        echo '---->ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"'
+        ytdlmusic -q --auto "Rexlambo Stay With Me"
+        echo "---->test if mp3 file exists"
+        test -f "Rexlambo Stay With Me_1.mp3"  
+        echo "---->test unaivaible upgrade"
+        printf 'y\n' | ytdlmusic --fullupdate | grep "Requirement already satisfied" | wc -l | grep 3              
+    - name: test HQ
       shell: bash
-      run: |   
-        echo "ytdlmusic tetet renvoie un code erreur different de 0"       
-        (ytdlmusic tetet || echo "good exit code") | grep "good exit code"
-        echo "ytdlmusic tetet renvoie un Missing song"
-        (ytdlmusic tetet || echo "good exit code") | grep "Missing song"  
-        echo "ytdlmusic --n 13 renvoie un code erreur 2 (argparse)"
-        (ytdlmusic -n 13 "Rexlambo" "Stay With Me" || echo $?) | grep "2"           
+      run: |         
+        echo '---->ytdlmusic -dkQ --auto "Rexlambo Stay With Me"'
+        ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"
+        echo '---->md5sum "Rexlambo Stay With Me.mp3"'    
+        md5sum "Rexlambo Stay With Me.mp3"
+        echo '---->md5sum "Rexlambo Stay With Me_2.mp3"'    
+        md5sum "Rexlambo Stay With Me_2.mp3"
+        echo '---->md5sum should be differents because from differents qualities' 
+        test "$(md5sum 'Rexlambo Stay With Me.mp3' | cut -d " " -f 1)" != "$(md5sum 'Rexlambo Stay With Me_2.mp3' | cut -d " " -f 1)"  
+    - name: test keep
+      shell: bash
+      run: |           
+        echo '---->ytdlmusic -dkQ --auto "avalon" "scandinavianz"'
+        ytdlmusic -dkQ --auto "avalon" "scandinavianz"
+        echo '---->verify the filename'
+        test -f "Avalon Scandinavianz No Copyright Music.mp3"         
