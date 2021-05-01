@@ -14,13 +14,13 @@ from ytdlmusic.tag import obtain_tags
 import unidecode
 
 
-def unicode_lower(text_to_translate):
+def unicode_and_trim(text_to_translate):
     print_debug("raw format : " + text_to_translate)
-    step_1 = re.sub("(\\W+)", "_", text_to_translate)
-    step_2 = re.sub("_+", "_", step_1)
-    step_3 = re.sub("^_", "", step_2)
-    step_4 = re.sub("_$", "", step_3)
-    file_name_unicode = unidecode.unidecode(step_4).lower()
+    step_1 = re.sub("(\\W+)", " ", text_to_translate)
+    step_2 = re.sub(" +", " ", step_1)
+    step_3 = re.sub("^ ", "", step_2)
+    step_4 = re.sub(" $", "", step_3)
+    file_name_unicode = unidecode.unidecode(step_4)
     print_debug("unicode format : " + file_name_unicode)
     return file_name_unicode
 
@@ -40,14 +40,14 @@ def determine_filename(search, title):
 
     if is_keep() or is_tag():
         print_debug("file name will be deduced from YouTube : ")
-        return find_unique_name(unicode_lower(title) + ext)
+        return find_unique_name(unicode_and_trim(title) + ext)
     if is_tag():
         print_debug(
             "temporary file name will be deduced from YouTube : "
         )
-        return find_unique_name(unicode_lower(title) + ext)
+        return find_unique_name(unicode_and_trim(title) + ext)
     print_debug("file name will be deduced key words : ")
-    return find_unique_name(unicode_lower(search) + ext)
+    return find_unique_name(unicode_and_trim(search) + ext)
 
 
 def find_unique_name(filename):
@@ -87,10 +87,12 @@ def determine_finame_from_tag(filename):
     if not title or not artist:
         print("[warning] Not enough tags information")
         return filename
-    nom_genere = title + "_" + artist + "_" + album
+    if album:
+        nom_genere = unicode_and_trim(artist) + " - " + unicode_and_trim(album) + " - " + unicode_and_trim(title)
+    else:
+        nom_genere = unicode_and_trim(artist) + " - " + unicode_and_trim(title)
     print_debug("file name deduced from metadata : ")
-    return find_unique_name(
-        unicode_lower(nom_genere) + extension(filename)
+    return find_unique_name(nom_genere + extension(filename)
     )
 
 

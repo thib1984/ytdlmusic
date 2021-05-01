@@ -43,9 +43,9 @@ def compute_args():
     my_group.add_argument(
         "-b",
         "--batch",
-        metavar=("path", "bool_h", "s", "art_col", "song_col"),
+        metavar=("path", "bool_h", "s", "col", "..."),
         action="store",
-        nargs=5,
+        nargs="+",
         type=str,
         help="batch mode, loop on a <path> csv file with an header <bool_h>, with separator <s>, artist on column number <art_col>, song on column number <song_col>",
     )
