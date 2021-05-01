@@ -43,25 +43,41 @@ def compute_args():
     my_group.add_argument(
         "-b",
         "--batch",
-        metavar=("path", "bool_h", "s", "num_col1-num_col2"),
+        metavar=("path", "bool_h", "s", "num_col1+num_col2"),
         action="store",
         nargs=4,
         type=str,
-        help="batch mode, loop on a <path> csv file with an header <bool_h>, with separator <s>, and key words from concatenates columns colx...",
+        help="batch mode, loop on a <path> csv file with an header <bool_h>, a separator <s>, and key words from concatenates columns numbers x+y...",
     )
 
+    my_parser.add_argument(
+        "-y",
+        "--auto",
+        action="store_true",
+        help="auto-choose first item for classic use, auto-accept for other commands",
+    )
+    my_parser.add_argument(
+        "-n",
+        "--choices",
+        metavar="X",
+        action="store",
+        type=int,
+        default=5,
+        choices=range(1, 11),
+        help="set the number X of choices (default=5, min=1, max=10)",
+    )
     my_third_group = my_parser.add_mutually_exclusive_group()
     my_third_group.add_argument(
         "-f",
         "--m4a",
         action="store_true",
-        help="force use m4a format",
+        help="use m4a format",
     )
     my_third_group.add_argument(
         "-o",
         "--ogg",
         action="store_true",
-        help="force use ogg format",
+        help="use ogg format",
     )
 
     my_third_group.add_argument(
@@ -83,22 +99,7 @@ def compute_args():
         action="store_true",
         help="determine the filename from tags",
     )    
-    my_parser.add_argument(
-        "-y",
-        "--auto",
-        action="store_true",
-        help="auto-choose first item for classic use, auto-accept for other commands",
-    )
-    my_parser.add_argument(
-        "-n",
-        "--choices",
-        metavar="X",
-        action="store",
-        type=int,
-        default=5,
-        choices=range(1, 11),
-        help="set the number X of choices (default=5, min=1, max=10)",
-    )
+
 
     my_second_group = my_parser.add_mutually_exclusive_group()
     my_second_group.add_argument(

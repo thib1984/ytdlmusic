@@ -29,7 +29,7 @@ This package use two very important dependencies :
 
 ``ytdlmusic [KEY WORDS]``
 
-ytdlmusic searches YouTube for "\[KEY WORDS\]" and displays the top five result and their description. The selected result is  downloaded in your current directory. The format used is MP3 (default) or OGG. If ffmpeg is not installed, M4A is used. The default filename is \[KEY WORDS\].mp3/ogg to lowercase, with special characters replaced by '\_'. 
+ytdlmusic searches YouTube for "\[KEY WORDS\]" and displays the top five result and their description. The selected result is  downloaded in your current directory. The default used format is MP3. The default filename is \[KEY WORDS\].mp3. 
 
 Example:
 ```
@@ -38,30 +38,38 @@ search "Rexlambo Stay With Me" with youtube-search-python
 1
 Rexlambo - stay with me
 https://www.youtube.com/watch?v=LrED6SSFf-I
-3:52 - 9,196 views
+3:52 - 9,636 views
 2
 stay with me – Rexlambo (No Copyright Music)
 https://www.youtube.com/watch?v=a0hkrjqpIOo
-3:52 - 165,489 views
+3:52 - 166,640 views
 3
 Rexlambo - stay with me
-https://www.youtube.com/watch?v=TjATW8iAwa0
-3:52 - 658 views
-4
-Mon week-end de GT4 à Nogaro !
-https://www.youtube.com/watch?v=erxK0DtIhYI
-11:02 - 796 views
-5
-Rexlambo - stay with me
 https://www.youtube.com/watch?v=0vnOMFmBUGk
-3:52 - 831 views
-Which (1-5, 0 to exit properly) ? 2
+3:52 - 837 views
+4
+Rexlambo - stay with me
+https://www.youtube.com/watch?v=TjATW8iAwa0
+3:52 - 668 views
+5
+Rexlambo - Stay With Me
+https://www.youtube.com/watch?v=jIc8c2hh4ew
+3:53 - No views
+Which (1-5, 0 to exit, 1 by default) ? 2
 download https://www.youtube.com/watch?v=a0hkrjqpIOo with youtubedl
-rexlambo_stay_with_me.mp3 is ready
+start youtube-dl operation
+[youtube] a0hkrjqpIOo: Downloading webpage
+[download] Destination: Rexlambo Stay With Me.webm
+[download] 100% of 3.69MiB in 00:02
+[ffmpeg] Destination: Rexlambo Stay With Me.mp3
+Deleting original file Rexlambo Stay With Me.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'Rexlambo Stay With Me.mp3'
+end youtube-dl operation
+Rexlambo Stay With Me.mp3 is ready
 ````
 ## Batch
 
-You can use a beta command to loop in a csv file, and download all MP3/M4A files from it. 
+You can use a command to loop in a csv file, and download all MP3 files from it. 
 
 `` ytdlmusic --batch path_file had_header sep columns_to_concatenate ``*
 
@@ -73,15 +81,39 @@ Example :
 ytdlmusic -y --batch "./test.csv" True ";" 2+1
 search "above limujii" with youtube-search-python
 download https://www.youtube.com/watch?v=cUWU_T9KBk8 with youtubedl
-above_limujii.mp3 is ready
+start youtube-dl operation
+[youtube] cUWU_T9KBk8: Downloading webpage
+[download] Destination: above limujii.webm
+[download] 100% of 2.58MiB in 00:01
+[ffmpeg] Destination: above limujii.mp3
+Deleting original file above limujii.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'above limujii.mp3'
+end youtube-dl operation
+above limujii.mp3 is ready
 search "awake nomyn" with youtube-search-python
 download https://www.youtube.com/watch?v=hZQDfGX8Cu4 with youtubedl
-awake_nomyn.mp3 is ready
+start youtube-dl operation
+[youtube] hZQDfGX8Cu4: Downloading webpage
+[download] Destination: awake nomyn.webm
+[download] 100% of 3.67MiB in 00:02
+[ffmpeg] Destination: awake nomyn.mp3
+Deleting original file awake nomyn.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'awake nomyn.mp3'
+end youtube-dl operation
+awake nomyn.mp3 is ready
 search "zhhezhahkzaj eyazttyzaeyz" with youtube-search-python
-No result, retry with other words
+No result found, retry with other words.
 search "avalon scandinavianz" with youtube-search-python
 download https://www.youtube.com/watch?v=B5CYUMs6-eo with youtubedl
-avalon_scandinavianz.mp3 is ready
+start youtube-dl operation
+[youtube] B5CYUMs6-eo: Downloading webpage
+[download] Destination: avalon scandinavianz.webm
+[download] 100% of 2.79MiB in 00:01
+[ffmpeg] Destination: avalon scandinavianz.mp3
+Deleting original file avalon scandinavianz.webm (pass -k to keep)
+[ffmpeg] Adding metadata to 'avalon scandinavianz.mp3'
+end youtube-dl operation
+avalon scandinavianz.mp3 is ready
 ```
 
 with csv file 
@@ -94,17 +126,13 @@ scandinavianz;avalon;information
 ```
 ## Other commands
 
-`` ytdlmusic`` display help message
+`` ytdlmusic`` , `` ytdlmusic --help`` or `` ytdlmusic -h ` display help message
 
 `` ytdlmusic --update `` or `` ytdlmusic -u `` upgrade ytdlmusic
 
 `` ytdlmusic --fullupdate `` or `` ytdlmusic -U `` upgrade ytdlmusic, youtube-dl and youtube-search-python
 
-`` ytdlmusic --help`` or `` ytdlmusic -h `` display help message
-
 `` ytdlmusic --version `` or `` ytdlmusic -v `` display version of ytdlmusic and dependencies
-
-
 
 ## Other flags
 
@@ -119,15 +147,15 @@ You can also add these flags to your commands (except help and version) :
 
 `` --t `` or `` --tag `` : use medatas of the downloaded file to rename it in artist_song_album
 
+`` --m4a `` or `` -f `` : force use m4a format
+
+`` --ogg `` or `` -o `` : use ogg instead of mp3 format
+
 `` --Q `` or `` --quality `` : if mp3, set quality to 320kbs instead of 256kbs
 
 `` --quiet `` or `` -q `` : give less output 
 
 `` --verbose `` or `` -d `` : give more output
-
-`` --m4a `` or `` -f `` : force use m4a format
-
-`` --ogg `` or `` -o `` : use ogg instead of mp3 format
 ## Local install to develop
 
 ```
