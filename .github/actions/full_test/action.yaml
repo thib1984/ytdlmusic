@@ -57,7 +57,7 @@ runs:
         echo '---->md5sum "Rexlambo Stay With Me_1.m4a"' 
         md5sum "Rexlambo Stay With Me_1.m4a"
         echo '---->md5sum should be differents because from differents urls' 
-        test "$(md5sum 'Rexlambo Stay With Me.m4a' | cut -d " " -f 1)" == "$(md5sum 'Rexlambo Stay With Me_1.m4a' | cut -d " " -f 1)"     
+        test "$(md5sum 'Rexlambo Stay With Me.m4a' | cut -d " " -f 1)" != "$(md5sum 'Rexlambo Stay With Me_1.m4a' | cut -d " " -f 1)"     
     - name: test batch
       shell: bash
       run: |
