@@ -64,7 +64,7 @@ runs:
         echo '---->ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2+1'
         ytdlmusic --auto --batch "./test/test.csv" "True" ";" 2+1 | grep "is ready" | wc -l | grep 3
         echo '---->test the existence of the three files'
-        test -f above_limujii.mp3 && test -f awake_nomyn.mp3 && test -f avalon_scandinavianz.mp3
+        test -f "above limujii.mp3" && test -f "awake nomyn.mp3" && test -f "avalon scandinavianz.mp3"
     - name: test bad launch
       shell: bash
       run: |  
