@@ -85,7 +85,7 @@ runs:
         (ytdlmusic --auto "Rexlambo Stay With Me" || echo "good exit code") | grep "Try to upgrade with 'ytdlmusic --update'"
         echo "---->test upgrade contains waited text"               
         printf 'y\n' | ytdlmusic --fullupdate | grep "Successfully installed youtube-dl"
-        echo '---->ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"'
+        echo '---->ytdlmusic -dkQ --auto "Rexlambo Stay With Me"'
         ytdlmusic -q --auto "Rexlambo Stay With Me"
         echo "---->test if mp3 file exists"
         test -f "Rexlambo Stay With Me_1.mp3"  
@@ -95,7 +95,7 @@ runs:
       shell: bash
       run: |         
         echo '---->ytdlmusic -dkQ --auto "Rexlambo Stay With Me"'
-        ytdlmusic -dkQ --auto "Rexlambo" "Stay With Me"
+        ytdlmusic -dkQ --auto "Rexlambo Stay With Me"
         echo '---->md5sum "Rexlambo Stay With Me.mp3"'    
         md5sum "Rexlambo Stay With Me.mp3"
         echo '---->md5sum "Rexlambo Stay With Me_2.mp3"'    
@@ -105,7 +105,7 @@ runs:
     - name: test keep
       shell: bash
       run: |           
-        echo '---->ytdlmusic -dkQ --auto "avalon" "scandinavianz"'
-        ytdlmusic -dkQ --auto "avalon" "scandinavianz"
+        echo '---->ytdlmusic -dkQ --auto "avalon scandinavianz"'
+        ytdlmusic -dkQ --auto "avalon scandinavianz"
         echo '---->verify the filename'
         test -f "Avalon Scandinavianz No Copyright Music.mp3"         
