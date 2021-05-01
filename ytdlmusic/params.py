@@ -43,11 +43,11 @@ def compute_args():
     my_group.add_argument(
         "-b",
         "--batch",
-        metavar=("path", "bool_h", "s", "col", "..."),
+        metavar=("path", "bool_h", "s", "num_col1-num_col2"),
         action="store",
-        nargs="+",
+        nargs=4,
         type=str,
-        help="batch mode, loop on a <path> csv file with an header <bool_h>, with separator <s>, artist on column number <art_col>, song on column number <song_col>",
+        help="batch mode, loop on a <path> csv file with an header <bool_h>, with separator <s>, and key words from concatenates columns colx...",
     )
 
     my_third_group = my_parser.add_mutually_exclusive_group()

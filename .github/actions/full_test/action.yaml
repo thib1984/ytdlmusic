@@ -21,55 +21,56 @@ runs:
         echo "test l absence d erreur sur le lancement --version"
         ytdlmusic --version
         echo "test le contenu du retour sur le lancement --version"
-        ytdlmusic --version | grep "ytdlmusic version             :"
-    - name: test 'ytdlmusic --help'
-      shell: bash
-      run: |
-        echo "test l absence d erreur sur le lancement --help"
-        ytdlmusic --help
-        echo "test le contenu du retour sur le lancement --help"
-        ytdlmusic --help | grep "usage: "  
-    - name: test 'ytdlmusic --auto artist title' with ffmpeg
+        ytdlmusic --version | grep "ytdlmusic version             :" 
+    - name: test mp3
       shell: bash
       run: | 
         echo "test l absence d erreur sur le lancement --auto"         
-        ytdlmusic --auto "Rexlambo" "Stay With Me"
+        ytdlmusic --auto "Rexlambo Stay With Me"
         echo "test la presence du fichier genere"
-        test -f rexlambo_stay_with_me.mp3
+        test -f "Rexlambo Stay With Me.mp3"
         echo "test le format reel du fichier genere"
         file -b rexlambo_stay_with_me.mp3 | grep "Audio file with ID3 version 2.4.0, contains:MPEG ADTS, layer III, v1, 256 kbps, 48 kHz, Stereo"
-    - name: test 'ytdlmusic -f --auto artist title'
+    - name: test force m4a
       shell: bash
       run: |
         echo "test l absence d erreur sur le lancement --auto -f"
-        ytdlmusic -f --auto "Rexlambo" "Stay With Me"
+        ytdlmusic -f --auto "Rexlambo Stay With Me"
         echo "test la presence du fichier genere"
-        test -f rexlambo_stay_with_me_1.m4a          
-    - name: test 'ytdlmusic artist title' interactive mode
-      shell: bash
-      run: |
-        echo "test l absence d erreur sur le lancement --auto -f et le non affichage du nombre de choix"          
-        printf '3\n' | ytdlmusic -f --choices 4 "Rexlambo" "Stay With Me" | grep "1-4" | wc -l | grep 1    
-        echo "test la presence du fichier genere"
-        test -f rexlambo_stay_with_me_2.m4a
-    - name: test 'ytdlmusic --auto artist title' with ffmpeg force ogg
+        test -f "Rexlambo Stay With Me_1.m4a"
+        file -b "Rexlambo Stay With Me_1.m4a" | grep "ISO Media, MPEG v4 system, Dynamic Adaptive Streaming over HTTP"
+    - name: test force ogg
       shell: bash
       run: | 
         echo "test l absence d erreur sur le lancement -y -o"         
-        ytdlmusic -yo "Rexlambo" "Stay With Me"
+        ytdlmusic -yo "Rexlambo Stay With Me"
         echo "test la presence du fichier genere"
-        test -f rexlambo_stay_with_me.ogg
+        test -f "Rexlambo Stay With Me.ogg"
         echo "test le format reel du fichier genere"
-        file -b rexlambo_stay_with_me.ogg | grep -b "Ogg data, Vorbis audio, stereo, 48000 Hz, ~112000 bps"                               
+        file -b "Rexlambo Stay With Me.ogg" | grep -b "Ogg data, Vorbis audio, stereo, 48000 Hz, ~112000 bps"                    
+    - name: test interactive mode
+      shell: bash
+      run: |
+        echo "test l absence d erreur sur le lancement --auto -f et le non affichage du nombre de choix"          
+        printf '3\n' | ytdlmusic --choices 4 "Rexlambo Stay With Me" | grep "1-4" | wc -l | grep 1    
+        echo "test la presence du fichier genere"
+        test -f "Rexlambo Stay With Me_1.mp3"                              
     - name: test downloaded files
       shell: bash
       run: |
         echo "affiche le md5 de rexlambo_stay_with_me"            
-        md5sum rexlambo_stay_with_me.m4a
+        md5sum "Rexlambo Stay With Me.m4a"
         echo "affiche le md5 de rexlambo_stay_with_me_1" 
-        md5sum rexlambo_stay_with_me_1.m4a
-        echo "les md5 doivent etre differents car urls differentes"
-        test "$(md5sum rexlambo_stay_with_me.m4a | cut -d " " -f 1)" != "$(md5sum rexlambo_stay_with_me_1.m4a | cut -d " " -f 1)"
+        md5sum "Rexlambo Stay With Me_1.m4a"
+        echo "les md5 doivent etre identiques car meme sources"
+        test "$(md5sum 'Rexlambo Stay With Me.m4a' | cut -d " " -f 1)" == "$(md5sum 'Rexlambo Stay With Me_1.m4a' | cut -d " " -f 1)"
+
+        echo "affiche le md5 de rexlambo_stay_with_me"            
+        md5sum "Rexlambo Stay With Me.mp3"
+        echo "affiche le md5 de rexlambo_stay_with_me_1" 
+        md5sum "Rexlambo Stay With Me_1.mp3"
+        echo "les md5 doivent etre identiques car sources differentes"
+        test "$(md5sum 'Rexlambo Stay With Me.mp3' | cut -d " " -f 1)" != "$(md5sum 'Rexlambo Stay With Me_1.mp3' | cut -d " " -f 1)"
     - name: test 'ytdlmusic --auto artist title' with force m4a
       shell: bash
       run: |      
