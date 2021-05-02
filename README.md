@@ -29,7 +29,7 @@ This package use two very important dependencies :
 
 ``ytdlmusic [KEY WORDS]``
 
-ytdlmusic searches YouTube for "\[KEY WORDS\]" and displays the top five result and their description. The selected result is  downloaded in your current directory. The default used format is MP3. The default filename is \[KEY WORDS\].mp3. 
+ytdlmusic searches YouTube for "\[KEY WORDS\]" and displays the top five result and their description. The selected result is downloaded in your current directory. The default used format is MP3. The default filename is \[KEY WORDS\].mp3. 
 
 Example:
 ```
@@ -73,7 +73,7 @@ You can use a command to loop in a csv file, and download all MP3 files from it.
 
 `` ytdlmusic --batch path_file had_header sep columns_to_concatenate ``*
 
-You can indicate one or more columns that you want concatenate
+You can indicate one or more columns that you want to concatenate, separated by "+".
 
 Example :
 
@@ -126,36 +126,36 @@ scandinavianz;avalon;information
 ```
 ## Other commands
 
-`` ytdlmusic`` , `` ytdlmusic --help`` or `` ytdlmusic -h ` display help message
+`` ytdlmusic`` , `` ytdlmusic --help`` or `` ytdlmusic -h ` display help message.
 
-`` ytdlmusic --update `` or `` ytdlmusic -u `` upgrade ytdlmusic
+`` ytdlmusic --update `` or `` ytdlmusic -u `` upgrade ytdlmusic.
 
-`` ytdlmusic --fullupdate `` or `` ytdlmusic -U `` upgrade ytdlmusic, youtube-dl and youtube-search-python
+`` ytdlmusic --fullupdate `` or `` ytdlmusic -U `` upgrade ytdlmusic and the dependencies youtube-dl and youtube-search-python.
 
-`` ytdlmusic --version `` or `` ytdlmusic -v `` display version of ytdlmusic and dependencies
+`` ytdlmusic --version `` or `` ytdlmusic -v `` display version of ytdlmusic and the dependencies.
 
 ## Other flags
 
-You can also add these flags to your commands (except help and version) :
+You can also add these flags to your commands (except for help and version) :
 
 
-`` --auto `` or `` -y `` : use auto mode : choose first item for classic use, auto-accept for other commands. 
+`` --auto `` or `` -y `` : Use auto mode: choose the first item for classic use, auto-accept  other commands.
 
-`` --choices X `` or `` -n X `` : number of choices (default=5, min=1, max=10)
+`` --choices X `` or `` -n X `` : Set the number of choices (default=5, min=1, max=10).
 
-`` --k `` or `` --keep `` : keep the YouTube video title for the filename
+`` --k `` or `` --keep `` : Keep the YouTube video title for the filename.
 
-`` --t `` or `` --tag `` : use medatas of the downloaded file to rename it in artist_song_album
+`` --t `` or `` --tag `` : Use tags of the downloaded file to rename it.
 
-`` --m4a `` or `` -f `` : force use m4a format
+`` --m4a `` or `` -f `` : Use m4a format.
 
-`` --ogg `` or `` -o `` : use ogg instead of mp3 format
+`` --ogg `` or `` -o `` : Use ogg format.
 
-`` --Q `` or `` --quality `` : if mp3, set quality to 320kbs instead of 256kbs
+`` --Q `` or `` --quality `` : Set quality to 320kbs instead of 256kbs for mp3 format.
 
-`` --quiet `` or `` -q `` : give less output 
+`` --quiet `` or `` -q `` : Give less output.
 
-`` --verbose `` or `` -d `` : give more output
+`` --verbose `` or `` -d `` : Give more output.
 ## Local install to develop
 
 ```
@@ -169,9 +169,30 @@ pip3 uninstall ytdlmusic #to properly uninstall the dev version
  
 ## FAQ
 
-### When i try to update youtube-dl with ``youtube-dl -U``, i obtain an error message in my debian/ubuntu
+### The commands indicated in this README don't work for me! Why?
 
-If you obtain the following message : 
+The  syntax of the commands can be changed between versions, run ``ytdlmusic`` and read the help message. 
+
+### I would like an MP3 format but I only get an M4A format, why?
+
+The ``ffmpeg`` package is required for the MP3 conversion. Install it and retry to launch ytdlmusic.
+
+
+### With the ``--tag`` option, my filenames keep the YouTube title format. Why?
+
+The ``ffmpeg`` package is required for the tag conversion. Install it and retry to launch ytdlmusic.
+### What are the compatibilities with Python, pip, youtube-dl and youtube-search-python?
+
+When an new version is released, it is compatible with the last Python version in the branches 3.6 to 33.9, on the release date. It's also compatible with the last versions of dependencies, on the release date.
+
+### What are the compatibilities with Python 3.10?
+
+When the 3.10 version will be released in final version, the package of ytdlmusic will be rework to be compatible with 3.10 version.
+
+
+### When I try to update youtube-dl with ``youtube-dl -U``, I obtain an error message in my debian/ubuntu!
+
+If you obtain the following message: 
 
 ```
 It looks like you installed youtube-dl with a package manager, pip, setup.py or a tarball. Please use that to update.
@@ -185,23 +206,11 @@ Please update youtube-dl using apt(8).
 See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
 ```
 
-, no panic! You have just downloaded a newer version of youtube-dl which is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
-
-### I would like a MP3 format but I only get an M4A format, why?
-
-The ``ffmpeg`` package is required for the MP3 conversion. Install it and retry to launch ytdlmusic
-
-### The commands indicated in this README don't work for me! Why?
-
-The  syntax of the commands can be change between versions, run ``ytdlmusic`` and read the help message. 
+No panic! You have just downloaded a newer version of youtube-dl which is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
 
 ### I get an error about ``_requesthandler.py line 22`` when I try to use ytdlmusic
 
-Sorry... You should update Python to 3.6 version or more. youtube-search-python doesn't seems to be compatible with Python 3.5 or less. Now, ytdlmusic package checks the Python version during the installation process.
-
-### What are the compatibilities with Python, pip, youtube-dl and youtube-search-python?
-
-When an new version is released, it is compatible with the last Python version ine the branches 3.6 to 33.9, on the release date. It's also compatible with the last versions of dependencies, on the release date.
+Sorry... You should update Python to 3.6 version or more. youtube-search-python doesn't seem to be compatible with Python 3.5 or less. Now, ytdlmusic package checks the Python version during the installation process.
 
 ### Have you tested your package?
 
@@ -209,7 +218,7 @@ Before a new version of ytdlmusic is published, it is checked in an [automatic j
 
 Each night, [another automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/test_published_release.yml) checks the actual package with last versions of dependencies and Pythons 3.6 to 3.9. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.*
 
-*_These tests are executed with GitHub Actions on an Ubuntu 20.04 image. Tests are also runned on macOS and Windows images (only very last Python version)._
+*_These tests are executed with GitHub Actions on an Ubuntu 20.04 image. Tests are also run on macOS and Windows images (only very last Python version)._
 ## Thanks
 
 Thanks to contributors and dependencies authors :

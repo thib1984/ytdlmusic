@@ -6,7 +6,7 @@ import csv
 import sys
 from ytdlmusic.ytdlmusic import job
 from ytdlmusic.print import print_error_batch
-from ytdlmusic.params import is_verbose, is_auto
+from ytdlmusic.params import is_verbose
 from ytdlmusic.log import print_debug
 
 
@@ -21,15 +21,13 @@ def launch_batch(param):
         sys.exit(1)
 
 
-def batch(
-    params
-):
+def batch(params):
     """
     batch job
     """
-    file_path=params[0]
-    has_header=params[1]
-    separator=params[2]
+    file_path = params[0]
+    has_header = params[1]
+    separator = params[2]
     search = ""
 
     with open(file_path, "r", encoding="utf-8") as csvfile:
@@ -39,11 +37,11 @@ def batch(
         if has_header == "True":
             next(reader, None)
         for row in reader:
-                search=""
-                if is_verbose():
-                    print_debug(
-                        str(reader.line_num) + " en cours : " + str(row)
-                    )
-                for element in str(params[3]).split("+"):
-                    search = search + " " + row[int(element)-1]  
-                job(search.replace(" ","",1))
+            search = ""
+            if is_verbose():
+                print_debug(
+                    str(reader.line_num) + " en cours : " + str(row)
+                )
+            for element in str(params[3]).split("+"):
+                search = search + " " + row[int(element) - 1]
+            job(search.replace(" ", "", 1))

@@ -7,28 +7,30 @@ import os
 import re
 import pathlib
 from shutil import which
+import unidecode
 from ytdlmusic.log import print_debug
 from ytdlmusic.params import is_m4a, is_ogg, is_keep, is_tag
 from ytdlmusic.const import NOT_FOUND
 from ytdlmusic.tag import obtain_tags
-import unidecode
 
 
 def unicode_and_trim(text_to_translate):
+    """
+    transcode text to unicode, without special characters, and trim spaces before after
+    """
     print_debug("raw format : " + text_to_translate)
     step_1 = re.sub("(\\W+)", " ", text_to_translate)
     step_2 = re.sub(" +", " ", step_1)
     step_3 = re.sub("^ ", "", step_2)
     step_4 = re.sub(" $", "", step_3)
-    file_name_unicode = unidecode.unidecode(step_4)
-    print_debug("unicode format : " + file_name_unicode)
-    return file_name_unicode
+    transcode_text = unidecode.unidecode(step_4)
+    print_debug("unicode format : " + transcode_text)
+    return transcode_text
 
 
 def determine_filename(search, title):
     """
-    correct filename to escape special characters with '_'
-    and force lower case
+    determine inital filename
     """
     if is_m4a() or not is_ffmpeg_installed():
         ext = ".m4a"
@@ -51,6 +53,9 @@ def determine_filename(search, title):
 
 
 def find_unique_name(filename):
+    """
+    determine final filename to escape already existing filename
+    """
     print_debug("initial filename found : " + filename)
     if os.path.exists(filename):
         # loop to find non existent filename
@@ -73,6 +78,9 @@ def find_unique_name(filename):
 
 
 def determine_finame_from_tag(filename):
+    """
+    determine final filename from metatags
+    """
     print("filename conversion with metadata")
     nom_genere = ""
     if not is_ffmpeg_installed() or is_m4a():
@@ -88,14 +96,19 @@ def determine_finame_from_tag(filename):
         print("[warning] Not enough tags information")
         return filename
     if album:
-        nom_genere = unicode_and_trim(artist) + " - " + unicode_and_trim(album) + " - " + unicode_and_trim(title)
+        nom_genere = (
+            unicode_and_trim(artist)
+            + " - "
+            + unicode_and_trim(album)
+            + " - "
+            + unicode_and_trim(title)
+        )
     else:
-        nom_genere = unicode_and_trim(artist) + " - " + unicode_and_trim(title)
+        nom_genere = (
+            unicode_and_trim(artist) + " - " + unicode_and_trim(title)
+        )
     print_debug("file name deduced from metadata : ")
-    return find_unique_name(nom_genere + extension(filename)
-    )
-
-
+    return find_unique_name(nom_genere + extension(filename))
 
 
 def name_without_extension(filename):
@@ -135,5 +148,3 @@ def is_binary_installed(binary):
     test if binary is installed
     """
     return which(binary) is not None
-
-

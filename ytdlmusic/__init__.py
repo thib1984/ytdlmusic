@@ -8,7 +8,6 @@ from ytdlmusic.update import update, fullupdate
 from ytdlmusic.batch import launch_batch
 from ytdlmusic.print import (
     print_error,
-    print_bad_launch,
     print_version_ytdlmusic,
     print_version_dependencies,
     print_licence,
@@ -20,7 +19,6 @@ from ytdlmusic.params import (
     is_batch,
     param_batch,
     param_search,
-    check_classic_params,
 )
 
 

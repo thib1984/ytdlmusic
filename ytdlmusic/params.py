@@ -8,6 +8,9 @@ import sys
 
 
 def compute_args():
+    """
+    argparse gestion
+    """
     my_parser = argparse.ArgumentParser(
         description="ytdlmusic is a command-line program to search and download music files from YouTube without use browser.",
         epilog="""
@@ -19,7 +22,11 @@ def compute_args():
     my_group = my_parser.add_mutually_exclusive_group(required=True)
 
     my_group.add_argument(
-        "search", metavar="search", type=str, nargs="?", help="words to search in YouTube",
+        "search",
+        metavar="search",
+        type=str,
+        nargs="?",
+        help="words to search in YouTube",
     )
 
     my_group.add_argument(
@@ -98,8 +105,7 @@ def compute_args():
         "--tag",
         action="store_true",
         help="determine the filename from tags",
-    )    
-
+    )
 
     my_second_group = my_parser.add_mutually_exclusive_group()
     my_second_group.add_argument(
@@ -118,7 +124,7 @@ def compute_args():
     # if no parameter
     if len(sys.argv) == 1:
         my_parser.print_help()
-        exit(0)
+        sys.exit(0)
 
     args = my_parser.parse_args()
 
@@ -225,20 +231,6 @@ def is_number():
     Return True if flag --n=, False otherwise
     """
     return compute_args().choices
-
-
-def is_artist():
-    """
-    Return the artist from sys.argv
-    """
-    return not param_artist() is None
-
-
-def is_song():
-    """
-    Return true if the song exists from sys.argv
-    """
-    return not param_song() is None
 
 
 def param_search():
