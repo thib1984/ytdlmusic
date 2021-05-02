@@ -6,7 +6,6 @@ update utils scripts
 import sys
 import subprocess
 from ytdlmusic.print import (
-    print_error_update,
     print_try_update,
     print_error_full_update,
     print_error_update_package,
