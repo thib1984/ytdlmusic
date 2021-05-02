@@ -226,6 +226,8 @@ Thanks to contributors and dependencies authors :
 - [albenquer](https://github.com/albenquer) and [dlicois](https://github.com/dlicois) for contributions!
 - [Hitesh Kumar Saini](https://github.com/alexmercerind) for [youtube-search-python](https://github.com/alexmercerind/youtube-search-python)
 - [ytdl-org](https://github.com/ytdl-org) for [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+- [devsnd](https://github.com/devsnd) for [tinytag](https://github.com/devsnd/tinytag)
+- [avian2](https://github.com/avian2) for [unidecode](https://github.com/avian2/unidecode)
 - [Federico Carboni](https://github.com/FedericoCarboni) for [setup-ffmpeg](https://github.com/FedericoCarboni/setup-ffmpeg)
 - [pypa](https://github.com/pypa) for [gh-action-pypi-publish](https://github.com/pypa/gh-action-pypi-publish)
 - [elgohrf](https://github.com/elgohr) for [Github-Release-Action](https://github.com/elgohr/Github-Release-Action)
