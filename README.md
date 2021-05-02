@@ -139,7 +139,7 @@ scandinavianz;avalon;information
 You can also add these flags to your commands (except for help and version) :
 
 
-`` --auto `` or `` -y `` : Use auto mode: choose the first item for classic use, auto-accept  other commands.
+`` --auto `` or `` -y `` : Use auto mode: choose the first item for classic use, auto-accept other commands.
 
 `` --choices X `` or `` -n X `` : Set the number of choices (default=5, min=1, max=10).
 
@@ -147,11 +147,11 @@ You can also add these flags to your commands (except for help and version) :
 
 `` --t `` or `` --tag `` : Use tags of the downloaded file to rename it.
 
-`` --m4a `` or `` -f `` : Use m4a format.
+`` --m4a `` or `` -f `` : Use M4A format.
 
-`` --ogg `` or `` -o `` : Use ogg format.
+`` --ogg `` or `` -o `` : Use OGG format.
 
-`` --Q `` or `` --quality `` : Set quality to 320kbs instead of 256kbs for mp3 format.
+`` --Q `` or `` --quality `` : Set quality to 320kbs instead of 256kbs for MP3 format.
 
 `` --quiet `` or `` -q `` : Give less output.
 

@@ -45,7 +45,7 @@ def compute_args():
         "-U",
         "--fullupdate",
         action="store_true",
-        help="upgrade ytdlmusic, youtube-dl and youtube-search-python",
+        help="upgrade ytdlmusic, and the dependencies youtube-dl and youtube-search-python",
     )
     my_group.add_argument(
         "-b",
@@ -54,14 +54,14 @@ def compute_args():
         action="store",
         nargs=4,
         type=str,
-        help="batch mode, loop on a <path> csv file with an header <bool_h>, a separator <s>, and key words from concatenates columns numbers x+y...",
+        help="batch mode, loop on a <path> csv file with an header <bool_h>, a separator <s>, and key words from concatenates columns separated by \"+\"",
     )
 
     my_parser.add_argument(
         "-y",
         "--auto",
         action="store_true",
-        help="auto-choose first item for classic use, auto-accept for other commands",
+        help="choose the first item for classic use, auto-accept other commands",
     )
     my_parser.add_argument(
         "-n",
@@ -78,20 +78,20 @@ def compute_args():
         "-f",
         "--m4a",
         action="store_true",
-        help="use m4a format",
+        help="use M4A format",
     )
     my_third_group.add_argument(
         "-o",
         "--ogg",
         action="store_true",
-        help="use ogg format",
+        help="use OGG format",
     )
 
     my_third_group.add_argument(
         "-Q",
         "--quality",
         action="store_true",
-        help="set quality to 320kbs instead of 256kbs for mp3 format",
+        help="set quality to 320kbs instead of 256kbs for MP3 format",
     )
     my_fourth_group = my_parser.add_mutually_exclusive_group()
     my_fourth_group.add_argument(
@@ -104,7 +104,7 @@ def compute_args():
         "-t",
         "--tag",
         action="store_true",
-        help="determine the filename from tags",
+        help="use tags of the downloaded file to rename it",
     )
 
     my_second_group = my_parser.add_mutually_exclusive_group()

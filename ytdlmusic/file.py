@@ -85,7 +85,7 @@ def determine_finame_from_tag(filename):
     nom_genere = ""
     if not is_ffmpeg_installed() or is_m4a():
         print(
-            "[warning] If you want use metadata tags, install ffmpeg and use mp3 or ogg format."
+            "[warning] If you want use metadata tags, install ffmpeg and use MP3 or OGG format."
         )
         print("[warning] -> keep the YouTube format.")
         return filename
