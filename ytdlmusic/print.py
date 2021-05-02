@@ -99,17 +99,6 @@ def print_error_update_package():
     print(colored(EXCEPTION_UPDATE, "red"))
 
 
-def print_error_update():
-    """
-    print the error message with additional informations
-    """
-    if is_verbose():
-        print(colored(DEBUG_HEADER, "yellow"))
-        print(colored(traceback.format_exc(), "yellow"))
-    print(colored(EXCEPTION_UPDATE, "red"))
-    print_addtional_informations()
-
-
 def print_error_full_update():
     """
     print the the additional informations

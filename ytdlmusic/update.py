@@ -29,10 +29,9 @@ def update():
         if answer.lower() not in ["y", ""]:
             print("Abort.")
             sys.exit(1)
-    try:
-        update_pip_package(pip3_or_pip(), "ytdlmusic")
-    except Exception:
-        print_error_update()
+    bool_result = update_pip_package(pip3_or_pip(), "ytdlmusic")
+    if not bool_result:
+        print_error_full_update()
         sys.exit(1)
 
 
