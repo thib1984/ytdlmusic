@@ -31,8 +31,8 @@ def update():
             sys.exit(1)
     try:
         update_pip_package(pip3_or_pip(), "ytdlmusic")
-    except Exception as err:
-        print_error_update(err)
+    except Exception:
+        print_error_update()
         sys.exit(1)
 
 
@@ -88,8 +88,8 @@ def update_pip_package(prog, package):
                 print(line.strip(" "))
         print("Update ok")
         return True
-    except Exception as err:
-        print_error_update_package(err)
+    except Exception:
+        print_error_update_package()
         return False
 
 

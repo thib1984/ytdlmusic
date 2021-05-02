@@ -1,7 +1,7 @@
 """
 download scripts
 """
-
+from termcolor import colored
 from ytdlmusic.params import (
     is_verbose,
     is_quiet,
@@ -26,7 +26,9 @@ def download_song(song_url, filename):
     from url song_url
     """
 
-    print("download " + song_url + " with youtubedl")
+    print(
+        colored("download " + song_url + " with youtubedl", "green")
+    )
 
     # m4a
     opts = {
@@ -70,5 +72,15 @@ def download_song(song_url, filename):
     if not is_quiet():
         print("end youtube-dl operation")
     if not is_ffmpeg_installed() and not is_m4a() and not is_ogg():
-        print("[warning] If you want MP3/OGG format, install ffmpeg.")
-        print("[warning] To disable this message activate -f")
+        print(
+            colored(
+                "[warning] If you want MP3/OGG format, install ffmpeg.",
+                "yellow",
+            )
+        )
+        print(
+            colored(
+                "[warning] To disable this message activate -f",
+                "yellow",
+            )
+        )

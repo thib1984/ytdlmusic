@@ -17,6 +17,8 @@ setup(
         "youtube_dl",
         "tinytag",
         "unidecode",
+        "termcolor",
+        "colorama",
     ],
     zip_safe=False,
     entry_points={

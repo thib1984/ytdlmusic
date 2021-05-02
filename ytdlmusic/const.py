@@ -26,30 +26,24 @@ There is NO WARRANTY, to the extent permitted by law.
 Written by thib1984.
 """
 
-BAD_LAUNCH_TXT = """\
-Bad parameters for ytdlmusic.
-ytdlmusic --help for more information"""
-
 EXCEPTION = """\
-Unexpected error: $1
-Try to upgrade with 'ytdlmusic --update' or 'ytdlmusic --fullupdate'
+[error] Unexpected error: Try to upgrade with 'ytdlmusic --update' or 'ytdlmusic --fullupdate'
 and retry."""
 
 EXCEPTION_UPDATE = """\
-Unexpected error during the update : $1
-The update will could be finished at the restart of ytdlmusic.
+[error] Unexpected error during the update : The update will could be finished at the restart of ytdlmusic.
 Retest the update a second time."""
 
 EXCEPTION_BATCH = """\
-Unexpected error during the batch : $1
-Verify the params of --batch."""
+[error] Unexpected error during the batch : Verify the params of --batch."""
 
 BUG_MESSSAGE = """\
-You can also try  to manually upgrade ytdlmusic or the dependencies
-with 'pip(3) install --upgrade name_package'
-If you reproduce the error : add the flag '--verbose' flag and open an issue at
+[warning] If you reproduce the error : add the flag '--verbose' flag and open an issue at
 https://github.com/thib1984/ytdlmusic/issues with the complete log"""
 
+BUG_MESSSAGE_DEBUG = """\
+[warning] If you reproduce the error : open an issue at
+https://github.com/thib1984/ytdlmusic/issues with this complete log"""
 
 NOT_INSTALLED = "NOT INSTALLED"
 NOT_FOUND = "NOT FOUND"

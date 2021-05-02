@@ -3,6 +3,7 @@ print utils scripts
 """
 
 import traceback
+from termcolor import colored
 
 from ytdlmusic.version import (
     python_version,
@@ -12,7 +13,6 @@ from ytdlmusic.version import (
 )
 from ytdlmusic.const import (
     LICENCE_TXT,
-    BAD_LAUNCH_TXT,
     EXCEPTION,
     BUG_MESSSAGE,
     EXCEPTION_UPDATE,
@@ -22,6 +22,7 @@ from ytdlmusic.const import (
     TRY_UPDATE,
     PLATFORM_OS,
     DEBUG_HEADER,
+    BUG_MESSSAGE_DEBUG,
 )
 from ytdlmusic.file import binary_path
 from ytdlmusic.params import is_verbose
@@ -77,42 +78,35 @@ def print_version_dependencies():
     print(replace_all(PLATFORM_OS, {"$1": platform_version()}))
 
 
-def print_bad_launch():
-    """
-    print the bad launch message
-    """
-    print(replace_all(BAD_LAUNCH_TXT, {}))
-
-
-def print_error(err):
+def print_error():
     """
     print the error message with additional informations
     """
     if is_verbose():
-        print(DEBUG_HEADER)
-        traceback.print_exc()
-    print(replace_all(EXCEPTION, {"$1": str(err)}))
+        print(colored(DEBUG_HEADER, "yellow"))
+        print(colored(traceback.format_exc(), "yellow"))
+    print(colored(EXCEPTION, "red"))
     print_addtional_informations()
 
 
-def print_error_update_package(err):
+def print_error_update_package():
     """
     print the error message with minimal informations
     """
     if is_verbose():
-        print(DEBUG_HEADER)
-        traceback.print_exc()
-    print(replace_all(EXCEPTION_UPDATE, {"$1": str(err)}))
+        print(colored(DEBUG_HEADER, "yellow"))
+        print(colored(traceback.format_exc(), "yellow"))
+    print(colored(EXCEPTION_UPDATE, "red"))
 
 
-def print_error_update(err):
+def print_error_update():
     """
     print the error message with additional informations
     """
     if is_verbose():
-        print(DEBUG_HEADER)
-        traceback.print_exc()
-    print(replace_all(EXCEPTION_UPDATE, {"$1": str(err)}))
+        print(colored(DEBUG_HEADER, "yellow"))
+        print(colored(traceback.format_exc(), "yellow"))
+    print(colored(EXCEPTION_UPDATE, "red"))
     print_addtional_informations()
 
 
@@ -123,14 +117,14 @@ def print_error_full_update():
     print_addtional_informations()
 
 
-def print_error_batch(err):
+def print_error_batch():
     """
     print the error message with additional informations
     """
     if is_verbose():
-        print(DEBUG_HEADER)
-        traceback.print_exc()
-    print(replace_all(EXCEPTION_BATCH, {"$1": str(err)}))
+        print(colored(DEBUG_HEADER, "yellow"))
+        print(colored(traceback.format_exc(), "yellow"))
+    print(colored(EXCEPTION_BATCH, "red"))
     print_addtional_informations()
 
 
@@ -138,9 +132,12 @@ def print_addtional_informations():
     """
     print footer informations
     """
-    print_version_ytdlmusic()
-    print_version_dependencies()
-    print(BUG_MESSSAGE)
+    if is_verbose():
+        print_version_ytdlmusic()
+        print_version_dependencies()
+        print(colored(BUG_MESSSAGE_DEBUG, "yellow"))
+    else:
+        print(colored(BUG_MESSSAGE, "yellow"))
 
 
 def print_try_update(package, prog):

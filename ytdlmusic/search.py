@@ -1,6 +1,7 @@
 """
 search utils scripts
 """
+from termcolor import colored
 from ytdlmusic.log import print_debug
 from ytdlmusic.params import param_number
 
@@ -19,7 +20,10 @@ def search(keywords):
 
     print_debug("search : " + keywords)
     print(
-        'search "' + keywords + '" with youtube-search-python'
+        colored(
+            'search "' + keywords + '" with youtube-search-python',
+            "green",
+        )
     )
     my_limit = int(param_number())
     return VideosSearch(keywords, limit=my_limit)

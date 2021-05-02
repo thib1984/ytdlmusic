@@ -16,8 +16,8 @@ def launch_batch(param):
     """
     try:
         batch(param)
-    except Exception as err:
-        print_error_batch(err)
+    except Exception:
+        print_error_batch()
         sys.exit(1)
 
 

@@ -7,6 +7,7 @@ import os
 import re
 import pathlib
 from shutil import which
+from termcolor import colored
 import unidecode
 from ytdlmusic.log import print_debug
 from ytdlmusic.params import is_m4a, is_ogg, is_keep, is_tag
@@ -40,7 +41,7 @@ def determine_filename(search, title):
         ext = ".mp3"
     print_debug("extension used : " + ext)
 
-    if is_keep() or is_tag():
+    if is_keep():
         print_debug("file name will be deduced from YouTube : ")
         return find_unique_name(unicode_and_trim(title) + ext)
     if is_tag():
@@ -81,19 +82,24 @@ def determine_finame_from_tag(filename):
     """
     determine final filename from metatags
     """
-    print("filename conversion with metadata")
+    print(colored("filename conversion with metadata", "green"))
     nom_genere = ""
     if not is_ffmpeg_installed() or is_m4a():
         print(
-            "[warning] If you want use metadata tags, install ffmpeg and use MP3 or OGG format."
+            colored(
+                "[warning] If you want use metadata tags, install ffmpeg and use MP3 or OGG format.",
+                "yellow",
+            )
         )
-        print("[warning] -> keep the YouTube format.")
+        print(colored("[warning] keep the YouTube format.", "yellow"))
         return filename
 
     title, artist, album = obtain_tags(filename)
 
     if not title or not artist:
-        print("[warning] Not enough tags information")
+        print(
+            colored("[warning] Not enough tags information", "yellow")
+        )
         return filename
     if album:
         nom_genere = (

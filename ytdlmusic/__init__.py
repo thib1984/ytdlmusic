@@ -1,8 +1,9 @@
 """
-ytdlmusic scripts
+ytdlmusic entrypoint
 """
 
 import sys
+import colorama
 from ytdlmusic.ytdlmusic import job
 from ytdlmusic.update import update, fullupdate
 from ytdlmusic.batch import launch_batch
@@ -23,7 +24,10 @@ from ytdlmusic.params import (
 
 
 def ytdlmusic():
-
+    """
+    ytdlmusic entrypoint
+    """
+    colorama.init()
     """
     entry point from ytdlmusic
     """
@@ -41,6 +45,6 @@ def ytdlmusic():
         else:
             job(param_search())
         sys.exit(0)
-    except Exception as err:
-        print_error(err)
+    except Exception:
+        print_error()
         sys.exit(1)
