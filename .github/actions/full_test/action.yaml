@@ -41,7 +41,7 @@ runs:
         test -f "Rexlambo Stay With Me_1.m4a"
         echo "---->test the m4a file type"
         file -b "Rexlambo Stay With Me_1.m4a"
-        file -b "Rexlambo Stay With Me_1.m4a" | grep "ISO Media, MP4 Base Media v1 \[IS0 14496-12:2003\]"
+        file -b "Rexlambo Stay With Me_1.m4a" | grep "ISO Media, MP4 Base Media"
     - name: ogg
       shell: bash
       run: | 
