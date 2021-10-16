@@ -45,7 +45,7 @@ def compute_args():
         "-U",
         "--fullupdate",
         action="store_true",
-        help="upgrade ytdlmusic, and the dependencies youtube-dl and youtube-search-python",
+        help="upgrade ytdlmusic, and the dependencies yt-dlp and youtube-search-python",
     )
     my_group.add_argument(
         "-b",

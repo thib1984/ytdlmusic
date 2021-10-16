@@ -36,7 +36,7 @@ def update():
 
 def fullupdate():
     """
-    update ytdlmusic, youtube-search-python, youtube-dl
+    update ytdlmusic, youtube-search-python, yt-dlp
     """
 
     if not is_auto():
@@ -49,7 +49,7 @@ def fullupdate():
     boolean_ysp = update_pip_package(
         pip3_or_pip(), "youtube-search-python"
     )
-    boolean_ytdl = update_pip_package(pip3_or_pip(), "youtube-dl")
+    boolean_ytdl = update_pip_package(pip3_or_pip(), "yt-dlp")
     boolean_ytdlm = update_pip_package(pip3_or_pip(), "ytdlmusic")
 
     if not (boolean_ysp and boolean_ytdl and boolean_ytdlm):

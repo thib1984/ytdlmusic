@@ -68,7 +68,7 @@ def print_version_dependencies():
             VERSION_DEPENDENCIES,
             {
                 "$1": pip_package_version("youtube-search-python"),
-                "$2": pip_package_version("youtube-dl"),
+                "$2": pip_package_version("yt-dlp"),
                 "$3": pip_package_version_of_double("pip3", "pip"),
                 "$4": python_version(),
                 "$5": binary_path("ffmpeg"),

@@ -9,7 +9,7 @@ This package is directly available from [pypi](https://pypi.org/project/ytdlmusi
 It may be illegal to download restricted content with this software, depending on the law in your country.
 
 This package use two very important dependencies :
-- [youtube_dl](https://pypi.org/project/youtube_dl/)
+- [yt_dlp](https://pypi.org/project/yt_dlp/) a fork from [youtube-search-python](https://pypi.org/project/youtube-search-python/)
 - [youtube-search-python](https://pypi.org/project/youtube-search-python/)
 
 ## Installation prerequisites
@@ -29,92 +29,15 @@ This package use two very important dependencies :
 
 ``ytdlmusic [KEY WORDS]``
 
-ytdlmusic searches YouTube for "\[KEY WORDS\]" and displays the top five result and their description. The selected result is downloaded in your current directory. The default used format is MP3. The default filename is \[KEY WORDS\].mp3. 
+![demo_1](https://user-images.githubusercontent.com/45128847/137580908-ce3f1b17-a2b3-4530-bc90-df00fbaf1cfc.gif)
 
-Example:
-```
-~$ ytdlmusic "Rexlambo Stay With Me"
-search "Rexlambo Stay With Me" with youtube-search-python
-1
-Rexlambo - stay with me
-https://www.youtube.com/watch?v=LrED6SSFf-I
-3:52 - 9,636 views
-2
-stay with me – Rexlambo (No Copyright Music)
-https://www.youtube.com/watch?v=a0hkrjqpIOo
-3:52 - 166,640 views
-3
-Rexlambo - stay with me
-https://www.youtube.com/watch?v=0vnOMFmBUGk
-3:52 - 837 views
-4
-Rexlambo - stay with me
-https://www.youtube.com/watch?v=TjATW8iAwa0
-3:52 - 668 views
-5
-Rexlambo - Stay With Me
-https://www.youtube.com/watch?v=jIc8c2hh4ew
-3:53 - No views
-Which (1-5, 0 to exit, 1 by default) ? 2
-download https://www.youtube.com/watch?v=a0hkrjqpIOo with youtubedl
-start youtube-dl operation
-[youtube] a0hkrjqpIOo: Downloading webpage
-[download] Destination: Rexlambo Stay With Me.webm
-[download] 100% of 3.69MiB in 00:02
-[ffmpeg] Destination: Rexlambo Stay With Me.mp3
-Deleting original file Rexlambo Stay With Me.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'Rexlambo Stay With Me.mp3'
-end youtube-dl operation
-Rexlambo Stay With Me.mp3 is ready
-````
 ## Batch
 
 You can use a command to loop in a csv file, and download all MP3 files from it. 
 
 `` ytdlmusic --batch path_file had_header sep columns_to_concatenate ``*
 
-You can indicate one or more columns that you want to concatenate, separated by "+".
-
-Example :
-
-```
-ytdlmusic -y --batch "./test.csv" True ";" 2+1
-search "above limujii" with youtube-search-python
-download https://www.youtube.com/watch?v=cUWU_T9KBk8 with youtubedl
-start youtube-dl operation
-[youtube] cUWU_T9KBk8: Downloading webpage
-[download] Destination: above limujii.webm
-[download] 100% of 2.58MiB in 00:01
-[ffmpeg] Destination: above limujii.mp3
-Deleting original file above limujii.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'above limujii.mp3'
-end youtube-dl operation
-above limujii.mp3 is ready
-search "awake nomyn" with youtube-search-python
-download https://www.youtube.com/watch?v=hZQDfGX8Cu4 with youtubedl
-start youtube-dl operation
-[youtube] hZQDfGX8Cu4: Downloading webpage
-[download] Destination: awake nomyn.webm
-[download] 100% of 3.67MiB in 00:02
-[ffmpeg] Destination: awake nomyn.mp3
-Deleting original file awake nomyn.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'awake nomyn.mp3'
-end youtube-dl operation
-awake nomyn.mp3 is ready
-search "zhhezhahkzaj eyazttyzaeyz" with youtube-search-python
-No result found, retry with other words.
-search "avalon scandinavianz" with youtube-search-python
-download https://www.youtube.com/watch?v=B5CYUMs6-eo with youtubedl
-start youtube-dl operation
-[youtube] B5CYUMs6-eo: Downloading webpage
-[download] Destination: avalon scandinavianz.webm
-[download] 100% of 2.79MiB in 00:01
-[ffmpeg] Destination: avalon scandinavianz.mp3
-Deleting original file avalon scandinavianz.webm (pass -k to keep)
-[ffmpeg] Adding metadata to 'avalon scandinavianz.mp3'
-end youtube-dl operation
-avalon scandinavianz.mp3 is ready
-```
+![demo_2](https://user-images.githubusercontent.com/45128847/137581058-e0cca29b-9ad1-472e-bbb0-4fce94b984a0.gif)
 
 with csv file 
 ```
@@ -130,7 +53,7 @@ scandinavianz;avalon;information
 
 `` ytdlmusic --update `` or `` ytdlmusic -u `` upgrade ytdlmusic.
 
-`` ytdlmusic --fullupdate `` or `` ytdlmusic -U `` upgrade ytdlmusic and the dependencies youtube-dl and youtube-search-python.
+`` ytdlmusic --fullupdate `` or `` ytdlmusic -U `` upgrade ytdlmusic and the dependencies yt-dlp and youtube-search-python.
 
 `` ytdlmusic --version `` or `` ytdlmusic -v `` display version of ytdlmusic and the dependencies.
 
@@ -181,32 +104,29 @@ The ``ffmpeg`` package is required for the MP3 conversion. Install it and retry 
 ### With the ``--tag`` option, my filenames keep the YouTube title format. Why?
 
 The ``ffmpeg`` package is required for the tag conversion. Install it and retry to launch ytdlmusic.
-### What are the compatibilities with Python, pip, youtube-dl and youtube-search-python?
+### What are the compatibilities with Python, pip, yt-dlp and youtube-search-python?
 
-When an new version is released, it is compatible with the last Python version in the branches 3.6 to 33.9, on the release date. It's also compatible with the last versions of dependencies, on the release date.
-
-### What are the compatibilities with Python 3.10?
-
-When the 3.10 version will be released in final version, the package of ytdlmusic will be rework to be compatible with 3.10 version.
+When an new version is released, it is compatible with the last Python version in the branches 3.6 to 3.10, on the release date. It's also compatible with the last versions of dependencies, on the release date.
 
 
-### When I try to update youtube-dl with ``youtube-dl -U``, I obtain an error message in my debian/ubuntu!
+
+### When I try to update yt-dlp with ``yt-dlp -U``, I obtain an error message in my debian/ubuntu!
 
 If you obtain the following message: 
 
 ```
-It looks like you installed youtube-dl with a package manager, pip, setup.py or a tarball. Please use that to update.
+It looks like you installed yt-dlp with a package manager, pip, setup.py or a tarball. Please use that to update.
 ```
 
 instead of 
 
 ```
-youtube-dl: error: youtube-dl's self-update mechanism is disabled on Debian.
-Please update youtube-dl using apt(8).
-See https://packages.debian.org/sid/youtube-dl for the latest packaged version.
+yt-dlp: error: yt-dlp's self-update mechanism is disabled on Debian.
+Please update yt-dlp using apt(8).
+See https://packages.debian.org/sid/yt-dlp for the latest packaged version.
 ```
 
-No panic! You have just downloaded a newer version of youtube-dl which is not in apt. When a new version of youtube-dl will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove youtube-dl && sudo apt install youtube-dl``
+No panic! You have just downloaded a newer version of yt-dlp which is not in apt. When a new version of yt-dlp will be released in apt, you will download it automatically with ``sudo apt upgrade``. If you want to retrieve the previous version, ``sudo apt remove yt-dlp && sudo apt install yt-dlp``
 
 ### I get an error about ``_requesthandler.py line 22`` when I try to use ytdlmusic
 
@@ -214,9 +134,9 @@ Sorry... You should update Python to 3.6 version or more. youtube-search-python 
 
 ### Have you tested your package?
 
-Before a new version of ytdlmusic is published, it is checked in an [automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/publish.yml), with the last versions of pip, youtube-dl and youtube-search-python, and also in the last versions of Python in the three branches 3.6 to 3.9.*
+Before a new version of ytdlmusic is published, it is checked in an [automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/publish.yml), with the last versions of pip, yt-dlp and youtube-search-python, and also in the last versions of Python in the four branches 3.6 to 3.10.
 
-Each night, [another automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/test_published_release.yml) checks the actual package with last versions of dependencies and Pythons 3.6 to 3.9. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.*
+Each night, [another automatic job](https://github.com/thib1984/ytdlmusic/actions/workflows/test_published_release.yml) checks the actual package with last versions of dependencies and Pythons 3.6 to 3.10. So if a regression appears, the author of ytdlmusic received  an automatic mail to warn it.*
 
 *_These tests are executed with GitHub Actions on an Ubuntu 20.04 image. Tests are also run on macOS and Windows images (only very last Python version)._
 ## Thanks
@@ -225,7 +145,7 @@ Thanks to contributors and dependencies authors :
 
 - [albenquer](https://github.com/albenquer) and [dlicois](https://github.com/dlicois) for contributions!
 - [Hitesh Kumar Saini](https://github.com/alexmercerind) for [youtube-search-python](https://github.com/alexmercerind/youtube-search-python)
-- [ytdl-org](https://github.com/ytdl-org) for [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+- [yt-dlp](https://github.com/yt-dlp) for [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 - [devsnd](https://github.com/devsnd) for [tinytag](https://github.com/devsnd/tinytag)
 - [avian2](https://github.com/avian2) for [unidecode](https://github.com/avian2/unidecode)
 - [tartley](https://github.com/tartley) for [colorama](https://github.com/tartley/colorama)

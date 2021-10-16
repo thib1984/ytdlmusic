@@ -14,20 +14,20 @@ from ytdlmusic.file import name_without_extension, is_ffmpeg_installed
 from ytdlmusic.log import print_debug
 
 try:
-    import youtube_dl
+    import yt_dlp
 except ImportError:
-    print_debug("youtubde_dl import problem")
+    print_debug("yt_dlp import problem")
 
 
 def download_song(song_url, filename):
     """
-    download song with youtube-dl
+    download song with yt-dlp
     in filename
     from url song_url
     """
 
     print(
-        colored("download " + song_url + " with youtubedl", "green")
+        colored("download " + song_url + " with yt_dlp", "green")
     )
 
     # m4a
@@ -61,16 +61,16 @@ def download_song(song_url, filename):
 
     if is_verbose():
         opts["verbose"] = "True"
-        print_debug("debug youtube-dl is activated")
+        print_debug("debug yt-dlp is activated")
     if not is_quiet():
-        print("start youtube-dl operation")
+        print("start yt-dlp operation")
     elif is_quiet():
         opts["quiet"] = True
         opts["no_warnings"] = True
-    with youtube_dl.YoutubeDL(opts) as ydl:
+    with yt_dlp.YoutubeDL(opts) as ydl:
         ydl.extract_info(song_url, download=True)
     if not is_quiet():
-        print("end youtube-dl operation")
+        print("end yt-dlp operation")
     if not is_ffmpeg_installed() and not is_m4a() and not is_ogg():
         print(
             colored(

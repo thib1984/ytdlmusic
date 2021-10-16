@@ -8,7 +8,7 @@ ytdlmusic version             : $1"""
 
 VERSION_DEPENDENCIES = """\
 youtube-search-python version : $1
-youtube-dl version            : $2
+yt-dlp version            : $2
 pip(3) version                : $3
 Python version                : $4
 ffmpeg                        : $5"""

@@ -79,15 +79,15 @@ runs:
       shell: bash
       run: | 
         echo "---->remove dependency"        
-        pip uninstall --yes youtube-dl
+        pip uninstall --yes yt-dlp
         echo "---->verify is version not installed"
-        ytdlmusic --version | grep "youtube-dl version            : NOT INSTALLED"
+        ytdlmusic --version | grep "yt-dlp version            : NOT INSTALLED"
         echo "---->verify the error" 
         (ytdlmusic --auto "Rexlambo Stay With Me" || echo "good exit code") | grep "good exit code"
         echo "---->verify the error is corretly displayed" 
         (ytdlmusic --auto "Rexlambo Stay With Me" || echo "good exit code") | grep "Try to upgrade with 'ytdlmusic --update'"
         echo "---->test upgrade contains waited text"               
-        printf 'y\n' | ytdlmusic --fullupdate | grep "Successfully installed youtube-dl"
+        printf 'y\n' | ytdlmusic --fullupdate | grep "Successfully installed yt-dlp"
         echo '---->ytdlmusic -dkQ --auto "Rexlambo Stay With Me"'
         ytdlmusic -q --auto "Rexlambo Stay With Me"
         echo "---->test if mp3 file exists"
