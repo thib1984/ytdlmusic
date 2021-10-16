@@ -79,7 +79,7 @@ See [this page](FAQ.md)
 ## For contributors
 
 Go to [CONTRIBUTING.md](CONTRIBUTING.md)
-# Tanks to contributors
+## Tanks to contributors
 
 Thanks to contributors and dependencies authors :
 
