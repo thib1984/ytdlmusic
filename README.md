@@ -1,4 +1,4 @@
-# 🐍 ytdlmusic
+# 🎵 ytdlmusic
 
 ``ytdlmusic`` is a command-line program to search and download music files from YouTube without use browser. 
 This package is directly available from [pypi](https://pypi.org/project/ytdlmusic/)
