@@ -79,6 +79,7 @@ See [this page](FAQ.md)
 ## For contributors
 
 Go to [CONTRIBUTING.md](CONTRIBUTING.md)
+
 ## Tanks to contributors
 
 Thanks to contributors and dependencies authors :
@@ -98,5 +99,7 @@ Thanks to contributors and dependencies authors :
 MIT License
 
 Copyright (c) 2021 [thib1984](https://github.com/thib1984)
+
+See [this page](LICENSE.txt) for details
 
 
