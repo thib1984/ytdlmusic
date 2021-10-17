@@ -8,7 +8,7 @@ This package is directly available from [pypi](https://pypi.org/project/ytdlmusi
 It may be illegal to download restricted content with this software, depending on the law in your country.
 
 This package use two very important dependencies :
-- [yt_dlp](https://pypi.org/project/yt_dlp/) which is a fork from [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+- [yt_dlp](https://pypi.org/project/yt_dlp/), a fork from [youtube-dl](https://github.com/ytdl-org/youtube-dl)
 - [youtube-search-python](https://pypi.org/project/youtube-search-python/)
 
 # 💫 How use **ytdlmusic**
