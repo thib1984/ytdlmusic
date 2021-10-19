@@ -82,7 +82,8 @@ runs:
         pip uninstall --yes yt-dlp
         echo "---->verify is version not installed"
         ytdlmusic --version | grep "yt-dlp version            : NOT INSTALLED"
-        echo "---->verify the error" 
+        echo "---->verify the error"
+        (ytdlmusic --auto "Rexlambo Stay With Me"
         (ytdlmusic --auto "Rexlambo Stay With Me" || echo "good exit code") | grep "good exit code"
         echo "---->verify the error is corretly displayed" 
         (ytdlmusic --auto "Rexlambo Stay With Me" || echo "good exit code") | grep "Try to upgrade with 'ytdlmusic --update'"
