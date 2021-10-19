@@ -21,11 +21,11 @@ This package use two very important dependencies :
 
 You can use a command to loop in a csv file, and download all MP3 files from it. 
 
-`` ytdlmusic --batch path_file had_header sep columns_to_concatenate ``*
+`` ytdlmusic --batch path_file had_header sep columns_to_concatenate ``
 
 ![demo_2](https://user-images.githubusercontent.com/45128847/137581058-e0cca29b-9ad1-472e-bbb0-4fce94b984a0.gif)
 
-with csv file 
+with csv file (for the demo's example)
 ```
 song_column;artist_column;unused column
 limujii;above;no
