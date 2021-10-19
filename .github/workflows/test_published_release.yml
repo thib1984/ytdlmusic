@@ -15,9 +15,9 @@ jobs:
         include:
           - os-version: 'ubuntu-20.04'
             python-version: '3.6'
-          - os-version: 'ubuntu-21.10'
+          - os-version: 'ubuntu-20.04'
             python-version: '3.7'
-          - os-version: 'ubuntu-21.10'
+          - os-version: 'ubuntu-20.04'
             python-version: '3.8'         
           - os-version: 'ubuntu-20.04'
             python-version: '3.10'               
