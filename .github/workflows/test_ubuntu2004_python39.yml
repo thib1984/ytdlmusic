@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  light_test:       
+  full_test:       
     runs-on: 'ubuntu-20.04'
-    name: test package with ubuntu21.04 et python3.9
+    name: test package with ubuntu20.04 et python3.9
     steps:
       #preparation
       - name: checkout

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  full_test:
+  full_test_multi:
     strategy:
       fail-fast: false
       matrix:

@@ -6,7 +6,7 @@ on:
     - cron: "0 3 * * *"
 
 jobs:
-  full_test:
+  full_test_published:
     strategy:
       fail-fast: false
       matrix:
