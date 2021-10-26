@@ -78,7 +78,7 @@ See [this page](FAQ.md)
 
 ## For contributors
 
-Go to [CONTRIBUTING.md](CONTRIBUTING.md)
+Go to [CONTRIBUTING.md](CONTRIBUTING.md). You have to read and accept this [Code of conduct](./CODE_OF_CONDUCT.md).
 
 ## Tanks to contributors
 
