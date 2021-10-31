@@ -3,7 +3,7 @@ print utils scripts
 """
 
 import traceback
-from termcolor import colored
+
 
 from ytdlmusic.version import (
     python_version,
@@ -25,7 +25,7 @@ from ytdlmusic.const import (
     BUG_MESSSAGE_DEBUG,
 )
 from ytdlmusic.file import binary_path
-from ytdlmusic.params import is_verbose
+from ytdlmusic.params import is_verbose, my_colored
 
 
 def replace_all(text, dic):
@@ -83,9 +83,9 @@ def print_error():
     print the error message with additional informations
     """
     if is_verbose():
-        print(colored(DEBUG_HEADER, "yellow"))
-        print(colored(traceback.format_exc(), "yellow"))
-    print(colored(EXCEPTION, "red"))
+        print(my_colored(DEBUG_HEADER, "yellow"))
+        print(my_colored(traceback.format_exc(), "yellow"))
+    print(my_colored(EXCEPTION, "red"))
     print_addtional_informations()
 
 
@@ -94,9 +94,9 @@ def print_error_update_package():
     print the error message with minimal informations
     """
     if is_verbose():
-        print(colored(DEBUG_HEADER, "yellow"))
-        print(colored(traceback.format_exc(), "yellow"))
-    print(colored(EXCEPTION_UPDATE, "red"))
+        print(my_colored(DEBUG_HEADER, "yellow"))
+        print(my_colored(traceback.format_exc(), "yellow"))
+    print(my_colored(EXCEPTION_UPDATE, "red"))
 
 
 def print_error_full_update():
@@ -111,9 +111,9 @@ def print_error_batch():
     print the error message with additional informations
     """
     if is_verbose():
-        print(colored(DEBUG_HEADER, "yellow"))
-        print(colored(traceback.format_exc(), "yellow"))
-    print(colored(EXCEPTION_BATCH, "red"))
+        print(my_colored(DEBUG_HEADER, "yellow"))
+        print(my_colored(traceback.format_exc(), "yellow"))
+    print(my_colored(EXCEPTION_BATCH, "red"))
     print_addtional_informations()
 
 
@@ -124,9 +124,9 @@ def print_addtional_informations():
     if is_verbose():
         print_version_ytdlmusic()
         print_version_dependencies()
-        print(colored(BUG_MESSSAGE_DEBUG, "yellow"))
+        print(my_colored(BUG_MESSSAGE_DEBUG, "yellow"))
     else:
-        print(colored(BUG_MESSSAGE, "yellow"))
+        print(my_colored(BUG_MESSSAGE, "yellow"))
 
 
 def print_try_update(package, prog):
@@ -134,3 +134,7 @@ def print_try_update(package, prog):
     print try update message
     """
     print(replace_all(TRY_UPDATE, {"$1": package, "$2": prog}))
+
+    
+
+

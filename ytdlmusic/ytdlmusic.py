@@ -3,10 +3,9 @@ main class ytdlmusic
 """
 import sys
 import os
-from termcolor import colored
 from ytdlmusic.download import download_song
 from ytdlmusic.print import print_error
-from ytdlmusic.params import is_tag, is_batch
+from ytdlmusic.params import is_tag, is_batch, my_colored
 from ytdlmusic.search import search
 from ytdlmusic.choice import choice
 from ytdlmusic.file import (
@@ -34,7 +33,7 @@ def job(keywords):
                 newfilename = determine_finame_from_tag(filename)
                 os.rename(filename, newfilename)
                 filename = newfilename
-            print(colored(filename + " is ready", "green"))
+            print(my_colored(filename + " is ready", "green"))
     except Exception:
         print_error()
         if not is_batch():

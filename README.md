@@ -66,6 +66,8 @@ You can also add these flags to your commands (except for help and version) :
 
 `--verbose` or `-d` : Give more output.
 
+`--nocolor` or `-N` : Disable colors in sysout.
+
 # ⚙️ Install
 
 See [this page](INSTALL.md)

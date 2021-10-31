@@ -6,6 +6,8 @@ import argparse
 
 import sys
 
+from termcolor import colored
+
 
 def compute_args():
     """
@@ -79,6 +81,12 @@ def compute_args():
         "--m4a",
         action="store_true",
         help="use M4A format",
+    )
+    my_third_group.add_argument(
+        "-N",
+        "--nocolor",
+        action="store_true",
+        help="disable colors in sysout",
     )
     my_third_group.add_argument(
         "-o",
@@ -252,3 +260,8 @@ def param_number():
     Return the number of param number param without "--number="
     """
     return compute_args().choices
+
+def my_colored(message, color):
+    if compute_args().nocolor:
+        return message
+    return colored(message,color)

@@ -1,9 +1,8 @@
 """
 search utils scripts
 """
-from termcolor import colored
 from ytdlmusic.log import print_debug
-from ytdlmusic.params import param_number
+from ytdlmusic.params import param_number, my_colored
 
 try:
     from youtubesearchpython import VideosSearch
@@ -20,7 +19,7 @@ def search(keywords):
 
     print_debug("search : " + keywords)
     print(
-        colored(
+        my_colored(
             'search "' + keywords + '" with youtube-search-python',
             "green",
         )
