@@ -38,7 +38,7 @@ scandinavianz;avalon;information
 
 # 🚀 Other commands and flags
 
-` ytdlmusic` , ` ytdlmusic --help` or ``ytdlmusic -h` display help message.
+` ytdlmusic` , ` ytdlmusic --help` or ``ytdlmusic -h`` display help message.
 
 `ytdlmusic --update` or `ytdlmusic -u` upgrade ytdlmusic.
 
