@@ -23,6 +23,8 @@ jobs:
       - name: install ytdlmusic
         run: |
           pip install .
+      - name : list package
+        run: pip list --format=columns    
       #test 1
       - name: Launch minimal test
         uses: ./.github/actions/minimal_test 
