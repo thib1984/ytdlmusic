@@ -136,7 +136,9 @@ jobs:
     name: tweet the release
     needs: tag
     runs-on: ubuntu-20.04
-    steps:    
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2          
       - name: Deduce relase
         id: vars
         run: echo ::set-output name=relase_tag::$(grep version setup.py | cut -d "\"" -f2)
