@@ -1,6 +1,6 @@
 # TODO
 
-# 2.2.0
+# 2.2.1
 
 - [x] Add CHANGELOG
 - [x] Add emojis
