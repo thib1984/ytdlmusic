@@ -27,7 +27,7 @@ def download_song(song_url, filename):
     """
 
     print(
-        my_colored("download " + song_url + " with yt_dlp", "green")
+        my_colored("\U0001F4BE", "download " + song_url + " with yt_dlp", "green")
     )
 
     # m4a

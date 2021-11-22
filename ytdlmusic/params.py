@@ -66,7 +66,7 @@ def compute_args():
         help="choose the first item for classic use, auto-accept other commands",
     )
     my_parser.add_argument(
-        "-n",
+        "-N",
         "--choices",
         metavar="X",
         action="store",
@@ -83,7 +83,7 @@ def compute_args():
         help="use M4A format",
     )
     my_third_group.add_argument(
-        "-N",
+        "-n",
         "--nocolor",
         action="store_true",
         help="disable colors in sysout",
@@ -236,7 +236,7 @@ def is_batch():
 
 def is_number():
     """
-    Return True if flag --n=, False otherwise
+    Return True if flag --N=, False otherwise
     """
     return compute_args().choices
 
@@ -261,7 +261,13 @@ def param_number():
     """
     return compute_args().choices
 
+
 def my_colored(message, color):
     if compute_args().nocolor:
         return message
     return colored(message,color)
+
+def my_colored(emoji, message, color):
+    if compute_args().nocolor:
+        return message
+    return colored(emoji + " " + message,color)

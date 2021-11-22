@@ -20,7 +20,7 @@ def search(keywords):
     print_debug("search : " + keywords)
     print(
         my_colored(
-            'search "' + keywords + '" with youtube-search-python',
+            "\U0001F50E", "search " + keywords + '" with youtube-search-python',
             "green",
         )
     )

@@ -50,7 +50,7 @@ You can also add these flags to your commands (except for help and version) :
 
 `--auto` or `-y` : Use auto mode: choose the first item for classic use, auto-accept other commands.
 
-`--choices X` or `-n X` : Set the number of choices (default=5, min=1, max=10).
+`--choices X` or `-N X` : Set the number of choices (default=5, min=1, max=10).
 
 `--k` or `--keep` : Keep the YouTube video title for the filename.
 
@@ -66,7 +66,7 @@ You can also add these flags to your commands (except for help and version) :
 
 `--verbose` or `-d` : Give more output.
 
-`--nocolor` or `-N` : Disable colors in sysout.
+`--nocolor` or `-n` : Disable colors and emojis in sysout.
 
 # ⚙️ Install
 
@@ -97,6 +97,9 @@ Thanks to contributors and dependencies authors :
 - [pypa](https://github.com/pypa) for [gh-action-pypi-publish](https://github.com/pypa/gh-action-pypi-publish)
 - [elgohrf](https://github.com/elgohr) for [Github-Release-Action](https://github.com/elgohr/Github-Release-Action)
 
+# :package: Changelog
+
+See [this page](CHANGELOG.md)
 # License
 
 MIT License

@@ -33,7 +33,7 @@ def job(keywords):
                 newfilename = determine_finame_from_tag(filename)
                 os.rename(filename, newfilename)
                 filename = newfilename
-            print(my_colored(filename + " is ready", "green"))
+            print(my_colored("\u2705 ", filename + " is ready", "green"))
     except Exception:
         print_error()
         if not is_batch():
