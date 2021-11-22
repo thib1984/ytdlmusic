@@ -11,8 +11,8 @@ runs:
     - name: "ytdlmusic 'Rexlambo Stay With Me'"
       shell: bash
       run: |
-        echo '---->ytdlmusic "Rexlambo Stay With Me"'        
-        printf '3\n' | ytdlmusic "Rexlambo Stay With Me"
+        echo '---->ytdlmusic --verbose "Rexlambo Stay With Me"'        
+        printf '3\n' | ytdlmusic --verbose "Rexlambo Stay With Me"
         echo "---->test if file exists"
         test -f "Rexlambo Stay With Me.m4a"
         echo "---->test filetype"
