@@ -267,7 +267,7 @@ def my_colored(message, color):
         return message
     return colored(message,color)
 
-def my_colored(emoji, message, color):
+def my_colored_emoji(emoji, message, color):
     if compute_args().nocolor:
         return message
     return colored(emoji + " " + message,color)

@@ -8,6 +8,7 @@ from ytdlmusic.params import (
     is_ogg,
     is_quality,
     my_colored,
+    my_colored_emoji,
 )
 from ytdlmusic.file import extension
 from ytdlmusic.file import name_without_extension, is_ffmpeg_installed
@@ -27,7 +28,7 @@ def download_song(song_url, filename):
     """
 
     print(
-        my_colored("\U0001F4BE", "download " + song_url + " with yt_dlp", "green")
+        my_colored_emoji("\U0001F4BE", "download " + song_url + " with yt_dlp", "green")
     )
 
     # m4a

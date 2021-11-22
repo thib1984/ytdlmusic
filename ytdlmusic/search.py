@@ -2,7 +2,7 @@
 search utils scripts
 """
 from ytdlmusic.log import print_debug
-from ytdlmusic.params import param_number, my_colored
+from ytdlmusic.params import param_number, my_colored_emoji
 
 try:
     from youtubesearchpython import VideosSearch
@@ -19,7 +19,7 @@ def search(keywords):
 
     print_debug("search : " + keywords)
     print(
-        my_colored(
+        my_colored_emoji(
             "\U0001F50E", "search " + keywords + '" with youtube-search-python',
             "green",
         )
