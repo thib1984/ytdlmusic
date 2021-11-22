@@ -5,7 +5,7 @@ ytdlmusic params scripts
 import argparse
 
 import sys
-import os
+import platform
 from termcolor import colored
 
 
@@ -270,6 +270,6 @@ def my_colored(message, color):
 def my_colored_emoji(emoji, message, color):
     if compute_args().nocolor:
         return message
-    if os.name == 'nt':
+    if platform.system().lower() in "windows":
         return colored(message,color)        
     return colored(emoji + " " + message,color)
