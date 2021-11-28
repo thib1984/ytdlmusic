@@ -31,7 +31,7 @@ runs:
         test -f "Rexlambo Stay With Me.mp3"
         echo "---->test the mp3 file type"
         file -b "Rexlambo Stay With Me.mp3"
-        file -b "Rexlambo Stay With Me.mp3" | grep "Audio file with ID3 version 2.4.0, contains:MPEG ADTS, layer III, v1, 256 kbps, 48 kHz, Stereo"
+        file -b "Rexlambo Stay With Me.mp3" | grep "layer III"
     - name: m4a
       shell: bash
       run: |
@@ -41,7 +41,7 @@ runs:
         test -f "Rexlambo Stay With Me_1.m4a"
         echo "---->test the m4a file type"
         file -b "Rexlambo Stay With Me_1.m4a"
-        file -b "Rexlambo Stay With Me_1.m4a" | grep "ISO Media, MP4 Base Media"
+        file -b "Rexlambo Stay With Me_1.m4a" | grep "MP4"
     - name: ogg
       shell: bash
       run: | 
@@ -51,7 +51,7 @@ runs:
         test -f "Rexlambo Stay With Me.ogg"
         echo "---->test the ogg file type"
         file -b "Rexlambo Stay With Me.ogg"
-        file -b "Rexlambo Stay With Me.ogg" | grep -b "Ogg data, Vorbis audio, stereo, 48000 Hz, ~112000 bps"                                                
+        file -b "Rexlambo Stay With Me.ogg" | grep -b "Ogg"                                                
     - name: test downloaded files
       shell: bash
       run: |
