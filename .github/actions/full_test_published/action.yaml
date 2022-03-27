@@ -118,6 +118,7 @@ runs:
         echo '---->ytdlmusic -tyq "avalon scandinavianz"'
         ytdlmusic -tyq "avalon scandinavianz"
         echo '---->verify the filename'
+        ls
         test -f "Scandinavianz Avalon Deep House Flute Music Free Download For Youtube.mp3" 
         echo '---->ytdlmusic -tyqf "avalon scandinavianz"'
         ytdlmusic -tyqf "avalon scandinavianz"
