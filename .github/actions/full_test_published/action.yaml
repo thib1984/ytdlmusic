@@ -118,7 +118,7 @@ runs:
         echo '---->ytdlmusic -tyq "avalon scandinavianz"'
         ytdlmusic -tyq "avalon scandinavianz"
         echo '---->verify the filename'
-        test -f "Audio Library Music for content creators - Avalon Scandinavianz No Copyright Music.mp3" 
+        test -f "Scandinavianz Avalon Deep House Flute Music Free Download For Youtube.mp3" 
         echo '---->ytdlmusic -tyqf "avalon scandinavianz"'
         ytdlmusic -tyqf "avalon scandinavianz"
         echo '---->verify the filename (with keeyoutubename)'
