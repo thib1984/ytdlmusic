@@ -1,9 +1,8 @@
 """
-ytdlmusic params scripts
+ytdlmusic parameters and scripts
 """
 
 import argparse
-
 import sys
 import platform
 from termcolor import colored
@@ -11,14 +10,14 @@ from termcolor import colored
 
 def compute_args():
     """
-    argparse gestion
+    Function to handle argparse
     """
     my_parser = argparse.ArgumentParser(
-        description="ytdlmusic is a command-line program to search and download music files from YouTube without use browser.",
+        description="ytdlmusic is a command-line program to search and download music files from YouTube without using a browser.",
         epilog="""
-        Full documentation at: <https://github.com/thib1984/ytdlmusic>.
+        Full documentation is available at: <https://github.com/thib1984/ytdlmusic>.
         Report bugs to <https://github.com/thib1984/ytdlmusic/issues>.
-        """,
+        """
     )
 
     my_group = my_parser.add_mutually_exclusive_group(required=True)
@@ -28,27 +27,30 @@ def compute_args():
         metavar="search",
         type=str,
         nargs="?",
-        help="words to search in YouTube",
+        help="Specify the search term(s) to search on YouTube"
     )
 
     my_group.add_argument(
         "-v",
         "--version",
         action="store_true",
-        help="display ytdlmusic version",
+        help="Display ytdlmusic version number"
     )
+
     my_group.add_argument(
         "-u",
         "--update",
         action="store_true",
-        help="upgrade ytdlmusic",
+        help="Update ytdlmusic"
     )
+
     my_group.add_argument(
         "-U",
         "--fullupdate",
         action="store_true",
-        help="upgrade ytdlmusic, and the dependencies yt-dlp and youtube-search-python",
+        help="Upgrade ytdlmusic and the dependencies yt-dlp and youtube-search-python"
     )
+
     my_group.add_argument(
         "-b",
         "--batch",
@@ -56,15 +58,16 @@ def compute_args():
         action="store",
         nargs=4,
         type=str,
-        help="batch mode, loop on a <path> csv file with an header <bool_h>, a separator <s>, and key words from concatenates columns separated by \"+\"",
+        help="Run ytdlmusic in batch mode on a CSV <path> file with a header <bool_h>, a separator <s>, and concatenate columns of key words separated by \"+\""
     )
 
     my_parser.add_argument(
         "-y",
         "--auto",
         action="store_true",
-        help="choose the first item for classic use, auto-accept other commands",
+        help="Automatically choose the first search result and accept subsequent prompts"
     )
+
     my_parser.add_argument(
         "-N",
         "--choices",
@@ -73,60 +76,68 @@ def compute_args():
         type=int,
         default=5,
         choices=range(1, 11),
-        help="set the number X of choices (default=5, min=1, max=10)",
+        help="Set the number of choices to display. The default value is 5, and the acceptable range is 1 to 10."
     )
+
     my_third_group = my_parser.add_mutually_exclusive_group()
+
     my_third_group.add_argument(
         "-f",
         "--m4a",
         action="store_true",
-        help="use M4A format",
+        help="Download files in M4A format"
     )
+
     my_third_group.add_argument(
         "-n",
         "--nocolor",
         action="store_true",
-        help="disable colors in sysout",
+        help="Disable colors in output"
     )
+
     my_third_group.add_argument(
         "-o",
         "--ogg",
         action="store_true",
-        help="use OGG format",
+        help="Download files in OGG format"
     )
 
     my_third_group.add_argument(
         "-Q",
         "--quality",
         action="store_true",
-        help="set quality to 320kbs instead of 256kbs for MP3 format",
+        help="Set download quality to 320kbs instead of 256kbs for MP3 format"
     )
+
     my_fourth_group = my_parser.add_mutually_exclusive_group()
+
     my_fourth_group.add_argument(
         "-k",
         "--keep",
         action="store_true",
-        help="keep the YouTube video title for the filename",
+        help="Use the YouTube video title for the downloaded file name"
     )
+
     my_fourth_group.add_argument(
         "-t",
         "--tag",
         action="store_true",
-        help="use tags of the downloaded file to rename it",
+        help="Use tags of the downloaded file to rename it"
     )
 
     my_second_group = my_parser.add_mutually_exclusive_group()
+
     my_second_group.add_argument(
         "-d",
         "--verbose",
         action="store_true",
-        help="give more output",
+        help="Increase the amount of output shown",
     )
     my_second_group.add_argument(
         "-q",
         "--quiet",
         action="store_true",
-        help="give less output",
+        help="Decrease the amount of output shown",
     )
 
     # if no parameter

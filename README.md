@@ -1,15 +1,14 @@
 # 🎵 ytdlmusic
 
-`ytdlmusic` is a command-line program to search and download music files from YouTube without use browser.
-This package is directly available from [pypi](https://pypi.org/project/ytdlmusic/)
+`ytdlmusic` is a command-line program that allows you to search and download music files from YouTube without using a browser. This package is available directly from [pypi](https://pypi.org/project/ytdlmusic/)
 
 # :warning: Disclaimer
 
-It may be illegal to download restricted content with this software, depending on the law in your country.
+Downloading restricted content with this software may be illegal, depending on the laws in your country.
 
-This package use two very important dependencies :
+This package uses two important dependencies:
 
-- [yt_dlp](https://pypi.org/project/yt_dlp/), a fork from [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+- [yt_dlp](https://pypi.org/project/yt_dlp/), a fork of [youtube-dl](https://github.com/ytdl-org/youtube-dl)
 - [youtube-search-python](https://pypi.org/project/youtube-search-python/)
 
 # 💫 How use **ytdlmusic**
@@ -20,13 +19,13 @@ This package use two very important dependencies :
 
 # 💫 How use **ytdlmusic** in batch mode
 
-You can use a command to loop in a csv file, and download all MP3 files from it.
+You can use a command to loop through a CSV file and download all MP3 files from it.
 
 `ytdlmusic --batch path_file had_header sep columns_to_concatenate`
 
 ![demo_2](https://user-images.githubusercontent.com/45128847/137581058-e0cca29b-9ad1-472e-bbb0-4fce94b984a0.gif)
 
-with csv file (for the demo's example)
+The CSV file (used in the demo's example) looks like this:
 
 ```
 song_column;artist_column;unused column
@@ -38,35 +37,35 @@ scandinavianz;avalon;information
 
 # 🚀 Other commands and flags
 
-` ytdlmusic` , ` ytdlmusic --help` or ``ytdlmusic -h`` display help message.
+` ytdlmusic` , ` ytdlmusic --help` or ``ytdlmusic -h`` displays help message.
 
-`ytdlmusic --update` or `ytdlmusic -u` upgrade ytdlmusic.
+`ytdlmusic --update` or `ytdlmusic -u` upgrades ytdlmusic.
 
-`ytdlmusic --fullupdate` or `ytdlmusic -U` upgrade ytdlmusic and the dependencies yt-dlp and youtube-search-python.
+`ytdlmusic --fullupdate` or `ytdlmusic -U` upgrades ytdlmusic and the dependencies : yt-dlp and youtube-search-python.
 
-`ytdlmusic --version` or `ytdlmusic -v` display version of ytdlmusic and the dependencies.
+`ytdlmusic --version` or `ytdlmusic -v` displays the version of ytdlmusic and its dependencies.
 
 You can also add these flags to your commands (except for help and version) :
 
-`--auto` or `-y` : Use auto mode: choose the first item for classic use, auto-accept other commands.
+`--auto` or `-y` : uses auto mode, which chooses the first item for classic use auto-accept other commands.
 
-`--choices X` or `-N X` : Set the number of choices (default=5, min=1, max=10).
+`--choices X` or `-N X` : sets the number of choices (default=5, min=1, max=10).
 
-`--k` or `--keep` : Keep the YouTube video title for the filename.
+`--k` or `--keep` : keeps the YouTube video title for the filename.
 
-`--t` or `--tag` : Use tags of the downloaded file to rename it.
+`--t` or `--tag` : uses tags of the downloaded file to rename it.
 
-`--m4a` or `-f` : Use M4A format.
+`--m4a` or `-f` : uses M4A format.
 
-`--ogg` or `-o` : Use OGG format.
+`--ogg` or `-o` : uses OGG format.
 
-`--Q` or `--quality` : Set quality to 320kbs instead of 256kbs for MP3 format.
+`--Q` or `--quality` : sets the quality to 320kbs instead of 256kbs for MP3 format.
 
-`--quiet` or `-q` : Give less output.
+`--quiet` or `-q` : gives less output.
 
-`--verbose` or `-d` : Give more output.
+`--verbose` or `-d` : gives more output.
 
-`--nocolor` or `-n` : Disable colors and emojis in sysout.
+`--nocolor` or `-n` : disable colors and emojis in sysout.
 
 # ⚙️ Install
 
@@ -84,7 +83,7 @@ Go to [CONTRIBUTING.md](CONTRIBUTING.md). You have to read and accept this [Code
 
 ## Tanks to contributors
 
-Thanks to contributors and dependencies authors :
+Thanks to contributors and dependency authors :
 
 - [albenquer](https://github.com/albenquer), [dlicois](https://github.com/dlicois) and [Jean-Phi Baconnais](https://github.com/jeanphibaconnais) for contributions !
 - [Hitesh Kumar Saini](https://github.com/alexmercerind) for [youtube-search-python](https://github.com/alexmercerind/youtube-search-python)
@@ -100,6 +99,7 @@ Thanks to contributors and dependencies authors :
 # :package: Changelog
 
 See [this page](CHANGELOG.md)
+
 # License
 
 MIT License

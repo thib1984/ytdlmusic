@@ -1,4 +1,6 @@
-# TODO
+# 2.2.2
+
+- [x] Improve README
 
 # 2.2.1
 
