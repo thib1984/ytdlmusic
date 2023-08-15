@@ -39,14 +39,14 @@ jobs:
       - name: install ytdlmusic
         run: |
           pip install .
-      #test 1
-      - name: Launch minimal test
-        uses: ./.github/actions/minimal_test 
       #configuration
       - name: install ffmpeg with token
         uses: FedericoCarboni/setup-ffmpeg@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}          
+      #test 1
+      - name: Launch minimal test
+        uses: ./.github/actions/minimal_test 
       #test 2    
       - name: Launch full test
         uses: ./.github/actions/full_test
