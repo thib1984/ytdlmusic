@@ -1,3 +1,7 @@
+# 2.3.0
+
+- [x] Add/Remove python versions
+
 # 2.2.2
 
 - [x] Improve README
