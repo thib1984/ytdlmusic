@@ -38,10 +38,10 @@ runs:
         echo '---->ytdlmusic -f --auto "Rexlambo Stay With Me"'  
         ytdlmusic -f --auto "Rexlambo Stay With Me"
         echo "---->test if m4a file exists"
-        test -f "Rexlambo Stay With Me_1.m4a"
+        test -f "Rexlambo Stay With Me.m4a"
         echo "---->test the m4a file type"
-        file -b "Rexlambo Stay With Me_1.m4a"
-        file -b "Rexlambo Stay With Me_1.m4a" | grep "MP4"
+        file -b "Rexlambo Stay With Me.m4a"
+        file -b "Rexlambo Stay With Me.m4a" | grep "MP4"
     - name: ogg
       shell: bash
       run: | 
