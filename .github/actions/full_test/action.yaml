@@ -111,14 +111,14 @@ runs:
         echo '---->ytdlmusic -dkQ --auto "avalon scandinavianz"'
         ytdlmusic -dkQ --auto "avalon scandinavianz"
         echo '---->verify the filename'
-        test -f "Scandinavianz Avalon Deep House Flute Music Free Download For Youtube.mp3"         
+        test -f "Avalon Scandinavianz No Copyright Music.mp3"         
     - name: tag
       shell: bash
       run: |           
         echo '---->ytdlmusic -tyq "avalon scandinavianz"'
         ytdlmusic -tyq "avalon scandinavianz"
         echo '---->verify the filename'
-        test -f "Scandinavianz - Scandinavianz Avalon Deep House Flute Music Free Download For Youtube.mp3" 
+        test -f "Scandinavianz - Avalon Scandinavianz No Copyright Music.mp3" 
         echo '---->ytdlmusic -tyqf "avalon scandinavianz"'
         ytdlmusic -tyqf "avalon scandinavianz"
         echo '---->verify the filename (with keeyoutubename)'
