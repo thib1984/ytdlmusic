@@ -89,7 +89,7 @@ jobs:
       - name: build
         run: python3 -m pep517.build --source --binary --out-dir dist/ .
       - name: publish to pypi
-        uses: pypa/gh-action-pypi-publish@master
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: ${{ secrets.PYPI_USER }}
           password: ${{ secrets.PYPI_PASSWORD }}
