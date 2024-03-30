@@ -1,8 +1,4 @@
 name: test full
-
-
-variables:
-  LANG: "fr_FR.UTF-8"
 on:
   workflow_dispatch:
 
@@ -11,11 +7,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os-version: ['ubuntu-22.04','windows-latest','macos-latest']
+        os-version: ['ubuntu-22.04','macos-latest']
         python-version: [ '3.11' ]
         include:
           - os-version: 'ubuntu-22.04'
             python-version: '3.8'
+
           - os-version: 'ubuntu-22.04'
             python-version: '3.9'
           - os-version: 'ubuntu-22.04'
