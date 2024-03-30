@@ -16,4 +16,5 @@ runs:
         echo "---->test if file exists"
         test -f "Rexlambo Stay With Me.mp3"
         echo "---->test filetype"
+        file -b "Rexlambo Stay With Me.mp3"
         file -b "Rexlambo Stay With Me.mp3" | grep "layer III"  
