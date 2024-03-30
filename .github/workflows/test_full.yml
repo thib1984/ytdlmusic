@@ -1,5 +1,8 @@
 name: test full
 
+
+variables:
+  LANG: "fr_FR.UTF-8"
 on:
   workflow_dispatch:
 
