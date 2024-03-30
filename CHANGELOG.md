@@ -1,3 +1,8 @@
+# 2.4.0
+
+- [ ] Direct url download
+- [ ] Add/Remove python versions
+
 # 2.3.0
 
 - [x] Add/Remove python versions
