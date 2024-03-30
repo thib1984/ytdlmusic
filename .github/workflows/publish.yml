@@ -73,6 +73,11 @@ jobs:
     needs: full_test_package
     name: push package on pypi
     runs-on: ubuntu-22.04
+    environment:
+      name: pypi
+      url: https://pypi.org/project/ytdlmusid/   
+    permissions:
+      id-token: write      
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -90,9 +95,6 @@ jobs:
         run: python3 -m pep517.build --source --binary --out-dir dist/ .
       - name: publish to pypi
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: ${{ secrets.PYPI_USER }}
-          password: ${{ secrets.PYPI_PASSWORD }}
 
   commit:
     needs: push
