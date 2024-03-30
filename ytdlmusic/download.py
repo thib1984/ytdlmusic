@@ -35,8 +35,8 @@ def download_song(song_url, filename):
     opts = {
         "outtmpl": name_without_extension(filename) + ".%(ext)s",
         "format": "m4a/best",
+        'writethumbnail': True,
     }
-
     if extension(filename) == ".mp3":
         opts["format"] = "bestaudio/best"
         opts["postprocessors"] = [
@@ -46,6 +46,7 @@ def download_song(song_url, filename):
                 "preferredquality": "256",
             },
             {"key": "FFmpegMetadata"},
+            {"key": "EmbedThumbnail"},
         ]
         if is_quality():
             opts.get("postprocessors")[0]["preferredquality"] = "320"
@@ -58,6 +59,7 @@ def download_song(song_url, filename):
                 "preferredcodec": "vorbis",
             },
             {"key": "FFmpegMetadata"},
+            {"key": "EmbedThumbnail"},
         ]
 
     if is_verbose():

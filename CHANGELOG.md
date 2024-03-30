@@ -1,7 +1,11 @@
+# 2.4.1
+
+- [x] add cover
+
 # 2.4.0
 
-- [ ] Direct url download
-- [ ] Add/Remove python versions
+- [x] Direct url download
+- [x] Add/Remove python versions
 
 # 2.3.0
 
