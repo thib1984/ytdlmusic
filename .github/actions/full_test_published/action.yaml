@@ -51,7 +51,7 @@ runs:
         test -f "Rexlambo Stay With Me.ogg"
         echo "---->test the ogg file type"
         file -b "Rexlambo Stay With Me.ogg"
-        file -b "Rexlambo Stay With Me.ogg" | grep -b "Ogg                                                
+        file -b "Rexlambo Stay With Me.ogg" | grep -b "Ogg"                                                
     - name: test downloaded files
       shell: bash
       run: |
@@ -111,17 +111,17 @@ runs:
         echo '---->ytdlmusic -dkQ --auto "avalon scandinavianz"'
         ytdlmusic -dkQ --auto "avalon scandinavianz"
         echo '---->verify the filename'
-        test -f "Scandinavianz Avalon Deep House Flute Music Free Download For Youtube.mp3"         
+        test -f "Avalon Scandinavianz No Copyright Music.mp3"         
     - name: tag
       shell: bash
       run: |           
         echo '---->ytdlmusic -tyq "avalon scandinavianz"'
         ytdlmusic -tyq "avalon scandinavianz"
         echo '---->verify the filename'
-        test -f "Scandinavianz - Scandinavianz Avalon Deep House Flute Music Free Download For Youtube.mp3" 
+        test -f "Audio Library Music for content creators - Avalon Scandinavianz No Copyright Music.mp3" 
         echo '---->ytdlmusic -tyqf "avalon scandinavianz"'
         ytdlmusic -tyqf "avalon scandinavianz"
         echo '---->verify the filename (with keeyoutubename)'
-        test -f "Scandinavianz Avalon Deep House Flute Music Free Download For Youtube.m4a"
+        test -f "Avalon Scandinavianz No Copyright Music.m4a"
 
 
