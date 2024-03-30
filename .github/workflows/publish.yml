@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os-version: ['ubuntu-22.04','windows-latest','macos-latest']
+        os-version: ['ubuntu-22.04','macos-latest']
         python-version: [ '3.11' ]
         include:
           - os-version: 'ubuntu-22.04'
