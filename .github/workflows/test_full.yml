@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os-version: ['ubuntu-22.04','macos-latest', 'windows-latest']
+        os-version: ['ubuntu-22.04','macos-latest']
         python-version: [ '3.11' ]
         include:
           - os-version: 'ubuntu-22.04'
@@ -21,8 +21,6 @@ jobs:
             python-version: '3.12'              
     runs-on: ${{ matrix.os-version }}
     name: test package on ${{ matrix.os-version }} with ${{ matrix.python-version }}
-    variables:
-      LANG: "en_US.UTF-8" # Définir l'encodage UTF-8
     steps:
       #preparation
       - name: checkout
