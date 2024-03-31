@@ -9,6 +9,7 @@ from ytdlmusic.params import (
     is_quality,
     my_colored,
     my_colored_emoji,
+    has_cover
 )
 from ytdlmusic.file import extension
 from ytdlmusic.file import name_without_extension, is_ffmpeg_installed
@@ -70,6 +71,12 @@ def download_song(song_url, filename):
     elif is_quiet():
         opts["quiet"] = True
         opts["no_warnings"] = True
+    if not has_cover():
+        opts["writethumbnail"] = False
+        if "postprocessors" in opts and opts["postprocessors"]:
+            for processor in opts["postprocessors"]:
+                if "key" in processor and processor["key"] == "EmbedThumbnail":
+                    opts["postprocessors"].remove(processor)
     with yt_dlp.YoutubeDL(opts) as ydl:
         ydl.extract_info(song_url, download=True)
     if not is_quiet():

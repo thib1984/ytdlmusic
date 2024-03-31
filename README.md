@@ -17,6 +17,8 @@ This package uses two important dependencies:
 
 ![demo_1](https://user-images.githubusercontent.com/45128847/137580908-ce3f1b17-a2b3-4530-bc90-df00fbaf1cfc.gif)
 
+If the key word has an url format, ytdmusic will download directly the file.
+
 # 💫 How use **ytdlmusic** in batch mode
 
 You can use a command to loop through a CSV file and download all MP3 files from it.
@@ -60,6 +62,8 @@ You can also add these flags to your commands (except for help and version) :
 `--ogg` or `-o` : uses OGG format.
 
 `--Q` or `--quality` : sets the quality to 320kbs instead of 256kbs for MP3 format.
+
+`--nocover` : do not add cover art (from youtube thumbnail) to file produced.
 
 `--quiet` or `-q` : gives less output.
 

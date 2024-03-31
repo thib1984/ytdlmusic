@@ -1,3 +1,8 @@
+# 2.4.2
+
+- [x] add option for no-cover
+- [x] update README
+
 # 2.4.1
 
 - [x] add cover

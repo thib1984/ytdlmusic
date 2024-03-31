@@ -23,6 +23,12 @@ def job(keywords):
     """
     try:
         if validators.url(keywords):
+            print(
+                my_colored_emoji(
+                    "\U0001F50E", keywords + ' is an url : skip choice',
+                    "green",
+                )
+            )
             filename = determine_filename(keywords, "temp")
             download_song(
                 keywords,

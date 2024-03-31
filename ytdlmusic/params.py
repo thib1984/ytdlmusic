@@ -125,6 +125,12 @@ def compute_args():
         help="Use tags of the downloaded file to rename it"
     )
 
+    my_fourth_group.add_argument(
+        "--nocover",
+        action="store_true",
+        help="Do not add cover art (from youtube thumbnail) to file produced"
+    )
+
     my_second_group = my_parser.add_mutually_exclusive_group()
 
     my_second_group.add_argument(
@@ -251,6 +257,11 @@ def is_number():
     """
     return compute_args().choices
 
+def has_cover():
+    """
+    Return True if flag --fullupdate, False otherwise
+    """
+    return not compute_args().nocover
 
 def param_search():
     """
