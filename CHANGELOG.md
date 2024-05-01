@@ -1,3 +1,7 @@
+# 2.4.3
+
+- [x] fix macos  version for test
+
 # 2.4.2
 
 - [x] add option for no-cover
