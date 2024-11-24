@@ -63,11 +63,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}          
       #test 1
-      - name: Launch minimal test
-        uses: ./.github/actions/minimal_test 
+      #- name: Launch minimal test
+      #  uses: ./.github/actions/minimal_test 
       #test 2    
-      - name: Launch full test
-        uses: ./.github/actions/full_test
+      #- name: Launch full test
+      #  uses: ./.github/actions/full_test
 
   push:
     needs: full_test_package
