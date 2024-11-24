@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         os-version: ['ubuntu-22.04','macos-12']
-        python-version: [ '3.11' ]
+        python-version: [ '3.12' ]
         include:
           - os-version: 'ubuntu-22.04'
             python-version: '3.8'
@@ -33,7 +33,7 @@ jobs:
           - os-version: 'ubuntu-22.04'
             python-version: '3.10' 
           - os-version: 'ubuntu-22.04'
-            python-version: '3.12'                                   
+            python-version: '3.11'                                   
     runs-on: ${{ matrix.os-version }}
     name: test package on ${{ matrix.os-version }} with ${{ matrix.python-version }}
     steps:
@@ -84,7 +84,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.11'    
+          python-version: '3.12'    
       - name: update pip
         run: |
           python3 -m pip install --upgrade pip        

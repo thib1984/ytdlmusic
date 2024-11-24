@@ -1,3 +1,8 @@
+# 2.4.4
+
+- [x] add python3.12 support
+- [x] fix setuptools missing
+
 # 2.4.3
 
 - [x] fix macos  version for test

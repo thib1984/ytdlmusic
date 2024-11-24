@@ -6,7 +6,7 @@ on:
 jobs:
   full_test:       
     runs-on: 'ubuntu-22.04'
-    name: test package with ubuntu22.04 et python3.11
+    name: test package with ubuntu22.04 et python3.12
     steps:
       #preparation
       - name: checkout
@@ -14,7 +14,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.11'
+          python-version: '3.12'
           architecture: x64                            
       - name: update pip
         run: |
