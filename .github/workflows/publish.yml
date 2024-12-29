@@ -62,7 +62,7 @@ jobs:
         uses: FedericoCarboni/setup-ffmpeg@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}          
-      test 1
+      #test 1
       - name: Launch minimal test
         uses: ./.github/actions/minimal_test 
       #test 2    
