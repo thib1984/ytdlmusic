@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os-version: ['ubuntu-22.04','macos-12']
+        os-version: ['ubuntu-22.04','macos-14']
         python-version: [ '3.12' ]
         include:
           - os-version: 'ubuntu-22.04'
@@ -31,7 +31,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64           
       - name: install md5sum for macos
-        if: ${{ matrix.os-version == 'macos-12' }} 
+        if: ${{ matrix.os-version == 'macos-14' }} 
         run: |
           brew install md5sha1sum                    
       - name: update pip
