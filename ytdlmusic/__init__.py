@@ -5,7 +5,6 @@ ytdlmusic entrypoint
 import sys
 import colorama
 from ytdlmusic.ytdlmusic import job
-from ytdlmusic.update import update, fullupdate
 from ytdlmusic.batch import launch_batch
 from ytdlmusic.print import (
     print_error,
@@ -14,8 +13,6 @@ from ytdlmusic.print import (
     print_licence,
 )
 from ytdlmusic.params import (
-    is_fullupdate,
-    is_update,
     is_version,
     is_batch,
     param_batch,
@@ -32,11 +29,7 @@ def ytdlmusic():
     entry point from ytdlmusic
     """
     try:
-        if is_update():
-            update()
-        elif is_fullupdate():
-            fullupdate()
-        elif is_version():
+        if is_version():
             print_version_ytdlmusic()
             print_version_dependencies()
             print_licence()

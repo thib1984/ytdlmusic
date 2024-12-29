@@ -6,10 +6,9 @@
 
 Downloading restricted content with this software may be illegal, depending on the laws in your country.
 
-This package uses two important dependencies:
+This package uses one important dependencies:
 
 - [yt_dlp](https://pypi.org/project/yt_dlp/), a fork of [youtube-dl](https://github.com/ytdl-org/youtube-dl)
-- [youtube-search-python](https://pypi.org/project/youtube-search-python/)
 
 # 💫 How use **ytdlmusic**
 
@@ -40,10 +39,6 @@ scandinavianz;avalon;information
 # 🚀 Other commands and flags
 
 ` ytdlmusic` , ` ytdlmusic --help` or ``ytdlmusic -h`` displays help message.
-
-`ytdlmusic --update` or `ytdlmusic -u` upgrades ytdlmusic.
-
-`ytdlmusic --fullupdate` or `ytdlmusic -U` upgrades ytdlmusic and the dependencies : yt-dlp and youtube-search-python.
 
 `ytdlmusic --version` or `ytdlmusic -v` displays the version of ytdlmusic and its dependencies.
 
@@ -90,7 +85,6 @@ Go to [CONTRIBUTING.md](CONTRIBUTING.md). You have to read and accept this [Code
 Thanks to contributors and dependency authors :
 
 - [albenquer](https://github.com/albenquer), [dlicois](https://github.com/dlicois) and [Jean-Phi Baconnais](https://github.com/jeanphibaconnais) for contributions !
-- [Hitesh Kumar Saini](https://github.com/alexmercerind) for [youtube-search-python](https://github.com/alexmercerind/youtube-search-python)
 - [yt-dlp](https://github.com/yt-dlp) for [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 - [devsnd](https://github.com/devsnd) for [tinytag](https://github.com/devsnd/tinytag)
 - [avian2](https://github.com/avian2) for [unidecode](https://github.com/avian2/unidecode)

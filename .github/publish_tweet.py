@@ -15,7 +15,7 @@ twitter = Twython(
     ACCESS_TOKEN_SECRET
 )
 
-message = "Nouvelle #Release pour #ytdlmusic : " + VERSION + " . Rendez vous sur http://github.com/thib1984/ytdlmusic ! Ou directement 'ytdlmusic -u' si l'outil est déjà installé sur votre poste. "
+message = "Nouvelle #Release pour #ytdlmusic : " + VERSION + " . Rendez vous sur http://github.com/thib1984/ytdlmusic ! Ou directement 'pip3 install --upgrade ytdlmusic yt-dlp' or 'pipx upgrade ytdlmusic' si l'outil est déjà installé sur votre poste. "
 
 twitter.update_status(status=message)
 

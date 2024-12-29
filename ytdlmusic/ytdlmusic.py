@@ -42,10 +42,10 @@ def job(keywords):
             results = search(keywords)
             answer = choice(results)
             if answer != 0:
-                item = results.result()["result"][answer - 1]
+                item = results['entries'][answer - 1]
                 filename = determine_filename(keywords, item["title"])
                 download_song(
-                    item["link"],
+                    item["url"],
                     filename,
                 )
                 if is_tag():

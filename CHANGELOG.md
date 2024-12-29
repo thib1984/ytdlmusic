@@ -1,3 +1,9 @@
+# 3.0.0
+
+- [x] remove auto update/upgrade
+- [x] add pipx install
+- [x] use yt_dlp instead of youtube-search-pythnon
+
 # 2.4.4
 
 - [x] add python3.12 support

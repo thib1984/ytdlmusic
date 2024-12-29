@@ -38,20 +38,6 @@ def compute_args():
     )
 
     my_group.add_argument(
-        "-u",
-        "--update",
-        action="store_true",
-        help="Update ytdlmusic"
-    )
-
-    my_group.add_argument(
-        "-U",
-        "--fullupdate",
-        action="store_true",
-        help="Upgrade ytdlmusic and the dependencies yt-dlp and youtube-search-python"
-    )
-
-    my_group.add_argument(
         "-b",
         "--batch",
         metavar=("path", "bool_h", "s", "num_col1+num_col2"),
@@ -229,21 +215,6 @@ def is_version():
     """
     return compute_args().version
 
-
-def is_update():
-    """
-    Return True if flag --update, False otherwise
-    """
-    return compute_args().update
-
-
-def is_fullupdate():
-    """
-    Return True if flag --fullupdate, False otherwise
-    """
-    return compute_args().fullupdate
-
-
 def is_batch():
     """
     Return True if flag --batch=, False otherwise
@@ -258,9 +229,6 @@ def is_number():
     return compute_args().choices
 
 def has_cover():
-    """
-    Return True if flag --fullupdate, False otherwise
-    """
     return not compute_args().nocover
 
 def param_search():

@@ -3,6 +3,7 @@ version utils scripts
 """
 
 
+import os
 import sys
 import platform
 import pkg_resources
@@ -33,15 +34,27 @@ def platform_version():
 
 def pip_package_version(package):
     """
-    obtain pip 'package' version
-    NOT_INSTALLED in no package found
+    Obtain pip 'package' version.
+    Returns:
+        - Version if the package is installed.
+        - 'NOT_INSTALLED' if the package is not found.
+        - Environment source (venv/pipx or system pip).
     """
+    NOT_INSTALLED = 'NOT_INSTALLED'
     try:
         version = pkg_resources.get_distribution(package).version
+        # Détecter si on est dans un environnement virtuel
+        if hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix:
+            source = 'venv/pipx'
+        elif 'PIPX_HOME' in os.environ or 'PIPX_BIN_DIR' in os.environ:
+            source = 'venv/pipx'
+        else:
+            source = 'pip'
     except Exception:
         version = NOT_INSTALLED
-    return version
-
+        source = 'unknown'
+    
+    return version+" ("+source+")"
 
 def pip_package_version_of_double(package1, package2):
     """

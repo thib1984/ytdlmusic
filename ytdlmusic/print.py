@@ -15,11 +15,9 @@ from ytdlmusic.const import (
     LICENCE_TXT,
     EXCEPTION,
     BUG_MESSSAGE,
-    EXCEPTION_UPDATE,
     EXCEPTION_BATCH,
     VERSION_YTDLMUSIC,
     VERSION_DEPENDENCIES,
-    TRY_UPDATE,
     PLATFORM_OS,
     DEBUG_HEADER,
     BUG_MESSSAGE_DEBUG,
@@ -67,11 +65,8 @@ def print_version_dependencies():
         replace_all(
             VERSION_DEPENDENCIES,
             {
-                "$1": pip_package_version("youtube-search-python"),
-                "$2": pip_package_version("yt-dlp"),
-                "$3": pip_package_version_of_double("pip3", "pip"),
-                "$4": python_version(),
-                "$5": binary_path("ffmpeg"),
+                "$1": pip_package_version("yt-dlp"),
+                "$2": binary_path("ffmpeg"),
             },
         )
     )
@@ -87,24 +82,6 @@ def print_error():
         print(my_colored(traceback.format_exc(), "yellow"))
     print(my_colored(EXCEPTION, "red"))
     print_addtional_informations()
-
-
-def print_error_update_package():
-    """
-    print the error message with minimal informations
-    """
-    if is_verbose():
-        print(my_colored(DEBUG_HEADER, "yellow"))
-        print(my_colored(traceback.format_exc(), "yellow"))
-    print(my_colored(EXCEPTION_UPDATE, "red"))
-
-
-def print_error_full_update():
-    """
-    print the the additional informations
-    """
-    print_addtional_informations()
-
 
 def print_error_batch():
     """
@@ -128,12 +105,6 @@ def print_addtional_informations():
     else:
         print(my_colored(BUG_MESSSAGE, "yellow"))
 
-
-def print_try_update(package, prog):
-    """
-    print try update message
-    """
-    print(replace_all(TRY_UPDATE, {"$1": package, "$2": prog}))
 
     
 

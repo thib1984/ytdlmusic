@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="ytdlmusic",
-    version="2.4.4",
+    version="3.0.0",
     description="ytdlmusic is a command-line program to search and download music files from YouTube without use browser.",
     long_description="The complete description/installation/use/FAQ is available at : https://github.com/thib1984/ytdlmusic#readme",
     long_description_content_type="text/markdown",
@@ -13,7 +13,6 @@ setup(
     license="MIT",
     packages=["ytdlmusic"],
     install_requires=[
-        "youtube-search-python",
         "yt_dlp",
         "tinytag",
         "unidecode",
@@ -32,6 +31,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],

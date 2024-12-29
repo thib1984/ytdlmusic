@@ -6,14 +6,44 @@
 
 # Installation
 
-``pip3 install ytdlmusic``*
+Recommended method: Install using pipx
+
+```
+pip3 install pipx
+pipx install ytdlmusic
+```
+
+Why pipx?
+- Isolation: Creates an isolated virtual environment for the tool.
+- Dependency Management: Avoids conflicts with system-wide Python packages.
+- Easy Upgrades: Tools installed with pipx can be upgraded independently.
+
+Alternative method: Install directly with pip3
+```
+pip3 install ytdlmusic
+```
+
+Note:
+- Direct pip installation installs globally or in your active Python environment.
+- May lead to dependency conflicts if other tools rely on different versions of the same packages.
+
 
 # Upgrade
 
-`` ytdlmusic --update `` or `` ytdlmusic -u `` upgrade ytdlmusic.
 
-`` ytdlmusic --fullupdate `` or `` ytdlmusic -U `` upgrade ytdlmusic and the dependencies yt-dlp and youtube-search-python.
+If installed via pipx
 
-You can also run : ``pip3 install --upgrade ytdlmusic``
+```
+pipx upgrade ytdlmusic
+```
 
-*_Use pip instead of pip3, if pip3 does not exist_
+If installed via pip3
+```
+pip3 install --upgrade ytdlmusic
+pip3 install --upgrade yt_dlp
+```
+
+Explanation:
+- The first command upgrades ytdlmusic to the latest version.
+- The second command upgrades yt_dlp, a key dependency for downloading content.
+- Keeping yt_dlp updated ensures compatibility with YouTube and other supported services

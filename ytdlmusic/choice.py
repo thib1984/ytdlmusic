@@ -10,7 +10,7 @@ from ytdlmusic.print import replace_all
 
 def choice(results_search):
     """
-    user choice after return of youtube-search-python
+    user choice after return of yt-dlp
     results : the selected choice
     return 0 if automode and no result
     if 0 is choosen by the user, exit 1
@@ -18,8 +18,9 @@ def choice(results_search):
     1 for default choice
     auto : True if no interactive choice, False otherwise
     """
+
     numero_choix = 0
-    tab_results = results_search.result()["result"]
+    tab_results = results_search['entries']
     nb_choix = len(tab_results)
 
     if nb_choix == 0:
@@ -36,13 +37,13 @@ def choice(results_search):
         print(
             str(numero_choix)
             + "\n"
-            + result["title"]
+            + result.get('title')
             + "\n"
-            + result["link"]
+            + result.get('url')
             + "\n"
-            + result["duration"]
+            + str(format_duration(result.get('duration')))
             + " - "
-            + result["viewCount"]["text"]
+            + str(f"{result.get('view_count'):,}".replace(',', ' ')) + " views"
         )
 
     answer = input(
@@ -59,3 +60,8 @@ def choice(results_search):
     if is_batch():
         return 0
     sys.exit(1)
+
+# Fonction pour formater la durée en minutes et secondes
+def format_duration(seconds):
+    minutes, sec = divmod(int(float(seconds)), 60)
+    return f"{minutes}'{sec}\""    
