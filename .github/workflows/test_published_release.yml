@@ -46,7 +46,7 @@ jobs:
           pip install ytdlmusic
       #configuration
       - name: install ffmpeg with token
-        uses: FedericoCarboni/setup-ffmpeg@v1
+        uses: FedericoCarboni/setup-ffmpeg@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}          
       #test 1
