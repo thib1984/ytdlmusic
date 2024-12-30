@@ -1,5 +1,9 @@
 # 3.0.1
 
+- [x] improve choice presentation
+
+# 3.0.0
+
 - [x] remove auto update/upgrade
 - [x] add pipx install
 - [x] use yt_dlp instead of youtube-search-pythnon

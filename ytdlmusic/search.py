@@ -37,7 +37,6 @@ def search(keywords):
     if is_verbose():
         ydl_opts["verbose"] = "True"
         print_debug("debug yt-dlp is activated")
-    if not is_quiet():
         print("start yt-dlp operation")
     elif is_quiet():
         ydl_opts["quiet"] = True

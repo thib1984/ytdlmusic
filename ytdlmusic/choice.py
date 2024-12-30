@@ -3,7 +3,7 @@ choice user scripts
 """
 
 import sys
-from ytdlmusic.params import is_auto, is_batch
+from ytdlmusic.params import is_auto, is_batch, my_colored_emoji
 from ytdlmusic.const import CHOICE_RESULT_QUESTION
 from ytdlmusic.print import replace_all
 
@@ -37,13 +37,17 @@ def choice(results_search):
         print(
             str(numero_choix)
             + "\n"
-            + result.get('title')
+            +  my_colored_emoji(
+            "\U0001f3b6", result.get('title'),
+            "yellow")
             + "\n"
-            + result.get('url')
-            + "\n"
+            +  my_colored_emoji(
+            "\U0001f4bb", result.get('url')
+            + " - "
             + str(format_duration(result.get('duration')))
             + " - "
-            + str(f"{result.get('view_count'):,}".replace(',', ' ')) + " views"
+            + str(f"{result.get('view_count'):,}") + " views",
+            "yellow")
         )
 
     answer = input(
@@ -64,4 +68,4 @@ def choice(results_search):
 # Fonction pour formater la durée en minutes et secondes
 def format_duration(seconds):
     minutes, sec = divmod(int(float(seconds)), 60)
-    return f"{minutes}'{sec}\""    
+    return f"{minutes}:{sec}"    
