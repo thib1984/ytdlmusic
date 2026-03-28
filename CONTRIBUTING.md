@@ -10,7 +10,7 @@ You can initialize a draft merge request directly when you start to work on an i
 
 When you finish, past the merge request in "ready" mode and i will check this quickly.
 
-If you are any questions, don't try to ping me 😁
+Feel free to reach out if you have any questions. 😁
 
 # Work
 
