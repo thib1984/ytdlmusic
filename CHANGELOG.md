@@ -1,3 +1,7 @@
+# 4.0.0
+
+- [x] improve choice presentation
+
 # 3.0.1
 
 - [x] improve choice presentation

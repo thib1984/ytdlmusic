@@ -6,7 +6,6 @@ version utils scripts
 import os
 import sys
 import platform
-import pkg_resources
 from ytdlmusic.const import NOT_INSTALLED, NOT_FOUND
 
 
@@ -42,7 +41,7 @@ def pip_package_version(package):
     """
     NOT_INSTALLED = 'NOT_INSTALLED'
     try:
-        version = pkg_resources.get_distribution(package).version
+        version = version("ytdlmusic")
         # Détecter si on est dans un environnement virtuel
         if hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix:
             source = 'venv/pipx'
@@ -62,10 +61,10 @@ def pip_package_version_of_double(package1, package2):
     NOT_INSTALLED in no packages found
     """
     try:
-        version = pkg_resources.get_distribution(package1).version
+        version = version(package1)
     except Exception:
         try:
-            version = pkg_resources.get_distribution(package2).version
+            version = version(package2)
         except Exception:
             version = NOT_INSTALLED
 

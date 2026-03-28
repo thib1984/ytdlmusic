@@ -8,3 +8,4 @@ ytdlmusic.egg-info
 *.webm
 venv
 *.ogg
+ytdlmusic_env

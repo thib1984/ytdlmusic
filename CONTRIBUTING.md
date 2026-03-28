@@ -14,15 +14,20 @@ If you are any questions, don't try to ping me 😁
 
 # Local install to develop
 
-```
-git clone https://github.com/[your-forked-repo]/ytdlmusic.git
+pipx uninstall ytdlmusic #if necessary 
+git clone https://github.com/thib1984/ytdlmusic.git
 cd ytdlmusic 
+rm -rf ytdlmusic_env #clean env if necessary
+python3 -m venv ytdlmusic_env
+source ytdlmusic_env/bin/activate
 #work!
-pip3 install . #to build
-#test!
-#pip3 uninstall ytdlmusic #to properly uninstall the dev version
-#git add/commit/push [...]
-``` 
+pip3 install .
+ytdlmusic [...] #to retest
+deactivate
+
+python3 -m build && python3 -m twine upload dist/* #to publish to pypi
+pipx install ytdlmusic #if necessary 
+
 # Test
 
 ## Prerequisites
