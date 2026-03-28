@@ -1,6 +1,7 @@
 # 4.0.0
 
 - [x] improve choice presentation
+- [x] fix setuptools error
 
 # 3.0.1
 
