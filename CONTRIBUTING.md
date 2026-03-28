@@ -12,39 +12,49 @@ When you finish, past the merge request in "ready" mode and i will check this qu
 
 If you are any questions, don't try to ping me 😁
 
-# Local install to develop
+# Work
 
-pipx uninstall ytdlmusic #if necessary 
+```
+# Uninstall the globally installed version via pipx if needed (optional, just to reset the published app)
+pipx uninstall ytdlmusic 
+
+# Clone the repository only the first time
 git clone https://github.com/thib1984/ytdlmusic.git
+# Afterwards, update it using regular git commands (git pull, git fetch, etc.)
 cd ytdlmusic 
-rm -rf ytdlmusic_env #clean env if necessary
+
+# Remove any previous virtual environment to start fresh
+rm -rf ytdlmusic_env 
+
+# Create a virtual environment to isolate dependencies for this project
 python3 -m venv ytdlmusic_env
 source ytdlmusic_env/bin/activate
-#work!
-pip3 install .
-ytdlmusic [...] #to retest
+
+# Install the local package in the isolated environment
+pip install .
+
+# Test the app locally within the virtual environment
+ytdlmusic [...] 
+
+# Optional: reinstall if needed and retest
+pip install .
+ytdlmusic [...] 
+
+# Exit the virtual environment
 deactivate
 
+# Reinstall the globally published version via pipx if needed
+pipx install ytdlmusic 
+``` 
+
+A venv (virtual environment) isolates this project's Python dependencies from the system, preventing version conflicts and keeping things clean.
+
+
+# Publish to pypi
+
+```
+#from work directory
 python3 -m build && python3 -m twine upload dist/* #to publish to pypi
-pipx install ytdlmusic #if necessary 
-
-# Test
-
-## Prerequisites
-
-With [act](https://github.com/nektos/act), you can play Github Action locally.
-
-To install it :
 ```
-curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
-```
-or go to [this page](https://github.com/nektos/act#installation)
-
-## Launch test
-
-Just, go to the root of the project and play ``act -j full_test`` (test OS ubuntu 20.04/python 3.9) or ``act -j full_test_multi`` (multi OS/multi python ... slower).
-
-
-The actions are available in ``.github`` folder
 
 
