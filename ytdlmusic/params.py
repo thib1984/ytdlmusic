@@ -6,7 +6,19 @@ import argparse
 import sys
 import platform
 from termcolor import colored
+import importlib.metadata
+from argparse import RawTextHelpFormatter
 
+def get_env_report():
+    lines = []
+
+    lines.append("\nInstalled packages:")
+    for dist in sorted(importlib.metadata.distributions(), key=lambda d: d.metadata["Name"].lower()):
+        name = dist.metadata["Name"]
+        version = dist.version
+        lines.append(f"  - {name}=={version}")
+
+    return "\n".join(lines)
 
 def compute_args():
     """
@@ -14,10 +26,28 @@ def compute_args():
     """
     my_parser = argparse.ArgumentParser(
         description="ytdlmusic is a command-line program to search and download music files from YouTube without using a browser.",
-        epilog="""
-        Full documentation is available at: <https://github.com/thib1984/ytdlmusic>.
-        Report bugs to <https://github.com/thib1984/ytdlmusic/issues>.
-        """
+        epilog=f"""
+To upgrade, run:
+    pipx upgrade ytdlmusic --include-deps
+To install, run:
+    pipx install ytdlmusic
+To force reinstall, run:
+    pipx install ytdlmusic --force
+To uninstall, run:
+    pipx uninstall ytdlmusic
+To force uninstall (if needed), run:
+    pipx uninstall ytdlmusic --force
+
+{get_env_report()}
+
+Full documentation is available at: <https://github.com/thib1984/ytdlmusic>.
+Report bugs to <https://github.com/thib1984/ytdlmusic/issues>.
+MIT Licence.
+Copyright (c) 2021 thib1984.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Written by thib1984.
+        """,formatter_class=RawTextHelpFormatter
     )
 
     my_group = my_parser.add_mutually_exclusive_group(required=True)
