@@ -24,7 +24,7 @@ Written by thib1984.
 """
 
 EXCEPTION = """\
-[error] Unexpected error: Try to upgrade ytdlmusic with 'pipx upgrade ytdlmusic --include-deps' and retry."""
+[error] Unexpected error: Try to upgrade ytdlmusic with 'pipx reinstall ytdlmusic --force' and retry."""
 
 EXCEPTION_BATCH = """\
 [error] Unexpected error during the batch : Verify the params of --batch."""

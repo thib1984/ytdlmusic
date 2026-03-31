@@ -24,14 +24,14 @@ pip uninstall ytdlmusic --break-system-packages
 # Installation
 
 ```
-pipx upgrade ytdlmusic
-pipx reinstall ytdlmusic #to force update dependencies
+pipx install ytdlmusic
 ```
 
 # Upgrade
 
 ```
-pipx upgrade ytdlmusic --include-deps
+pipx upgrade ytdlmusic
+pipx reinstall ytdlmusic #to force update dependencies
 ```
 
 This command upgrades the application to the latest version and also updates all its dependencies.
