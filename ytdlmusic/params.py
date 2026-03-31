@@ -28,7 +28,8 @@ def compute_args():
         description="ytdlmusic is a command-line program to search and download music files from YouTube without using a browser.",
         epilog=f"""
 To upgrade, run:
-    pipx upgrade ytdlmusic --include-deps
+    pipx upgrade ytdlmusic
+    pipx reinstall ytdlmusic #to force update dependencies
 To install, run:
     pipx install ytdlmusic
 To force reinstall, run:
