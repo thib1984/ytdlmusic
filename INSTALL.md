@@ -24,7 +24,8 @@ pip uninstall ytdlmusic --break-system-packages
 # Installation
 
 ```
-pipx install ytdlmusic
+pipx upgrade ytdlmusic
+pipx reinstall ytdlmusic #to force update dependencies
 ```
 
 # Upgrade
