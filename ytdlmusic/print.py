@@ -3,22 +3,10 @@ print utils scripts
 """
 
 import traceback
-
-
-from ytdlmusic.version import (
-    python_version,
-    pip_package_version,
-    pip_package_version_of_double,
-    platform_version,
-)
 from ytdlmusic.const import (
-    LICENCE_TXT,
     EXCEPTION,
     BUG_MESSSAGE,
     EXCEPTION_BATCH,
-    VERSION_YTDLMUSIC,
-    VERSION_DEPENDENCIES,
-    PLATFORM_OS,
     DEBUG_HEADER,
     BUG_MESSSAGE_DEBUG,
 )
@@ -37,40 +25,6 @@ def replace_all(text, dic):
         text = text.replace(i, j)
     return text
 
-
-def print_licence():
-    """
-    print MIT Licence + Copyright + No WARRANTY + author
-    """
-    print(LICENCE_TXT)
-
-
-def print_version_ytdlmusic():
-    """
-    print version of ytdlmusic
-    """
-    print(
-        replace_all(
-            VERSION_YTDLMUSIC,
-            {"$1": pip_package_version("ytdlmusic")},
-        )
-    )
-
-
-def print_version_dependencies():
-    """
-    print version of dependencies
-    """
-    print(
-        replace_all(
-            VERSION_DEPENDENCIES,
-            {
-                "$1": pip_package_version("yt-dlp"),
-                "$2": binary_path("ffmpeg"),
-            },
-        )
-    )
-    print(replace_all(PLATFORM_OS, {"$1": platform_version()}))
 
 
 def print_error():
@@ -99,8 +53,6 @@ def print_addtional_informations():
     print footer informations
     """
     if is_verbose():
-        print_version_ytdlmusic()
-        print_version_dependencies()
         print(my_colored(BUG_MESSSAGE_DEBUG, "yellow"))
     else:
         print(my_colored(BUG_MESSSAGE, "yellow"))

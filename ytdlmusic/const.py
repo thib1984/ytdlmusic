@@ -3,26 +3,6 @@ string constants
 """
 
 
-VERSION_YTDLMUSIC = """\
-ytdlmusic version             : $1"""
-
-VERSION_DEPENDENCIES = """\
-yt-dlp version                : $1
-ffmpeg                        : $2"""
-
-PLATFORM_OS = """\
-OS platform                   : $1"""
-
-LICENCE_TXT = """\
-
-MIT Licence.
-Copyright (c) 2021 thib1984.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
-Written by thib1984.
-"""
-
 EXCEPTION = """\
 [error] Unexpected error: Try to upgrade ytdlmusic with 'pipx reinstall ytdlmusic --force' and retry."""
 

@@ -62,13 +62,6 @@ Written by thib1984.
     )
 
     my_group.add_argument(
-        "-v",
-        "--version",
-        action="store_true",
-        help="Display ytdlmusic version number"
-    )
-
-    my_group.add_argument(
         "-b",
         "--batch",
         metavar=("path", "bool_h", "s", "num_col1+num_col2"),
@@ -239,12 +232,6 @@ def is_ogg():
     """
     return compute_args().ogg
 
-
-def is_version():
-    """
-    Return True if flag --version, False otherwise
-    """
-    return compute_args().version
 
 def is_batch():
     """

@@ -81,16 +81,3 @@ def download_song(song_url, filename):
         ydl.extract_info(song_url, download=True)
     if not is_quiet():
         print("end yt-dlp operation")
-    if not is_ffmpeg_installed() and not is_m4a() and not is_ogg():
-        print(
-            my_colored(
-                "[warning] If you want MP3/OGG format, install ffmpeg.",
-                "yellow",
-            )
-        )
-        print(
-            my_colored(
-                "[warning] To disable this message activate -f",
-                "yellow",
-            )
-        )
